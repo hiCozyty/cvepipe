@@ -24,7 +24,7 @@ const LLM_API_KEY = process.env.LLM_API_KEY;
 const LLM_BASE_URL = process.env.LLM_BASE_URL;
 const LLM_MODEL = process.env.LLM_MODEL;
 
-const RATE_LIMIT_MS = 1400;
+const RATE_LIMIT_MS = 2000;
 let lastRequestTime = 0;
 
 async function rateLimitedDelay() {
@@ -347,17 +347,20 @@ async function classifyUncertainModulesWithLLM(uncertainModules, cache) {
         console.log(`[LLM] Processing module ${i + 1}/${modulesToProcess.length}: ${module.msf_path}`);
         const [result] = await classifySingleWithLLM(module);
         
-        module.replicable = result.replicable;
-        module.confidence = result.confidence;
-        module.reason = result.reason;
-        module.access_type = result.access_type; 
-        module.exclusion_category = result.access_type === 'client_side' ? 'client_side' :  result.access_type === 'privilege_escalation' ? 'local_privesc' : null;
-        
-        // CACHE LLM RESULTS (Regardless of Confidence Score)
-        cache.llm[module.msf_path] = module;
-        
-        results.push(module);
-
+        // only cache if classification succeeded (NOT error/null)
+        if (result.confidence !== 'error' && result.replicable !== null) {
+            module.replicable = result.replicable;
+            module.confidence = result.confidence;
+            module.reason = result.reason;
+            module.access_type = result.access_type;
+            module.exclusion_category = result.access_type === 'client_side' ? 'client_side' :  result.access_type === 'privilege_escalation' ? 'local_privesc' : null;
+            
+            cache.llm[module.msf_path] = module;  // ← Only cache successes
+            results.push(module);
+        } else {
+            console.warn(`[LLM] Skipping cache for failed module: ${module.msf_path}`);
+            // Don't cache errors - they'll be retried on next run
+        }
         processedCount++;
         if (processedCount % BATCH_SIZE === 0) {
             await saveCache(cache);
