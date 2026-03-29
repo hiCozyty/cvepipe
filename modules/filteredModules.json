@@ -3426,9 +3426,9 @@
       "file_path": "metasploit-framework/modules/exploits/windows/novell/netiq_pum_eval.rb",
       "msf_path": "exploits/windows/novell/netiq_pum_eval",
       "service_category": "novell",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
       "exclusion_category": null
     },
     "exploits/windows/novell/nmap_stor": {
@@ -3448,10 +3448,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/novell/nmap_stor.rb",
       "msf_path": "exploits/windows/novell/nmap_stor",
       "service_category": "novell",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets obsolete Novell NetMail, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/novell/zenworks_desktop_agent": {
       "name": "Novell ZENworks 6.5 Desktop/Server Management Overflow",
@@ -3470,9 +3471,9 @@
       "file_path": "metasploit-framework/modules/exploits/windows/novell/zenworks_desktop_agent.rb",
       "msf_path": "exploits/windows/novell/zenworks_desktop_agent",
       "service_category": "novell",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
       "exclusion_category": null
     },
     "exploits/windows/novell/zenworks_preboot_op21_bof": {
@@ -3492,10 +3493,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/novell/zenworks_preboot_op21_bof.rb",
       "msf_path": "exploits/windows/novell/zenworks_preboot_op21_bof",
       "service_category": "novell",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Novell ZENworks Preboot service, not a standard Windows service, and requires third-party software uncommon in standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/novell/zenworks_preboot_op4c_bof": {
       "name": "Novell ZENworks Configuration Management Preboot Service 0x4c Buffer Overflow",
@@ -3514,10 +3516,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/novell/zenworks_preboot_op4c_bof.rb",
       "msf_path": "exploits/windows/novell/zenworks_preboot_op4c_bof",
       "service_category": "novell",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Novell ZENworks Preboot service, not a standard Windows service, unlikely to be running in a typical Windows VM lab.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/novell/zenworks_preboot_op6_bof": {
       "name": "Novell ZENworks Configuration Management Preboot Service 0x06 Buffer Overflow",
@@ -3536,10 +3539,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/novell/zenworks_preboot_op6_bof.rb",
       "msf_path": "exploits/windows/novell/zenworks_preboot_op6_bof",
       "service_category": "novell",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Novell ZENworks, not standard Windows, and service not present on default Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/novell/zenworks_preboot_op6c_bof": {
       "name": "Novell ZENworks Configuration Management Preboot Service 0x6c Buffer Overflow",
@@ -3558,10 +3562,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/novell/zenworks_preboot_op6c_bof.rb",
       "msf_path": "exploits/windows/novell/zenworks_preboot_op6c_bof",
       "service_category": "novell",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Novell ZENworks, not standard Windows, and service not present on default Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/nntp/ms05_030_nntp": {
       "name": "MS05-030 Microsoft Outlook Express NNTP Response Parsing Buffer Overflow",
@@ -3580,10 +3585,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/nntp/ms05_030_nntp.rb",
       "msf_path": "exploits/windows/nntp/ms05_030_nntp",
       "service_category": "nntp",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Exploits a client-side bug in Outlook Express, requiring the victim to connect to a malicious NNTP server, not a listening service.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/nimsoft/nimcontroller_bof": {
       "name": "CA Unified Infrastructure Management Nimsoft 7.80 - Remote Buffer Overflow",
@@ -3604,10 +3610,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/nimsoft/nimcontroller_bof.rb",
       "msf_path": "exploits/windows/nimsoft/nimcontroller_bof",
       "service_category": "nimsoft",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party CA UIM software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/nfs/xlink_nfsd": {
       "name": "Omni-NFS Server Buffer Overflow",
@@ -3626,10 +3633,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/nfs/xlink_nfsd.rb",
       "msf_path": "exploits/windows/nfs/xlink_nfsd",
       "service_category": "nfs",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Omni-NFS is third-party software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/mysql/mysql_mof": {
       "name": "Oracle MySQL for Microsoft Windows MOF Execution",
@@ -3956,10 +3964,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/motorola/timbuktu_fileupload.rb",
       "msf_path": "exploits/windows/motorola/timbuktu_fileupload",
       "service_category": "motorola",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party Timbuktu Pro software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/mmsp/ms10_025_wmss_connect_funnel": {
       "name": "Windows Media Services ConnectFunnel Stack Buffer Overflow",
@@ -3978,10 +3987,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/mmsp/ms10_025_wmss_connect_funnel.rb",
       "msf_path": "exploits/windows/mmsp/ms10_025_wmss_connect_funnel",
       "service_category": "mmsp",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Windows Media Services is not installed by default on standard Windows VMs, so the vulnerable service is absent.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/achat_bof": {
       "name": "Achat Unicode SEH Buffer Overflow",
@@ -4002,10 +4012,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/achat_bof.rb",
       "msf_path": "exploits/windows/misc/achat_bof",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party chat software Achat not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/actfax_raw_server_bof": {
       "name": "ActFax 5.01 RAW Server Buffer Overflow",
@@ -4024,10 +4035,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/actfax_raw_server_bof.rb",
       "msf_path": "exploits/windows/misc/actfax_raw_server_bof",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party fax server software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/agentxpp_receive_agentx": {
       "name": "AgentX++ Master AgentX::receive_agentx Stack Buffer Overflow",
@@ -4046,10 +4058,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/agentxpp_receive_agentx.rb",
       "msf_path": "exploits/windows/misc/agentxpp_receive_agentx",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party Helix Server software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/ahsay_backup_fileupload": {
       "name": "Ahsay Backup v7.x-v8.1.1.50 (authenticated) file upload",
@@ -4117,10 +4130,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/allmediaserver_bof.rb",
       "msf_path": "exploits/windows/misc/allmediaserver_bof",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets obscure third-party media server software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/altiris_ds_sqli": {
       "name": "Symantec Altiris DS SQL Injection",
@@ -4139,10 +4153,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/altiris_ds_sqli.rb",
       "msf_path": "exploits/windows/misc/altiris_ds_sqli",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party management product (Altiris DS) not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/apple_quicktime_rtsp_response": {
       "name": "Apple QuickTime 7.3 RTSP Response Header Buffer Overflow",
@@ -4161,10 +4176,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/apple_quicktime_rtsp_response.rb",
       "msf_path": "exploits/windows/misc/apple_quicktime_rtsp_response",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to connect to attacker RTSP server (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/misc/asus_dpcproxy_overflow": {
       "name": "Asus Dpcproxy Buffer Overflow",
@@ -4183,10 +4199,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/asus_dpcproxy_overflow.rb",
       "msf_path": "exploits/windows/misc/asus_dpcproxy_overflow",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets obscure third-party Asus utility not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/avaya_winpmd_unihostrouter": {
       "name": "Avaya WinPMD UniteHostRouter Buffer Overflow",
@@ -4207,10 +4224,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/avaya_winpmd_unihostrouter.rb",
       "msf_path": "exploits/windows/misc/avaya_winpmd_unihostrouter",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets obscure Avaya WinPMD software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/avidphoneticindexer": {
       "name": null,
@@ -4232,9 +4250,10 @@
       "msf_path": "exploits/windows/misc/avidphoneticindexer",
       "service_category": "misc",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network service (AvidPhoneticIndexer.exe) on port 4659/4660 for remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/misc/bakbone_netvault_heap": {
       "name": "BakBone NetVault Remote Heap Overflow",
@@ -4255,10 +4274,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/bakbone_netvault_heap.rb",
       "msf_path": "exploits/windows/misc/bakbone_netvault_heap",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party backup service not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/bcaaa_bof": {
       "name": null,
@@ -4277,10 +4297,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/bcaaa_bof.rb",
       "msf_path": "exploits/windows/misc/bcaaa_bof",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Blue Coat Authentication proxy, not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/bigant_server": {
       "name": "BigAnt Server 2.2 Buffer Overflow",
@@ -4299,10 +4320,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/bigant_server.rb",
       "msf_path": "exploits/windows/misc/bigant_server",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "BigAnt is third-party IM server software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/bigant_server_250": {
       "name": "BigAnt Server 2.50 SP1 Buffer Overflow",
@@ -4321,10 +4343,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/bigant_server_250.rb",
       "msf_path": "exploits/windows/misc/bigant_server_250",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "BigAnt Server is third-party messaging software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/bigant_server_dupf_upload": {
       "name": "BigAnt Server DUPF Command Arbitrary File Upload",
@@ -4343,10 +4366,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/bigant_server_dupf_upload.rb",
       "msf_path": "exploits/windows/misc/bigant_server_dupf_upload",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets BigAnt Server, a third-party chat application not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/bigant_server_sch_dupf_bof": {
       "name": "BigAnt Server 2 SCH And DUPF Buffer Overflow",
@@ -4365,10 +4389,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/bigant_server_sch_dupf_bof.rb",
       "msf_path": "exploits/windows/misc/bigant_server_sch_dupf_bof",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets BigAnt Server, a third-party IM server not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/bigant_server_usv": {
       "name": "BigAnt Server 2.52 USV Buffer Overflow",
@@ -4387,10 +4412,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/bigant_server_usv.rb",
       "msf_path": "exploits/windows/misc/bigant_server_usv",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets BigAnt Server, a third-party messaging product not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/bomberclone_overflow": {
       "name": "Bomberclone 0.11.6 Buffer Overflow",
@@ -4411,10 +4437,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/bomberclone_overflow.rb",
       "msf_path": "exploits/windows/misc/bomberclone_overflow",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party game Bomberclone, not present on standard Windows VMs, and requires victim to close the game.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/misc/bopup_comm": {
       "name": "Bopup Communications Server Buffer Overflow",
@@ -4433,10 +4460,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/bopup_comm.rb",
       "msf_path": "exploits/windows/misc/bopup_comm",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party Bopup Communications Server, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/borland_interbase": {
       "name": "Borland Interbase Create-Request Buffer Overflow",
@@ -4455,10 +4483,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/borland_interbase.rb",
       "msf_path": "exploits/windows/misc/borland_interbase",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Borland InterBase, a third-party database server not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/borland_starteam": {
       "name": "Borland CaliberRM StarTeam Multicast Service Buffer Overflow",
@@ -4477,10 +4506,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/borland_starteam.rb",
       "msf_path": "exploits/windows/misc/borland_starteam",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a niche third-party service (Borland CaliberRM StarTeam) not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/citrix_streamprocess": {
       "name": "Citrix Provisioning Services 5.6 streamprocess.exe Buffer Overflow",
@@ -4499,10 +4529,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/citrix_streamprocess.rb",
       "msf_path": "exploits/windows/misc/citrix_streamprocess",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Citrix Provisioning Services, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/citrix_streamprocess_data_msg": {
       "name": "Citrix Provisioning Services 5.6 SP1 Streamprocess Opcode 0x40020000 Buffer Overflow",
@@ -4522,9 +4553,10 @@
       "msf_path": "exploits/windows/misc/citrix_streamprocess_data_msg",
       "service_category": "misc",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network service on UDP/6905 with no credentials or user interaction required.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/misc/citrix_streamprocess_get_boot_record_request": {
       "name": "Citrix Provisioning Services 5.6 SP1 Streamprocess Opcode 0x40020004 Buffer Overflow",
@@ -4543,10 +4575,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/citrix_streamprocess_get_boot_record_request.rb",
       "msf_path": "exploits/windows/misc/citrix_streamprocess_get_boot_record_request",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Citrix Provisioning Services, not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/citrix_streamprocess_get_footer": {
       "name": "Citrix Provisioning Services 5.6 SP1 Streamprocess Opcode 0x40020002 Buffer Overflow",
@@ -4565,9 +4598,9 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/citrix_streamprocess_get_footer.rb",
       "msf_path": "exploits/windows/misc/citrix_streamprocess_get_footer",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
       "exclusion_category": null
     },
     "exploits/windows/misc/citrix_streamprocess_get_objects": {
@@ -4587,9 +4620,9 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/citrix_streamprocess_get_objects.rb",
       "msf_path": "exploits/windows/misc/citrix_streamprocess_get_objects",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
       "exclusion_category": null
     },
     "exploits/windows/misc/cloudme_sync": {
@@ -4609,10 +4642,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/cloudme_sync.rb",
       "msf_path": "exploits/windows/misc/cloudme_sync",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party desktop sync app not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/commvault_cmd_exec": {
       "name": "Commvault Communications Service (cvd) Command Injection",
@@ -4636,10 +4670,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/commvault_cmd_exec.rb",
       "msf_path": "exploits/windows/misc/commvault_cmd_exec",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Commvault software is not present on a standard Windows VM.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/misc/crosschex_device_bof": {
       "name": "Anviz CrossChex Buffer Overflow",
@@ -4662,9 +4697,9 @@
       "file_path": "metasploit-framework/modules/exploits/windows/misc/crosschex_device_bof.rb",
       "msf_path": "exploits/windows/misc/crosschex_device_bof",
       "service_category": "misc",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
       "exclusion_category": null
     },
     "exploits/windows/misc/cve_2022_28381_allmediaserver_bof": {
@@ -30083,6 +30118,942 @@
       "file_path": "metasploit-framework/modules/exploits/windows/novell/groupwisemessenger_client.rb",
       "msf_path": "exploits/windows/novell/groupwisemessenger_client",
       "service_category": "novell",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
+      "exclusion_category": null
+    },
+    "exploits/windows/novell/netiq_pum_eval": {
+      "name": "NetIQ Privileged User Manager 2.3.1 ldapagnt_eval() Remote Perl Code Execution",
+      "description": "This module abuses a lack of authorization in the NetIQ Privileged User Manager\n          service (unifid.exe) to execute arbitrary perl code. The problem exists in the\n          ldapagnt module. The module has been tested successfully on NetIQ PUM 2.3.1 over\n          Windows 2003 SP2, which allows to execute arbitrary code with SYSTEM privileges.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2003 SP2 / NetIQ Privileged User Manager 2.3.1"
+      ],
+      "disclosed": "2012-11-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/novell/netiq_pum_eval.rb",
+      "msf_path": "exploits/windows/novell/netiq_pum_eval",
+      "service_category": "novell",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
+      "exclusion_category": null
+    },
+    "exploits/windows/novell/nmap_stor": {
+      "name": "Novell NetMail NMAP STOR Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Novell's Netmail 3.52 NMAP STOR\n          verb. By sending an overly long string, an attacker can overwrite the\n          buffer and control program execution.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 Pro SP4 English"
+      ],
+      "disclosed": "2006-12-23",
+      "file_path": "metasploit-framework/modules/exploits/windows/novell/nmap_stor.rb",
+      "msf_path": "exploits/windows/novell/nmap_stor",
+      "service_category": "novell",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets obsolete Novell NetMail, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/novell/zenworks_desktop_agent": {
+      "name": "Novell ZENworks 6.5 Desktop/Server Management Overflow",
+      "description": "This module exploits a heap overflow in the Novell ZENworks\n          Desktop Management agent. This vulnerability was discovered\n          by Alex Wheeler.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP/2000/2003- ZENworks 6.5 Desktop/Server Agent"
+      ],
+      "disclosed": "2005-05-19",
+      "file_path": "metasploit-framework/modules/exploits/windows/novell/zenworks_desktop_agent.rb",
+      "msf_path": "exploits/windows/novell/zenworks_desktop_agent",
+      "service_category": "novell",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
+      "exclusion_category": null
+    },
+    "exploits/windows/novell/zenworks_preboot_op21_bof": {
+      "name": "Novell ZENworks Configuration Management Preboot Service 0x21 Buffer Overflow",
+      "description": "This module exploits a remote buffer overflow in the ZENworks Configuration\n          Management 10 SP2. The vulnerability exists in the Preboot service and can be\n          triggered by sending a specially crafted packet with the opcode 0x21\n          (PROXY_CMD_FTP_FILE) to port 998/TCP. The module has been successfully tested on\n          Novell ZENworks Configuration Management 10 SP2 and Windows Server 2003 SP2\n          (DEP bypass).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Novell ZENworks Configuration Management 10 SP2 / Windows 2003 SP2"
+      ],
+      "disclosed": "2010-03-30",
+      "file_path": "metasploit-framework/modules/exploits/windows/novell/zenworks_preboot_op21_bof.rb",
+      "msf_path": "exploits/windows/novell/zenworks_preboot_op21_bof",
+      "service_category": "novell",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Novell ZENworks Preboot service, not a standard Windows service, and requires third-party software uncommon in standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/novell/zenworks_preboot_op4c_bof": {
+      "name": "Novell ZENworks Configuration Management Preboot Service 0x4c Buffer Overflow",
+      "description": "This module exploits a remote buffer overflow in the ZENworks Configuration\n          Management. The vulnerability exists in the Preboot service and can be triggered\n          by sending a specially crafted packet with the opcode 0x4c\n          (PROXY_CMD_PREBOOT_TASK_INFO2) to port 998/TCP. The module has been successfully\n          tested on Novell ZENworks Configuration Management 10 SP2 / SP3 and Windows Server\n          2003 SP2 (DEP bypass).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Novell ZENworks Configuration Management 10 SP3 / Windows 2003 SP2"
+      ],
+      "disclosed": "2012-02-22",
+      "file_path": "metasploit-framework/modules/exploits/windows/novell/zenworks_preboot_op4c_bof.rb",
+      "msf_path": "exploits/windows/novell/zenworks_preboot_op4c_bof",
+      "service_category": "novell",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Novell ZENworks Preboot service, not a standard Windows service, unlikely to be running in a typical Windows VM lab.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/novell/zenworks_preboot_op6_bof": {
+      "name": "Novell ZENworks Configuration Management Preboot Service 0x06 Buffer Overflow",
+      "description": "This module exploits a remote buffer overflow in the ZENworks Configuration\n          Management 10 SP2. The vulnerability exists in the Preboot service and can be\n          triggered by sending a specially crafted packet with the opcode 0x06\n          (PROXY_CMD_CLEAR_WS) to the 998/TCP port. The module has been successfully tested\n          on Novell ZENworks Configuration Management 10 SP2 and Windows Server 2003 SP2\n          (DEP bypass).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Novell ZENworks Configuration Management 10 SP2 / Windows 2003 SP2"
+      ],
+      "disclosed": "2010-03-30",
+      "file_path": "metasploit-framework/modules/exploits/windows/novell/zenworks_preboot_op6_bof.rb",
+      "msf_path": "exploits/windows/novell/zenworks_preboot_op6_bof",
+      "service_category": "novell",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Novell ZENworks, not standard Windows, and service not present on default Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/novell/zenworks_preboot_op6c_bof": {
+      "name": "Novell ZENworks Configuration Management Preboot Service 0x6c Buffer Overflow",
+      "description": "This module exploits a remote buffer overflow in the ZENworks Configuration\n          Management. The vulnerability exists in the Preboot service and can be triggered by\n          sending a specially crafted packet with the opcode 0x6c (PROXY_CMD_GET_NEXT_STEP)\n          to port 998/TCP. The module has been successfully tested on Novell ZENworks\n          Configuration Management 10 SP2 / SP3 and Windows Server 2003 SP2 (DEP bypass).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Novell ZENworks Configuration Management 10 SP3 / Windows 2003 SP2"
+      ],
+      "disclosed": "2012-02-22",
+      "file_path": "metasploit-framework/modules/exploits/windows/novell/zenworks_preboot_op6c_bof.rb",
+      "msf_path": "exploits/windows/novell/zenworks_preboot_op6c_bof",
+      "service_category": "novell",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Novell ZENworks, not standard Windows, and service not present on default Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/nntp/ms05_030_nntp": {
+      "name": "MS05-030 Microsoft Outlook Express NNTP Response Parsing Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the news reader of Microsoft\n          Outlook Express.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 English SP0-SP4"
+      ],
+      "disclosed": "2005-06-14",
+      "file_path": "metasploit-framework/modules/exploits/windows/nntp/ms05_030_nntp.rb",
+      "msf_path": "exploits/windows/nntp/ms05_030_nntp",
+      "service_category": "nntp",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Exploits a client-side bug in Outlook Express, requiring the victim to connect to a malicious NNTP server, not a listening service.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/nimsoft/nimcontroller_bof": {
+      "name": "CA Unified Infrastructure Management Nimsoft 7.80 - Remote Buffer Overflow",
+      "description": "This module exploits a buffer overflow within the CA Unified Infrastructure Management nimcontroller.\n          The vulnerability occurs in the robot (controller) component when sending a specially crafted directory_list\n          probe.\n\n          Technically speaking the target host must also be vulnerable to CVE-2020-8010 in order to reach the\n          directory_list probe.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows Universal (x64) - v7.80.3132"
+      ],
+      "disclosed": "2020-02-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/nimsoft/nimcontroller_bof.rb",
+      "msf_path": "exploits/windows/nimsoft/nimcontroller_bof",
+      "service_category": "nimsoft",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party CA UIM software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/nfs/xlink_nfsd": {
+      "name": "Omni-NFS Server Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Xlink Omni-NFS Server 5.2\n          When sending a specially crafted nfs packet, an attacker may be able\n          to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 SP4 English"
+      ],
+      "disclosed": "2006-11-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/nfs/xlink_nfsd.rb",
+      "msf_path": "exploits/windows/nfs/xlink_nfsd",
+      "service_category": "nfs",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Omni-NFS is third-party software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/motorola/timbuktu_fileupload": {
+      "name": "Timbuktu Pro Directory Traversal/File Upload",
+      "description": "This module exploits a directory traversal vulnerability in Motorola's\n          Timbuktu Pro for Windows 8.6.5.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2008-05-10",
+      "file_path": "metasploit-framework/modules/exploits/windows/motorola/timbuktu_fileupload.rb",
+      "msf_path": "exploits/windows/motorola/timbuktu_fileupload",
+      "service_category": "motorola",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party Timbuktu Pro software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/mmsp/ms10_025_wmss_connect_funnel": {
+      "name": "Windows Media Services ConnectFunnel Stack Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the Windows Media\n          Unicast Service version 4.1.0.3930 (NUMS.exe). By sending a specially\n          crafted FunnelConnect request, an attacker can execute arbitrary code\n          under the \"NetShowServices\" user account. Windows Media Services 4.1 ships\n          with Windows 2000 Server, but is not installed by default.\n\n          NOTE: This service does NOT restart automatically. Successful, as well as\n          unsuccessful exploitation attempts will kill the service which prevents\n          additional attempts.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 Pro SP4 English"
+      ],
+      "disclosed": "2010-04-13",
+      "file_path": "metasploit-framework/modules/exploits/windows/mmsp/ms10_025_wmss_connect_funnel.rb",
+      "msf_path": "exploits/windows/mmsp/ms10_025_wmss_connect_funnel",
+      "service_category": "mmsp",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Windows Media Services is not installed by default on standard Windows VMs, so the vulnerable service is absent.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/achat_bof": {
+      "name": "Achat Unicode SEH Buffer Overflow",
+      "description": "This module exploits a Unicode SEH buffer overflow in Achat. By\n          sending a crafted message to the default port 9256/UDP, it's possible to overwrite the\n          SEH handler. Even when the exploit is reliable, it depends on timing since there are\n          two threads overflowing the stack in the same time. This module has been tested on\n          Achat v0.150 running on Windows XP SP3 and Windows 7.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2025-34127"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Achat beta v0.150 / Windows XP SP3 / Windows 7 SP1"
+      ],
+      "disclosed": "2014-12-18",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/achat_bof.rb",
+      "msf_path": "exploits/windows/misc/achat_bof",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party chat software Achat not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/actfax_raw_server_bof": {
+      "name": "ActFax 5.01 RAW Server Buffer Overflow",
+      "description": "This module exploits a vulnerability in ActFax Server 5.01 RAW server. The RAW\n          Server can be used to transfer fax messages without any underlying protocols. To\n          note significant fields in the fax being transferred, like the fax number or the\n          recipient, ActFax data fields can be used. This module exploits a buffer overflow\n          in the handling of the @F506 fields due to the insecure usage of strcpy. This\n          module has been tested successfully on ActFax 5.01 over Windows XP SP3 (English).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "ActFax 5.01 / Windows XP SP3"
+      ],
+      "disclosed": "2013-02-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/actfax_raw_server_bof.rb",
+      "msf_path": "exploits/windows/misc/actfax_raw_server_bof",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party fax server software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/agentxpp_receive_agentx": {
+      "name": "AgentX++ Master AgentX::receive_agentx Stack Buffer Overflow",
+      "description": "This exploits a stack buffer overflow in the AgentX++ library, as used by\n          various applications. By sending a specially crafted request, an attacker can\n          execute arbitrary code, potentially with SYSTEM privileges.\n\n          This module was tested successfully against master.exe as included with Real\n          Network\\'s Helix Server v12. When installed as a service with Helix Server,\n          the service runs as SYSTEM, has no recovery action, but will start automatically\n          on boot.\n\n          This module does not work with NX/XD enabled but could be modified easily to\n          do so. The address",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Helix Server v12 and v13 - master.exe"
+      ],
+      "disclosed": "2010-04-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/agentxpp_receive_agentx.rb",
+      "msf_path": "exploits/windows/misc/agentxpp_receive_agentx",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party Helix Server software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/allmediaserver_bof": {
+      "name": "ALLMediaServer 0.8 Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in ALLMediaServer 0.8. The vulnerability\n          is caused due to a boundary error within the handling of HTTP request.\n\n          While the exploit supports DEP bypass via ROP, on Windows 7 the stack pivoting isn't\n          reliable across virtual (VMWare, VirtualBox) and physical environments. Because of\n          this the module isn't using DEP bypass on the Windows 7 SP1 target, where by default\n          DEP is OptIn and AllMediaServer won't run with DEP.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "ALLMediaServer 0.8 / Windows XP SP3 - English"
+      ],
+      "disclosed": "2012-07-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/allmediaserver_bof.rb",
+      "msf_path": "exploits/windows/misc/allmediaserver_bof",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets obscure third-party media server software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/altiris_ds_sqli": {
+      "name": "Symantec Altiris DS SQL Injection",
+      "description": "This module exploits a SQL injection flaw in Symantec Altiris Deployment Solution 6.8\n          to 6.9.164. The vulnerability exists on axengine.exe which fails to adequately sanitize\n          numeric input fields in \"UpdateComputer\" notification Requests. In order to spawn a shell,\n          several SQL injections are required in close succession, first to enable xp_cmdshell, then\n          retrieve the payload via TFTP and finally execute it. The module also has the capability\n          to disable or enable local application authentication. In order to work the target system\n          must have a tftp client available.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2003 (with tftp client available)"
+      ],
+      "disclosed": "2008-05-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/altiris_ds_sqli.rb",
+      "msf_path": "exploits/windows/misc/altiris_ds_sqli",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party management product (Altiris DS) not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/apple_quicktime_rtsp_response": {
+      "name": "Apple QuickTime 7.3 RTSP Response Header Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Apple QuickTime 7.3. By sending an overly long\n          RTSP response to a client, an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "QuickTime 7.3, QuickTime Player 7.3"
+      ],
+      "disclosed": "2007-11-23",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/apple_quicktime_rtsp_response.rb",
+      "msf_path": "exploits/windows/misc/apple_quicktime_rtsp_response",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to connect to attacker RTSP server (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/misc/asus_dpcproxy_overflow": {
+      "name": "Asus Dpcproxy Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Asus Dpcroxy version 2.0.0.19.\n          It should be vulnerable until version 2.0.0.24.\n          Credit to Luigi Auriemma",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Asus Dpcroxy version 2.00.19 Universal"
+      ],
+      "disclosed": "2008-03-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/asus_dpcproxy_overflow.rb",
+      "msf_path": "exploits/windows/misc/asus_dpcproxy_overflow",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets obscure third-party Asus utility not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/avaya_winpmd_unihostrouter": {
+      "name": "Avaya WinPMD UniteHostRouter Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Avaya WinPMD. The vulnerability\n          exists in the UniteHostRouter service, due to the insecure usage of memcpy when\n          parsing specially crafted \"To:\" headers. The module has been tested successfully on\n          Avaya WinPMD 3.8.2 over Windows XP SP3 and Windows 2003 SP2.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [
+        "18397"
+      ],
+      "port": null,
+      "targets": [
+        "Avaya WinPMD 3.8.2 / Windows XP SP3"
+      ],
+      "disclosed": "2011-05-23",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/avaya_winpmd_unihostrouter.rb",
+      "msf_path": "exploits/windows/misc/avaya_winpmd_unihostrouter",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets obscure Avaya WinPMD software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/avidphoneticindexer": {
+      "name": null,
+      "description": "This module exploits a stack buffer overflow in process\n          AvidPhoneticIndexer.exe (port 4659), which comes as part of the Avid Media Composer\n          5.5 Editing Suite. This daemon sometimes starts on a different port; if you start\n          it standalone it will run on port 4660.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2011-5003"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP Professional SP3"
+      ],
+      "disclosed": "2011-11-29",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/avidphoneticindexer.rb",
+      "msf_path": "exploits/windows/misc/avidphoneticindexer",
+      "service_category": "misc",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network service (AvidPhoneticIndexer.exe) on port 4659/4660 for remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/misc/bakbone_netvault_heap": {
+      "name": "BakBone NetVault Remote Heap Overflow",
+      "description": "This module exploits a heap overflow in the BakBone NetVault\n          Process Manager service. This code is a direct port of the netvault.c\n          code written by nolimit and BuzzDee.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2005-1009"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 SP4 English"
+      ],
+      "disclosed": "2005-04-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/bakbone_netvault_heap.rb",
+      "msf_path": "exploits/windows/misc/bakbone_netvault_heap",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party backup service not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/bcaaa_bof": {
+      "name": null,
+      "description": "This module exploits a stack buffer overflow in process bcaaa-130.exe (port 16102),\n          which comes as part of the Blue Coat Authentication proxy.  Please note that by default,\n          this exploit will attempt up to three times in order to successfully gain remote code\n          execution (in some cases, it takes as many as five times).  This can cause your activity\n          to look even more suspicious.  To modify the number of exploit attempts, set the\n          ATTEMPTS option.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BCAAA Version 5.4.6.1.54128"
+      ],
+      "disclosed": "2011-04-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/bcaaa_bof.rb",
+      "msf_path": "exploits/windows/misc/bcaaa_bof",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Blue Coat Authentication proxy, not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/bigant_server": {
+      "name": "BigAnt Server 2.2 Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in BigAnt Server 2.2.\n          By sending a specially crafted packet, an attacker may be\n          able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 Pro All English"
+      ],
+      "disclosed": "2008-04-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/bigant_server.rb",
+      "msf_path": "exploits/windows/misc/bigant_server",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "BigAnt is third-party IM server software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/bigant_server_250": {
+      "name": "BigAnt Server 2.50 SP1 Buffer Overflow",
+      "description": "This exploits a stack buffer overflow in the BigAnt Messaging Service,\n          part of the BigAnt Server product suite. This module was tested\n          successfully against version 2.50 SP1.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BigAnt 2.5 Universal"
+      ],
+      "disclosed": "2008-04-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/bigant_server_250.rb",
+      "msf_path": "exploits/windows/misc/bigant_server_250",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "BigAnt Server is third-party messaging software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/bigant_server_dupf_upload": {
+      "name": "BigAnt Server DUPF Command Arbitrary File Upload",
+      "description": "This exploits an arbitrary file upload vulnerability in BigAnt Server 2.97 SP7.\n          A lack of authentication allows to make unauthenticated file uploads through a DUPF\n          command. Additionally the filename option in the same command can be used to launch\n          a directory traversal attack and achieve arbitrary file upload.\n\n          The module uses the Windows Management Instrumentation service to execute an\n          arbitrary payload on vulnerable installations of BigAnt on Windows XP and 2003. It\n          has been successfully tested on BigAnt Server 2.97 SP7 over Windows XP SP3 and 2003\n          SP2.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BigAnt Server 2.97 SP7"
+      ],
+      "disclosed": "2013-01-09",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/bigant_server_dupf_upload.rb",
+      "msf_path": "exploits/windows/misc/bigant_server_dupf_upload",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets BigAnt Server, a third-party chat application not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/bigant_server_sch_dupf_bof": {
+      "name": "BigAnt Server 2 SCH And DUPF Buffer Overflow",
+      "description": "This exploits a stack buffer overflow in BigAnt Server 2.97 SP7. The\n          vulnerability is due to the dangerous usage of strcpy while handling errors. This\n          module uses a combination of SCH and DUPF request to trigger the vulnerability, and\n          has been tested successfully against version 2.97 SP7 over Windows XP SP3 and\n          Windows 2003 SP2.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BigAnt Server 2.97 SP7 / Windows XP SP3"
+      ],
+      "disclosed": "2013-01-09",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/bigant_server_sch_dupf_bof.rb",
+      "msf_path": "exploits/windows/misc/bigant_server_sch_dupf_bof",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets BigAnt Server, a third-party IM server not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/bigant_server_usv": {
+      "name": "BigAnt Server 2.52 USV Buffer Overflow",
+      "description": "This exploits a stack buffer overflow in the BigAnt Messaging Service,\n          part of the BigAnt Server product suite. This module was tested\n          successfully against version 2.52.\n\n          NOTE: The AntServer service does not restart, you only get one shot.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BigAnt 2.52 Universal"
+      ],
+      "disclosed": "2009-12-29",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/bigant_server_usv.rb",
+      "msf_path": "exploits/windows/misc/bigant_server_usv",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets BigAnt Server, a third-party messaging product not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/bomberclone_overflow": {
+      "name": "Bomberclone 0.11.6 Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Bomberclone 0.11.6 for Windows.\n          The return address is overwritten with lstrcpyA memory address,\n          the second and third value are the destination buffer,\n          the fourth value is the source address of our buffer in the stack.\n          This exploit is like a return in libc.\n\n          ATTENTION\n          The shellcode is exec ONLY when someone try to close bomberclone.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2006-0460"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP2 Italian"
+      ],
+      "disclosed": "2006-02-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/bomberclone_overflow.rb",
+      "msf_path": "exploits/windows/misc/bomberclone_overflow",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party game Bomberclone, not present on standard Windows VMs, and requires victim to close the game.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/misc/bopup_comm": {
+      "name": "Bopup Communications Server Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Bopup Communications Server 3.2.26.5460.\n          By sending a specially crafted packet, an attacker may be\n          able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Bopup Communications Server 3.2.26.5460"
+      ],
+      "disclosed": "2009-06-18",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/bopup_comm.rb",
+      "msf_path": "exploits/windows/misc/bopup_comm",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party Bopup Communications Server, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/borland_interbase": {
+      "name": "Borland Interbase Create-Request Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Borland Interbase 2007.\n          By sending a specially crafted create-request packet, a remote\n          attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 English All / Borland InterBase 2007"
+      ],
+      "disclosed": "2007-07-24",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/borland_interbase.rb",
+      "msf_path": "exploits/windows/misc/borland_interbase",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Borland InterBase, a third-party database server not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/borland_starteam": {
+      "name": "Borland CaliberRM StarTeam Multicast Service Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Borland CaliberRM 2006. By sending\n          a specially crafted GET request to the STMulticastService, an attacker may be\n          able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 SP4 English"
+      ],
+      "disclosed": "2008-04-02",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/borland_starteam.rb",
+      "msf_path": "exploits/windows/misc/borland_starteam",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a niche third-party service (Borland CaliberRM StarTeam) not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/citrix_streamprocess": {
+      "name": "Citrix Provisioning Services 5.6 streamprocess.exe Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Citrix Provisioning Services 5.6.\n          By sending a specially crafted packet to the Provisioning Services server, a fixed\n          length buffer on the stack can be overflowed and arbitrary code can be executed.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP3 / Windows Server 2003 SP2 / Windows Vista"
+      ],
+      "disclosed": "2011-01-20",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/citrix_streamprocess.rb",
+      "msf_path": "exploits/windows/misc/citrix_streamprocess",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Citrix Provisioning Services, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/citrix_streamprocess_data_msg": {
+      "name": "Citrix Provisioning Services 5.6 SP1 Streamprocess Opcode 0x40020000 Buffer Overflow",
+      "description": "This module exploits a remote buffer overflow in the Citrix Provisioning Services\n          5.6 SP1 (without Hotfix CPVS56SP1E043) by sending a malformed packet to the\n          6905/UDP port.  The module has been successfully tested on Windows Server 2003 SP2,\n          Windows 7, and Windows XP SP3.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Citrix Provisioning Services 5.6 SP1"
+      ],
+      "disclosed": "2011-11-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/citrix_streamprocess_data_msg.rb",
+      "msf_path": "exploits/windows/misc/citrix_streamprocess_data_msg",
+      "service_category": "misc",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network service on UDP/6905 with no credentials or user interaction required.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/misc/citrix_streamprocess_get_boot_record_request": {
+      "name": "Citrix Provisioning Services 5.6 SP1 Streamprocess Opcode 0x40020004 Buffer Overflow",
+      "description": "This module exploits a remote buffer overflow in the Citrix Provisioning Services\n          5.6 SP1 (without Hotfix CPVS56SP1E043) by sending a malformed packet with the opcode\n          0x40020004 (GetBootRecordRequest) to the 6905/UDP port. The module, which allows\n          code execution under the context of SYSTEM, has been successfully tested on Windows Server\n          2003 SP2 and Windows XP SP3.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Citrix Provisioning Services 5.6 SP1"
+      ],
+      "disclosed": "2011-11-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/citrix_streamprocess_get_boot_record_request.rb",
+      "msf_path": "exploits/windows/misc/citrix_streamprocess_get_boot_record_request",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Citrix Provisioning Services, not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/citrix_streamprocess_get_footer": {
+      "name": "Citrix Provisioning Services 5.6 SP1 Streamprocess Opcode 0x40020002 Buffer Overflow",
+      "description": "This module exploits a remote buffer overflow in the Citrix Provisioning Services\n          5.6 SP1 (without Hotfix CPVS56SP1E043) by sending a malformed packet with the opcode\n          0x40020002 (GetFooterRequest) to the 6905/UDP port. The module, which allows code execution\n          under the context of SYSTEM, has been successfully tested on Windows Server 2003 SP2\n          and Windows XP SP3.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Citrix Provisioning Services 5.6 SP1"
+      ],
+      "disclosed": "2011-11-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/citrix_streamprocess_get_footer.rb",
+      "msf_path": "exploits/windows/misc/citrix_streamprocess_get_footer",
+      "service_category": "misc",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
+      "exclusion_category": null
+    },
+    "exploits/windows/misc/citrix_streamprocess_get_objects": {
+      "name": "Citrix Provisioning Services 5.6 SP1 Streamprocess Opcode 0x40020006 Buffer Overflow",
+      "description": "This module exploits a remote buffer overflow in the Citrix Provisioning Services\n          5.6 SP1 (without Hotfix CPVS56SP1E043) by sending a malformed packet with the opcode\n          0x40020006 (GetObjetsRequest) to the 6905/UDP port. The module, which allows code execution\n          under the context of SYSTEM, has been successfully tested on Windows Server 2003 SP2\n          and Windows XP SP3.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Citrix Provisioning Services 5.6 SP1"
+      ],
+      "disclosed": "2011-11-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/citrix_streamprocess_get_objects.rb",
+      "msf_path": "exploits/windows/misc/citrix_streamprocess_get_objects",
+      "service_category": "misc",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
+      "exclusion_category": null
+    },
+    "exploits/windows/misc/cloudme_sync": {
+      "name": "CloudMe Sync v1.10.9",
+      "description": "This module exploits a stack-based buffer overflow vulnerability\n          in CloudMe Sync v1.10.9 client application. This module has been\n          tested successfully on Windows 7 SP1 x86.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "CloudMe Sync v1.10.9"
+      ],
+      "disclosed": "2018-01-17",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/cloudme_sync.rb",
+      "msf_path": "exploits/windows/misc/cloudme_sync",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party desktop sync app not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/commvault_cmd_exec": {
+      "name": "Commvault Communications Service (cvd) Command Injection",
+      "description": "This module exploits a command injection vulnerability\n          discovered in Commvault Service v11 SP5 and earlier versions (tested in v11 SP5\n          and v10). The vulnerability exists in the cvd.exe service and allows an\n          attacker to execute arbitrary commands in the context of the service. By\n          default, the Commvault Communications service installs and runs as SYSTEM in\n          Windows and does not require authentication. This vulnerability was discovered\n          in the Windows version. The Linux version wasn't tested.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86"
+      ],
+      "cves": [
+        "2017-18044"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Commvault Communications Service (cvd) / Microsoft Windows 7 and higher"
+      ],
+      "disclosed": "2017-12-12",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/commvault_cmd_exec.rb",
+      "msf_path": "exploits/windows/misc/commvault_cmd_exec",
+      "service_category": "misc",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Commvault software is not present on a standard Windows VM.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/misc/crosschex_device_bof": {
+      "name": "Anviz CrossChex Buffer Overflow",
+      "description": "Waits for broadcasts from Ainz CrossChex looking for new devices, and returns a custom broadcast,\n          triggering a stack buffer overflow.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2019-12518"
+      ],
+      "edb_ids": [
+        "47734"
+      ],
+      "port": null,
+      "targets": [
+        "Crosschex Standard x86 <= V4.3.12"
+      ],
+      "disclosed": "2019-11-28",
+      "file_path": "metasploit-framework/modules/exploits/windows/misc/crosschex_device_bof.rb",
+      "msf_path": "exploits/windows/misc/crosschex_device_bof",
+      "service_category": "misc",
       "replicable": null,
       "confidence": "error",
       "reason": "LLM classification failed: 429 status code (no body)",
