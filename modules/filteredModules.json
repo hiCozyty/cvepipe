@@ -24877,10 +24877,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/mcafee_mcsubmgr_vsprintf.rb",
       "msf_path": "exploits/windows/browser/mcafee_mcsubmgr_vsprintf",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, making it client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/mcafee_mvt_exec": {
       "name": null,
@@ -24899,10 +24900,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/mcafee_mvt_exec.rb",
       "msf_path": "exploits/windows/browser/mcafee_mvt_exec",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious page in a browser with the vulnerable McAfee ActiveX control installed.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/mcafeevisualtrace_tracetarget": {
       "name": "McAfee Visual Trace ActiveX Control Buffer Overflow",
@@ -24921,10 +24923,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/mcafeevisualtrace_tracetarget.rb",
       "msf_path": "exploits/windows/browser/mcafeevisualtrace_tracetarget",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side not initial foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/mirc_irc_url": {
       "name": "mIRC IRC URL Buffer Overflow",
@@ -24943,10 +24946,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/mirc_irc_url.rb",
       "msf_path": "exploits/windows/browser/mirc_irc_url",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to click a malicious irc:// link in a browser or chat client",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/mozilla_attribchildremoved": {
       "name": "Firefox 8/9 AttributeChildRemoved() Use-After-Free",
@@ -25202,10 +25206,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ms06_001_wmf_setabortproc.rb",
       "msf_path": "exploits/windows/browser/ms06_001_wmf_setabortproc",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Victim must open or view a malicious WMF file in a browser or image viewer, requiring user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ms06_013_createtextrange": {
       "name": "MS06-013 Microsoft Internet Explorer createTextRange() Code Execution",
@@ -25384,10 +25389,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ms08_053_mediaencoder.rb",
       "msf_path": "exploits/windows/browser/ms08_053_mediaencoder",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE, so it is client-side not initial foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ms08_070_visual_studio_msmask": {
       "name": "Microsoft Visual Studio Mdmask32.ocx ActiveX Stack Buffer Overflow",
@@ -25408,10 +25414,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ms08_070_visual_studio_msmask.rb",
       "msf_path": "exploits/windows/browser/ms08_070_visual_studio_msmask",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side not initial foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ms08_078_xml_corruption": {
       "name": "MS08-078 Microsoft Internet Explorer Data Binding Memory Corruption",
@@ -25658,10 +25665,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ms10_026_avi_nsamplespersec.rb",
       "msf_path": "exploits/windows/browser/ms10_026_avi_nsamplespersec",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious AVI file in browser (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ms10_042_helpctr_xss_cmd_exec": {
       "name": "Microsoft Help Center XSS and Command Execution",
@@ -25704,10 +25712,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ms10_046_shortcut_icon_dllloader.rb",
       "msf_path": "exploits/windows/browser/ms10_046_shortcut_icon_dllloader",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to open a folder or view a shortcut that references the attacker’s WebDAV share, i.e., user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ms10_090_ie_css_clip": {
       "name": "MS10-090 Microsoft Internet Explorer CSS SetUserClip Memory Corruption",
@@ -26056,10 +26065,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ms13_090_cardspacesigninhelper.rb",
       "msf_path": "exploits/windows/browser/ms13_090_cardspacesigninhelper",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to attacker page with IE8, making it client-side not initial foothold",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ms14_012_cmarkup_uaf": {
       "name": null,
@@ -26166,10 +26176,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/msvidctl_mpeg2.rb",
       "msf_path": "exploits/windows/browser/msvidctl_mpeg2",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious GIF in browser (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/mswhale_checkforupdates": {
       "name": "Microsoft Whale Intelligent Application Gateway ActiveX Control Buffer Overflow",
@@ -26188,10 +26199,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/mswhale_checkforupdates.rb",
       "msf_path": "exploits/windows/browser/mswhale_checkforupdates",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to attacker page and allow ActiveX control to run, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/msxml_get_definition_code_exec": {
       "name": null,
@@ -26210,10 +26222,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/msxml_get_definition_code_exec.rb",
       "msf_path": "exploits/windows/browser/msxml_get_definition_code_exec",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to open a malicious web page or document in Internet Explorer, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/nctaudiofile2_setformatlikesample": {
       "name": "NCTAudioFile2 v2.x ActiveX Control SetFormatLikeSample() Buffer Overflow",
@@ -26232,10 +26245,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/nctaudiofile2_setformatlikesample.rb",
       "msf_path": "exploits/windows/browser/nctaudiofile2_setformatlikesample",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page or open a crafted file, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/nis2004_antispam": {
       "name": "Norton AntiSpam 2004 SymSpamHelper ActiveX Control Buffer Overflow",
@@ -26254,10 +26268,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/nis2004_antispam.rb",
       "msf_path": "exploits/windows/browser/nis2004_antispam",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/nis2004_get": {
       "name": "Symantec Norton Internet Security 2004 ActiveX Control Buffer Overflow",
@@ -26276,10 +26291,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/nis2004_get.rb",
       "msf_path": "exploits/windows/browser/nis2004_get",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to browse to a malicious page, making it a client-side exploit.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/notes_handler_cmdinject": {
       "name": null,
@@ -26320,10 +26336,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/novell_groupwise_gwcls1_actvx.rb",
       "msf_path": "exploits/windows/browser/novell_groupwise_gwcls1_actvx",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE with GroupWise ActiveX installed, so victim interaction is mandatory.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/novelliprint_callbackurl": {
       "name": "Novell iPrint Client ActiveX Control call-back-url Buffer Overflow",
@@ -26342,10 +26359,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_callbackurl.rb",
       "msf_path": "exploits/windows/browser/novelliprint_callbackurl",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to attacker page (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/novelliprint_datetime": {
       "name": "Novell iPrint Client ActiveX Control Date/Time Buffer Overflow",
@@ -26364,10 +26382,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_datetime.rb",
       "msf_path": "exploits/windows/browser/novelliprint_datetime",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page to trigger the ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/novelliprint_executerequest": {
       "name": "Novell iPrint Client ActiveX Control ExecuteRequest Buffer Overflow",
@@ -26386,10 +26405,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_executerequest.rb",
       "msf_path": "exploits/windows/browser/novelliprint_executerequest",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/novelliprint_executerequest_dbg": {
       "name": "Novell iPrint Client ActiveX Control ExecuteRequest debug Buffer Overflow",
@@ -26408,10 +26428,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_executerequest_dbg.rb",
       "msf_path": "exploits/windows/browser/novelliprint_executerequest_dbg",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/novelliprint_getdriversettings": {
       "name": "Novell iPrint Client ActiveX Control Buffer Overflow",
@@ -26430,10 +26451,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_getdriversettings.rb",
       "msf_path": "exploits/windows/browser/novelliprint_getdriversettings",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit malicious web page with IE, making it client-side",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/novelliprint_getdriversettings_2": {
       "name": "Novell iPrint Client ActiveX Control Buffer Overflow",
@@ -26452,10 +26474,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_getdriversettings_2.rb",
       "msf_path": "exploits/windows/browser/novelliprint_getdriversettings_2",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page with IE, making it client-side",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/novelliprint_target_frame": {
       "name": "Novell iPrint Client ActiveX Control target-frame Buffer Overflow",
@@ -26474,10 +26497,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_target_frame.rb",
       "msf_path": "exploits/windows/browser/novelliprint_target_frame",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page that instantiates the ActiveX control, i.e. user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ntr_activex_check_bof": {
       "name": "NTR ActiveX Control Check() Method Buffer Overflow",
@@ -26496,10 +26520,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ntr_activex_check_bof.rb",
       "msf_path": "exploits/windows/browser/ntr_activex_check_bof",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ntr_activex_stopmodule": {
       "name": "NTR ActiveX Control StopModule() Remote Code Execution",
@@ -26518,10 +26543,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ntr_activex_stopmodule.rb",
       "msf_path": "exploits/windows/browser/ntr_activex_stopmodule",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to browse to a malicious page, so it is client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/oracle_autovue_setmarkupmode": {
       "name": "Oracle AutoVue ActiveX Control SetMarkupMode Buffer Overflow",
@@ -26540,10 +26566,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/oracle_autovue_setmarkupmode.rb",
       "msf_path": "exploits/windows/browser/oracle_autovue_setmarkupmode",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/oracle_dc_submittoexpress": {
       "name": "Oracle Document Capture 10g ActiveX Control Buffer Overflow",
@@ -26584,10 +26611,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/oracle_webcenter_checkoutandopen.rb",
       "msf_path": "exploits/windows/browser/oracle_webcenter_checkoutandopen",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE with the Oracle WebCenter ActiveX installed, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/orbit_connecting": {
       "name": "Orbit Downloader Connecting Log Creation Buffer Overflow",
@@ -26606,10 +26634,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/orbit_connecting.rb",
       "msf_path": "exploits/windows/browser/orbit_connecting",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious website with Orbit Downloader installed, which is victim interaction and uncommon software.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ovftool_format_string": {
       "name": "VMWare OVF Tools Format String Vulnerability",
@@ -26628,10 +26657,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ovftool_format_string.rb",
       "msf_path": "exploits/windows/browser/ovftool_format_string",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open a malicious OVF file, so it is client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/pcvue_func": {
       "name": null,
@@ -26670,10 +26700,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/persits_xupload_traversal.rb",
       "msf_path": "exploits/windows/browser/persits_xupload_traversal",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit malicious page and later log on to trigger payload, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/quickr_qp2_bof": {
       "name": null,
@@ -26692,10 +26723,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/quickr_qp2_bof.rb",
       "msf_path": "exploits/windows/browser/quickr_qp2_bof",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, making it client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/real_arcade_installerdlg": {
       "name": "Real Networks Arcade Games StubbyUtil.ProcessMgr ActiveX Arbitrary Code Execution",
@@ -26736,10 +26768,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/realplayer_cdda_uri.rb",
       "msf_path": "exploits/windows/browser/realplayer_cdda_uri",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to open a malicious URI in RealPlayer, making it a client-side attack.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/realplayer_console": {
       "name": "RealPlayer rmoc3260.dll ActiveX Control Heap Corruption",
@@ -26758,10 +26791,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/realplayer_console.rb",
       "msf_path": "exploits/windows/browser/realplayer_console",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/realplayer_import": {
       "name": "RealPlayer ierpplug.dll ActiveX Control Playlist Name Buffer Overflow",
@@ -26780,10 +26814,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/realplayer_import.rb",
       "msf_path": "exploits/windows/browser/realplayer_import",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE with RealPlayer installed, triggering client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/realplayer_qcp": {
       "name": null,
@@ -26826,10 +26861,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/realplayer_smil.rb",
       "msf_path": "exploits/windows/browser/realplayer_smil",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open a malicious SMIL file via browser, thus needing user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/roxio_cineplayer": {
       "name": "Roxio CinePlayer ActiveX Control Buffer Overflow",
@@ -26848,10 +26884,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/roxio_cineplayer.rb",
       "msf_path": "exploits/windows/browser/roxio_cineplayer",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/safari_xslt_output": {
       "name": "Apple Safari Webkit libxslt Arbitrary File Creation",
@@ -26872,10 +26909,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/safari_xslt_output.rb",
       "msf_path": "exploits/windows/browser/safari_xslt_output",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious page in Safari, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/samsung_neti_wiewer_backuptoavi_bof": {
       "name": null,
@@ -26894,10 +26932,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/samsung_neti_wiewer_backuptoavi_bof.rb",
       "msf_path": "exploits/windows/browser/samsung_neti_wiewer_backuptoavi_bof",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page that instantiates the Samsung NET-i viewer ActiveX control, so victim interaction is mandatory.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/samsung_security_manager_put": {
       "name": null,
@@ -26938,10 +26977,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/sapgui_saveviewtosessionfile.rb",
       "msf_path": "exploits/windows/browser/sapgui_saveviewtosessionfile",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page in IE, making it client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/siemens_solid_edge_selistctrlx": {
       "name": null,
@@ -26960,10 +27000,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/siemens_solid_edge_selistctrlx.rb",
       "msf_path": "exploits/windows/browser/siemens_solid_edge_selistctrlx",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page in Internet Explorer, making it client-side",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/softartisans_getdrivename": {
       "name": "SoftArtisans XFile FileManager ActiveX Control Buffer Overflow",
@@ -26982,10 +27023,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/softartisans_getdrivename.rb",
       "msf_path": "exploits/windows/browser/softartisans_getdrivename",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/sonicwall_addrouteentry": {
       "name": "SonicWall SSL-VPN NetExtender ActiveX Control Buffer Overflow",
@@ -27004,10 +27046,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/sonicwall_addrouteentry.rb",
       "msf_path": "exploits/windows/browser/sonicwall_addrouteentry",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/symantec_altirisdeployment_downloadandinstall": {
       "name": "Symantec Altiris Deployment Solution ActiveX Control Arbitrary File Download and Execute",
@@ -27026,10 +27069,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/symantec_altirisdeployment_downloadandinstall.rb",
       "msf_path": "exploits/windows/browser/symantec_altirisdeployment_downloadandinstall",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious web page with Internet Explorer to trigger the ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/symantec_altirisdeployment_runcmd": {
       "name": "Symantec Altiris Deployment Solution ActiveX Control Buffer Overflow",
@@ -27048,10 +27092,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/symantec_altirisdeployment_runcmd.rb",
       "msf_path": "exploits/windows/browser/symantec_altirisdeployment_runcmd",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE, so it is client-side",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/symantec_appstream_unsafe": {
       "name": "Symantec AppStream LaunchObj ActiveX Control Arbitrary File Download and Execute",
@@ -27070,10 +27115,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/symantec_appstream_unsafe.rb",
       "msf_path": "exploits/windows/browser/symantec_appstream_unsafe",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page to trigger the ActiveX control",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/symantec_backupexec_pvcalendar": {
       "name": "Symantec BackupExec Calendar Control Buffer Overflow",
@@ -27092,10 +27138,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/symantec_backupexec_pvcalendar.rb",
       "msf_path": "exploits/windows/browser/symantec_backupexec_pvcalendar",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/symantec_consoleutilities_browseandsavefile": {
       "name": "Symantec ConsoleUtilities ActiveX Control Buffer Overflow",
@@ -27114,10 +27161,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/symantec_consoleutilities_browseandsavefile.rb",
       "msf_path": "exploits/windows/browser/symantec_consoleutilities_browseandsavefile",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page that instantiates the vulnerable ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/synactis_connecttosynactis_bof": {
       "name": null,
@@ -27158,10 +27206,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/systemrequirementslab_unsafe.rb",
       "msf_path": "exploits/windows/browser/systemrequirementslab_unsafe",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE to load the ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/teechart_pro": {
       "name": "TeeChart Professional ActiveX Control Trusted Integer Dereference",
@@ -27180,10 +27229,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/teechart_pro.rb",
       "msf_path": "exploits/windows/browser/teechart_pro",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page (client-side interaction) to load the ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/tom_sawyer_tsgetx71ex552": {
       "name": null,
@@ -27224,10 +27274,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/trendmicro_extsetowner.rb",
       "msf_path": "exploits/windows/browser/trendmicro_extsetowner",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to attacker page, making it client-side",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/trendmicro_officescan": {
       "name": "Trend Micro OfficeScan Client ActiveX Control Buffer Overflow",
@@ -27268,10 +27319,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/tumbleweed_filetransfer.rb",
       "msf_path": "exploits/windows/browser/tumbleweed_filetransfer",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page or open a file to trigger the ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ubisoft_uplay_cmd_exec": {
       "name": "Ubisoft uplay 2.0.3 ActiveX Control Arbitrary Code Execution",
@@ -27290,10 +27342,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ubisoft_uplay_cmd_exec.rb",
       "msf_path": "exploits/windows/browser/ubisoft_uplay_cmd_exec",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious page with the browser, making it client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ultramjcam_openfiledig_bof": {
       "name": null,
@@ -27312,10 +27365,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ultramjcam_openfiledig_bof.rb",
       "msf_path": "exploits/windows/browser/ultramjcam_openfiledig_bof",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page that loads the ActiveX control, so victim interaction is mandatory.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ultraoffice_httpupload": {
       "name": "Ultra Shareware Office Control ActiveX HttpUpload Buffer Overflow",
@@ -27402,10 +27456,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/vlc_amv.rb",
       "msf_path": "exploits/windows/browser/vlc_amv",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious .AMV file in VLC, so it is client-side with user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/vlc_mms_bof": {
       "name": null,
@@ -27448,10 +27503,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/webdav_dll_hijacker.rb",
       "msf_path": "exploits/windows/browser/webdav_dll_hijacker",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to open a malicious file from a WebDAV share, so it needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/webex_ucf_newobject": {
       "name": "WebEx UCF atucfobj.dll ActiveX NewObject Method Buffer Overflow",
@@ -27470,10 +27526,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/webex_ucf_newobject.rb",
       "msf_path": "exploits/windows/browser/webex_ucf_newobject",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/wellintech_kingscada_kxclientdownload": {
       "name": "KingScada kxClientDownload.ocx ActiveX Remote Code Execution",
@@ -27494,10 +27551,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/wellintech_kingscada_kxclientdownload.rb",
       "msf_path": "exploits/windows/browser/wellintech_kingscada_kxclientdownload",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE with ActiveX enabled, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/winamp_playlist_unc": {
       "name": "Winamp Playlist UNC Path Computer Name Overflow",
@@ -27562,10 +27620,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/windvd7_applicationtype.rb",
       "msf_path": "exploits/windows/browser/windvd7_applicationtype",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page in IE, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/winzip_fileview": {
       "name": "WinZip FileView (WZFILEVIEW.FileViewCtrl.61) ActiveX Buffer Overflow",
@@ -27606,10 +27665,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/wmi_admintools.rb",
       "msf_path": "exploits/windows/browser/wmi_admintools",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious HTML page in browser (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/x360_video_player_set_text_bof": {
       "name": null,
@@ -27632,10 +27692,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/x360_video_player_set_text_bof.rb",
       "msf_path": "exploits/windows/browser/x360_video_player_set_text_bof",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page or file that triggers the ActiveX control, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/xmplay_asx": {
       "name": "XMPlay 3.3.0.4 (ASX Filename) Buffer Overflow",
@@ -27654,10 +27715,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/xmplay_asx.rb",
       "msf_path": "exploits/windows/browser/xmplay_asx",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious ASX file in XMPlay, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/yahoomessenger_fvcom": {
       "name": "Yahoo! Messenger YVerInfo.dll ActiveX Control Buffer Overflow",
@@ -27676,10 +27738,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/yahoomessenger_fvcom.rb",
       "msf_path": "exploits/windows/browser/yahoomessenger_fvcom",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious page in IE, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/yahoomessenger_server": {
       "name": "Yahoo! Messenger 8.1.0.249 ActiveX Control Buffer Overflow",
@@ -27698,10 +27761,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/yahoomessenger_server.rb",
       "msf_path": "exploits/windows/browser/yahoomessenger_server",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page or open a crafted file, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/zenturiprogramchecker_unsafe": {
       "name": "Zenturi ProgramChecker ActiveX Control Arbitrary File Download",
@@ -27720,10 +27784,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/zenturiprogramchecker_unsafe.rb",
       "msf_path": "exploits/windows/browser/zenturiprogramchecker_unsafe",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page or interact with browser content",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/zenworks_helplauncher_exec": {
       "name": "AdminStudio LaunchHelp.dll ActiveX Arbitrary Code Execution",
@@ -27764,10 +27829,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/ca_arcserve_342.rb",
       "msf_path": "exploits/windows/brightstor/ca_arcserve_342",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party backup software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/brightstor/discovery_tcp": {
       "name": "CA BrightStor Discovery Service TCP Overflow",
@@ -27786,10 +27852,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/discovery_tcp.rb",
       "msf_path": "exploits/windows/brightstor/discovery_tcp",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets CA BrightStor backup software, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/brightstor/discovery_udp": {
       "name": "CA BrightStor Discovery Service Stack Buffer Overflow",
@@ -27809,9 +27876,10 @@
       "msf_path": "exploits/windows/brightstor/discovery_udp",
       "service_category": "brightstor",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network service (UDP 41524) on Windows with no credentials or user interaction required.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/brightstor/etrust_itm_alert": {
       "name": "Computer Associates Alert Notification Buffer Overflow",
@@ -27830,10 +27898,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/etrust_itm_alert.rb",
       "msf_path": "exploits/windows/brightstor/etrust_itm_alert",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires valid logon credentials, so it is lateral movement, not an initial foothold.",
+      "exclusion_category": null,
+      "access_type": "lateral_movement"
     },
     "exploits/windows/brightstor/hsmserver": {
       "name": "CA BrightStor HSM Buffer Overflow",
@@ -27852,10 +27921,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/hsmserver.rb",
       "msf_path": "exploits/windows/brightstor/hsmserver",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a niche backup product not installed on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/brightstor/lgserver": {
       "name": "CA BrightStor ARCserve for Laptops and Desktops LGServer Buffer Overflow",
@@ -27874,10 +27944,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/lgserver.rb",
       "msf_path": "exploits/windows/brightstor/lgserver",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party backup software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/brightstor/lgserver_multi": {
       "name": "CA BrightStor ARCserve for Laptops and Desktops LGServer Multiple Commands Buffer Overflow",
@@ -27897,9 +27968,10 @@
       "msf_path": "exploits/windows/brightstor/lgserver_multi",
       "service_category": "brightstor",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network service (BrightStor LGServer) listening on default ports, yielding remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/brightstor/lgserver_rxrlogin": {
       "name": "CA BrightStor ARCserve for Laptops and Desktops LGServer Buffer Overflow",
@@ -27919,9 +27991,10 @@
       "msf_path": "exploits/windows/brightstor/lgserver_rxrlogin",
       "service_category": "brightstor",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network service (BrightStor LGServer) listening on default port 1900, yielding remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/brightstor/lgserver_rxssetdatagrowthscheduleandfilter": {
       "name": "CA BrightStor ARCserve for Laptops and Desktops LGServer rxsSetDataGrowthScheduleAndFilter Buffer Overflow",
@@ -27940,10 +28013,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/lgserver_rxssetdatagrowthscheduleandfilter.rb",
       "msf_path": "exploits/windows/brightstor/lgserver_rxssetdatagrowthscheduleandfilter",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party backup software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/brightstor/lgserver_rxsuselicenseini": {
       "name": "CA BrightStor ARCserve for Laptops and Desktops LGServer Buffer Overflow",
@@ -27963,9 +28037,10 @@
       "msf_path": "exploits/windows/brightstor/lgserver_rxsuselicenseini",
       "service_category": "brightstor",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network service (BrightStor LGServer) to gain remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/brightstor/license_gcr": {
       "name": "CA BrightStor ARCserve License Service GCR NETWORK Buffer Overflow",
@@ -27985,9 +28060,10 @@
       "msf_path": "exploits/windows/brightstor/license_gcr",
       "service_category": "brightstor",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network service (lic98rmtd.exe) for initial RCE without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/brightstor/mediasrv_sunrpc": {
       "name": "CA BrightStor ArcServe Media Service Stack Buffer Overflow",
@@ -28007,9 +28083,10 @@
       "msf_path": "exploits/windows/brightstor/mediasrv_sunrpc",
       "service_category": "brightstor",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Targets a network RPC service on Windows, allows remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/brightstor/message_engine": {
       "name": "CA BrightStor ARCserve Message Engine Buffer Overflow",
@@ -28028,10 +28105,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/message_engine.rb",
       "msf_path": "exploits/windows/brightstor/message_engine",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party backup software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/brightstor/message_engine_72": {
       "name": "CA BrightStor ARCserve Message Engine 0x72 Buffer Overflow",
@@ -28050,10 +28128,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/message_engine_72.rb",
       "msf_path": "exploits/windows/brightstor/message_engine_72",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party backup software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/brightstor/message_engine_heap": {
       "name": "CA BrightStor ARCserve Message Engine Heap Overflow",
@@ -28073,9 +28152,10 @@
       "msf_path": "exploits/windows/brightstor/message_engine_heap",
       "service_category": "brightstor",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network service (RPC) on Windows without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/brightstor/sql_agent": {
       "name": "CA BrightStor Agent for Microsoft SQL Overflow",
@@ -28094,10 +28174,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/sql_agent.rb",
       "msf_path": "exploits/windows/brightstor/sql_agent",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party backup product not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/brightstor/tape_engine": {
       "name": "CA BrightStor ARCserve Tape Engine Buffer Overflow",
@@ -28117,9 +28198,10 @@
       "msf_path": "exploits/windows/brightstor/tape_engine",
       "service_category": "brightstor",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network service (DCERPC) on port 6503 without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/brightstor/tape_engine_0x8a": {
       "name": "CA BrightStor ARCserve Tape Engine 0x8A Buffer Overflow",
@@ -28138,10 +28220,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/tape_engine_0x8a.rb",
       "msf_path": "exploits/windows/brightstor/tape_engine_0x8a",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party backup product not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/brightstor/universal_agent": {
       "name": "CA BrightStor Universal Agent Overflow",
@@ -28160,10 +28243,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/brightstor/universal_agent.rb",
       "msf_path": "exploits/windows/brightstor/universal_agent",
       "service_category": "brightstor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets CA BrightStor backup software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/backupexec/name_service": {
       "name": "Veritas Backup Exec Name Service Overflow",
@@ -28250,10 +28334,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/backdoor/energizer_duo_payload.rb",
       "msf_path": "exploits/windows/backdoor/energizer_duo_payload",
       "service_category": "backdoor",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a specific backdoor from an obsolete USB charger, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/arkeia/type77": {
       "name": "Arkeia Backup Client Type 77 Overflow (Win32)",
@@ -28272,10 +28357,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/arkeia/type77.rb",
       "msf_path": "exploits/windows/arkeia/type77",
       "service_category": "arkeia",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Arkeia backup software, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/antivirus/ams_hndlrsvc": {
       "name": "Symantec System Center Alert Management System (hndlrsvc.exe) Arbitrary Command Execution",
@@ -28296,10 +28382,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/antivirus/ams_hndlrsvc.rb",
       "msf_path": "exploits/windows/antivirus/ams_hndlrsvc",
       "service_category": "antivirus",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a non-default third-party antivirus management service not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/antivirus/ams_xfr": {
       "name": "Symantec System Center Alert Management System (xfr.exe) Arbitrary Command Execution",
@@ -28318,10 +28405,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/antivirus/ams_xfr.rb",
       "msf_path": "exploits/windows/antivirus/ams_xfr",
       "service_category": "antivirus",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a management port that is not open by default on standard Windows VMs and requires AMS to be installed.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/antivirus/symantec_endpoint_manager_rce": {
       "name": "Symantec Endpoint Protection Manager /servlet/ConsoleServlet Remote Command Execution",
@@ -28346,9 +28434,10 @@
       "msf_path": "exploits/windows/antivirus/symantec_endpoint_manager_rce",
       "service_category": "antivirus",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network-facing web service (ConsoleServlet) to gain SYSTEM shell without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/antivirus/symantec_iao": {
       "name": "Symantec Alert Management System Intel Alert Originator Service Buffer Overflow",
@@ -28368,9 +28457,10 @@
       "msf_path": "exploits/windows/antivirus/symantec_iao",
       "service_category": "antivirus",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network-listening service (Intel Alert Originator) on Windows without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/antivirus/symantec_rtvscan": {
       "name": "Symantec Remote Management Buffer Overflow",
@@ -28392,9 +28482,10 @@
       "msf_path": "exploits/windows/antivirus/symantec_rtvscan",
       "service_category": "antivirus",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network-exposed Symantec service without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/antivirus/symantec_workspace_streaming_exec": {
       "name": "Symantec Workspace Streaming ManagementAgentServer.putFile XMLRPC Request Arbitrary File Upload",
@@ -28416,9 +28507,10 @@
       "msf_path": "exploits/windows/antivirus/symantec_workspace_streaming_exec",
       "service_category": "antivirus",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network-exposed XMLRPC service (as_agent.exe) to upload and execute code without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/antivirus/trendmicro_serverprotect": {
       "name": "Trend Micro ServerProtect 5.58 Buffer Overflow",
@@ -28440,9 +28532,10 @@
       "msf_path": "exploits/windows/antivirus/trendmicro_serverprotect",
       "service_category": "antivirus",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network-exposed RPC service in ServerProtect without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/antivirus/trendmicro_serverprotect_createbinding": {
       "name": "Trend Micro ServerProtect 5.58 CreateBinding() Buffer Overflow",
@@ -28463,10 +28556,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/antivirus/trendmicro_serverprotect_createbinding.rb",
       "msf_path": "exploits/windows/antivirus/trendmicro_serverprotect_createbinding",
       "service_category": "antivirus",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets an uncommon third-party antivirus management service not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/antivirus/trendmicro_serverprotect_earthagent": {
       "name": "Trend Micro ServerProtect 5.58 EarthAgent.EXE Buffer Overflow",
@@ -28487,10 +28581,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/antivirus/trendmicro_serverprotect_earthagent.rb",
       "msf_path": "exploits/windows/antivirus/trendmicro_serverprotect_earthagent",
       "service_category": "antivirus",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party antivirus management service not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     }
   },
   "llm": {
@@ -35917,6 +36012,2228 @@
       "reason": "Requires victim to run the Malwarebytes updater, making it a client-side attack",
       "exclusion_category": "client_side",
       "access_type": "client_side"
+    },
+    "exploits/windows/browser/mcafee_mcsubmgr_vsprintf": {
+      "name": "McAfee Subscription Manager Stack Buffer Overflow",
+      "description": "This module exploits a flaw in the McAfee Subscription Manager ActiveX control.\n          Due to an unsafe use of vsprintf, it is possible to trigger a stack buffer overflow by\n          passing a large string to one of the COM-exposed routines, such as IsAppExpired.\n          This vulnerability was discovered by Karl Lynn of eEye.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0/SP1"
+      ],
+      "disclosed": "2006-08-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/mcafee_mcsubmgr_vsprintf.rb",
+      "msf_path": "exploits/windows/browser/mcafee_mcsubmgr_vsprintf",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, making it client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/mcafee_mvt_exec": {
+      "name": null,
+      "description": "This module exploits a vulnerability found in McAfee Virtual Technician's\n          MVTControl.  This ActiveX control can be abused by using the GetObject() function\n          to load additional unsafe classes such as WScript.Shell, therefore allowing remote\n          code execution under the context of the user.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-04-30",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/mcafee_mvt_exec.rb",
+      "msf_path": "exploits/windows/browser/mcafee_mvt_exec",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious page in a browser with the vulnerable McAfee ActiveX control installed.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/mcafeevisualtrace_tracetarget": {
+      "name": "McAfee Visual Trace ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the McAfee Visual Trace 3.25 ActiveX\n          Control (NeoTraceExplorer.dll 1.0.0.1). By sending an overly long string to the\n          \"TraceTarget()\" method, an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP Pro SP2 English"
+      ],
+      "disclosed": "2007-07-07",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/mcafeevisualtrace_tracetarget.rb",
+      "msf_path": "exploits/windows/browser/mcafeevisualtrace_tracetarget",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side not initial foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/mirc_irc_url": {
+      "name": "mIRC IRC URL Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in mIRC 6.1. By\n          submitting an overly long and specially crafted URL to\n          the 'irc' protocol, an attacker can overwrite the buffer\n          and control program execution.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 Pro English All"
+      ],
+      "disclosed": "2003-10-13",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/mirc_irc_url.rb",
+      "msf_path": "exploits/windows/browser/mirc_irc_url",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to click a malicious irc:// link in a browser or chat client",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ms06_001_wmf_setabortproc": {
+      "name": "Windows XP/2003/Vista Metafile Escape() SetAbortProc Code Execution",
+      "description": "This module exploits a vulnerability in the GDI library included with\n          Windows XP and 2003. This vulnerability uses the 'Escape' metafile function\n          to execute arbitrary code through the SetAbortProc procedure. This module\n          generates a random WMF record stream for each request.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2005-4560"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP/2003/Vista Automatic"
+      ],
+      "disclosed": "2005-12-27",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ms06_001_wmf_setabortproc.rb",
+      "msf_path": "exploits/windows/browser/ms06_001_wmf_setabortproc",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Victim must open or view a malicious WMF file in a browser or image viewer, requiring user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ms08_053_mediaencoder": {
+      "name": "Windows Media Encoder 9 wmex.dll ActiveX Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Windows Media Encoder 9. When\n          sending an overly long string to the GetDetailsString() method of wmex.dll\n          an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP2-SP3 IE 6.0 SP0-SP2"
+      ],
+      "disclosed": "2008-09-09",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ms08_053_mediaencoder.rb",
+      "msf_path": "exploits/windows/browser/ms08_053_mediaencoder",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE, so it is client-side not initial foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ms08_070_visual_studio_msmask": {
+      "name": "Microsoft Visual Studio Mdmask32.ocx ActiveX Stack Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Microsoft Visual\n          Studio 6.0. When passing a specially crafted string to the Mask\n          parameter of the Mdmask32.ocx ActiveX Control, an attacker may\n          be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X86"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP x86 SP0-SP3 IE 6.0 SP0-SP3"
+      ],
+      "disclosed": "2008-08-13",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ms08_070_visual_studio_msmask.rb",
+      "msf_path": "exploits/windows/browser/ms08_070_visual_studio_msmask",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side not initial foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ms10_026_avi_nsamplespersec": {
+      "name": "MS10-026 Microsoft MPEG Layer-3 Audio Stack Based Overflow",
+      "description": "This module exploits a buffer overflow in l3codecx.ax while processing a\n          AVI files with MPEG Layer-3 audio contents. The overflow only allows to overwrite\n          with 0's so the three least significant bytes of EIP saved on stack are\n          overwritten and shellcode is mapped using the .NET DLL memory technique pioneered\n          by Alexander Sotirov and Mark Dowd.\n\n          Please note on IE 8 targets, your malicious URL must be a trusted site in order\n          to load the .Net control.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2010-0480"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP3 Automatic"
+      ],
+      "disclosed": "2010-04-13",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ms10_026_avi_nsamplespersec.rb",
+      "msf_path": "exploits/windows/browser/ms10_026_avi_nsamplespersec",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious AVI file in browser (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ms10_046_shortcut_icon_dllloader": {
+      "name": "Microsoft Windows Shell LNK Code Execution",
+      "description": "This module exploits a vulnerability in the handling of Windows\n          Shortcut files (.LNK) that contain an icon resource pointing to a\n          malicious DLL. This module creates a WebDAV service that can be used\n          to run an arbitrary payload when accessed as a UNC path.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2010-2568"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2010-07-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ms10_046_shortcut_icon_dllloader.rb",
+      "msf_path": "exploits/windows/browser/ms10_046_shortcut_icon_dllloader",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to open a folder or view a shortcut that references the attacker’s WebDAV share, i.e., user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ms13_090_cardspacesigninhelper": {
+      "name": null,
+      "description": "This module exploits a vulnerability on the CardSpaceClaimCollection class from the\n          icardie.dll ActiveX control. The vulnerability exists while the handling of the\n          CardSpaceClaimCollection object. CardSpaceClaimCollections stores a collection of\n          elements on a SafeArray and keeps a size field, counting the number of elements on the\n          collection. By calling the remove() method on an empty CardSpaceClaimCollection it is\n          possible to underflow the length field, storing a negative integer. Later, a call to\n          the add() method will use the corrupted length field to compute the address where write\n          into the SafeArray data, allowing to corrupt memory with a pointer to controlled contents.\n          This module achieves code execution by using VBScript as discovered in the wild on\n          November 2013 to (1) create an array of html OBJECT elements, (2) create holes, (3) create\n          a CardSpaceClaimCollection whose SafeArray data will reuse one of the holes, (4) corrupt\n          one of the legit OBJECT elements with the described integer overflow and (5) achieve code\n          execution by forcing the use of the corrupted OBJECT.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP with IE 8"
+      ],
+      "disclosed": "2013-11-08",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ms13_090_cardspacesigninhelper.rb",
+      "msf_path": "exploits/windows/browser/ms13_090_cardspacesigninhelper",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to attacker page with IE8, making it client-side not initial foothold",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/msvidctl_mpeg2": {
+      "name": "Microsoft DirectShow (msvidctl.dll) MPEG-2 Memory Corruption",
+      "description": "This module exploits a memory corruption within the MSVidCtl component of Microsoft\n          DirectShow (BDATuner.MPEG2TuneRequest).\n          By loading a specially crafted GIF file, an attacker can overrun a buffer and\n          execute arbitrary code.\n\n          ClassID is now configurable via an advanced option (otherwise randomized) - I)ruid",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / IE 6.0 SP0-2 & IE 7.0"
+      ],
+      "disclosed": "2009-07-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/msvidctl_mpeg2.rb",
+      "msf_path": "exploits/windows/browser/msvidctl_mpeg2",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious GIF in browser (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/mswhale_checkforupdates": {
+      "name": "Microsoft Whale Intelligent Application Gateway ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Microsoft Whale Intelligent Application\n          Gateway Whale Client. When sending an overly long string to CheckForUpdates()\n          method of WhlMgr.dll (3.1.502.64) an attacker may be able to execute\n          arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2009-04-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/mswhale_checkforupdates.rb",
+      "msf_path": "exploits/windows/browser/mswhale_checkforupdates",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to attacker page and allow ActiveX control to run, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/msxml_get_definition_code_exec": {
+      "name": null,
+      "description": "This module exploits a memory corruption flaw in Microsoft XML Core Services\n          when trying to access an uninitialized Node with the getDefinition API, which\n          may corrupt memory allowing remote code execution.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-06-12",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/msxml_get_definition_code_exec.rb",
+      "msf_path": "exploits/windows/browser/msxml_get_definition_code_exec",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to open a malicious web page or document in Internet Explorer, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/nctaudiofile2_setformatlikesample": {
+      "name": "NCTAudioFile2 v2.x ActiveX Control SetFormatLikeSample() Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the NCTAudioFile2.Audio ActiveX\n          Control provided by various audio applications. By sending an overly long\n          string to the \"SetFormatLikeSample()\" method, an attacker may be able to\n          execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP2/SP3 Pro English (IE6)"
+      ],
+      "disclosed": "2007-01-24",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/nctaudiofile2_setformatlikesample.rb",
+      "msf_path": "exploits/windows/browser/nctaudiofile2_setformatlikesample",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page or open a crafted file, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/nis2004_antispam": {
+      "name": "Norton AntiSpam 2004 SymSpamHelper ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Norton AntiSpam 2004. When\n          sending an overly long string to the LaunchCustomRuleWizard() method\n          of symspam.dll (2004.1.0.147) an attacker may be able to execute\n          arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2004-03-19",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/nis2004_antispam.rb",
+      "msf_path": "exploits/windows/browser/nis2004_antispam",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/nis2004_get": {
+      "name": "Symantec Norton Internet Security 2004 ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the ISAlertDataCOM ActiveX\n          Control (ISLAert.dll) provided by Symantec Norton Internet Security 2004.\n          By sending an overly long string to the \"Get()\" method, an attacker may be\n          able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0/SP1 Pro English"
+      ],
+      "disclosed": "2007-05-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/nis2004_get.rb",
+      "msf_path": "exploits/windows/browser/nis2004_get",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to browse to a malicious page, making it a client-side exploit.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/novell_groupwise_gwcls1_actvx": {
+      "name": null,
+      "description": "This module exploits a vulnerability in the Novell GroupWise Client gwcls1.dll\n          ActiveX. Several methods in the GWCalServer control use user provided data as\n          a pointer, which allows to read arbitrary memory and execute arbitrary code. This\n          module has been tested successfully with GroupWise Client 2012 on IE6 - IE9. The\n          JRE6 needs to be installed to achieve ASLR bypass.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2013-01-30",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/novell_groupwise_gwcls1_actvx.rb",
+      "msf_path": "exploits/windows/browser/novell_groupwise_gwcls1_actvx",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE with GroupWise ActiveX installed, so victim interaction is mandatory.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/novelliprint_callbackurl": {
+      "name": "Novell iPrint Client ActiveX Control call-back-url Buffer Overflow",
+      "description": "This module exploits a stack-based buffer overflow in Novell iPrint Client 5.42.\n          When sending an overly long string to the 'call-back-url' parameter in an\n          op-client-interface-version action of ienipp.ocx an attacker may be able to\n          execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP2 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2010-08-20",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_callbackurl.rb",
+      "msf_path": "exploits/windows/browser/novelliprint_callbackurl",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to attacker page (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/novelliprint_datetime": {
+      "name": "Novell iPrint Client ActiveX Control Date/Time Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Novell iPrint Client 5.30. When\n          passing a specially crafted date/time string via certain parameters to ienipp.ocx\n          an attacker can execute arbitrary code.\n\n          NOTE: The \"operation\" variable must be set to a valid command in order to reach this\n          vulnerability.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "iPrint 5.30 Windows Client"
+      ],
+      "disclosed": "2009-12-08",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_datetime.rb",
+      "msf_path": "exploits/windows/browser/novelliprint_datetime",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page to trigger the ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/novelliprint_executerequest": {
+      "name": "Novell iPrint Client ActiveX Control ExecuteRequest Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Novell iPrint Client 4.26. When\n          sending an overly long string to the ExecuteRequest() property of ienipp.ocx\n          an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP2 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2008-02-22",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_executerequest.rb",
+      "msf_path": "exploits/windows/browser/novelliprint_executerequest",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/novelliprint_executerequest_dbg": {
+      "name": "Novell iPrint Client ActiveX Control ExecuteRequest debug Buffer Overflow",
+      "description": "This module exploits a stack-based buffer overflow in Novell iPrint Client 5.40.\n          When sending an overly long string to the 'debug' parameter in ExecuteRequest()\n          property of ienipp.ocx an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP2 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2010-08-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_executerequest_dbg.rb",
+      "msf_path": "exploits/windows/browser/novelliprint_executerequest_dbg",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/novelliprint_getdriversettings": {
+      "name": "Novell iPrint Client ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Novell iPrint Client 4.34. When\n          sending an overly long string to the GetDriverSettings() property of ienipp.ocx\n          an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2008-06-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_getdriversettings.rb",
+      "msf_path": "exploits/windows/browser/novelliprint_getdriversettings",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit malicious web page with IE, making it client-side",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/novelliprint_getdriversettings_2": {
+      "name": "Novell iPrint Client ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Novell iPrint Client 5.52. When\n          sending an overly long string to the GetDriverSettings() property of ienipp.ocx\n          an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2010-11-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_getdriversettings_2.rb",
+      "msf_path": "exploits/windows/browser/novelliprint_getdriversettings_2",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page with IE, making it client-side",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/novelliprint_target_frame": {
+      "name": "Novell iPrint Client ActiveX Control target-frame Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Novell iPrint Client 5.30. When\n          passing an overly long string via the \"target-frame\" parameter to ienipp.ocx\n          an attacker can execute arbitrary code.\n\n          NOTE: The \"operation\" variable must be set to a valid command in order to reach this\n          vulnerability.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "iPrint 5.30 Windows Client"
+      ],
+      "disclosed": "2009-12-08",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/novelliprint_target_frame.rb",
+      "msf_path": "exploits/windows/browser/novelliprint_target_frame",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page that instantiates the ActiveX control, i.e. user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ntr_activex_check_bof": {
+      "name": "NTR ActiveX Control Check() Method Buffer Overflow",
+      "description": "This module exploits a vulnerability found in NTR ActiveX 1.1.8. The\n          vulnerability exists in the Check() method, due to the insecure usage of strcat to\n          build a URL using the bstrParams parameter contents (note: this is also the reason\n          why the module won't allow you to modify the URIPATH), which leads to code execution\n          under the context of the user visiting a malicious web page. In order to bypass\n          DEP and ASLR on Windows Vista and Windows 7 JRE 6 is needed.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-01-11",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ntr_activex_check_bof.rb",
+      "msf_path": "exploits/windows/browser/ntr_activex_check_bof",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ntr_activex_stopmodule": {
+      "name": "NTR ActiveX Control StopModule() Remote Code Execution",
+      "description": "This module exploits a vulnerability found in the NTR ActiveX 1.1.8. The\n          vulnerability exists in the StopModule() method, where the lModule parameter is\n          used to dereference memory to get a function pointer, which leads to code execution\n          under the context of the user visiting a malicious web page.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-01-11",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ntr_activex_stopmodule.rb",
+      "msf_path": "exploits/windows/browser/ntr_activex_stopmodule",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to browse to a malicious page, so it is client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/oracle_autovue_setmarkupmode": {
+      "name": "Oracle AutoVue ActiveX Control SetMarkupMode Buffer Overflow",
+      "description": "This module exploits a vulnerability found in the AutoVue.ocx ActiveX control.\n          The vulnerability, due to the insecure usage of an strcpy like function in the\n          SetMarkupMode method, when handling a specially crafted sMarkup argument, allows\n          to trigger a stack based buffer overflow which leads to code execution under the\n          context of the user visiting a malicious web page.\n\n          The module has been successfully tested against Oracle AutoVue Desktop Version\n          20.0.0 (AutoVue.ocx 20.0.0.7330) on IE 6, 7, 8 and 9 (Java 6 needed to DEP and\n          ASLR bypass).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-04-18",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/oracle_autovue_setmarkupmode.rb",
+      "msf_path": "exploits/windows/browser/oracle_autovue_setmarkupmode",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/oracle_webcenter_checkoutandopen": {
+      "name": null,
+      "description": "This module exploits a vulnerability found in the Oracle WebCenter Content\n          CheckOutAndOpenControl ActiveX. This vulnerability exists in openWebdav(), where\n          user controlled input is used to call ShellExecuteExW(). This module abuses the\n          control to execute an arbitrary HTA from a remote location. This module has been\n          tested successfully with the CheckOutAndOpenControl ActiveX installed with Oracle\n          WebCenter Content 11.1.1.6.0.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2013-04-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/oracle_webcenter_checkoutandopen.rb",
+      "msf_path": "exploits/windows/browser/oracle_webcenter_checkoutandopen",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE with the Oracle WebCenter ActiveX installed, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/orbit_connecting": {
+      "name": "Orbit Downloader Connecting Log Creation Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Orbit Downloader 2.8.4. When an\n          attacker serves up a malicious web site, arbitrary code may be executed.\n          The PAYLOAD windows/shell_bind_tcp works best.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / IE 6.0 SP0-SP2"
+      ],
+      "disclosed": "2009-02-03",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/orbit_connecting.rb",
+      "msf_path": "exploits/windows/browser/orbit_connecting",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious website with Orbit Downloader installed, which is victim interaction and uncommon software.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ovftool_format_string": {
+      "name": "VMWare OVF Tools Format String Vulnerability",
+      "description": "This module exploits a format string vulnerability in VMWare OVF Tools 2.1 for\n          Windows. The vulnerability occurs when printing error messages while parsing a\n          a malformed OVF file. The module has been tested successfully with VMWare OVF Tools\n          2.1 on Windows XP SP3.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "VMWare OVF Tools 2.1 on Windows XP SP3"
+      ],
+      "disclosed": "2012-11-08",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ovftool_format_string.rb",
+      "msf_path": "exploits/windows/browser/ovftool_format_string",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open a malicious OVF file, so it is client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/persits_xupload_traversal": {
+      "name": "Persits XUpload ActiveX MakeHttpRequest Directory Traversal",
+      "description": "This module exploits a directory traversal in Persits Software Inc's\n          XUpload ActiveX control(version 3.0.0.3) that's included in HP LoadRunner 9.5.\n          By passing a string containing \"..\\\" sequences to the MakeHttpRequest method,\n          an attacker is able to write arbitrary files to arbitrary locations on disk.\n\n          Code execution occurs by writing to the All Users Startup Programs directory.\n          You may want to combine this module with the use of exploit/multi/handler since a\n          user would have to log for the payload to execute.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2009-09-29",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/persits_xupload_traversal.rb",
+      "msf_path": "exploits/windows/browser/persits_xupload_traversal",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit malicious page and later log on to trigger payload, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/quickr_qp2_bof": {
+      "name": null,
+      "description": "This module exploits a buffer overflow vulnerability on the UploadControl\n          ActiveX. The vulnerability exists in the handling of the \"Attachment_Times\"\n          property, due to the insecure usage of the _swscanf. The affected ActiveX is\n          provided by the qp2.dll installed with the IBM Lotus Quickr product.\n\n          This module has been tested successfully on IE6-IE9 on Windows XP, Vista and 7,\n          using the qp2.dll 8.1.0.1800. In order to bypass ASLR the no aslr compatible module\n          msvcr71.dll is used. This one is installed with the qp2 ActiveX.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-05-23",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/quickr_qp2_bof.rb",
+      "msf_path": "exploits/windows/browser/quickr_qp2_bof",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, making it client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/realplayer_cdda_uri": {
+      "name": "RealNetworks RealPlayer CDDA URI Initialization Vulnerability",
+      "description": "This module exploits an initialization flaw within RealPlayer 11/11.1 and\n          RealPlayer SP 1.0 - 1.1.4. An abnormally long CDDA URI causes an object\n          initialization failure. However, this failure is improperly handled and\n          uninitialized memory executed.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "RealPlayer SP 1.0 - 1.1.4 Universal"
+      ],
+      "disclosed": "2010-11-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/realplayer_cdda_uri.rb",
+      "msf_path": "exploits/windows/browser/realplayer_cdda_uri",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to open a malicious URI in RealPlayer, making it a client-side attack.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/realplayer_console": {
+      "name": "RealPlayer rmoc3260.dll ActiveX Control Heap Corruption",
+      "description": "This module exploits a heap corruption vulnerability in the RealPlayer ActiveX control.\n          By sending a specially crafted string to the 'Console' property\n          in the rmoc3260.dll control, an attacker may be able to execute\n          arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / IE 6.0 SP0-2 & IE 7.0 English"
+      ],
+      "disclosed": "2008-03-08",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/realplayer_console.rb",
+      "msf_path": "exploits/windows/browser/realplayer_console",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/realplayer_import": {
+      "name": "RealPlayer ierpplug.dll ActiveX Control Playlist Name Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in RealOne Player V2 Gold Build 6.0.11.853 and\n          RealPlayer 10.5 Build 6.0.12.1483. By sending an overly long string to the \"Import()\"\n          method, an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "IE / RealOne Player 2 (6.0.11.853)"
+      ],
+      "disclosed": "2007-10-18",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/realplayer_import.rb",
+      "msf_path": "exploits/windows/browser/realplayer_import",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE with RealPlayer installed, triggering client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/realplayer_smil": {
+      "name": "RealNetworks RealPlayer SMIL Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in RealNetworks RealPlayer 10 and 8.\n          By creating a URL link to a malicious SMIL file, a remote attacker could\n          overflow a buffer and execute arbitrary code.\n          When using this module, be sure to set the URIPATH with an extension of '.smil'.\n          This module has been tested with RealPlayer 10 build 6.0.12.883 and RealPlayer 8\n          build 6.0.9.584.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "RealPlayer 10/8 on Windows 2000 SP0-SP4 English"
+      ],
+      "disclosed": "2005-03-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/realplayer_smil.rb",
+      "msf_path": "exploits/windows/browser/realplayer_smil",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open a malicious SMIL file via browser, thus needing user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/roxio_cineplayer": {
+      "name": "Roxio CinePlayer ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack-based buffer overflow in SonicPlayer ActiveX\n          control (SonicMediaPlayer.dll) 3.0.0.1 installed by Roxio CinePlayer 3.2.\n          By setting an overly long value to 'DiskType', an attacker can overrun\n          a buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista SP0-SP1 / IE 6.0 SP0-2 & IE 7.0"
+      ],
+      "disclosed": "2007-04-11",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/roxio_cineplayer.rb",
+      "msf_path": "exploits/windows/browser/roxio_cineplayer",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/safari_xslt_output": {
+      "name": "Apple Safari Webkit libxslt Arbitrary File Creation",
+      "description": "This module exploits a file creation vulnerability in the Webkit\n          rendering engine. It is possible to redirect the output of a XSLT\n          transformation to an arbitrary file. The content of the created file must be\n          ASCII or UTF-8. The destination path can be relative or absolute. This module\n          has been tested on Safari and Maxthon. Code execution can be achieved by first\n          uploading the payload to the remote machine in VBS format, and then upload a MOF\n          file, which enables Windows Management Instrumentation service to execute the VBS.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2011-1774"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2011-07-20",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/safari_xslt_output.rb",
+      "msf_path": "exploits/windows/browser/safari_xslt_output",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious page in Safari, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/samsung_neti_wiewer_backuptoavi_bof": {
+      "name": null,
+      "description": "This module exploits a vulnerability in the CNC_Ctrl.dll ActiveX control installed\n          with the Samsung NET-i viewer 1.37.\n\n          Specifically, when supplying a long string for the fname parameter to the\n          BackupToAvi method, an integer overflow occurs, which leads to a posterior buffer\n          overflow due to the use of memcpy with an incorrect size, resulting in remote code\n          execution under the context of the user.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-04-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/samsung_neti_wiewer_backuptoavi_bof.rb",
+      "msf_path": "exploits/windows/browser/samsung_neti_wiewer_backuptoavi_bof",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page that instantiates the Samsung NET-i viewer ActiveX control, so victim interaction is mandatory.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/sapgui_saveviewtosessionfile": {
+      "name": "SAP AG SAPgui EAI WebViewer3D Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Siemens Unigraphics Solutions\n          Teamcenter Visualization EAI WebViewer3D ActiveX control that is bundled\n          with SAPgui. When passing an overly long string the SaveViewToSessionFile()\n          method, arbitrary code may be executed.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2009-03-31",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/sapgui_saveviewtosessionfile.rb",
+      "msf_path": "exploits/windows/browser/sapgui_saveviewtosessionfile",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page in IE, making it client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/siemens_solid_edge_selistctrlx": {
+      "name": null,
+      "description": "This module exploits the SEListCtrlX ActiveX installed with the Siemens Solid Edge product.\n          The vulnerability exists on several APIs provided by the control, where user supplied input\n          is handled as a memory pointer without proper validation, allowing an attacker to read and\n          corrupt memory from the target process. This module abuses the methods NumChildren() and\n          DeleteItem() in order to achieve memory info leak and remote code execution respectively.\n          This module has been tested successfully on IE6-IE9 on Windows XP SP3 and Windows 7 SP1,\n          using Solid Edge 10.4.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2013-05-26",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/siemens_solid_edge_selistctrlx.rb",
+      "msf_path": "exploits/windows/browser/siemens_solid_edge_selistctrlx",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page in Internet Explorer, making it client-side",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/softartisans_getdrivename": {
+      "name": "SoftArtisans XFile FileManager ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in SoftArtisans XFile FileManager ActiveX control\n          (SAFmgPwd.dll 2.0.5.3). When sending an overly long string to the GetDriveName() method\n          an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2008-08-25",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/softartisans_getdrivename.rb",
+      "msf_path": "exploits/windows/browser/softartisans_getdrivename",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/sonicwall_addrouteentry": {
+      "name": "SonicWall SSL-VPN NetExtender ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in SonicWall SSL-VPN NetExtender.\n          By sending an overly long string to the \"AddRouteEntry()\" method located\n          in the NELaunchX.dll (1.0.0.26) Control, an attacker may be able to execute\n          arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "IE 6 / Windows XP SP2 Pro English"
+      ],
+      "disclosed": "2007-11-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/sonicwall_addrouteentry.rb",
+      "msf_path": "exploits/windows/browser/sonicwall_addrouteentry",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/symantec_altirisdeployment_downloadandinstall": {
+      "name": "Symantec Altiris Deployment Solution ActiveX Control Arbitrary File Download and Execute",
+      "description": "This module allows remote attackers to install and execute arbitrary files on a users file system via\n          AeXNSPkgDLLib.dll (6.0.0.1418). This module was tested against Symantec Altiris Deployment Solution 6.9 sp3.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2009-09-09",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/symantec_altirisdeployment_downloadandinstall.rb",
+      "msf_path": "exploits/windows/browser/symantec_altirisdeployment_downloadandinstall",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious web page with Internet Explorer to trigger the ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/symantec_altirisdeployment_runcmd": {
+      "name": "Symantec Altiris Deployment Solution ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Symantec Altiris Deployment Solution.\n          When sending an overly long string to RunCmd() method of\n          AeXNSConsoleUtilities.dll (6.0.0.1426) an attacker may be able to execute arbitrary\n          code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2009-11-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/symantec_altirisdeployment_runcmd.rb",
+      "msf_path": "exploits/windows/browser/symantec_altirisdeployment_runcmd",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE, so it is client-side",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/symantec_appstream_unsafe": {
+      "name": "Symantec AppStream LaunchObj ActiveX Control Arbitrary File Download and Execute",
+      "description": "This module exploits a vulnerability in Symantec AppStream Client 5.x. The vulnerability\n          is in the LaunchObj ActiveX control (launcher.dll 5.1.0.82) containing the \"installAppMgr()\"\n          method. The insecure method can be exploited to download and execute arbitrary files in the\n          context of the currently logged-on user.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2009-01-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/symantec_appstream_unsafe.rb",
+      "msf_path": "exploits/windows/browser/symantec_appstream_unsafe",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page to trigger the ActiveX control",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/symantec_backupexec_pvcalendar": {
+      "name": "Symantec BackupExec Calendar Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Symantec BackupExec Calendar Control.\n          By sending an overly long string to the \"_DOWText0\" property located\n          in the pvcalendar.ocx control, an attacker may be able to execute\n          arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP2 / IE 6.0 SP0-2 & IE 7.0 English"
+      ],
+      "disclosed": "2008-02-28",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/symantec_backupexec_pvcalendar.rb",
+      "msf_path": "exploits/windows/browser/symantec_backupexec_pvcalendar",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/symantec_consoleutilities_browseandsavefile": {
+      "name": "Symantec ConsoleUtilities ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Symantecs ConsoleUtilities.\n          By sending an overly long string to the \"BrowseAndSaveFile()\" method located\n          in the AeXNSConsoleUtilities.dll (6.0.0.1846) Control, an attacker may be able to\n          execute arbitrary code",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP3 English"
+      ],
+      "disclosed": "2009-11-02",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/symantec_consoleutilities_browseandsavefile.rb",
+      "msf_path": "exploits/windows/browser/symantec_consoleutilities_browseandsavefile",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page that instantiates the vulnerable ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/systemrequirementslab_unsafe": {
+      "name": "Husdawg, LLC. System Requirements Lab ActiveX Unsafe Method",
+      "description": "This module allows attackers to execute code via an unsafe method in\n          Husdawg, LLC. System Requirements Lab ActiveX Control (sysreqlab2.dll 2.30.0.0)",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2008-10-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/systemrequirementslab_unsafe.rb",
+      "msf_path": "exploits/windows/browser/systemrequirementslab_unsafe",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE to load the ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/teechart_pro": {
+      "name": "TeeChart Professional ActiveX Control Trusted Integer Dereference",
+      "description": "This module exploits an integer overflow in TeeChart Pro ActiveX control. When\n          sending an overly large/negative integer value to the AddSeries() property of\n          TeeChart2010.ocx, the code will perform an arithmetic operation that wraps the\n          value and is later directly trusted and called upon.\n\n          This module has been designed to bypass DEP only under IE8 with Java support. Multiple\n          versions (including the latest version) are affected by this vulnerability that date\n          back to as far as 2001.\n\n          The following controls are vulnerable:\n\n          TeeChart5.ocx Version 5.0.1.0 (clsid: B6C10489-FB89-11D4-93C9-006008A7EED4);\n          TeeChart6.ocx Version 6.0.0.5 (clsid: 536600D3-70FE-4C50-92FB-640F6BFC49AD);\n          TeeChart7.ocx Version 7.0.1.4 (clsid: FAB9B41C-87D6-474D-AB7E-F07D78F2422E);\n          TeeChart8.ocx Version 8.0.0.8 (clsid: BDEB0088-66F9-4A55-ABD2-0BF8DEEC1196);\n          TeeChart2010.ocx Version 2010.0.0.3 (clsid: FCB4B50A-E3F1-4174-BD18-54C3B3287258).\n\n          The controls are deployed under several SCADA based systems including:\n\n          Unitronics OPC server v1.3;\n          BACnet Operator Workstation Version 1.0.76",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2011-08-11",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/teechart_pro.rb",
+      "msf_path": "exploits/windows/browser/teechart_pro",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page (client-side interaction) to load the ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/trendmicro_extsetowner": {
+      "name": "Trend Micro Internet Security Pro 2010 ActiveX extSetOwner() Remote Code Execution",
+      "description": "This module exploits a remote code execution vulnerability in Trend Micro\n          Internet Security Pro 2010 ActiveX.\n          When sending an invalid pointer to the extSetOwner() function of UfPBCtrl.dll\n          an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP2 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2010-08-25",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/trendmicro_extsetowner.rb",
+      "msf_path": "exploits/windows/browser/trendmicro_extsetowner",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to attacker page, making it client-side",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/tumbleweed_filetransfer": {
+      "name": "Tumbleweed FileTransfer vcst_eu.dll ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the vcst_eu.dll\n          FileTransfer Module (1.0.0.5) ActiveX control in the Tumbleweed\n          SecureTransport suite. By sending an overly long string to the\n          TransferFile() 'remotefile' function, an attacker may be able\n          to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Universal vcst_eu.dll"
+      ],
+      "disclosed": "2008-04-07",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/tumbleweed_filetransfer.rb",
+      "msf_path": "exploits/windows/browser/tumbleweed_filetransfer",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page or open a file to trigger the ActiveX control.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ubisoft_uplay_cmd_exec": {
+      "name": "Ubisoft uplay 2.0.3 ActiveX Control Arbitrary Code Execution",
+      "description": "The uplay ActiveX component allows an attacker to execute any command line action.\n          User must sign in, unless auto-sign in is enabled and uplay must not already be\n          running.  Due to the way the malicious executable is served (WebDAV), the module\n          must be run on port 80, so please make sure you have enough privilege to do that.\n          Ubisoft released patch 2.04 as of Mon 20th July.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-07-29",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ubisoft_uplay_cmd_exec.rb",
+      "msf_path": "exploits/windows/browser/ubisoft_uplay_cmd_exec",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious page with the browser, making it client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ultramjcam_openfiledig_bof": {
+      "name": null,
+      "description": "This module exploits a vulnerability found in TRENDnet SecurView Internet\n          Camera's ActiveX control.  By supplying a long string of data as the sFilter\n          argument of the OpenFileDlg() function, it is possible to trigger a buffer\n          overflow condition due to WideCharToMultiByte (which converts unicode back to)\n          overwriting the stack more than it should, which results arbitrary code execution\n          under the context of the user.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-03-28",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ultramjcam_openfiledig_bof.rb",
+      "msf_path": "exploits/windows/browser/ultramjcam_openfiledig_bof",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page that loads the ActiveX control, so victim interaction is mandatory.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/vlc_amv": {
+      "name": null,
+      "description": "This module exploits VLC media player when handling a .AMV file. By flipping\n          the 0x41st byte in the file format (video width/height), VLC crashes due to an\n          invalid pointer, which allows remote attackers to gain arbitrary code execution.\n          The vulnerable packages include: VLC 1.1.4, VLC 1.1.5, VLC 1.1.6, VLC 1.1.7. Also,\n          please note that IE 8 targets require Java support in order to run properly.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2010-3275"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2011-03-23",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/vlc_amv.rb",
+      "msf_path": "exploits/windows/browser/vlc_amv",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious .AMV file in VLC, so it is client-side with user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/webdav_dll_hijacker": {
+      "name": "WebDAV Application DLL Hijacker",
+      "description": "This module presents a directory of file extensions that can lead to\n          code execution when opened from the share. The default EXTENSIONS option\n          must be configured to specify a vulnerable application type.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2010-08-18",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/webdav_dll_hijacker.rb",
+      "msf_path": "exploits/windows/browser/webdav_dll_hijacker",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to open a malicious file from a WebDAV share, so it needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/webex_ucf_newobject": {
+      "name": "WebEx UCF atucfobj.dll ActiveX NewObject Method Buffer Overflow",
+      "description": "This module exploits a stack-based buffer overflow in WebEx's WebexUCFObject\n          ActiveX Control. If a long string is passed to the 'NewObject' method, a stack-\n          based buffer overflow will occur when copying attacker-supplied data using the\n          sprintf function.\n\n          It is noteworthy that this vulnerability was discovered and reported by multiple\n          independent researchers. To quote iDefense's advisory, \"Before this issue was\n          publicly reported, at least three independent security researchers had knowledge\n          of this issue; thus, it is reasonable to believe that even more people were aware\n          of this issue before disclosure.\"\n\n          NOTE: Due to input restrictions, this exploit uses a heap-spray to get the payload\n          into memory unmodified.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows Universal"
+      ],
+      "disclosed": "2008-08-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/webex_ucf_newobject.rb",
+      "msf_path": "exploits/windows/browser/webex_ucf_newobject",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/wellintech_kingscada_kxclientdownload": {
+      "name": "KingScada kxClientDownload.ocx ActiveX Remote Code Execution",
+      "description": "This module abuses the kxClientDownload.ocx ActiveX control distributed with WellingTech KingScada.\n          The ProjectURL property can be abused to download and load arbitrary DLLs from\n          arbitrary locations, leading to arbitrary code execution, because of a dangerous\n          usage of LoadLibrary. Due to the nature of the vulnerability, this module will work\n          only when Protected Mode is not present or not enabled.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2013-2827"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2014-01-14",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/wellintech_kingscada_kxclientdownload.rb",
+      "msf_path": "exploits/windows/browser/wellintech_kingscada_kxclientdownload",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE with ActiveX enabled, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/windvd7_applicationtype": {
+      "name": "WinDVD7 IASystemInfo.DLL ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in IASystemInfo.dll ActiveX\n          control in InterVideo WinDVD 7. By sending an overly long string\n          to the \"ApplicationType()\" property, an attacker may be able to\n          execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 Pro English ALL"
+      ],
+      "disclosed": "2007-03-20",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/windvd7_applicationtype.rb",
+      "msf_path": "exploits/windows/browser/windvd7_applicationtype",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page in IE, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/wmi_admintools": {
+      "name": "Microsoft WMI Administration Tools ActiveX Buffer Overflow",
+      "description": "This module exploits a memory trust issue in the Microsoft WMI\n          Administration tools ActiveX control. When processing a specially crafted\n          HTML page, the WEBSingleView.ocx ActiveX Control (1.50.1131.0) will treat\n          the 'lCtxHandle' parameter to the 'AddContextRef' and 'ReleaseContext' methods\n          as a trusted pointer. It makes an indirect call via this pointer which leads\n          to arbitrary code execution.\n\n          This exploit utilizes a combination of heap spraying and the\n          .NET 2.0 'mscorie.dll' module to bypass DEP and ASLR. This module does not\n          opt-in to ASLR. As such, this module should be reliable on all Windows\n          versions.\n\n          The WMI Administrative Tools are a standalone download & install (linked in the\n          references).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2010-12-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/wmi_admintools.rb",
+      "msf_path": "exploits/windows/browser/wmi_admintools",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious HTML page in browser (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/x360_video_player_set_text_bof": {
+      "name": null,
+      "description": "This module exploits a buffer overflow in the VideoPlayer.ocx ActiveX installed with the\n          X360 Software. By setting an overly long value to 'ConvertFile()', an attacker can overrun\n          a .data buffer to bypass ASLR/DEP and finally execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2025-34128"
+      ],
+      "edb_ids": [
+        "35948"
+      ],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2015-01-30",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/x360_video_player_set_text_bof.rb",
+      "msf_path": "exploits/windows/browser/x360_video_player_set_text_bof",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page or file that triggers the ActiveX control, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/xmplay_asx": {
+      "name": "XMPlay 3.3.0.4 (ASX Filename) Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in XMPlay 3.3.0.4.\n          The vulnerability is caused due to a boundary error within\n          the parsing of playlists containing an overly long file name.\n          This module uses the ASX file format.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 Pro English SP4"
+      ],
+      "disclosed": "2006-11-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/xmplay_asx.rb",
+      "msf_path": "exploits/windows/browser/xmplay_asx",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious ASX file in XMPlay, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/yahoomessenger_fvcom": {
+      "name": "Yahoo! Messenger YVerInfo.dll ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the Yahoo! Messenger ActiveX\n          Control (YVerInfo.dll <= 2006.8.24.1). By sending an overly long string\n          to the \"fvCom()\" method from a yahoo.com domain, an attacker may be able\n          to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP2 Pro English"
+      ],
+      "disclosed": "2007-08-30",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/yahoomessenger_fvcom.rb",
+      "msf_path": "exploits/windows/browser/yahoomessenger_fvcom",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious page in IE, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/yahoomessenger_server": {
+      "name": "Yahoo! Messenger 8.1.0.249 ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the Yahoo! Webcam Upload ActiveX\n          Control (ywcupl.dll) provided by Yahoo! Messenger version 8.1.0.249.\n          By sending an overly long string to the \"Server()\" method, and then calling\n          the \"Send()\" method, an attacker may be able to execute arbitrary code.\n          Using the payloads \"windows/shell_bind_tcp\" and \"windows/shell_reverse_tcp\"\n          yield for the best results.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0/SP1 Pro English"
+      ],
+      "disclosed": "2007-06-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/yahoomessenger_server.rb",
+      "msf_path": "exploits/windows/browser/yahoomessenger_server",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page or open a crafted file, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/zenturiprogramchecker_unsafe": {
+      "name": "Zenturi ProgramChecker ActiveX Control Arbitrary File Download",
+      "description": "This module allows remote attackers to place arbitrary files on a users file system\n          via the Zenturi ProgramChecker sasatl.dll (1.5.0.531) ActiveX Control.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2007-05-29",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/zenturiprogramchecker_unsafe.rb",
+      "msf_path": "exploits/windows/browser/zenturiprogramchecker_unsafe",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page or interact with browser content",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/brightstor/ca_arcserve_342": {
+      "name": "Computer Associates ARCserve REPORTREMOTEEXECUTECML Buffer Overflow",
+      "description": "This module exploits a buffer overflow in Computer Associates BrightStor ARCserve r11.5 (build 3884).\n          By sending a specially crafted RPC request to opcode 0x342, an attacker could overflow the buffer\n          and execute arbitrary code. In order to successfully exploit this vulnerability, you will need\n          set the hostname argument (HNAME).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Computer Associates BrightStor ARCserve r11.5 (build 3884)"
+      ],
+      "disclosed": "2008-10-09",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/ca_arcserve_342.rb",
+      "msf_path": "exploits/windows/brightstor/ca_arcserve_342",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party backup software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/brightstor/discovery_tcp": {
+      "name": "CA BrightStor Discovery Service TCP Overflow",
+      "description": "This module exploits a vulnerability in the CA BrightStor\n          Discovery Service. This vulnerability occurs when a specific\n          type of request is sent to the TCP listener on port 41523.\n          This vulnerability was discovered by cybertronic[at]gmx.net\n          and affects all known versions of the BrightStor product.\n          This module is based on the 'cabrightstor_disco' exploit by\n          HD Moore.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "cheyprod.dll 9/14/2000"
+      ],
+      "disclosed": "2005-02-14",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/discovery_tcp.rb",
+      "msf_path": "exploits/windows/brightstor/discovery_tcp",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets CA BrightStor backup software, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/brightstor/discovery_udp": {
+      "name": "CA BrightStor Discovery Service Stack Buffer Overflow",
+      "description": "This module exploits a vulnerability in the CA BrightStor\n          Discovery Service. This vulnerability occurs when a large\n          request is sent to UDP port 41524, triggering a stack buffer\n          overflow.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "cheyprod.dll 12/12/2003"
+      ],
+      "disclosed": "2004-12-20",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/discovery_udp.rb",
+      "msf_path": "exploits/windows/brightstor/discovery_udp",
+      "service_category": "brightstor",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network service (UDP 41524) on Windows with no credentials or user interaction required.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/brightstor/etrust_itm_alert": {
+      "name": "Computer Associates Alert Notification Buffer Overflow",
+      "description": "This module exploits a buffer overflow in Computer Associates Threat Manager for the Enterprise r8.1\n          By sending a specially crafted RPC request, an attacker could overflow the buffer and execute arbitrary code.\n          In order to successfully exploit this vulnerability, you will need valid logon credentials to the target.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2003 SP0 English"
+      ],
+      "disclosed": "2008-04-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/etrust_itm_alert.rb",
+      "msf_path": "exploits/windows/brightstor/etrust_itm_alert",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires valid logon credentials, so it is lateral movement, not an initial foothold.",
+      "exclusion_category": null,
+      "access_type": "lateral_movement"
+    },
+    "exploits/windows/brightstor/hsmserver": {
+      "name": "CA BrightStor HSM Buffer Overflow",
+      "description": "This module exploits one of the multiple stack buffer overflows in Computer Associates BrightStor HSM.\n          By sending a specially crafted request, an attacker could overflow the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BrightStor HSM 11.5 Windows All"
+      ],
+      "disclosed": "2007-09-27",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/hsmserver.rb",
+      "msf_path": "exploits/windows/brightstor/hsmserver",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a niche backup product not installed on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/brightstor/lgserver": {
+      "name": "CA BrightStor ARCserve for Laptops and Desktops LGServer Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Computer Associates BrightStor ARCserve Backup\n          for Laptops & Desktops 11.1. By sending a specially crafted request, an attacker could\n          overflow the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 Pro English All"
+      ],
+      "disclosed": "2007-01-31",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/lgserver.rb",
+      "msf_path": "exploits/windows/brightstor/lgserver",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party backup software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/brightstor/lgserver_multi": {
+      "name": "CA BrightStor ARCserve for Laptops and Desktops LGServer Multiple Commands Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Computer Associates BrightStor ARCserve Backup\n          for Laptops & Desktops 11.1. By sending a specially crafted request to multiple commands,\n          an attacker could overflow the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 SP4 English"
+      ],
+      "disclosed": "2007-06-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/lgserver_multi.rb",
+      "msf_path": "exploits/windows/brightstor/lgserver_multi",
+      "service_category": "brightstor",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network service (BrightStor LGServer) listening on default ports, yielding remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/brightstor/lgserver_rxrlogin": {
+      "name": "CA BrightStor ARCserve for Laptops and Desktops LGServer Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Computer Associates BrightStor ARCserve Backup\n          for Laptops & Desktops 11.1. By sending a specially crafted request, an attacker could\n          overflow the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2003 SP0 English"
+      ],
+      "disclosed": "2007-06-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/lgserver_rxrlogin.rb",
+      "msf_path": "exploits/windows/brightstor/lgserver_rxrlogin",
+      "service_category": "brightstor",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network service (BrightStor LGServer) listening on default port 1900, yielding remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/brightstor/lgserver_rxssetdatagrowthscheduleandfilter": {
+      "name": "CA BrightStor ARCserve for Laptops and Desktops LGServer rxsSetDataGrowthScheduleAndFilter Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Computer Associates BrightStor ARCserve Backup\n          for Laptops & Desktops 11.1. By sending a specially crafted request (rxsSetDataGrowthScheduleAndFilter),\n          an attacker could overflow the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 SP4 English"
+      ],
+      "disclosed": "2007-06-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/lgserver_rxssetdatagrowthscheduleandfilter.rb",
+      "msf_path": "exploits/windows/brightstor/lgserver_rxssetdatagrowthscheduleandfilter",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party backup software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/brightstor/lgserver_rxsuselicenseini": {
+      "name": "CA BrightStor ARCserve for Laptops and Desktops LGServer Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Computer Associates BrightStor ARCserve Backup\n          for Laptops & Desktops 11.1. By sending a specially crafted request (rxsUseLicenseIni), an\n          attacker could overflow the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2003 SP0 English"
+      ],
+      "disclosed": "2007-06-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/lgserver_rxsuselicenseini.rb",
+      "msf_path": "exploits/windows/brightstor/lgserver_rxsuselicenseini",
+      "service_category": "brightstor",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network service (BrightStor LGServer) to gain remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/brightstor/license_gcr": {
+      "name": "CA BrightStor ARCserve License Service GCR NETWORK Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Computer Associates BrightStor ARCserve Backup 11.0.\n          By sending a specially crafted request to the lic98rmtd.exe service, an attacker\n          could overflow the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2003 SP0 English"
+      ],
+      "disclosed": "2005-03-02",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/license_gcr.rb",
+      "msf_path": "exploits/windows/brightstor/license_gcr",
+      "service_category": "brightstor",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network service (lic98rmtd.exe) for initial RCE without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/brightstor/mediasrv_sunrpc": {
+      "name": "CA BrightStor ArcServe Media Service Stack Buffer Overflow",
+      "description": "This exploit targets a stack buffer overflow in the MediaSrv RPC service of CA\n          BrightStor ARCserve. By sending a specially crafted SUNRPC request, an attacker\n          can overflow a stack buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BrightStor Arcserve 9.0 (?) - 11.5 SP2 (Windows 2000)"
+      ],
+      "disclosed": "2007-04-25",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/mediasrv_sunrpc.rb",
+      "msf_path": "exploits/windows/brightstor/mediasrv_sunrpc",
+      "service_category": "brightstor",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Targets a network RPC service on Windows, allows remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/brightstor/message_engine": {
+      "name": "CA BrightStor ARCserve Message Engine Buffer Overflow",
+      "description": "This module exploits a buffer overflow in Computer Associates BrightStor ARCserve Backup\n          11.1 - 11.5 SP2. By sending a specially crafted RPC request, an attacker could overflow\n          the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BrightStor ARCserve r11.1"
+      ],
+      "disclosed": "2007-01-11",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/message_engine.rb",
+      "msf_path": "exploits/windows/brightstor/message_engine",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party backup software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/brightstor/message_engine_72": {
+      "name": "CA BrightStor ARCserve Message Engine 0x72 Buffer Overflow",
+      "description": "This module exploits a buffer overflow in Computer Associates BrightStor ARCserve Backup\n          11.1 - 11.5 SP2. By sending a specially crafted RPC request, an attacker could overflow\n          the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BrightStor ARCserve r11.5/Windows 2003"
+      ],
+      "disclosed": "2010-10-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/message_engine_72.rb",
+      "msf_path": "exploits/windows/brightstor/message_engine_72",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party backup software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/brightstor/message_engine_heap": {
+      "name": "CA BrightStor ARCserve Message Engine Heap Overflow",
+      "description": "This module exploits a heap overflow in Computer Associates BrightStor ARCserve Backup\n          11.5. By sending a specially crafted RPC request, an attacker could overflow the\n          buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 SP4 English"
+      ],
+      "disclosed": "2006-10-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/message_engine_heap.rb",
+      "msf_path": "exploits/windows/brightstor/message_engine_heap",
+      "service_category": "brightstor",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network service (RPC) on Windows without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/brightstor/sql_agent": {
+      "name": "CA BrightStor Agent for Microsoft SQL Overflow",
+      "description": "This module exploits a vulnerability in the CA BrightStor\n          Agent for Microsoft SQL Server. This vulnerability was\n          discovered by cybertronic[at]gmx.net.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "ARCServe 11.0 Asbrdcst.dll 12/12/2003"
+      ],
+      "disclosed": "2005-08-02",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/sql_agent.rb",
+      "msf_path": "exploits/windows/brightstor/sql_agent",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party backup product not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/brightstor/tape_engine": {
+      "name": "CA BrightStor ARCserve Tape Engine Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Computer Associates BrightStor ARCserve Backup\n          r11.1 - r11.5. By sending a specially crafted DCERPC request, an attacker could overflow\n          the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BrightStor ARCserve r11.1"
+      ],
+      "disclosed": "2006-11-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/tape_engine.rb",
+      "msf_path": "exploits/windows/brightstor/tape_engine",
+      "service_category": "brightstor",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network service (DCERPC) on port 6503 without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/brightstor/tape_engine_0x8a": {
+      "name": "CA BrightStor ARCserve Tape Engine 0x8A Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Computer Associates BrightStor ARCserve Backup\n          r11.1 - r11.5. By sending a specially crafted DCERPC request, an attacker could overflow\n          the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "BrightStor ARCserve r11.5/Windows 2003"
+      ],
+      "disclosed": "2010-10-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/tape_engine_0x8a.rb",
+      "msf_path": "exploits/windows/brightstor/tape_engine_0x8a",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party backup product not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/brightstor/universal_agent": {
+      "name": "CA BrightStor Universal Agent Overflow",
+      "description": "This module exploits a convoluted heap overflow in the CA\n          BrightStor Universal Agent service. Triple userland\n          exception results in heap growth and execution of\n          dereferenced function pointer at a specified address.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Magic Heap Target #1"
+      ],
+      "disclosed": "2005-04-11",
+      "file_path": "metasploit-framework/modules/exploits/windows/brightstor/universal_agent.rb",
+      "msf_path": "exploits/windows/brightstor/universal_agent",
+      "service_category": "brightstor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets CA BrightStor backup software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/backdoor/energizer_duo_payload": {
+      "name": "Energizer DUO USB Battery Charger Arucer.dll Trojan Code Execution",
+      "description": "This module will execute an arbitrary payload against\n          any system infected with the Arugizer trojan horse. This\n          backdoor was shipped with the software package accompanying\n          the Energizer DUO USB battery charger.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2010-0103"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2010-03-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/backdoor/energizer_duo_payload.rb",
+      "msf_path": "exploits/windows/backdoor/energizer_duo_payload",
+      "service_category": "backdoor",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a specific backdoor from an obsolete USB charger, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/arkeia/type77": {
+      "name": "Arkeia Backup Client Type 77 Overflow (Win32)",
+      "description": "This module exploits a stack buffer overflow in the Arkeia backup\n          client for the Windows platform. This vulnerability affects\n          all versions up to and including 5.3.3.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Arkeia 5.3.3 and 5.2.27 Windows (All)"
+      ],
+      "disclosed": "2005-02-18",
+      "file_path": "metasploit-framework/modules/exploits/windows/arkeia/type77.rb",
+      "msf_path": "exploits/windows/arkeia/type77",
+      "service_category": "arkeia",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Arkeia backup software, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/antivirus/ams_hndlrsvc": {
+      "name": "Symantec System Center Alert Management System (hndlrsvc.exe) Arbitrary Command Execution",
+      "description": "Symantec System Center Alert Management System is prone to a\n          remote command-injection vulnerability because the application fails\n          to properly sanitize user-supplied input.  This is part of Symantec\n          AntiVirus Corporate Edition 8.0 - 10.1.7.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2010-0111"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows Universal"
+      ],
+      "disclosed": "2010-07-26",
+      "file_path": "metasploit-framework/modules/exploits/windows/antivirus/ams_hndlrsvc.rb",
+      "msf_path": "exploits/windows/antivirus/ams_hndlrsvc",
+      "service_category": "antivirus",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a non-default third-party antivirus management service not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/antivirus/ams_xfr": {
+      "name": "Symantec System Center Alert Management System (xfr.exe) Arbitrary Command Execution",
+      "description": "Symantec System Center Alert Management System is prone to a remote command-injection vulnerability\n          because the application fails to properly sanitize user-supplied input.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows Universal"
+      ],
+      "disclosed": "2009-04-28",
+      "file_path": "metasploit-framework/modules/exploits/windows/antivirus/ams_xfr.rb",
+      "msf_path": "exploits/windows/antivirus/ams_xfr",
+      "service_category": "antivirus",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a management port that is not open by default on standard Windows VMs and requires AMS to be installed.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/antivirus/symantec_endpoint_manager_rce": {
+      "name": "Symantec Endpoint Protection Manager /servlet/ConsoleServlet Remote Command Execution",
+      "description": "This module exploits XXE and SQL injection flaws in Symantec Endpoint Protection Manager\n          versions 11.0, 12.0 and 12.1. When supplying a specially crafted XML external entity (XXE) request an attacker\n          can reach SQL injection affected components. As xp_cmdshell is enabled in the included\n          database instance, it's possible to execute arbitrary system commands on the target\n          with SYSTEM privileges.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2013-5014",
+        "2013-5015"
+      ],
+      "edb_ids": [
+        "31853"
+      ],
+      "port": null,
+      "targets": [
+        "Windows VBS Stager"
+      ],
+      "disclosed": "2014-02-24",
+      "file_path": "metasploit-framework/modules/exploits/windows/antivirus/symantec_endpoint_manager_rce.rb",
+      "msf_path": "exploits/windows/antivirus/symantec_endpoint_manager_rce",
+      "service_category": "antivirus",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network-facing web service (ConsoleServlet) to gain SYSTEM shell without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/antivirus/symantec_iao": {
+      "name": "Symantec Alert Management System Intel Alert Originator Service Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Intel Alert Originator Service msgsys.exe.\n          When an attacker sends a specially crafted alert, arbitrary code may be executed.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2003"
+      ],
+      "disclosed": "2009-04-28",
+      "file_path": "metasploit-framework/modules/exploits/windows/antivirus/symantec_iao.rb",
+      "msf_path": "exploits/windows/antivirus/symantec_iao",
+      "service_category": "antivirus",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network-listening service (Intel Alert Originator) on Windows without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/antivirus/symantec_rtvscan": {
+      "name": "Symantec Remote Management Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Symantec Client Security 3.0.x.\n          This module has only been tested against Symantec Client Security 3.0.2\n          build 10.0.2.2000.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2006-2630"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "SCS 3.0.2 build 10.0.2.2000"
+      ],
+      "disclosed": "2006-05-24",
+      "file_path": "metasploit-framework/modules/exploits/windows/antivirus/symantec_rtvscan.rb",
+      "msf_path": "exploits/windows/antivirus/symantec_rtvscan",
+      "service_category": "antivirus",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network-exposed Symantec service without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/antivirus/symantec_workspace_streaming_exec": {
+      "name": "Symantec Workspace Streaming ManagementAgentServer.putFile XMLRPC Request Arbitrary File Upload",
+      "description": "This module exploits a code execution flaw in Symantec Workspace Streaming. The\n          vulnerability exists in the ManagementAgentServer.putFile XMLRPC call exposed by the\n          as_agent.exe service, which allows for uploading arbitrary files under the server root.\n          This module abuses the auto deploy feature in the JBoss as_ste.exe instance in order\n          to achieve remote code execution. This module has been tested successfully on Symantec\n          Workspace Streaming 6.1 SP8 and Windows 2003 SP2, and reported to affect 7.5.0.x.\n          Abused services listen on a single-machine deployment and also in the backend role in\n          a multiple-machine deployment.",
+      "platform": [
+        "java"
+      ],
+      "arch": [],
+      "cves": [
+        "2014-1649"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Symantec Workspace Streaming 6.1 SP8 / Java Universal"
+      ],
+      "disclosed": "2014-05-12",
+      "file_path": "metasploit-framework/modules/exploits/windows/antivirus/symantec_workspace_streaming_exec.rb",
+      "msf_path": "exploits/windows/antivirus/symantec_workspace_streaming_exec",
+      "service_category": "antivirus",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network-exposed XMLRPC service (as_agent.exe) to upload and execute code without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/antivirus/trendmicro_serverprotect": {
+      "name": "Trend Micro ServerProtect 5.58 Buffer Overflow",
+      "description": "This module exploits a buffer overflow in Trend Micro ServerProtect 5.58 Build 1060.\n          By sending a specially crafted RPC request, an attacker could overflow the\n          buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2007-1070"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Trend Micro ServerProtect 5.58 Build 1060"
+      ],
+      "disclosed": "2007-02-20",
+      "file_path": "metasploit-framework/modules/exploits/windows/antivirus/trendmicro_serverprotect.rb",
+      "msf_path": "exploits/windows/antivirus/trendmicro_serverprotect",
+      "service_category": "antivirus",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network-exposed RPC service in ServerProtect without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/antivirus/trendmicro_serverprotect_createbinding": {
+      "name": "Trend Micro ServerProtect 5.58 CreateBinding() Buffer Overflow",
+      "description": "This module exploits a buffer overflow in Trend Micro ServerProtect 5.58 Build 1060.\n          By sending a specially crafted RPC request, an attacker could overflow the\n          buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2007-2508"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Trend Micro ServerProtect 5.58 Build 1060"
+      ],
+      "disclosed": "2007-05-07",
+      "file_path": "metasploit-framework/modules/exploits/windows/antivirus/trendmicro_serverprotect_createbinding.rb",
+      "msf_path": "exploits/windows/antivirus/trendmicro_serverprotect_createbinding",
+      "service_category": "antivirus",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets an uncommon third-party antivirus management service not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/antivirus/trendmicro_serverprotect_earthagent": {
+      "name": "Trend Micro ServerProtect 5.58 EarthAgent.EXE Buffer Overflow",
+      "description": "This module exploits a buffer overflow in Trend Micro ServerProtect 5.58 Build 1060\n          EarthAgent.EXE. By sending a specially crafted RPC request, an attacker could overflow the\n          buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2007-2508"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Trend Micro ServerProtect 5.58 Build 1060"
+      ],
+      "disclosed": "2007-05-07",
+      "file_path": "metasploit-framework/modules/exploits/windows/antivirus/trendmicro_serverprotect_earthagent.rb",
+      "msf_path": "exploits/windows/antivirus/trendmicro_serverprotect_earthagent",
+      "service_category": "antivirus",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party antivirus management service not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     }
   }
 }

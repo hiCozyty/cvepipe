@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-03-29T22:37:34.885Z",
+  "statistics": {
+    "total": 1224,
+    "replicable": 438,
+    "notReplicable": 786,
+    "windowsCount": 1200,
+    "linuxCount": 1,
+    "byCategory": {
+      "unknown": 176,
+      "client_side_fileformat": 254,
+      "client_side": 166,
+      "local_privesc": 126,
+      "client_side_browser": 64
+    }
+  },
+  "llm_classification": {
+    "uncertain_modules_classified": 405,
+    "api_key_set": true
+  }
+}
