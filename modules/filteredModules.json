@@ -24109,10 +24109,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/hpmqc_progcolor.rb",
       "msf_path": "exploits/windows/browser/hpmqc_progcolor",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to attacker page to trigger ActiveX control",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/hyleos_chemviewx_activex": {
       "name": "Hyleos ChemView ActiveX Control Stack Buffer Overflow",
@@ -24131,10 +24132,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/hyleos_chemviewx_activex.rb",
       "msf_path": "exploits/windows/browser/hyleos_chemviewx_activex",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page with IE and have the third-party ChemView ActiveX control installed.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ibm_spss_c1sizer": {
       "name": null,
@@ -24153,10 +24155,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ibm_spss_c1sizer.rb",
       "msf_path": "exploits/windows/browser/ibm_spss_c1sizer",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in Internet Explorer, so victim interaction is mandatory.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ibm_tivoli_pme_activex_bof": {
       "name": null,
@@ -24175,10 +24178,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ibm_tivoli_pme_activex_bof.rb",
       "msf_path": "exploits/windows/browser/ibm_tivoli_pme_activex_bof",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page that loads the vulnerable ActiveX control, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ibmegath_getxmlvalue": {
       "name": "IBM Access Support ActiveX Control Buffer Overflow",
@@ -24197,10 +24201,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ibmegath_getxmlvalue.rb",
       "msf_path": "exploits/windows/browser/ibmegath_getxmlvalue",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page, so it is client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ibmlotusdomino_dwa_uploadmodule": {
       "name": "IBM Lotus Domino Web Access Upload Module Buffer Overflow",
@@ -24219,10 +24224,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/ibmlotusdomino_dwa_uploadmodule.rb",
       "msf_path": "exploits/windows/browser/ibmlotusdomino_dwa_uploadmodule",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious URL in a browser (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/ie_cbutton_uaf": {
       "name": null,
@@ -24417,10 +24423,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/indusoft_issymbol_internationalseparator.rb",
       "msf_path": "exploits/windows/browser/indusoft_issymbol_internationalseparator",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page, so it is client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/inotes_dwa85w_bof": {
       "name": null,
@@ -24439,10 +24446,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/inotes_dwa85w_bof.rb",
       "msf_path": "exploits/windows/browser/inotes_dwa85w_bof",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, making it client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/intrust_annotatex_add": {
       "name": "Quest InTrust Annotation Objects Uninitialized Pointer",
@@ -24481,10 +24489,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/java_basicservice_impl.rb",
       "msf_path": "exploits/windows/browser/java_basicservice_impl",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious web page or launch a crafted JNLP file, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/java_cmm": {
       "name": "Java CMM Remote Code Execution",
@@ -24503,10 +24512,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/java_cmm.rb",
       "msf_path": "exploits/windows/browser/java_cmm",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to click and accept a Java applet warning, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/java_codebase_trust": {
       "name": "Sun Java Applet2ClassLoader Remote Code Execution",
@@ -35437,6 +35447,236 @@
       "replicable": false,
       "confidence": "high",
       "reason": "Requires victim to visit a malicious page in IE, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/hpmqc_progcolor": {
+      "name": "HP Mercury Quality Center ActiveX Control ProgColor Buffer Overflow",
+      "description": "This module exploits a stack-based buffer overflow in SPIDERLib.Loader\n          ActiveX control (Spider90.ocx) 9.1.0.4353 installed by TestDirector (TD)\n          for Hewlett-Packard Mercury Quality Center 9.0 before Patch 12.1, and\n          8.2 SP1 before Patch 32.\n          By setting an overly long value to 'ProgColor', an attacker can overrun\n          a buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista SP0-SP1 / IE 6.0 SP0-2 & IE 7.0"
+      ],
+      "disclosed": "2007-04-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/hpmqc_progcolor.rb",
+      "msf_path": "exploits/windows/browser/hpmqc_progcolor",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to attacker page to trigger ActiveX control",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/hyleos_chemviewx_activex": {
+      "name": "Hyleos ChemView ActiveX Control Stack Buffer Overflow",
+      "description": "This module exploits a stack-based buffer overflow within version 1.9.5.1 of Hyleos\n          ChemView (HyleosChemView.ocx). By calling the 'SaveAsMolFile' or 'ReadMolFile' methods\n          with an overly long first argument, an attacker can overrun a buffer and execute\n          arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / IE 6.0 SP0-2 & IE 7.0"
+      ],
+      "disclosed": "2010-02-10",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/hyleos_chemviewx_activex.rb",
+      "msf_path": "exploits/windows/browser/hyleos_chemviewx_activex",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page with IE and have the third-party ChemView ActiveX control installed.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ibm_spss_c1sizer": {
+      "name": null,
+      "description": "This module exploits a heap based buffer overflow in the C1Tab ActiveX control,\n          while handling the TabCaption property. The affected control can be found in the\n          c1sizer.ocx component as included with IBM SPSS SamplePower 3.0. This module has\n          been tested successfully on IE 6, 7 and 8 on Windows XP SP3 and IE 8 on Windows 7\n          SP1.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2013-04-26",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ibm_spss_c1sizer.rb",
+      "msf_path": "exploits/windows/browser/ibm_spss_c1sizer",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in Internet Explorer, so victim interaction is mandatory.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ibm_tivoli_pme_activex_bof": {
+      "name": null,
+      "description": "This module exploits a buffer overflow vulnerability in the\n          Isig.isigCtl.1 ActiveX installed with IBM Tivoli Provisioning\n          Manager Express for Software Distribution 4.1.1.\n\n          The vulnerability is found in the \"RunAndUploadFile\" method\n          where the \"OtherFields\" parameter with user controlled data\n          is used to build a \"Content-Disposition\" header and attach\n          contents in an insecure way which allows to overflow a buffer\n          in the stack.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-03-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ibm_tivoli_pme_activex_bof.rb",
+      "msf_path": "exploits/windows/browser/ibm_tivoli_pme_activex_bof",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page that loads the vulnerable ActiveX control, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ibmegath_getxmlvalue": {
+      "name": "IBM Access Support ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in IBM Access Support. When\n          sending an overly long string to the GetXMLValue() method of IbmEgath.dll\n          (3.20.284.0) an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2009-03-24",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ibmegath_getxmlvalue.rb",
+      "msf_path": "exploits/windows/browser/ibmegath_getxmlvalue",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page, so it is client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/ibmlotusdomino_dwa_uploadmodule": {
+      "name": "IBM Lotus Domino Web Access Upload Module Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in IBM Lotus Domino Web Access Upload Module.\n          By sending an overly long string to the \"General_ServerName()\" property located\n          in the dwa7w.dll and the inotes6w.dll control, an attacker may be able to execute\n          arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP2 / IE 6.0 SP0-2 & IE 7.0 English"
+      ],
+      "disclosed": "2007-12-20",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/ibmlotusdomino_dwa_uploadmodule.rb",
+      "msf_path": "exploits/windows/browser/ibmlotusdomino_dwa_uploadmodule",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious URL in a browser (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/indusoft_issymbol_internationalseparator": {
+      "name": null,
+      "description": "This module exploits a heap overflow found in InduSoft Web Studio <= 61.6.00.00\n          SP6. The overflow exists in the ISSymbol.ocx, and can be triggered with a long\n          string argument for the InternationalSeparator() method of the ISSymbol control.\n          This module uses the msvcr71.dll form the Java JRE6 to bypass ASLR.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-04-28",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/indusoft_issymbol_internationalseparator.rb",
+      "msf_path": "exploits/windows/browser/indusoft_issymbol_internationalseparator",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page, so it is client-side not initial remote foothold.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/inotes_dwa85w_bof": {
+      "name": null,
+      "description": "This module exploits a buffer overflow vulnerability on the UploadControl\n          ActiveX. The vulnerability exists in the handling of the \"Attachment_Times\"\n          property, due to the insecure usage of the _swscanf. The affected ActiveX is\n          provided by the dwa85W.dll installed with the IBM Lotus iNotes ActiveX installer.\n\n          This module has been tested successfully on IE6-IE9 on Windows XP, Vista and 7,\n          using the dwa85W.dll 85.3.3.0 as installed with Lotus Domino 8.5.3.\n\n          In order to bypass ASLR the no aslr compatible module dwabho.dll is used. This one\n          is installed with the iNotes ActiveX.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-06-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/inotes_dwa85w_bof.rb",
+      "msf_path": "exploits/windows/browser/inotes_dwa85w_bof",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, making it client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/java_basicservice_impl": {
+      "name": "Sun Java Web Start BasicServiceImpl Code Execution",
+      "description": "This module exploits a vulnerability in Java Runtime Environment\n          that allows an attacker to escape the Java Sandbox. By injecting\n          a parameter into a javaws call within the BasicServiceImpl class\n          the default java sandbox policy file can be therefore overwritten.\n          The vulnerability affects version 6 prior to update 22.\n\n          NOTE: Exploiting this vulnerability causes several sinister-looking\n          popup windows saying that Java is \"Downloading application.\"",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows x86"
+      ],
+      "disclosed": "2010-10-12",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/java_basicservice_impl.rb",
+      "msf_path": "exploits/windows/browser/java_basicservice_impl",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to visit a malicious web page or launch a crafted JNLP file, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/java_cmm": {
+      "name": "Java CMM Remote Code Execution",
+      "description": "This module abuses the Color Management classes from a Java Applet to run\n          arbitrary Java code outside of the sandbox as exploited in the wild in February\n          and March of 2013. The vulnerability affects Java version 7u15 and earlier and 6u41\n          and earlier and has been tested successfully on Windows XP SP3 and Windows 7 SP1\n          systems. This exploit doesn't bypass click-to-play, so the user must accept the java\n          warning in order to run the malicious applet.",
+      "platform": [
+        "java"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Generic (Java Payload)"
+      ],
+      "disclosed": "2013-03-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/java_cmm.rb",
+      "msf_path": "exploits/windows/browser/java_cmm",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to click and accept a Java applet warning, so it is client-side interaction.",
       "exclusion_category": "client_side",
       "access_type": "client_side"
     }
