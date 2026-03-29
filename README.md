@@ -6,7 +6,7 @@ To install dependencies:
 bun i
 ```
 
-update .env
+## update `.env`
 ```
 NVD_API_KEY=
 LUDUS_API_KEY=
@@ -25,8 +25,8 @@ LLM_MODEL=
 
 ```
 
-
-phase 1:
+## Phase 1: Metasploit Module Classification
+- extracts metadata from Metasploit Framework exploit modules and classifies them based on VM reproducibility for automated windows lab provisioning with ludus.
 
 ```bash
 bun run modules/metasploitMetadataExtract.js
