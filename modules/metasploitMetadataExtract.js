@@ -14,6 +14,7 @@ import { OpenAI } from 'openai';
 
 const METASPLOIT_DIR = './metasploit-framework';
 const OUTPUT_DIR = './output';
+const BATCH_SIZE = 5; // batch caching
 const CLEAR_CACHE = false;
 const CACHE_DIR = './modules'; // New directory for cache
 const CACHE_FILE_PATH = path.join(CACHE_DIR, 'filteredModules.json'); // New cache file
@@ -340,6 +341,7 @@ async function classifyUncertainModulesWithLLM(uncertainModules, cache) {
     }
     console.log(`[LLM] Classifying ${modulesToProcess.length} uncertain modules...`);
     const results = [];
+    let processedCount = 0;
     for (let i = 0; i < modulesToProcess.length; i++) {
         const module = modulesToProcess[i];
         console.log(`[LLM] Processing module ${i + 1}/${modulesToProcess.length}: ${module.msf_path}`);
@@ -355,6 +357,12 @@ async function classifyUncertainModulesWithLLM(uncertainModules, cache) {
         cache.llm[module.msf_path] = module;
         
         results.push(module);
+
+        processedCount++;
+        if (processedCount % BATCH_SIZE === 0) {
+            await saveCache(cache);
+            console.log(`[CACHE] Checkpoint saved (${processedCount}/${modulesToProcess.length})`);
+        }
     }
     console.log(`[LLM] Classification complete for ${modulesToProcess.length} modules`);
     return results;
