@@ -234,9 +234,10 @@
       "msf_path": "exploits/windows/tftp/distinct_tftp_traversal",
       "service_category": "tftp",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network TFTP service to write and execute code remotely without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/tftp/dlink_long_filename": {
       "name": "D-Link TFTP 1.0 Long Filename Buffer Overflow",
@@ -255,10 +256,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/tftp/dlink_long_filename.rb",
       "msf_path": "exploits/windows/tftp/dlink_long_filename",
       "service_category": "tftp",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party TFTP server not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/tftp/futuresoft_transfermode": {
       "name": "FutureSoft TFTP Server 2000 Transfer-Mode Overflow",
@@ -280,9 +282,10 @@
       "msf_path": "exploits/windows/tftp/futuresoft_transfermode",
       "service_category": "tftp",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network TFTP service without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/tftp/netdecision_tftp_traversal": {
       "name": null,
@@ -304,9 +307,10 @@
       "msf_path": "exploits/windows/tftp/netdecision_tftp_traversal",
       "service_category": "tftp",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network TFTP service to write and execute code remotely without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/tftp/opentftp_error_code": {
       "name": "OpenTFTP SP 1.4 Error Packet Overflow",
@@ -328,9 +332,10 @@
       "msf_path": "exploits/windows/tftp/opentftp_error_code",
       "service_category": "tftp",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network-facing TFTP service buffer overflow with no credentials or user interaction required.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/tftp/quick_tftp_pro_mode": {
       "name": "Quick FTP Pro 2.1 Transfer-Mode Overflow",
@@ -351,10 +356,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/tftp/quick_tftp_pro_mode.rb",
       "msf_path": "exploits/windows/tftp/quick_tftp_pro_mode",
       "service_category": "tftp",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party TFTP server not present on a standard Windows VM.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/tftp/tftpd32_long_filename": {
       "name": "TFTPD32 Long Filename Buffer Overflow",
@@ -376,9 +382,10 @@
       "msf_path": "exploits/windows/tftp/tftpd32_long_filename",
       "service_category": "tftp",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network TFTP service buffer overflow with no credentials or user interaction required.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/tftp/tftpdwin_long_filename": {
       "name": "TFTPDWIN v0.4.2 Long Filename Buffer Overflow",
@@ -398,9 +405,10 @@
       "msf_path": "exploits/windows/tftp/tftpdwin_long_filename",
       "service_category": "tftp",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network TFTP service without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/tftp/tftpserver_wrq_bof": {
       "name": "TFTP Server for Windows 1.4 ST WRQ Buffer Overflow",
@@ -443,10 +451,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/tftp/threectftpsvc_long_mode.rb",
       "msf_path": "exploits/windows/tftp/threectftpsvc_long_mode",
       "service_category": "tftp",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party TFTP server not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/telnet/gamsoft_telsrv_username": {
       "name": "GAMSoft TelSrv 1.5 Username Buffer Overflow",
@@ -512,9 +521,10 @@
       "msf_path": "exploits/windows/ssl/ms04_011_pct",
       "service_category": "ssl",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Exploits a network-facing SSL service (any port) without credentials or user interaction to gain remote code execution.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/ssh/freeftpd_key_exchange": {
       "name": "FreeFTPd 1.0.10 Key Exchange Algorithm String Buffer Overflow",
@@ -1589,10 +1599,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/sip/aim_triton_cseq.rb",
       "msf_path": "exploits/windows/sip/aim_triton_cseq",
       "service_category": "sip",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets AIM Triton client, not a listening service, and requires victim to be running AIM and receive a message.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/sip/sipxezphone_cseq": {
       "name": "SIPfoundry sipXezPhone 0.35a CSeq Field Overflow",
@@ -1613,10 +1624,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/sip/sipxezphone_cseq.rb",
       "msf_path": "exploits/windows/sip/sipxezphone_cseq",
       "service_category": "sip",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party VoIP softphone not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/sip/sipxphone_cseq": {
       "name": "SIPfoundry sipXphone 2.6.0.27 CSeq Buffer Overflow",
@@ -1635,10 +1647,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/sip/sipxphone_cseq.rb",
       "msf_path": "exploits/windows/sip/sipxphone_cseq",
       "service_category": "sip",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a niche VoIP softphone not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/abb_wserver_exec": {
       "name": "ABB MicroSCADA wserver.exe Remote Code Execution",
@@ -1657,10 +1670,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/abb_wserver_exec.rb",
       "msf_path": "exploits/windows/scada/abb_wserver_exec",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on standard Windows lab VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/advantech_webaccess_dashboard_file_upload": {
       "name": null,
@@ -1679,10 +1693,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/advantech_webaccess_dashboard_file_upload.rb",
       "msf_path": "exploits/windows/scada/advantech_webaccess_dashboard_file_upload",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/advantech_webaccess_webvrpcs_bof": {
       "name": "Advantech WebAccess Webvrpcs Service Opcode 80061 Stack Buffer Overflow",
@@ -1701,10 +1716,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/advantech_webaccess_webvrpcs_bof.rb",
       "msf_path": "exploits/windows/scada/advantech_webaccess_webvrpcs_bof",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets optional SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/citect_scada_odbc": {
       "name": "CitectSCADA/CitectFacilities ODBC Buffer Overflow",
@@ -1723,10 +1739,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/citect_scada_odbc.rb",
       "msf_path": "exploits/windows/scada/citect_scada_odbc",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/codesys_gateway_server_traversal": {
       "name": "SCADA 3S CoDeSys Gateway Server Directory Traversal",
@@ -1747,10 +1764,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/codesys_gateway_server_traversal.rb",
       "msf_path": "exploits/windows/scada/codesys_gateway_server_traversal",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/codesys_web_server": {
       "name": "SCADA 3S CoDeSys CmpWebServer Stack Buffer Overflow",
@@ -1769,10 +1787,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/codesys_web_server.rb",
       "msf_path": "exploits/windows/scada/codesys_web_server",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/daq_factory_bof": {
       "name": "DaqFactory HMI NETB Request Overflow",
@@ -1791,10 +1810,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/daq_factory_bof.rb",
       "msf_path": "exploits/windows/scada/daq_factory_bof",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/delta_ia_commgr_bof": {
       "name": "Delta Electronics Delta Industrial Automation COMMGR 1.08 Stack Buffer Overflow",
@@ -1813,10 +1833,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/delta_ia_commgr_bof.rb",
       "msf_path": "exploits/windows/scada/delta_ia_commgr_bof",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on a standard Windows VM.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/diaenergie_sqli": {
       "name": "DIAEnergie SQL Injection (CVE-2024-4548)",
@@ -1837,10 +1858,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/diaenergie_sqli.rb",
       "msf_path": "exploits/windows/scada/diaenergie_sqli",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/factorylink_csservice": {
       "name": null,
@@ -1859,10 +1881,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/factorylink_csservice.rb",
       "msf_path": "exploits/windows/scada/factorylink_csservice",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Siemens FactoryLink SCADA software, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/factorylink_vrn_09": {
       "name": "Siemens FactoryLink vrn.exe Opcode 9 Buffer Overflow",
@@ -1881,10 +1904,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/factorylink_vrn_09.rb",
       "msf_path": "exploits/windows/scada/factorylink_vrn_09",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/ge_proficy_cimplicity_gefebt": {
       "name": "GE Proficy CIMPLICITY gefebt.exe Remote Code Execution",
@@ -1903,10 +1927,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/ge_proficy_cimplicity_gefebt.rb",
       "msf_path": "exploits/windows/scada/ge_proficy_cimplicity_gefebt",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/iconics_genbroker": {
       "name": null,
@@ -1926,9 +1951,10 @@
       "msf_path": "exploits/windows/scada/iconics_genbroker",
       "service_category": "scada",
       "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "confidence": "high",
+      "reason": "Targets a network service (GenBroker on 38080) and achieves remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
     },
     "exploits/windows/scada/iconics_webhmi_setactivexguid": {
       "name": null,
@@ -1951,10 +1977,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/iconics_webhmi_setactivexguid.rb",
       "msf_path": "exploits/windows/scada/iconics_webhmi_setactivexguid",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page that loads the ActiveX control, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/scada/igss9_igssdataserver_listall": {
       "name": null,
@@ -1975,10 +2002,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/igss9_igssdataserver_listall.rb",
       "msf_path": "exploits/windows/scada/igss9_igssdataserver_listall",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/igss9_igssdataserver_rename": {
       "name": null,
@@ -1999,10 +2027,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/igss9_igssdataserver_rename.rb",
       "msf_path": "exploits/windows/scada/igss9_igssdataserver_rename",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software IGSS 9, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/igss9_misc": {
       "name": null,
@@ -2043,10 +2072,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/igss_exec_17.rb",
       "msf_path": "exploits/windows/scada/igss_exec_17",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/indusoft_webstudio_exec": {
       "name": "InduSoft Web Studio Arbitrary Upload Remote Code Execution",
@@ -2065,10 +2095,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/indusoft_webstudio_exec.rb",
       "msf_path": "exploits/windows/scada/indusoft_webstudio_exec",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/moxa_mdmtool": {
       "name": "MOXA Device Manager Tool 2.1 Buffer Overflow",
@@ -2087,9 +2118,9 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/moxa_mdmtool.rb",
       "msf_path": "exploits/windows/scada/moxa_mdmtool",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
       "exclusion_category": null
     },
     "exploits/windows/scada/mypro_cmdexe": {
@@ -2111,10 +2142,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/mypro_cmdexe.rb",
       "msf_path": "exploits/windows/scada/mypro_cmdexe",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires authentication, so it cannot grant initial remote foothold without credentials.",
+      "exclusion_category": null,
+      "access_type": "lateral_movement"
     },
     "exploits/windows/scada/mypro_mgr_cmd": {
       "name": "mySCADA myPRO Manager Unauthenticated Command Injection (CVE-2024-47407)",
@@ -2181,10 +2213,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin.rb",
       "msf_path": "exploits/windows/scada/realwin",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/realwin_on_fc_binfile_a": {
       "name": "DATAC RealWin SCADA Server 2 On_FC_CONNECT_FCS_a_FILE Buffer Overflow",
@@ -2203,10 +2236,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin_on_fc_binfile_a.rb",
       "msf_path": "exploits/windows/scada/realwin_on_fc_binfile_a",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets obscure SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/realwin_on_fcs_login": {
       "name": "RealWin SCADA Server DATAC Login Buffer Overflow",
@@ -2225,10 +2259,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin_on_fcs_login.rb",
       "msf_path": "exploits/windows/scada/realwin_on_fcs_login",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/realwin_scpc_initialize": {
       "name": "DATAC RealWin SCADA Server SCPC_INITIALIZE Buffer Overflow",
@@ -2247,10 +2282,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin_scpc_initialize.rb",
       "msf_path": "exploits/windows/scada/realwin_scpc_initialize",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on a standard Windows VM.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/realwin_scpc_initialize_rf": {
       "name": "DATAC RealWin SCADA Server SCPC_INITIALIZE_RF Buffer Overflow",
@@ -2269,10 +2305,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin_scpc_initialize_rf.rb",
       "msf_path": "exploits/windows/scada/realwin_scpc_initialize_rf",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/realwin_scpc_txtevent": {
       "name": "DATAC RealWin SCADA Server SCPC_TXTEVENT Buffer Overflow",
@@ -2291,10 +2328,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin_scpc_txtevent.rb",
       "msf_path": "exploits/windows/scada/realwin_scpc_txtevent",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/rockwell_factorytalk_rce": {
       "name": "Rockwell FactoryTalk View SE SCADA Unauthenticated Remote Code Execution",
@@ -2316,10 +2354,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/rockwell_factorytalk_rce.rb",
       "msf_path": "exploits/windows/scada/rockwell_factorytalk_rce",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/scadapro_cmdexe": {
       "name": "Measuresoft ScadaPro Remote Command Execution",
@@ -2338,10 +2377,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/scadapro_cmdexe.rb",
       "msf_path": "exploits/windows/scada/scadapro_cmdexe",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/sunway_force_control_netdbsrv": {
       "name": "Sunway Forcecontrol SNMP NetDBServer.exe Opcode 0x57",
@@ -2358,10 +2398,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/sunway_force_control_netdbsrv.rb",
       "msf_path": "exploits/windows/scada/sunway_force_control_netdbsrv",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/winlog_runtime": {
       "name": "Sielco Sistemi Winlog Buffer Overflow",
@@ -2380,10 +2421,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/winlog_runtime.rb",
       "msf_path": "exploits/windows/scada/winlog_runtime",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/winlog_runtime_2": {
       "name": "Sielco Sistemi Winlog Buffer Overflow 2.07.14 - 2.07.16",
@@ -2402,10 +2444,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/winlog_runtime_2.rb",
       "msf_path": "exploits/windows/scada/winlog_runtime_2",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/yokogawa_bkbcopyd_bof": {
       "name": "Yokogawa CENTUM CS 3000 BKBCopyD.exe Buffer Overflow",
@@ -2424,10 +2467,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/yokogawa_bkbcopyd_bof.rb",
       "msf_path": "exploits/windows/scada/yokogawa_bkbcopyd_bof",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/yokogawa_bkesimmgr_bof": {
       "name": "Yokogawa CS3000 BKESimmgr.exe Buffer Overflow",
@@ -2446,10 +2490,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/yokogawa_bkesimmgr_bof.rb",
       "msf_path": "exploits/windows/scada/yokogawa_bkesimmgr_bof",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/yokogawa_bkfsim_vhfd": {
       "name": "Yokogawa CS3000 BKFSim_vhfd.exe Buffer Overflow",
@@ -2470,10 +2515,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/yokogawa_bkfsim_vhfd.rb",
       "msf_path": "exploits/windows/scada/yokogawa_bkfsim_vhfd",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/scada/yokogawa_bkhodeq_bof": {
       "name": "Yokogawa CENTUM CS 3000 BKHOdeq.exe Buffer Overflow",
@@ -2490,10 +2536,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/scada/yokogawa_bkhodeq_bof.rb",
       "msf_path": "exploits/windows/scada/yokogawa_bkhodeq_bof",
       "service_category": "scada",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/sage/x3_adxsrv_auth_bypass_cmd_exec": {
       "name": "Sage X3 Administration Service Authentication Bypass Command Execution",
@@ -2518,10 +2565,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/sage/x3_adxsrv_auth_bypass_cmd_exec.rb",
       "msf_path": "exploits/windows/sage/x3_adxsrv_auth_bypass_cmd_exec",
       "service_category": "sage",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets optional Sage X3 ERP software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/rdp/cve_2019_0708_bluekeep_rce": {
       "name": "CVE-2019-0708 BlueKeep RDP Remote Windows Kernel Use After Free",
@@ -2590,10 +2638,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/proxy/bluecoat_winproxy_host.rb",
       "msf_path": "exploits/windows/proxy/bluecoat_winproxy_host",
       "service_category": "proxy",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party proxy product not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/proxy/ccproxy_telnet_ping": {
       "name": "CCProxy Telnet Proxy Ping Overflow",
@@ -2614,10 +2663,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/proxy/ccproxy_telnet_ping.rb",
       "msf_path": "exploits/windows/proxy/ccproxy_telnet_ping",
       "service_category": "proxy",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "CCProxy is not installed by default on standard Windows VMs, making this a non-standard third-party prerequisite.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/proxy/proxypro_http_get": {
       "name": "Proxy-Pro Professional GateKeeper 4.7 GET Request Overflow",
@@ -2638,10 +2688,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/proxy/proxypro_http_get.rb",
       "msf_path": "exploits/windows/proxy/proxypro_http_get",
       "service_category": "proxy",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party proxy software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/proxy/qbik_wingate_wwwproxy": {
       "name": "Qbik WinGate WWW Proxy Server URL Processing Overflow",
@@ -2660,10 +2711,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/proxy/qbik_wingate_wwwproxy.rb",
       "msf_path": "exploits/windows/proxy/qbik_wingate_wwwproxy",
       "service_category": "proxy",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party proxy software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
     },
     "exploits/windows/postgres/postgres_payload": {
       "name": "PostgreSQL for Microsoft Windows Payload Execution",
@@ -2732,10 +2784,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/accessibility_features_debugger.rb",
       "msf_path": "exploits/windows/persistence/accessibility_features_debugger",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Module requires an existing session/credentials to modify registry for persistence, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/assistive_technology": {
       "name": "Assistive Technologies Persistence",
@@ -2758,10 +2811,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/assistive_technology.rb",
       "msf_path": "exploits/windows/persistence/assistive_technology",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires existing administrative session to install persistence, not initial remote foothold",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/image_exec_options": {
       "name": "Windows Silent Process Exit Persistence",
@@ -2784,10 +2838,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/image_exec_options.rb",
       "msf_path": "exploits/windows/persistence/image_exec_options",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Module is a persistence technique that requires an existing local session to install, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/linqpad_deserialization": {
       "name": "LINQPad Deserialization",
@@ -2806,10 +2861,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/linqpad_deserialization.rb",
       "msf_path": "exploits/windows/persistence/linqpad_deserialization",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires local filesystem access to overwrite a cache file and victim to restart LINQPad, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/notepadpp_plugin": {
       "name": "Notepad++ Plugin Persistence",
@@ -2832,10 +2888,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/notepadpp_plugin.rb",
       "msf_path": "exploits/windows/persistence/notepadpp_plugin",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires local access to drop a malicious DLL into Notepad++ plugin directory, not an initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/registry": {
       "name": "Windows Registry Only Persistence",
@@ -2858,10 +2915,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/registry.rb",
       "msf_path": "exploits/windows/persistence/registry",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing local session to install registry persistence, not initial remote access",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/registry_active_setup": {
       "name": "Windows Registry Active Setup Persistence",
@@ -2884,10 +2942,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/registry_active_setup.rb",
       "msf_path": "exploits/windows/persistence/registry_active_setup",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing session to install persistence, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/registry_userinit": {
       "name": "Windows Registry Persistence via Userinit",
@@ -2910,10 +2969,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/registry_userinit.rb",
       "msf_path": "exploits/windows/persistence/registry_userinit",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires local access to write registry and drop payload, not remote network exploitation",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/service": {
       "name": "Windows Persistent Service Installer",
@@ -2936,10 +2996,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/service.rb",
       "msf_path": "exploits/windows/persistence/service",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires existing admin/system privileges, so it is privilege escalation, not initial foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/startup_folder": {
       "name": "Windows Persistent Startup Folder",
@@ -2962,10 +3023,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/startup_folder.rb",
       "msf_path": "exploits/windows/persistence/startup_folder",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing session to drop the payload into a startup folder, so it is a persistence technique, not an initial foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/task_scheduler": {
       "name": "Windows Persistent Task Scheduler",
@@ -2988,10 +3050,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/task_scheduler.rb",
       "msf_path": "exploits/windows/persistence/task_scheduler",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing session to create a scheduled task for persistence, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/wsl/registry": {
       "name": "Windows WSL via Registry Persistence",
@@ -3014,10 +3077,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/wsl/registry.rb",
       "msf_path": "exploits/windows/persistence/wsl/registry",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Module installs persistence in WSL via registry but requires an existing session to run, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/wmi/wmi_event_subscription_event_log": {
       "name": "WMI Event Subscription Event Log Persistence",
@@ -3040,10 +3104,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/wmi/wmi_event_subscription_event_log.rb",
       "msf_path": "exploits/windows/persistence/wmi/wmi_event_subscription_event_log",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing administrator-level session to install persistence, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/wmi/wmi_event_subscription_interval": {
       "name": "WMI Event Subscription Interval Persistence",
@@ -3066,10 +3131,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/wmi/wmi_event_subscription_interval.rb",
       "msf_path": "exploits/windows/persistence/wmi/wmi_event_subscription_interval",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing high-integrity administrator session, not initial remote foothold",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
     },
     "exploits/windows/persistence/wmi/wmi_event_subscription_process": {
       "name": "WMI Event Subscription Process Persistence",
@@ -3118,9 +3184,9 @@
       "file_path": "metasploit-framework/modules/exploits/windows/persistence/wmi/wmi_event_subscription_uptime.rb",
       "msf_path": "exploits/windows/persistence/wmi/wmi_event_subscription_uptime",
       "service_category": "persistence",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
       "exclusion_category": null
     },
     "exploits/windows/oracle/client_system_analyzer_upload": {
@@ -3316,9 +3382,9 @@
       "file_path": "metasploit-framework/modules/exploits/windows/novell/file_reporter_fsfui_upload.rb",
       "msf_path": "exploits/windows/novell/file_reporter_fsfui_upload",
       "service_category": "novell",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
       "exclusion_category": null
     },
     "exploits/windows/novell/groupwisemessenger_client": {
@@ -3338,9 +3404,9 @@
       "file_path": "metasploit-framework/modules/exploits/windows/novell/groupwisemessenger_client.rb",
       "msf_path": "exploits/windows/novell/groupwisemessenger_client",
       "service_category": "novell",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
       "exclusion_category": null
     },
     "exploits/windows/novell/netiq_pum_eval": {
@@ -28312,6 +28378,1715 @@
       "reason": "Exploits a network TFTP service listening on Windows, giving remote shell with no credentials or user interaction.",
       "exclusion_category": null,
       "access_type": "initial_foothold"
+    },
+    "exploits/windows/tftp/distinct_tftp_traversal": {
+      "name": "Distinct TFTP 3.10 Writable Directory Traversal Execution",
+      "description": "This module exploits a directory traversal vulnerability in the TFTP\n          Server component of Distinct Intranet Servers version 3.10 which\n          allows a remote attacker to write arbitrary files to the server file\n          system, resulting in code execution under the context of 'SYSTEM'.\n          This module has been tested successfully on TFTP Server version 3.10\n          on Windows XP SP3 (EN).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2012-6664"
+      ],
+      "edb_ids": [
+        "18718"
+      ],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-04-08",
+      "file_path": "metasploit-framework/modules/exploits/windows/tftp/distinct_tftp_traversal.rb",
+      "msf_path": "exploits/windows/tftp/distinct_tftp_traversal",
+      "service_category": "tftp",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network TFTP service to write and execute code remotely without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/tftp/dlink_long_filename": {
+      "name": "D-Link TFTP 1.0 Long Filename Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in D-Link TFTP 1.0.\n          By sending a request for an overly long file name, an attacker\n          could overflow a buffer and execute arbitrary code. For best results,\n          use bind payloads with nonx (No NX).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 SP4 English"
+      ],
+      "disclosed": "2007-03-12",
+      "file_path": "metasploit-framework/modules/exploits/windows/tftp/dlink_long_filename.rb",
+      "msf_path": "exploits/windows/tftp/dlink_long_filename",
+      "service_category": "tftp",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party TFTP server not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/tftp/futuresoft_transfermode": {
+      "name": "FutureSoft TFTP Server 2000 Transfer-Mode Overflow",
+      "description": "This module exploits a stack buffer overflow in the FutureSoft TFTP Server\n          2000 product. By sending an overly long transfer-mode string, we were able\n          to overwrite both the SEH and the saved EIP. A subsequent write-exception\n          that will occur allows the transferring of execution to our shellcode\n          via the overwritten SEH. This module has been tested against Windows\n          2000 Professional and for some reason does not seem to work against\n          Windows 2000 Server (could not trigger the overflow at all).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2005-1812"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 Pro English ALL"
+      ],
+      "disclosed": "2005-05-31",
+      "file_path": "metasploit-framework/modules/exploits/windows/tftp/futuresoft_transfermode.rb",
+      "msf_path": "exploits/windows/tftp/futuresoft_transfermode",
+      "service_category": "tftp",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network TFTP service without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/tftp/netdecision_tftp_traversal": {
+      "name": null,
+      "description": "This module exploits a vulnerability found in NetDecision 4.2 TFTP server. The\n          software contains a directory traversal vulnerability that allows a remote attacker\n          to write arbitrary file to the file system, which results in code  execution under\n          the context of user executing the TFTP Server.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2009-1730"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "NetDecision 4.2 TFTP on Windows XP SP3 / Windows 2003 SP2"
+      ],
+      "disclosed": "2009-05-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/tftp/netdecision_tftp_traversal.rb",
+      "msf_path": "exploits/windows/tftp/netdecision_tftp_traversal",
+      "service_category": "tftp",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network TFTP service to write and execute code remotely without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/tftp/opentftp_error_code": {
+      "name": "OpenTFTP SP 1.4 Error Packet Overflow",
+      "description": "This module exploits a buffer overflow in OpenTFTP Server SP 1.4.  The vulnerable\n          condition triggers when the TFTP opcode is configured as an error packet, the TFTP\n          service will then format the message using a sprintf() function, which causes an\n          overflow, therefore allowing remote code execution under the context of SYSTEM.\n\n          The offset (to EIP) is specific to how the TFTP was started (as a 'Stand Alone',\n          or 'Service').  By default the target is set to 'Service' because that's the default\n          configuration during OpenTFTP Server SP 1.4's installation.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2008-2161"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "OpenTFTP 1.4 Service"
+      ],
+      "disclosed": "2008-07-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/tftp/opentftp_error_code.rb",
+      "msf_path": "exploits/windows/tftp/opentftp_error_code",
+      "service_category": "tftp",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network-facing TFTP service buffer overflow with no credentials or user interaction required.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/tftp/quick_tftp_pro_mode": {
+      "name": "Quick FTP Pro 2.1 Transfer-Mode Overflow",
+      "description": "This module exploits a stack buffer overflow in the Quick TFTP Pro server\n          product. MS Update KB926436 screws up the opcode address being used in oledlg.dll resulting\n          in a DoS.  This is a port of a sploit by Mati \"muts\" Aharoni.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2008-1610"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows Server 2000"
+      ],
+      "disclosed": "2008-03-27",
+      "file_path": "metasploit-framework/modules/exploits/windows/tftp/quick_tftp_pro_mode.rb",
+      "msf_path": "exploits/windows/tftp/quick_tftp_pro_mode",
+      "service_category": "tftp",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party TFTP server not present on a standard Windows VM.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/tftp/tftpd32_long_filename": {
+      "name": "TFTPD32 Long Filename Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in TFTPD32 version 2.21\n          and prior. By sending a request for an overly long file name\n          to the tftpd32 server, a remote attacker could overflow a buffer and\n          execute arbitrary code on the system.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2002-2226"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows NT 4.0 SP6a English"
+      ],
+      "disclosed": "2002-11-19",
+      "file_path": "metasploit-framework/modules/exploits/windows/tftp/tftpd32_long_filename.rb",
+      "msf_path": "exploits/windows/tftp/tftpd32_long_filename",
+      "service_category": "tftp",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network TFTP service buffer overflow with no credentials or user interaction required.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/tftp/tftpdwin_long_filename": {
+      "name": "TFTPDWIN v0.4.2 Long Filename Buffer Overflow",
+      "description": "This module exploits the ProSysInfo TFTPDWIN threaded TFTP Server. By sending\n          an overly long file name to the tftpd.exe server, the stack can be overwritten.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Universal - tftpd.exe"
+      ],
+      "disclosed": "2006-09-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/tftp/tftpdwin_long_filename.rb",
+      "msf_path": "exploits/windows/tftp/tftpdwin_long_filename",
+      "service_category": "tftp",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network TFTP service without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/tftp/threectftpsvc_long_mode": {
+      "name": "3CTftpSvc TFTP Long Mode Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in 3CTftpSvc 2.0.1. By\n          sending a specially crafted packet with an overly long mode\n          field, a remote attacker could overflow a buffer and execute\n          arbitrary code on the system.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2006-6183"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "3CTftpSvc 2.0.1"
+      ],
+      "disclosed": "2006-11-27",
+      "file_path": "metasploit-framework/modules/exploits/windows/tftp/threectftpsvc_long_mode.rb",
+      "msf_path": "exploits/windows/tftp/threectftpsvc_long_mode",
+      "service_category": "tftp",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party TFTP server not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/ssl/ms04_011_pct": {
+      "name": "MS04-011 Microsoft Private Communications Transport Overflow",
+      "description": "This module exploits a buffer overflow in the Microsoft\n          Windows SSL PCT protocol stack. This code is based on Johnny\n          Cyberpunk's THC release and has been tested against Windows\n          2000 and Windows XP. To use this module, specify the remote\n          port of any SSL service, or the port and protocol of an\n          application that uses SSL. The only application protocol\n          supported at this time is SMTP. You only have one chance to\n          select the correct target, if you are attacking IIS, you may\n          want to try one of the other exploits first (WebDAV). If\n          WebDAV does not work, this more than likely means that this\n          is either Windows 2000 SP4+ or Windows XP (IIS 5.0 vs IIS\n          5.1). Using the wrong target may not result in an immediate\n          crash of the remote system.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 SP4"
+      ],
+      "disclosed": "2004-04-13",
+      "file_path": "metasploit-framework/modules/exploits/windows/ssl/ms04_011_pct.rb",
+      "msf_path": "exploits/windows/ssl/ms04_011_pct",
+      "service_category": "ssl",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Exploits a network-facing SSL service (any port) without credentials or user interaction to gain remote code execution.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/sip/aim_triton_cseq": {
+      "name": "AIM Triton 1.0.4 CSeq Buffer Overflow",
+      "description": "This module exploits a buffer overflow in AOL\\'s AIM\n          Triton 1.0.4. By sending an overly long CSeq value,\n          a remote attacker could overflow a buffer and execute\n          arbitrary code on the system with the privileges of\n          the affected application.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2006-3524"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "AIM Triton 1.0.4 Universal"
+      ],
+      "disclosed": "2006-07-10",
+      "file_path": "metasploit-framework/modules/exploits/windows/sip/aim_triton_cseq.rb",
+      "msf_path": "exploits/windows/sip/aim_triton_cseq",
+      "service_category": "sip",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets AIM Triton client, not a listening service, and requires victim to be running AIM and receive a message.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/sip/sipxezphone_cseq": {
+      "name": "SIPfoundry sipXezPhone 0.35a CSeq Field Overflow",
+      "description": "This module exploits a buffer overflow in SIPfoundry's\n          sipXezPhone version 0.35a. By sending an long CSeq header,\n          a remote attacker could overflow a buffer and execute\n          arbitrary code on the system with the privileges of\n          the affected application.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2006-3524"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "sipXezPhone 0.35a Universal"
+      ],
+      "disclosed": "2006-07-10",
+      "file_path": "metasploit-framework/modules/exploits/windows/sip/sipxezphone_cseq.rb",
+      "msf_path": "exploits/windows/sip/sipxezphone_cseq",
+      "service_category": "sip",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party VoIP softphone not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/sip/sipxphone_cseq": {
+      "name": "SIPfoundry sipXphone 2.6.0.27 CSeq Buffer Overflow",
+      "description": "This module exploits a buffer overflow in SIPfoundry's\n          sipXphone 2.6.0.27. By sending an overly long CSeq value,\n          a remote attacker could overflow a buffer and execute\n          arbitrary code on the system with the privileges of\n          the affected application.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "SIPfoundry sipXphone 2.6.0.27 Universal"
+      ],
+      "disclosed": "2006-07-10",
+      "file_path": "metasploit-framework/modules/exploits/windows/sip/sipxphone_cseq.rb",
+      "msf_path": "exploits/windows/sip/sipxphone_cseq",
+      "service_category": "sip",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a niche VoIP softphone not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/abb_wserver_exec": {
+      "name": "ABB MicroSCADA wserver.exe Remote Code Execution",
+      "description": "This module exploits a remote stack buffer overflow vulnerability in ABB MicroSCADA. The\n          issue is due to the handling of unauthenticated EXECUTE operations on the wserver.exe\n          component, which allows arbitrary commands. The component is disabled by default, but\n          required when a project uses the SCIL function WORKSTATION_CALL.\n\n          This module has been tested successfully on ABB MicroSCADA Pro SYS600 9.3 on\n          Windows XP SP3 and Windows 7 SP1.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "ABB MicroSCADA Pro SYS600 9.3"
+      ],
+      "disclosed": "2013-04-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/abb_wserver_exec.rb",
+      "msf_path": "exploits/windows/scada/abb_wserver_exec",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on standard Windows lab VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/advantech_webaccess_dashboard_file_upload": {
+      "name": null,
+      "description": "This module exploits an arbitrary file upload vulnerability found in Advantech WebAccess 8.0.\n\n          This vulnerability allows remote attackers to execute arbitrary code on vulnerable installations\n          of Advantech WebAccess. Authentication is not required to exploit this vulnerability.\n\n          The specific flaw exists within the WebAccess Dashboard Viewer. Insufficient validation within\n          the uploadImageCommon function in the UploadAjaxAction script allows unauthenticated callers to\n          upload arbitrary code (instead of an image) to the server, which will then be executed under the\n          high-privilege context of the IIS AppPool.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Advantech WebAccess 8.0"
+      ],
+      "disclosed": "2016-02-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/advantech_webaccess_dashboard_file_upload.rb",
+      "msf_path": "exploits/windows/scada/advantech_webaccess_dashboard_file_upload",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/advantech_webaccess_webvrpcs_bof": {
+      "name": "Advantech WebAccess Webvrpcs Service Opcode 80061 Stack Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Advantech WebAccess 8.2.\n          By sending a specially crafted DCERPC request, an attacker could overflow\n          the buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 7 x86 - Advantech WebAccess 8.2-2017.03.31"
+      ],
+      "disclosed": "2017-11-02",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/advantech_webaccess_webvrpcs_bof.rb",
+      "msf_path": "exploits/windows/scada/advantech_webaccess_webvrpcs_bof",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets optional SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/citect_scada_odbc": {
+      "name": "CitectSCADA/CitectFacilities ODBC Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in CitectSCADA's ODBC daemon.\n          This has only been tested against Citect v5, v6 and v7.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Citect32.exe v5.21 NT4"
+      ],
+      "disclosed": "2008-06-11",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/citect_scada_odbc.rb",
+      "msf_path": "exploits/windows/scada/citect_scada_odbc",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/codesys_gateway_server_traversal": {
+      "name": "SCADA 3S CoDeSys Gateway Server Directory Traversal",
+      "description": "This module exploits a directory traversal vulnerability that allows arbitrary\n          file creation, which can be used to execute a mof file in order to gain remote\n          execution within the SCADA system.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2012-4705"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows Universal S3 CoDeSyS < 2.3.9.27"
+      ],
+      "disclosed": "2013-02-02",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/codesys_gateway_server_traversal.rb",
+      "msf_path": "exploits/windows/scada/codesys_gateway_server_traversal",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/codesys_web_server": {
+      "name": "SCADA 3S CoDeSys CmpWebServer Stack Buffer Overflow",
+      "description": "This module exploits a remote stack buffer overflow vulnerability in\n          3S-Smart Software Solutions product CoDeSys Scada Web Server Version\n          1.1.9.9. This vulnerability affects versions 3.4 SP4 Patch 2 and\n          earlier.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "CoDeSys v2.3 on Windows XP SP3"
+      ],
+      "disclosed": "2011-12-02",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/codesys_web_server.rb",
+      "msf_path": "exploits/windows/scada/codesys_web_server",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/daq_factory_bof": {
+      "name": "DaqFactory HMI NETB Request Overflow",
+      "description": "This module exploits a stack buffer overflow in Azeotech's DaqFactory\n          product. The specific vulnerability is triggered when sending a specially crafted\n          'NETB' request to port 20034. Exploitation of this vulnerability may take a few\n          seconds due to the use of egghunter.  This vulnerability was one of the 14\n          releases discovered by researcher Luigi Auriemma.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "DAQFactory Pro 5.85 Build 1853 on Windows XP SP3"
+      ],
+      "disclosed": "2011-09-13",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/daq_factory_bof.rb",
+      "msf_path": "exploits/windows/scada/daq_factory_bof",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/delta_ia_commgr_bof": {
+      "name": "Delta Electronics Delta Industrial Automation COMMGR 1.08 Stack Buffer Overflow",
+      "description": "This module exploits a stack based buffer overflow in Delta Electronics Delta Industrial\n          Automation COMMGR 1.08. The vulnerability exists in COMMGR.exe when handling specially\n          crafted packets. This module has been tested successfully on Delta Electronics Delta\n          Industrial Automation COMMGR 1.08 over\n          Windows XP SP3,\n          Windows 7 SP1, and\n          Windows 8.1.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "COMMGR 1.08 / Windows Universal"
+      ],
+      "disclosed": "2018-07-02",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/delta_ia_commgr_bof.rb",
+      "msf_path": "exploits/windows/scada/delta_ia_commgr_bof",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on a standard Windows VM.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/diaenergie_sqli": {
+      "name": "DIAEnergie SQL Injection (CVE-2024-4548)",
+      "description": "SQL injection vulnerability in DIAEnergie <= v1.10 from Delta Electronics.\n          This vulnerability can be exploited by an unauthenticated remote attacker to gain arbitrary code execution through a SQL injection vulnerability in the CEBC service. The commands will get executed in the context of NT AUTHORITY\\SYSTEM.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_CMD"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows_Fetch"
+      ],
+      "disclosed": "2024-05-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/diaenergie_sqli.rb",
+      "msf_path": "exploits/windows/scada/diaenergie_sqli",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/factorylink_csservice": {
+      "name": null,
+      "description": "This module exploits a vulnerability found on Siemens FactoryLink 8. The\n          vulnerability occurs when CSService.exe processes a CSMSG_ListFiles_REQ message,\n          the user-supplied path first gets converted to ANSI format (CodePage 0), and then\n          gets handled by a logging routine where proper bounds checking is not done,\n          therefore causing a stack-based buffer overflow, and results arbitrary code execution.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP3"
+      ],
+      "disclosed": "2011-03-25",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/factorylink_csservice.rb",
+      "msf_path": "exploits/windows/scada/factorylink_csservice",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets Siemens FactoryLink SCADA software, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/factorylink_vrn_09": {
+      "name": "Siemens FactoryLink vrn.exe Opcode 9 Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in FactoryLink 7.5, 7.5 SP2,\n          and 8.0.1.703.  By sending a specially crafted packet, an attacker may be able to\n          execute arbitrary code due to the improper use of a vsprintf() function while\n          processing the user-supplied text field.  Originally found and posted by\n          Luigi Auriemma.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "FactoryLink 7.5"
+      ],
+      "disclosed": "2011-03-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/factorylink_vrn_09.rb",
+      "msf_path": "exploits/windows/scada/factorylink_vrn_09",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/ge_proficy_cimplicity_gefebt": {
+      "name": "GE Proficy CIMPLICITY gefebt.exe Remote Code Execution",
+      "description": "This module abuses the gefebt.exe component in GE Proficy CIMPLICITY, reachable through the\n        CIMPLICIY CimWebServer. The vulnerable component allows to execute remote BCL files in\n        shared resources. An attacker can abuse this behavior to execute a malicious BCL and\n        drop an arbitrary EXE. The last one can be executed remotely through the WebView server.\n        This module has been tested successfully in GE Proficy CIMPLICITY 7.5 with the embedded\n        CimWebServer. This module starts a WebDAV server to provide the malicious BCL files. If\n        the target does not have the WebClient service enabled, an external SMB service is necessary.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "GE Proficy CIMPLICITY 7.5 (embedded CimWebServer)"
+      ],
+      "disclosed": "Jan 23 2014",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/ge_proficy_cimplicity_gefebt.rb",
+      "msf_path": "exploits/windows/scada/ge_proficy_cimplicity_gefebt",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/iconics_genbroker": {
+      "name": null,
+      "description": "The GenBroker service on port 38080 is affected by three integer overflow\n          vulnerabilities while handling opcode 0x4b0, which is caused by abusing the\n          the memory allocations needed for the number of elements passed by the client.\n          This results unexpected behaviors such as direct registry calls, memory location\n          calls, or arbitrary remote code execution.  Please note that in order to ensure\n          reliability, this exploit will try to open calc (hidden), inject itself into the\n          process, and then open up a shell session.  Also, DEP bypass is supported.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP"
+      ],
+      "disclosed": "2011-03-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/iconics_genbroker.rb",
+      "msf_path": "exploits/windows/scada/iconics_genbroker",
+      "service_category": "scada",
+      "replicable": true,
+      "confidence": "high",
+      "reason": "Targets a network service (GenBroker on 38080) and achieves remote code execution without credentials or user interaction.",
+      "exclusion_category": null,
+      "access_type": "initial_foothold"
+    },
+    "exploits/windows/scada/iconics_webhmi_setactivexguid": {
+      "name": null,
+      "description": "This module exploits a vulnerability found in ICONICS WebHMI's ActiveX control.\n          By supplying a long string of data to the 'SetActiveXGUID' parameter, GenVersion.dll\n          fails to do any proper bounds checking before this input is copied onto the stack,\n          which causes a buffer overflow, and results arbitrary code execution under the context\n          of the user.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2011-2089"
+      ],
+      "edb_ids": [
+        "17240"
+      ],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2011-05-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/iconics_webhmi_setactivexguid.rb",
+      "msf_path": "exploits/windows/scada/iconics_webhmi_setactivexguid",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page that loads the ActiveX control, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/scada/igss9_igssdataserver_listall": {
+      "name": null,
+      "description": "This module exploits a vulnerability in the igssdataserver.exe component of 7-Technologies\n          IGSS up to version 9.00.00 b11063. While processing a ListAll command, the application\n          fails to do proper bounds checking before copying data into a small buffer on the stack.\n          This causes a buffer overflow and allows to overwrite a structured exception handling record\n          on the stack, allowing for unauthenticated remote code execution.  Also, after the payload\n          exits, IGSSdataServer.exe should automatically recover.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2011-1567"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP3/2003 Server R2 SP2 (DEP Bypass)"
+      ],
+      "disclosed": "2011-03-24",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/igss9_igssdataserver_listall.rb",
+      "msf_path": "exploits/windows/scada/igss9_igssdataserver_listall",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/igss9_igssdataserver_rename": {
+      "name": null,
+      "description": "This module exploits a vulnerability found on 7-Technologies IGSS 9. By supplying\n          a long string of data to the 'Rename' (0x02), 'Delete' (0x03), or 'Add' (0x04) command,\n          a buffer overflow condition occurs in IGSSdataServer.exe while handing an RMS report,\n          which results arbitrary code execution under the context of the user.\n\n          The attack is carried out in three stages.  The first stage sends the final payload to\n          IGSSdataServer.exe, which will remain in memory.  The second stage sends the Add command\n          so the process can find a valid ID for the Rename command.  The last stage then triggers\n          the vulnerability with the Rename command, and uses an egghunter to search for the\n          shellcode that we sent in stage 1.  The use of egghunter appears to be necessary due to\n          the small buffer size, which cannot even contain our ROP chain and the final payload.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2011-1567"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP3"
+      ],
+      "disclosed": "2011-03-24",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/igss9_igssdataserver_rename.rb",
+      "msf_path": "exploits/windows/scada/igss9_igssdataserver_rename",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software IGSS 9, not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/igss_exec_17": {
+      "name": "Interactive Graphical SCADA System Remote Command Injection",
+      "description": "This module abuses a directory traversal flaw in Interactive\n          Graphical SCADA System v9.00. In conjunction with the traversal\n          flaw, if opcode 0x17 is sent to the dc.exe process, an attacker\n          may be able to execute arbitrary system commands.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows"
+      ],
+      "disclosed": "2011-03-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/igss_exec_17.rb",
+      "msf_path": "exploits/windows/scada/igss_exec_17",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/indusoft_webstudio_exec": {
+      "name": "InduSoft Web Studio Arbitrary Upload Remote Code Execution",
+      "description": "This module exploits a lack of authentication and authorization on the InduSoft\n          Web Studio Remote Agent, that allows a remote attacker to write arbitrary files to\n          the filesystem, by abusing the functions provided by the software.\n\n          The module uses the Windows Management Instrumentation service to execute an\n          arbitrary payload on vulnerable installations of InduSoft Web Studio on Windows pre\n          Vista. It has been successfully tested on InduSoft Web Studio 6.1 SP6 over Windows\n          XP SP3 and Windows 2003 SP2.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP / 2003"
+      ],
+      "disclosed": "2011-11-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/indusoft_webstudio_exec.rb",
+      "msf_path": "exploits/windows/scada/indusoft_webstudio_exec",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/moxa_mdmtool": {
+      "name": "MOXA Device Manager Tool 2.1 Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in MOXA MDM Tool 2.1.\n          When sending a specially crafted MDMGw (MDM2_Gateway) response, an\n          attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "MOXA MDM Tool 2.1"
+      ],
+      "disclosed": "2010-10-20",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/moxa_mdmtool.rb",
+      "msf_path": "exploits/windows/scada/moxa_mdmtool",
+      "service_category": "scada",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
+      "exclusion_category": null
+    },
+    "exploits/windows/scada/mypro_cmdexe": {
+      "name": "mySCADA MyPRO Authenticated Command Injection (CVE-2023-28384)",
+      "description": "Authenticated Command Injection in MyPRO <= v8.28.0 from mySCADA.\n          The vulnerability can be exploited by a remote attacker to inject arbitrary operating system commands which will get executed in the context of NT AUTHORITY\\SYSTEM.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_CMD"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows_Fetch"
+      ],
+      "disclosed": "2022-09-22",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/mypro_cmdexe.rb",
+      "msf_path": "exploits/windows/scada/mypro_cmdexe",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires authentication, so it cannot grant initial remote foothold without credentials.",
+      "exclusion_category": null,
+      "access_type": "lateral_movement"
+    },
+    "exploits/windows/scada/realwin": {
+      "name": "DATAC RealWin SCADA Server Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in DATAC Control\n          International RealWin SCADA Server 2.0 (Build 6.0.10.37).\n          By sending a specially crafted FC_INFOTAG/SET_CONTROL packet,\n          an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Universal"
+      ],
+      "disclosed": "2008-09-26",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin.rb",
+      "msf_path": "exploits/windows/scada/realwin",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/realwin_on_fc_binfile_a": {
+      "name": "DATAC RealWin SCADA Server 2 On_FC_CONNECT_FCS_a_FILE Buffer Overflow",
+      "description": "This module exploits a vulnerability found in DATAC Control International RealWin\n          SCADA Server 2.1 and below. By supplying a specially crafted On_FC_BINFILE_FCS_*FILE\n          packet via port 910, RealWin will try to create a file (which would be saved to\n          C:\\Program Files\\DATAC\\Real Win\\RW-version\\filename) by first copying the user-\n          supplied filename with an inline memcpy routine without proper bounds checking, which\n          results a stack-based buffer overflow, allowing arbitrary remote code execution.\n\n          Tested version: 2.0 (Build 6.1.8.10)",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Universal"
+      ],
+      "disclosed": "2011-03-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin_on_fc_binfile_a.rb",
+      "msf_path": "exploits/windows/scada/realwin_on_fc_binfile_a",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets obscure SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/realwin_on_fcs_login": {
+      "name": "RealWin SCADA Server DATAC Login Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in DATAC Control\n          International RealWin SCADA Server 2.1 (Build 6.0.10.10) or\n          earlier.  By sending a specially crafted On_FC_CONNECT_FCS_LOGIN\n          packet containing a long username, an attacker may be able to\n          execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Universal"
+      ],
+      "disclosed": "2011-03-21",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin_on_fcs_login.rb",
+      "msf_path": "exploits/windows/scada/realwin_on_fcs_login",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/realwin_scpc_initialize": {
+      "name": "DATAC RealWin SCADA Server SCPC_INITIALIZE Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in DATAC Control\n          International RealWin SCADA Server 2.0 (Build 6.1.8.10).\n          By sending a specially crafted packet, an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Universal"
+      ],
+      "disclosed": "2010-10-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin_scpc_initialize.rb",
+      "msf_path": "exploits/windows/scada/realwin_scpc_initialize",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on a standard Windows VM.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/realwin_scpc_initialize_rf": {
+      "name": "DATAC RealWin SCADA Server SCPC_INITIALIZE_RF Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in DATAC Control\n          International RealWin SCADA Server 2.0 (Build 6.1.8.10).\n          By sending a specially crafted packet, an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Universal"
+      ],
+      "disclosed": "2010-10-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin_scpc_initialize_rf.rb",
+      "msf_path": "exploits/windows/scada/realwin_scpc_initialize_rf",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/realwin_scpc_txtevent": {
+      "name": "DATAC RealWin SCADA Server SCPC_TXTEVENT Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in DATAC Control\n          International RealWin SCADA Server 2.0 (Build 6.1.8.10).\n          By sending a specially crafted packet,\n          an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Universal"
+      ],
+      "disclosed": "2010-11-18",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/realwin_scpc_txtevent.rb",
+      "msf_path": "exploits/windows/scada/realwin_scpc_txtevent",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/rockwell_factorytalk_rce": {
+      "name": "Rockwell FactoryTalk View SE SCADA Unauthenticated Remote Code Execution",
+      "description": "This module exploits a series of vulnerabilities to achieve unauthenticated remote code execution\n          on the Rockwell FactoryTalk View SE SCADA product as the IIS user.\n          The attack relies on the chaining of five separate vulnerabilities. The first vulnerability is an unauthenticated project copy request,\n          the second is a directory traversal, and the third is a race condition. In order to achieve full remote code execution on all\n          targets, two information leak vulnerabilities are also abused.\n          This exploit was used by the Flashback team (Pedro Ribeiro + Radek Domanski) in Pwn2Own Miami 2020 to win the EWS category.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X86",
+        "ARCH_X64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Rockwell Automation FactoryTalk SE"
+      ],
+      "disclosed": "2020-06-22",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/rockwell_factorytalk_rce.rb",
+      "msf_path": "exploits/windows/scada/rockwell_factorytalk_rce",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/scadapro_cmdexe": {
+      "name": "Measuresoft ScadaPro Remote Command Execution",
+      "description": "This module allows remote attackers to execute arbitrary commands on the\n          affected system by abusing via Directory Traversal attack when using the\n          'xf' command (execute function). An attacker can execute system() from\n          msvcrt.dll to upload a backdoor and gain remote code execution. This\n          vulnerability affects version 4.0.0 and earlier.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2011-09-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/scadapro_cmdexe.rb",
+      "msf_path": "exploits/windows/scada/scadapro_cmdexe",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/sunway_force_control_netdbsrv": {
+      "name": "Sunway Forcecontrol SNMP NetDBServer.exe Opcode 0x57",
+      "description": "This module exploits a stack based buffer overflow found in the SNMP\n          NetDBServer service of Sunway Forcecontrol <= 6.1 sp3. The overflow is\n          triggered when sending an overly long string to the listening service\n          on port 2001.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [],
+      "disclosed": "2011-09-22",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/sunway_force_control_netdbsrv.rb",
+      "msf_path": "exploits/windows/scada/sunway_force_control_netdbsrv",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/winlog_runtime": {
+      "name": "Sielco Sistemi Winlog Buffer Overflow",
+      "description": "This module exploits a buffer overflow in Sielco\n          Sistem Winlog <= 2.07.00. When sending a specially formatted\n          packet to the Runtime.exe service, an attacker may be able to\n          execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Winlog Lite 2.07.00"
+      ],
+      "disclosed": "2011-01-13",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/winlog_runtime.rb",
+      "msf_path": "exploits/windows/scada/winlog_runtime",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/winlog_runtime_2": {
+      "name": "Sielco Sistemi Winlog Buffer Overflow 2.07.14 - 2.07.16",
+      "description": "This module exploits a buffer overflow in Sielco Sistem Winlog <= 2.07.16.\n          When sending a specially formatted packet to the Runtime.exe service on port 46824,\n          an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Sielco Sistemi Winlog 2.07.14/2.07.16 - Ceramics Kiln Project"
+      ],
+      "disclosed": "2012-06-04",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/winlog_runtime_2.rb",
+      "msf_path": "exploits/windows/scada/winlog_runtime_2",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party SCADA software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/yokogawa_bkbcopyd_bof": {
+      "name": "Yokogawa CENTUM CS 3000 BKBCopyD.exe Buffer Overflow",
+      "description": "This module exploits a stack based buffer overflow in Yokogawa CENTUM CS 3000. The vulnerability\n          exists in the service BKBCopyD.exe when handling specially crafted packets. This module has\n          been tested successfully on Yokogawa CENTUM CS 3000 R3.08.50 over Windows XP SP3.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Yokogawa CENTUM CS 3000 R3.08.50 / Windows XP SP3"
+      ],
+      "disclosed": "2014-03-10",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/yokogawa_bkbcopyd_bof.rb",
+      "msf_path": "exploits/windows/scada/yokogawa_bkbcopyd_bof",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/yokogawa_bkesimmgr_bof": {
+      "name": "Yokogawa CS3000 BKESimmgr.exe Buffer Overflow",
+      "description": "This module exploits an stack based buffer overflow on Yokogawa CS3000. The vulnerability\n          exists in the BKESimmgr.exe service when handling specially crafted packets, due to an\n          insecure usage of memcpy, using attacker controlled data as the size count. This module\n          has been tested successfully in Yokogawa CS3000 R3.08.50 over Windows XP SP3 and Windows\n          2003 SP2.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2014-0782"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [],
+      "disclosed": "2014-03-10",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/yokogawa_bkesimmgr_bof.rb",
+      "msf_path": "exploits/windows/scada/yokogawa_bkesimmgr_bof",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/yokogawa_bkfsim_vhfd": {
+      "name": "Yokogawa CS3000 BKFSim_vhfd.exe Buffer Overflow",
+      "description": "This module exploits a stack based buffer overflow on Yokogawa CS3000. The vulnerability\n          exists in the service BKFSim_vhfd.exe when using malicious user-controlled data to create\n          logs using functions like vsprintf and memcpy in an insecure way. This module has been\n          tested successfully on Yokogawa Centum CS3000 R3.08.50 over Windows XP SP3.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2014-3888"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Yokogawa Centum CS3000 R3.08.50 / Windows XP SP3"
+      ],
+      "disclosed": "2014-05-23",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/yokogawa_bkfsim_vhfd.rb",
+      "msf_path": "exploits/windows/scada/yokogawa_bkfsim_vhfd",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/scada/yokogawa_bkhodeq_bof": {
+      "name": "Yokogawa CENTUM CS 3000 BKHOdeq.exe Buffer Overflow",
+      "description": "This module exploits a stack based buffer overflow in Yokogawa CENTUM CS 3000. The vulnerability\n          exists in the service BKHOdeq.exe when handling specially crafted packets. This module has\n          been tested successfully on Yokogawa CENTUM CS 3000 R3.08.50 over Windows XP SP3 and Windows\n          2003 SP2.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [],
+      "disclosed": "2014-03-10",
+      "file_path": "metasploit-framework/modules/exploits/windows/scada/yokogawa_bkhodeq_bof.rb",
+      "msf_path": "exploits/windows/scada/yokogawa_bkhodeq_bof",
+      "service_category": "scada",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets specialized SCADA software not present on standard Windows lab VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/sage/x3_adxsrv_auth_bypass_cmd_exec": {
+      "name": "Sage X3 Administration Service Authentication Bypass Command Execution",
+      "description": "This module leverages an authentication bypass exploit within Sage X3 AdxSrv's administration\n          protocol to execute arbitrary commands as SYSTEM against a Sage X3 Server running an\n          available AdxAdmin service.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X86",
+        "ARCH_X64"
+      ],
+      "cves": [
+        "2020-7387",
+        "2020-7388"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows Command"
+      ],
+      "disclosed": "2021-07-07",
+      "file_path": "metasploit-framework/modules/exploits/windows/sage/x3_adxsrv_auth_bypass_cmd_exec.rb",
+      "msf_path": "exploits/windows/sage/x3_adxsrv_auth_bypass_cmd_exec",
+      "service_category": "sage",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets optional Sage X3 ERP software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/proxy/bluecoat_winproxy_host": {
+      "name": "Blue Coat WinProxy Host Header Overflow",
+      "description": "This module exploits a buffer overflow in the Blue Coat Systems WinProxy\n          service by sending a long port value for the Host header in a HTTP\n          request.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2005-4085"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "WinProxy <= 6.1 R1a Universal"
+      ],
+      "disclosed": "2005-01-05",
+      "file_path": "metasploit-framework/modules/exploits/windows/proxy/bluecoat_winproxy_host.rb",
+      "msf_path": "exploits/windows/proxy/bluecoat_winproxy_host",
+      "service_category": "proxy",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets a third-party proxy product not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/proxy/ccproxy_telnet_ping": {
+      "name": "CCProxy Telnet Proxy Ping Overflow",
+      "description": "This module exploits the YoungZSoft CCProxy <= v6.2 suite\n          Telnet service. The stack is overwritten when sending an overly\n          long address to the 'ping' command.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X86"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows 2000 Pro All - English"
+      ],
+      "disclosed": "2004-11-11",
+      "file_path": "metasploit-framework/modules/exploits/windows/proxy/ccproxy_telnet_ping.rb",
+      "msf_path": "exploits/windows/proxy/ccproxy_telnet_ping",
+      "service_category": "proxy",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "CCProxy is not installed by default on standard Windows VMs, making this a non-standard third-party prerequisite.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/proxy/proxypro_http_get": {
+      "name": "Proxy-Pro Professional GateKeeper 4.7 GET Request Overflow",
+      "description": "This module exploits a stack buffer overflow in Proxy-Pro Professional\n          GateKeeper 4.7. By sending a long HTTP GET to the default port\n          of 3128, a remote attacker could overflow a buffer and execute\n          arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [
+        "2004-0326"
+      ],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Proxy-Pro GateKeeper 4.7"
+      ],
+      "disclosed": "2004-02-23",
+      "file_path": "metasploit-framework/modules/exploits/windows/proxy/proxypro_http_get.rb",
+      "msf_path": "exploits/windows/proxy/proxypro_http_get",
+      "service_category": "proxy",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party proxy software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/proxy/qbik_wingate_wwwproxy": {
+      "name": "Qbik WinGate WWW Proxy Server URL Processing Overflow",
+      "description": "This module exploits a stack buffer overflow in Qbik WinGate version\n          6.1.1.1077 and earlier. By sending malformed HTTP POST URL to the\n          HTTP proxy service on port 80, a remote attacker could overflow\n          a buffer and execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "WinGate 6.1.1.1077"
+      ],
+      "disclosed": "2006-06-07",
+      "file_path": "metasploit-framework/modules/exploits/windows/proxy/qbik_wingate_wwwproxy.rb",
+      "msf_path": "exploits/windows/proxy/qbik_wingate_wwwproxy",
+      "service_category": "proxy",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Targets third-party proxy software not present on standard Windows VMs.",
+      "exclusion_category": null,
+      "access_type": "unsupported"
+    },
+    "exploits/windows/persistence/accessibility_features_debugger": {
+      "name": "Accessibility Features (Sticky Keys) Persistence via Debugger Registry Key",
+      "description": "This module makes it possible to apply the 'sticky keys' hack to a session with appropriate\n          rights. The hack provides a means to get a SYSTEM shell using UI-level interaction at an RDP\n          login screen or via a UAC confirmation dialog. The module modifies the Debug registry setting\n          for certain executables.\n\n          The module options allow for this hack to be applied to:\n\n          SETHC   (sethc.exe is invoked when SHIFT is pressed 5 times),\n          UTILMAN (Utilman.exe is invoked by pressing WINDOWS+U),\n          OSK     (osk.exe is invoked by pressing WINDOWS+U, then launching the on-screen keyboard),\n          DISP    (DisplaySwitch.exe is invoked by pressing WINDOWS+P),\n          NARRATOR (Narrator.exe is invoked by pressing WINDOWS+CTR+ENTER),\n          ATBROKER (AtBroker.exe is invoked by launching accessibility features from the login screen, such as WINDOWS+CTR+ENTER).\n\n          Custom payloads and binaries can be run as part of this exploit, but must be manually uploaded\n          to the target prior to running the module.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "1995-04-24",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/accessibility_features_debugger.rb",
+      "msf_path": "exploits/windows/persistence/accessibility_features_debugger",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Module requires an existing session/credentials to modify registry for persistence, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/assistive_technology": {
+      "name": "Assistive Technologies Persistence",
+      "description": "This module achieves persistence by registering a custom Assistive Technology (AT) in the Windows registry.\n          Then it configures the system to launch the AT executable during user logon or desktop switch (such as with\n          an admin prived program).\n          Requires Windows 8 or higher and administrative privileges.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2016-07-22",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/assistive_technology.rb",
+      "msf_path": "exploits/windows/persistence/assistive_technology",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires existing administrative session to install persistence, not initial remote foothold",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/image_exec_options": {
+      "name": "Windows Silent Process Exit Persistence",
+      "description": "Windows allows you to set up a debug process when a process exits.\n          This module uploads a payload and declares that it is the debug\n          process to launch when a specified process exits.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2008-06-28",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/image_exec_options.rb",
+      "msf_path": "exploits/windows/persistence/image_exec_options",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Module is a persistence technique that requires an existing local session to install, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/linqpad_deserialization": {
+      "name": "LINQPad Deserialization",
+      "description": "This module exploits a bug in LIQPad up to version 5.48.00. The bug is only exploitable in paid version of software. The core of a bug is cache file containing deserialized data, which attacker can overwrite with malicious payload. The data gets deserialized every time the app restarts.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows"
+      ],
+      "disclosed": "2024-12-03",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/linqpad_deserialization.rb",
+      "msf_path": "exploits/windows/persistence/linqpad_deserialization",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires local filesystem access to overwrite a cache file and victim to restart LINQPad, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/notepadpp_plugin": {
+      "name": "Notepad++ Plugin Persistence",
+      "description": "This module create persistence by adding a malicious plugin to Notepad++, as it blindly loads and executes DLL from its plugin directory on startup, meaning that the payload will be executed every time Notepad++ is launched.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2005-12-11",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/notepadpp_plugin.rb",
+      "msf_path": "exploits/windows/persistence/notepadpp_plugin",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires local access to drop a malicious DLL into Notepad++ plugin directory, not an initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/registry": {
+      "name": "Windows Registry Only Persistence",
+      "description": "This module will install a payload that is executed during boot.\n          It will be executed either at user logon or system startup via the registry\n          value in \"CurrentVersion\\Run\" or \"RunOnce\" (depending on privilege and selected method).\n          The payload will be installed completely in registry.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2015-07-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/registry.rb",
+      "msf_path": "exploits/windows/persistence/registry",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing local session to install registry persistence, not initial remote access",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/registry_active_setup": {
+      "name": "Windows Registry Active Setup Persistence",
+      "description": "This module will register a payload to run via the Active Setup mechanism in Windows.\n          Active Setup is a Windows feature that runs once per user at login.\n          It triggers in a user context, losing privileges from admin to user.\n\n          Active Setup will open a popup box with \"Personalized Settings\" and the text\n          \"Setting up personalized settings for: <SETUP_NAME>\". However\n          this won't occur until the login screen has exited (but before the desktop\n          is loaded), and our execution is extremely fast so likely the user will not\n          see it.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2015-12-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/registry_active_setup.rb",
+      "msf_path": "exploits/windows/persistence/registry_active_setup",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing session to install persistence, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/registry_userinit": {
+      "name": "Windows Registry Persistence via Userinit",
+      "description": "This module will install a payload that is executed during user logon.\n          It writes a payload executable to disk and modifies the Userinit registry value\n          in \"HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\" to append the\n          payload path, causing it to execute when any user logs in.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2015-07-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/registry_userinit.rb",
+      "msf_path": "exploits/windows/persistence/registry_userinit",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires local access to write registry and drop payload, not remote network exploitation",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/service": {
+      "name": "Windows Persistent Service Installer",
+      "description": "This Module will generate and upload an executable to a remote host.\n          It will create a new service which will start the payload whenever the service is running. Admin or system\n          privilege is required.",
+      "platform": [
+        "windows"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows"
+      ],
+      "disclosed": "2018-10-20",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/service.rb",
+      "msf_path": "exploits/windows/persistence/service",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires existing admin/system privileges, so it is privilege escalation, not initial foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/startup_folder": {
+      "name": "Windows Persistent Startup Folder",
+      "description": "This module establishes persistence by creating a payload in the user or system startup folder.\n          Works on Vista and newer systems.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "1995-01-01",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/startup_folder.rb",
+      "msf_path": "exploits/windows/persistence/startup_folder",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing session to drop the payload into a startup folder, so it is a persistence technique, not an initial foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/task_scheduler": {
+      "name": "Windows Persistent Task Scheduler",
+      "description": "This module establishes persistence by creating a scheduled task to run a payload.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "1998-05-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/task_scheduler.rb",
+      "msf_path": "exploits/windows/persistence/task_scheduler",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing session to create a scheduled task for persistence, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/wsl/registry": {
+      "name": "Windows WSL via Registry Persistence",
+      "description": "This module will install a payload in WSL and execute it at user\n          logon or system startup via the registry value in \"CurrentVersion\\Run\"\n          or \"RunOnce\" (depending on privilege and selected method).\n          The payload will be installed completely in registry.\n\n          Staged payloads, like fetch payloads in linux X64 don't tend to work. The payload\n          will ask for the stage, then submit the HTTP fetch request\n          and when the payload is sent it doesn't execute.\n\n          `cmd/linux/http/x64/meterpreter_reverse_tcp` and unix cmd payloads tend to work.",
+      "platform": [
+        "unix",
+        "linux"
+      ],
+      "arch": [
+        "ARCH_CMD",
+        "ARCH_X64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2022-01-29",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/wsl/registry.rb",
+      "msf_path": "exploits/windows/persistence/wsl/registry",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Module installs persistence in WSL via registry but requires an existing session to run, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/wmi/wmi_event_subscription_event_log": {
+      "name": "WMI Event Subscription Event Log Persistence",
+      "description": "This module will create a permanent WMI event subscription to achieve file-less persistence using an event filter\n          that will query the event log for an EVENT_ID_TRIGGER\n          (default: failed logon request id 4625) that also contains a specified USERNAME_TRIGGER (note: failed logon auditing\n          must be enabled on the target for this method to work, this can be enabled using \"auditpol.exe /set /subcategory:Logon\n          /failure:Enable\"). When these criteria are met a command line event consumer will trigger an encoded powershell payload.\n\n          Additionally a custom command can be specified to run once the trigger is\n          activated using the advanced option CustomPsCommand. This module requires administrator level privileges as well as a\n          high integrity process. It is also recommended to use staged payloads due to powershell script length limitations.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows"
+      ],
+      "disclosed": "2017-06-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/wmi/wmi_event_subscription_event_log.rb",
+      "msf_path": "exploits/windows/persistence/wmi/wmi_event_subscription_event_log",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing administrator-level session to install persistence, not initial remote foothold.",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/wmi/wmi_event_subscription_interval": {
+      "name": "WMI Event Subscription Interval Persistence",
+      "description": "This module will create a permanent WMI event subscription to achieve file-less persistence using an event filter\n          that triggers the payload after the specified CALLBACK_INTERVAL.\n\n          If the persistence is not installed, it will keep triggering payloads to spawn.\n\n          Additionally a custom command can be specified to run once the trigger is\n          activated using the advanced option CustomPsCommand. This module requires administrator level privileges as well as a\n          high integrity process. It is also recommended to use staged payloads due to powershell script length limitations.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows"
+      ],
+      "disclosed": "2017-06-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/wmi/wmi_event_subscription_interval.rb",
+      "msf_path": "exploits/windows/persistence/wmi/wmi_event_subscription_interval",
+      "service_category": "persistence",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires an existing high-integrity administrator session, not initial remote foothold",
+      "exclusion_category": "local_privesc",
+      "access_type": "privilege_escalation"
+    },
+    "exploits/windows/persistence/wmi/wmi_event_subscription_uptime": {
+      "name": "WMI Event Subscription Logon Timer Persistence",
+      "description": "This module will create a permanent WMI event subscription to achieve file-less persistence using an event filter that\n          will trigger the payload after the system has a certain uptime. Payloads will trigger every minute until the set end time.\n\n          Additionally a custom command can be specified to run once the trigger is\n          activated using the advanced option CustomPsCommand. This module requires administrator level privileges as well as a\n          high integrity process. It is also recommended to use staged payloads due to powershell script length limitations.",
+      "platform": [
+        "win"
+      ],
+      "arch": [
+        "ARCH_X64",
+        "ARCH_X86",
+        "ARCH_AARCH64"
+      ],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows"
+      ],
+      "disclosed": "2017-06-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/persistence/wmi/wmi_event_subscription_uptime.rb",
+      "msf_path": "exploits/windows/persistence/wmi/wmi_event_subscription_uptime",
+      "service_category": "persistence",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
+      "exclusion_category": null
+    },
+    "exploits/windows/novell/file_reporter_fsfui_upload": {
+      "name": "NFR Agent FSFUI Record File Upload RCE",
+      "description": "NFRAgent.exe, a component of Novell File Reporter (NFR), allows remote attackers to upload\n          arbitrary files via a directory traversal while handling requests to /FSF/CMD with\n          FSFUI records with UICMD 130. This module has been tested successfully against NFR\n          Agent 1.0.4.3 (File Reporter 1.0.2) and NFR Agent 1.0.3.22 (File Reporter 1.0.1).",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-11-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/novell/file_reporter_fsfui_upload.rb",
+      "msf_path": "exploits/windows/novell/file_reporter_fsfui_upload",
+      "service_category": "novell",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
+      "exclusion_category": null
+    },
+    "exploits/windows/novell/groupwisemessenger_client": {
+      "name": "Novell GroupWise Messenger Client Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Novell's GroupWise Messenger Client.\n          By sending a specially crafted HTTP response, an attacker may be able to execute\n          arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Novell GroupWise Messenger 2.0 Client"
+      ],
+      "disclosed": "2008-07-02",
+      "file_path": "metasploit-framework/modules/exploits/windows/novell/groupwisemessenger_client.rb",
+      "msf_path": "exploits/windows/novell/groupwisemessenger_client",
+      "service_category": "novell",
+      "replicable": null,
+      "confidence": "error",
+      "reason": "LLM classification failed: 429 status code (no body)",
+      "exclusion_category": null
     }
   }
 }
