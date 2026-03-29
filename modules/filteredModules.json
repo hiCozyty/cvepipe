@@ -23994,10 +23994,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/hp_easy_printer_care_xmlsimpleaccessor.rb",
       "msf_path": "exploits/windows/browser/hp_easy_printer_care_xmlsimpleaccessor",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit malicious page in IE with ActiveX enabled, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/hp_loadrunner_addfile": {
       "name": "Persits XUpload ActiveX AddFile Buffer Overflow",
@@ -24016,10 +24017,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/hp_loadrunner_addfile.rb",
       "msf_path": "exploits/windows/browser/hp_loadrunner_addfile",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page (client-side interaction) and relies on an obscure ActiveX control not present on standard Windows VMs.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/hp_loadrunner_addfolder": {
       "name": "HP LoadRunner 9.0 ActiveX AddFolder Buffer Overflow",
@@ -24038,10 +24040,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/hp_loadrunner_addfolder.rb",
       "msf_path": "exploits/windows/browser/hp_loadrunner_addfolder",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit malicious web page with IE, making it client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/hp_loadrunner_writefilebinary": {
       "name": null,
@@ -24060,10 +24063,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/hp_loadrunner_writefilebinary.rb",
       "msf_path": "exploits/windows/browser/hp_loadrunner_writefilebinary",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, making it client-side not initial foothold",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/hp_loadrunner_writefilestring": {
       "name": null,
@@ -24082,10 +24086,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/hp_loadrunner_writefilestring.rb",
       "msf_path": "exploits/windows/browser/hp_loadrunner_writefilestring",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/hpmqc_progcolor": {
       "name": "HP Mercury Quality Center ActiveX Control ProgColor Buffer Overflow",
@@ -35317,6 +35322,121 @@
       "replicable": false,
       "confidence": "high",
       "reason": "Requires victim to visit a malicious page in a browser with the vulnerable HP ALM ActiveX control installed.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/hp_easy_printer_care_xmlsimpleaccessor": {
+      "name": "HP Easy Printer Care XMLSimpleAccessor Class ActiveX Control Remote Code Execution",
+      "description": "This module allows remote attackers to place arbitrary files on a users file\n          system by abusing via Directory Traversal attack the \"saveXML\" method from the\n          \"XMLSimpleAccessor\" class in the HP Easy Printer HPTicketMgr.dll ActiveX Control\n          (HPTicketMgr.dll 2.7.2.0).\n\n          Code execution can be achieved by first uploading the payload to the remote\n          machine embeddeding a vbs file, and then upload another mof file, which enables Windows\n          Management Instrumentation service to execute the vbs. Please note that this\n          module currently only works for Windows before Vista.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2011-08-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/hp_easy_printer_care_xmlsimpleaccessor.rb",
+      "msf_path": "exploits/windows/browser/hp_easy_printer_care_xmlsimpleaccessor",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit malicious page in IE with ActiveX enabled, so needs user interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/hp_loadrunner_addfile": {
+      "name": "Persits XUpload ActiveX AddFile Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Persits Software Inc's\n          XUpload ActiveX control(version 3.0.0.3) thats included in HP LoadRunner 9.5.\n          By passing an overly long string to the AddFile method, an attacker may be\n          able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "XUpload.ocx 3.0.0.3 on Windows XP SP3 / IE6 SP3"
+      ],
+      "disclosed": "2008-01-25",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/hp_loadrunner_addfile.rb",
+      "msf_path": "exploits/windows/browser/hp_loadrunner_addfile",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to browse to a malicious page (client-side interaction) and relies on an obscure ActiveX control not present on standard Windows VMs.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/hp_loadrunner_addfolder": {
+      "name": "HP LoadRunner 9.0 ActiveX AddFolder Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Persits Software Inc's\n          XUpload ActiveX control(version 2.1.0.1) thats included in HP LoadRunner 9.0.\n          By passing an overly long string to the AddFolder method, an attacker may be\n          able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP2 Pro English / IE6SP0-SP2"
+      ],
+      "disclosed": "2007-12-25",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/hp_loadrunner_addfolder.rb",
+      "msf_path": "exploits/windows/browser/hp_loadrunner_addfolder",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit malicious web page with IE, making it client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/hp_loadrunner_writefilebinary": {
+      "name": null,
+      "description": "This module exploits a vulnerability on the lrFileIOService ActiveX, as installed\n          with HP LoadRunner 11.50. The vulnerability exists in the WriteFileBinary method\n          where user provided data is used as a memory pointer.  This module has been tested\n          successfully on IE6-IE9 on Windows XP, Vista and 7, using the LrWebIERREWrapper.dll\n          11.50.2216.0. In order to bypass ASLR the no aslr compatible module msvcr71.dll is\n          used. This one is installed with HP LoadRunner.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2013-07-24",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/hp_loadrunner_writefilebinary.rb",
+      "msf_path": "exploits/windows/browser/hp_loadrunner_writefilebinary",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, making it client-side not initial foothold",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/hp_loadrunner_writefilestring": {
+      "name": null,
+      "description": "This module exploits a vulnerability on the lrFileIOService ActiveX, as installed\n          with HP LoadRunner 11.50. The vulnerability exists in the WriteFileString method,\n          which allow the user to write arbitrary files. It's abused to drop a payload\n          embedded in a dll, which is later loaded through the Init() method from the\n          lrMdrvService control, by abusing an insecure LoadLibrary call. This module has\n          been tested successfully on IE8 on Windows XP. Virtualization based on the Low\n          Integrity Process, on Windows Vista and 7, will stop this module because the DLL\n          will be dropped to a virtualized folder, which isn't used by LoadLibrary.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic IE on Windows XP"
+      ],
+      "disclosed": "2013-07-24",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/hp_loadrunner_writefilestring.rb",
+      "msf_path": "exploits/windows/browser/hp_loadrunner_writefilestring",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page in IE, so it is client-side interaction.",
       "exclusion_category": "client_side",
       "access_type": "client_side"
     }
