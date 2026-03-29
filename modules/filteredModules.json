@@ -24535,10 +24535,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/java_codebase_trust.rb",
       "msf_path": "exploits/windows/browser/java_codebase_trust",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit malicious web page in browser (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/java_docbase_bof": {
       "name": "Sun Java Runtime New Plugin docbase Buffer Overflow",
@@ -24577,10 +24578,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/java_mixer_sequencer.rb",
       "msf_path": "exploits/windows/browser/java_mixer_sequencer",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to open a malicious web page or file in a browser/Java plugin, violating the no-user-interaction rule.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/java_ws_arginject_altjvm": {
       "name": "Sun Java Web Start Plugin Command Line Argument Injection",
@@ -24665,10 +24667,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/juniper_sslvpn_ive_setupdll.rb",
       "msf_path": "exploits/windows/browser/juniper_sslvpn_ive_setupdll",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page and use the vulnerable ActiveX control in IE.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/kazaa_altnet_heap": {
       "name": "Kazaa Altnet Download Manager ActiveX Control Buffer Overflow",
@@ -24687,10 +24690,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/kazaa_altnet_heap.rb",
       "msf_path": "exploits/windows/browser/kazaa_altnet_heap",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page in IE, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/keyhelp_launchtripane_exec": {
       "name": "KeyHelp ActiveX LaunchTriPane Remote Code Execution Vulnerability",
@@ -24709,10 +24713,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/keyhelp_launchtripane_exec.rb",
       "msf_path": "exploits/windows/browser/keyhelp_launchtripane_exec",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit attacker-controlled page to trigger ActiveX control, making it client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/logitechvideocall_start": {
       "name": "Logitech VideoCall ActiveX Control Buffer Overflow",
@@ -24731,10 +24736,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/logitechvideocall_start.rb",
       "msf_path": "exploits/windows/browser/logitechvideocall_start",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page or open an HTML file, so it is client-side only.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/lpviewer_url": {
       "name": "iseemedia / Roxio / MGI Software LPViewer ActiveX Control Buffer Overflow",
@@ -24753,10 +24759,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/lpviewer_url.rb",
       "msf_path": "exploits/windows/browser/lpviewer_url",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/macrovision_downloadandexecute": {
       "name": "Macrovision InstallShield Update Service Buffer Overflow",
@@ -24775,10 +24782,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/macrovision_downloadandexecute.rb",
       "msf_path": "exploits/windows/browser/macrovision_downloadandexecute",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to browse to a malicious page that invokes the ActiveX control, making it a client-side attack.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/macrovision_unsafe": {
       "name": "Macrovision InstallShield Update Service ActiveX Unsafe Method",
@@ -24797,10 +24805,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/macrovision_unsafe.rb",
       "msf_path": "exploits/windows/browser/macrovision_unsafe",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page or open HTML file (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/malwarebytes_update_exec": {
       "name": "Malwarebytes Anti-Malware and Anti-Exploit Update Remote Code Execution",
@@ -24819,10 +24828,11 @@
       "file_path": "metasploit-framework/modules/exploits/windows/browser/malwarebytes_update_exec.rb",
       "msf_path": "exploits/windows/browser/malwarebytes_update_exec",
       "service_category": "browser",
-      "replicable": true,
-      "confidence": "medium",
-      "reason": "Appears to be a network-based exploit module but requires verification",
-      "exclusion_category": null
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to run the Malwarebytes updater, making it a client-side attack",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
     },
     "exploits/windows/browser/maxthon_history_xcs": {
       "name": "Maxthon3 about:history XCS Trusted Zone Code Execution",
@@ -35677,6 +35687,234 @@
       "replicable": false,
       "confidence": "high",
       "reason": "Requires the victim to click and accept a Java applet warning, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/java_codebase_trust": {
+      "name": "Sun Java Applet2ClassLoader Remote Code Execution",
+      "description": "This module exploits a vulnerability in the Java Runtime Environment\n          that allows an attacker to run an applet outside of the Java Sandbox. When\n          an applet is invoked with:\n\n          1. A \"codebase\" parameter that points at a trusted directory\n          2. A \"code\" parameter that is a URL that does not contain any dots\n\n          the applet will run outside of the sandbox.\n\n          This vulnerability affects JRE prior to version 6 update 24.",
+      "platform": [
+        "java"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Generic (Java Payload)"
+      ],
+      "disclosed": "2011-02-15",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/java_codebase_trust.rb",
+      "msf_path": "exploits/windows/browser/java_codebase_trust",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit malicious web page in browser (client-side interaction)",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/java_mixer_sequencer": {
+      "name": null,
+      "description": "This module exploits a flaw within the handling of MixerSequencer objects\n          in Java 6u18 and before.\n\n          Exploitation id done by supplying a specially crafted MIDI file within an RMF\n          File. When the MixerSequencer objects is used to play the file, the GM_Song\n          structure is populated with a function pointer provided by a SONG block in the\n          RMF. A Midi block that contains a MIDI with a specially crafted controller event\n          is used to trigger the vulnerability.\n\n          When triggering the vulnerability \"ebx\" points to a fake event in the MIDI file\n          which stores the shellcode. A \"jmp ebx\" from msvcr71.dll is used to make the\n          exploit reliable over java updates.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [],
+      "disclosed": "2010-03-30",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/java_mixer_sequencer.rb",
+      "msf_path": "exploits/windows/browser/java_mixer_sequencer",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to open a malicious web page or file in a browser/Java plugin, violating the no-user-interaction rule.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/juniper_sslvpn_ive_setupdll": {
+      "name": "Juniper SSL-VPN IVE JuniperSetupDLL.dll ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the JuniperSetupDLL.dll\n          library which is called by the JuniperSetup.ocx ActiveX\tcontrol,\n          as part of the Juniper SSL-VPN (IVE) appliance. By specifying an\n          overly long string to the ProductName object parameter, the stack\n          is overwritten.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP Pro SP3 English"
+      ],
+      "disclosed": "2006-04-26",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/juniper_sslvpn_ive_setupdll.rb",
+      "msf_path": "exploits/windows/browser/juniper_sslvpn_ive_setupdll",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page and use the vulnerable ActiveX control in IE.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/kazaa_altnet_heap": {
+      "name": "Kazaa Altnet Download Manager ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the Altnet Download Manager ActiveX\n          Control (amd4.dll) bundled with Kazaa Media Desktop 3.2.7.\n          By sending an overly long string to the \"Install()\" method, an attacker may be\n          able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP2 / IE 6.0SP1 English"
+      ],
+      "disclosed": "2007-10-03",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/kazaa_altnet_heap.rb",
+      "msf_path": "exploits/windows/browser/kazaa_altnet_heap",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page in IE, so it is client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/keyhelp_launchtripane_exec": {
+      "name": "KeyHelp ActiveX LaunchTriPane Remote Code Execution Vulnerability",
+      "description": "This module exploits a code execution vulnerability in the KeyScript ActiveX\n          control from keyhelp.ocx. It is packaged in several products or GE, such as\n          Proficy Historian 4.5, 4.0, 3.5, and 3.1, Proficy HMI/SCADA 5.1 and 5.0, Proficy\n          Pulse 1.0, Proficy Batch Execution 5.6, and SI7 I/O Driver between 7.20 and 7.42.\n          When the control is installed with these products, the function \"LaunchTriPane\"\n          will use ShellExecute to launch \"hh.exe\", with user controlled data as parameters.\n          Because of this, the \"-decompile\" option can be abused to write arbitrary files on\n          the remote system.\n\n          Code execution can be achieved by first uploading the payload to the remote\n          machine, and then upload another mof file, which enables Windows Management\n          Instrumentation service to execute it. Please note that this module currently only\n          works for Windows before Vista.\n\n          On the other hand, the target host must have the WebClient service (WebDAV\n          Mini-Redirector) enabled. It is enabled and automatically started by default on\n          Windows XP SP3",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2012-06-26",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/keyhelp_launchtripane_exec.rb",
+      "msf_path": "exploits/windows/browser/keyhelp_launchtripane_exec",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit attacker-controlled page to trigger ActiveX control, making it client-side.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/logitechvideocall_start": {
+      "name": "Logitech VideoCall ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in the Logitech VideoCall ActiveX\n          Control (wcamxmp.dll 2.0.3470.448). By sending an overly long string to the\n          \"Start()\" method, an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP Pro SP2 English"
+      ],
+      "disclosed": "2007-05-31",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/logitechvideocall_start.rb",
+      "msf_path": "exploits/windows/browser/logitechvideocall_start",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious page or open an HTML file, so it is client-side only.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/lpviewer_url": {
+      "name": "iseemedia / Roxio / MGI Software LPViewer ActiveX Control Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in LPViewer ActiveX control (LPControll.dll 3.2.0.2). When\n          sending an overly long string to the URL() property an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0-SP3 / Windows Vista / IE 6.0 SP0-SP2 / IE 7"
+      ],
+      "disclosed": "2008-10-06",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/lpviewer_url.rb",
+      "msf_path": "exploits/windows/browser/lpviewer_url",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to open malicious web page in IE, so it is client-side interaction.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/macrovision_downloadandexecute": {
+      "name": "Macrovision InstallShield Update Service Buffer Overflow",
+      "description": "This module exploits a stack buffer overflow in Macrovision InstallShield Update\n          Service(Isusweb.dll 6.0.100.54472). By passing an overly long ProductCode string to\n          the DownloadAndExecute method, an attacker may be able to execute arbitrary code.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows XP SP0/SP1 Pro English"
+      ],
+      "disclosed": "2007-10-31",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/macrovision_downloadandexecute.rb",
+      "msf_path": "exploits/windows/browser/macrovision_downloadandexecute",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires the victim to browse to a malicious page that invokes the ActiveX control, making it a client-side attack.",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/macrovision_unsafe": {
+      "name": "Macrovision InstallShield Update Service ActiveX Unsafe Method",
+      "description": "This module allows attackers to execute code via an unsafe method in Macrovision InstallShield 2008.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Automatic"
+      ],
+      "disclosed": "2007-10-20",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/macrovision_unsafe.rb",
+      "msf_path": "exploits/windows/browser/macrovision_unsafe",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to visit a malicious web page or open HTML file (client-side interaction).",
+      "exclusion_category": "client_side",
+      "access_type": "client_side"
+    },
+    "exploits/windows/browser/malwarebytes_update_exec": {
+      "name": "Malwarebytes Anti-Malware and Anti-Exploit Update Remote Code Execution",
+      "description": "This module exploits a vulnerability in the update functionality of\n          Malwarebytes Anti-Malware consumer before 2.0.3 and Malwarebytes\n          Anti-Exploit consumer 1.03.1.1220.\n          Due to the lack of proper update package validation, a man-in-the-middle\n          (MITM) attacker could execute arbitrary code by spoofing the update server\n          data-cdn.mbamupdates.com and uploading an executable. This module has\n          been tested successfully with MBAM 2.0.2.1012 and MBAE 1.03.1.1220.",
+      "platform": [
+        "win"
+      ],
+      "arch": [],
+      "cves": [],
+      "edb_ids": [],
+      "port": null,
+      "targets": [
+        "Windows Universal"
+      ],
+      "disclosed": "2014-12-16",
+      "file_path": "metasploit-framework/modules/exploits/windows/browser/malwarebytes_update_exec.rb",
+      "msf_path": "exploits/windows/browser/malwarebytes_update_exec",
+      "service_category": "browser",
+      "replicable": false,
+      "confidence": "high",
+      "reason": "Requires victim to run the Malwarebytes updater, making it a client-side attack",
       "exclusion_category": "client_side",
       "access_type": "client_side"
     }
