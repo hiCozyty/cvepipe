@@ -16,6 +16,7 @@ const METASPLOIT_DIR = './metasploit-framework';
 const OUTPUT_DIR = './output';
 const BATCH_SIZE = 5; // batch caching
 const CLEAR_CACHE = false;
+const LLM_ONLY_MODE = true; // (set true to bypass heuristics, send ALL to LLM)
 const CACHE_DIR = './modules'; // New directory for cache
 const CACHE_FILE_PATH = path.join(CACHE_DIR, 'filteredModules.json'); // New cache file
 const WINDOWS_EXPLOITS_PATH = 'modules/exploits/windows';
@@ -230,7 +231,9 @@ async function loadCache() {
         if (await $`test -f ${CACHE_FILE_PATH}`.quiet().then(() => true).catch(() => false)) {
             const content = await Bun.file(CACHE_FILE_PATH).text();
             const parsed = JSON.parse(content);
-            console.log(`[CACHE] Loaded ${Object.keys(parsed.heuristic || {}).length + Object.keys(parsed.llm || {}).length} cached entries`);
+            const heuristicCount = LLM_ONLY_MODE ? 0 : Object.keys(parsed.heuristic || {}).length;
+            const llmCount = Object.keys(parsed.llm || {}).length;
+            console.log(`[CACHE] Loaded ${heuristicCount + llmCount} cached entries (heuristic: ${heuristicCount}, llm: ${llmCount})`);
             return {
                 heuristic: parsed.heuristic || {},
                 llm: parsed.llm || {}
@@ -339,8 +342,9 @@ async function classifyUncertainModulesWithLLM(uncertainModules, cache) {
         console.log('[LLM] No uncertain modules to classify');
         return [];
     }
-    console.log(`[LLM] Classifying ${modulesToProcess.length} uncertain modules...`);
-    const results = [];
+    const modeLabel = LLM_ONLY_MODE ? 'ALL modules (LLM-only mode)' : 'uncertain modules';
+    console.log(`[LLM] Classifying ${modulesToProcess.length} ${modeLabel}...`);
+    const results = []; 
     let processedCount = 0;
     for (let i = 0; i < modulesToProcess.length; i++) {
         const module = modulesToProcess[i];
@@ -431,21 +435,29 @@ async function parseRubyFiles(rbFiles, cache) {
             const metadata = extractMetadataFromRb(content, filePath);
             metadata.msf_path = msfPath;
             metadata.service_category = deriveServiceCategory(filePath);
-            const classification = heuristicClassification(metadata);
-            
-            metadata.replicable = classification.replicable;
-            metadata.confidence = classification.confidence;
-            metadata.reason = classification.reason;
-            metadata.exclusion_category = classification.exclusion_category;
-            
-            // CACHE HEURISTIC RESULTS (High AND Medium)
-            // We cache Medium too, so we don't re-parse, even if we still need LLM
-            if (['high', 'medium'].includes(classification.confidence)) {
-                cache.heuristic[msfPath] = metadata;
-            }
-            
-            if (classification.confidence === 'medium') {
-                uncertainModules.push(metadata);
+
+            if (LLM_ONLY_MODE) {
+                // Skip heuristic, send ALL to LLM
+                metadata.replicable = null;
+                metadata.confidence = 'pending';
+                metadata.reason = 'Pending LLM classification';
+                metadata.exclusion_category = null;
+                uncertainModules.push(metadata); // ALL modules go to LLM
+            } else {
+                // Use heuristic classification
+                const classification = heuristicClassification(metadata);
+                metadata.replicable = classification.replicable;
+                metadata.confidence = classification.confidence;
+                metadata.reason = classification.reason;
+                metadata.exclusion_category = classification.exclusion_category;
+                
+                // Cache heuristic results (High AND Medium)
+                if (['high', 'medium'].includes(classification.confidence)) {
+                    cache.heuristic[msfPath] = metadata;
+                }
+                if (classification.confidence === 'medium') {
+                    uncertainModules.push(metadata);
+                }
             }
             
             results.push(metadata);
@@ -519,7 +531,11 @@ async function main() {
     await sparseCloneMetasploit();
     
     // 1. LOAD CACHE
-    const cache = await loadCache(); 
+    const cache = await loadCache();
+    if (LLM_ONLY_MODE) {
+        console.log('[MODE] LLM-only mode enabled - bypassing heuristic classification');
+        cache.heuristic = {}; // Ignore heuristic cache, rely on LLM cache only
+    }
 
     const exploitsDir = path.join(METASPLOIT_DIR, WINDOWS_EXPLOITS_PATH);
     console.log(`[SCAN] Scanning ${exploitsDir}...`);
