@@ -21,6 +21,10 @@ TARGET_HOST=
 LLM_API_KEY=
 LLM_BASE_URL=
 LLM_MODEL=
+
+LUDUS_API_URL=
+LUDUS_API_KEY=
+
 ```
 
 ## Phase 1: Metasploit Module Classification
@@ -31,7 +35,7 @@ bun run modules/metasploitMetadataExtract.js
 ```
 
 ```bash
-# ran on March 29 2026
+# ran heuristic/llm hybrid approach on March 29 2026
 ============================================================
 METASPLOIT WINDOWS EXPLOIT MODULE ANALYSIS
 ============================================================
@@ -67,4 +71,46 @@ Breakdown by access type:
   lateral_movement: 7
 [OUTPUT] Written: output/filtered_modules.json
 [OUTPUT] Written: output/analysis_summary.json
+```
+
+```bash
+# llm only approach on March 29 2026
+============================================================
+METASPLOIT WINDOWS EXPLOIT MODULE ANALYSIS
+============================================================
+[RESULT] Total Windows exploit modules: 1224
+[RESULT] VM-replicable (initial foothold): 709 (57.9%)
+[RESULT] NOT replicable: 515 (42.1%)
+
+Breakdown of non-replicable by category:
+  client_side: 503
+  unknown: 10
+  local_privesc: 2
+
+------------------------------------------------------------
+PLATFORM BREAKDOWN
+------------------------------------------------------------
+[PLATFORM] Windows-focused modules: 1200
+[PLATFORM] Linux-focused modules: 1
+[PLATFORM] Mixed/Other: 23
+
+============================================================
+ANALYSIS COMPLETE
+============================================================
+
+
+Breakdown by access type:
+  initial_foothold: 564
+  client_side: 503
+  privilege_escalation: 117
+  lateral_movement: 30
+  unsupported: 10
+
+Breakdown by provisioning complexity:
+  third_party_software: 1007
+  standard: 196
+  service_configuration: 21
+[OUTPUT] Written: output/filtered_modules.json
+[OUTPUT] Written: output/analysis_summary.json
+[CACHE] Saved 1224 entries to modules/filteredModules.json
 ```

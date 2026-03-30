@@ -275,22 +275,31 @@ function prepareModuleForLLM(metadata) {
     };
 }
 
-const LLM_SYSTEM_PROMPT = `You are a security lab engineer. For each Metasploit Windows exploit module, determine if it can achieve INITIAL REMOTE FOOTHOLD in a standard VM lab: attacker Kali VM targeting a Windows Server/Desktop VM over a network, with NO user interaction on the target. Respond ONLY with a valid JSON array. Schema: { "id": <same as input>, "replicable": true | false, "confidence": "high" | "medium" | "low", "reason": "<one sentence>", "access_type": "initial_foothold" | "privilege_escalation" | "lateral_movement" | "client_side" | "unsupported" } 
+const LLM_SYSTEM_PROMPT = `You are a security lab engineer. For each Metasploit Windows exploit module, determine if it can POTENTIALLY be reproduced in a VM lab environment. You are performing INITIAL filtering only - a downstream scenario builder will research software provisioning details. Respond ONLY with a valid JSON array. Schema: { "id": <same as input>, "replicable": true | false, "confidence": "high" | "medium" | "low", "reason": "<one sentence>", "access_type": "initial_foothold" | "privilege_escalation" | "lateral_movement" | "client_side" | "unsupported", "provisioning_complexity": "standard" | "third_party_software" | "service_configuration" }
 
-Mark replicable: true ONLY if ALL apply:
-- Targets a network service listening on Windows (SMB, RDP, HTTP, RPC, etc.)
-- Achieves initial remote code execution or shell WITHOUT valid credentials
-- Requires NO victim interaction (no clicking, opening files, visiting URLs)
-- Does NOT require third-party software uncommon on standard Windows VMs
+Mark replicable: true if ALL apply:
+- Targets Windows OS (not hardware/IoT/firmware/non-Windows)
+- Does NOT require victim interaction (no clicking, opening files, visiting URLs, initiating connections)
+- Can achieve remote code execution or shell over network (any attack stage)
 
-Mark replicable: false and set access_type accordingly:
+Mark replicable: false ONLY if:
+- "client_side": requires victim interaction (browser, file open, social engineering)
+- "unsupported": targets physical hardware, IoT, firmware, embedded/ICS/SCADA, non-Windows OS
+
+Set access_type:
+- "initial_foothold": achieves first remote access without credentials
 - "privilege_escalation": requires existing local access/session to escalate
-- "lateral_movement": requires valid credentials to move laterally (not initial foothold)
-- "client_side": requires victim interaction (browser visit, file open, social engineering)
-- "unsupported": targets hardware/IoT/firmware/physical/non-Windows
+- "lateral_movement": requires valid credentials to move between systems
+- "client_side": requires victim interaction
+- "unsupported": hardware/IoT/firmware/non-Windows
 
-Use confidence: "low" only for genuinely ambiguous cases. 
-Ignore modules not targeting Windows. 
+Set provisioning_complexity:
+- "standard": Built-in Windows service (SMB, RDP, HTTP, IIS, etc.)
+- "third_party_software": Requires installing additional software (Novell, SAP, SCADA, VPN, etc.)
+- "service_configuration": Requires enabling/configuring Windows features (RRAS, IIS roles, etc.)
+
+Use confidence: "low" only for genuinely ambiguous cases.
+Ignore modules not targeting Windows.
 No markdown, no explanation outside JSON.`;
 
 async function classifySingleWithLLM(module) {
@@ -357,6 +366,7 @@ async function classifyUncertainModulesWithLLM(uncertainModules, cache) {
             module.confidence = result.confidence;
             module.reason = result.reason;
             module.access_type = result.access_type;
+            module.provisioning_complexity = result.provisioning_complexity;
             module.exclusion_category = result.access_type === 'client_side' ? 'client_side' :  result.access_type === 'privilege_escalation' ? 'local_privesc' : null;
             
             cache.llm[module.msf_path] = module;  // ← Only cache successes
@@ -437,12 +447,12 @@ async function parseRubyFiles(rbFiles, cache) {
             metadata.service_category = deriveServiceCategory(filePath);
 
             if (LLM_ONLY_MODE) {
-                // Skip heuristic, send ALL to LLM
                 metadata.replicable = null;
                 metadata.confidence = 'pending';
                 metadata.reason = 'Pending LLM classification';
                 metadata.exclusion_category = null;
-                uncertainModules.push(metadata); // ALL modules go to LLM
+                metadata.provisioning_complexity = null;
+                uncertainModules.push(metadata);
             } else {
                 // Use heuristic classification
                 const classification = heuristicClassification(metadata);
@@ -522,7 +532,17 @@ function calculateAndLogStatistics(results) {
         console.log(`  ${type}: ${count}`);
     }
 
-    return { total, replicable: replicable.length, notReplicable: notReplicable.length, windowsCount, linuxCount, byCategory };
+    const byComplexity = {};
+    for (const mod of results) {
+        const complexity = mod.provisioning_complexity || 'unknown';
+        byComplexity[complexity] = (byComplexity[complexity] || 0) + 1;
+    }
+    console.log('\nBreakdown by provisioning complexity:');
+    for (const [complexity, count] of Object.entries(byComplexity).sort((a, b) => b[1] - a[1])) {
+        console.log(`  ${complexity}: ${count}`);
+    }
+
+    return { total, replicable: replicable.length, notReplicable: notReplicable.length, windowsCount, linuxCount, byCategory, byComplexity };
 }
 
 async function main() {
@@ -566,6 +586,7 @@ async function main() {
     await Bun.write(summaryPath, JSON.stringify({
         generated_at: new Date().toISOString(),
         statistics: stats,
+        provisioning_complexity: stats.byComplexity,
         llm_classification: {
             uncertain_modules_classified: LLM_API_KEY ? uncertainModules.length : 0,
             api_key_set: !!LLM_API_KEY

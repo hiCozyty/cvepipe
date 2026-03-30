@@ -1,21 +1,29 @@
 {
-  "generated_at": "2026-03-29T22:37:34.885Z",
+  "generated_at": "2026-03-30T00:19:06.860Z",
   "statistics": {
     "total": 1224,
-    "replicable": 438,
-    "notReplicable": 786,
+    "replicable": 709,
+    "notReplicable": 515,
     "windowsCount": 1200,
     "linuxCount": 1,
     "byCategory": {
-      "unknown": 176,
-      "client_side_fileformat": 254,
-      "client_side": 166,
-      "local_privesc": 126,
-      "client_side_browser": 64
+      "client_side": 503,
+      "unknown": 10,
+      "local_privesc": 2
+    },
+    "byComplexity": {
+      "standard": 196,
+      "service_configuration": 21,
+      "third_party_software": 1007
     }
   },
+  "provisioning_complexity": {
+    "standard": 196,
+    "service_configuration": 21,
+    "third_party_software": 1007
+  },
   "llm_classification": {
-    "uncertain_modules_classified": 405,
+    "uncertain_modules_classified": 1224,
     "api_key_set": true
   }
 }
