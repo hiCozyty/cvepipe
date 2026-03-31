@@ -1,5 +1,11 @@
 # cvepipe
 
+## Requirements
+- debian/ludus installed on a dedicated machine
+- NIST NVD api key
+- openAI-compatible endpoint credentials
+- download legacy windows ISOs (https://archive.org/download/english_windows_collection)
+
 To install dependencies:
 
 ```bash
