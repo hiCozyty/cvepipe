@@ -10,7 +10,7 @@ variable "os" {
 
 variable "iso_url" {
   type    = string
-  default = "./winISO/en_windows_10_enterprise_x64_1507.iso"
+  default = "/opt/winISO/en_windows_10_enterprise_x64_1507.iso"
 }
 
 variable "vm_cpu_cores" {

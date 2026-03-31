@@ -11,7 +11,7 @@ variable "os" {
 
 variable "iso_url" {
   type    = string
-  default = "./winISO/en_windows_11_enterprise_x64_21h2.iso"
+  default = "/opt/winISO/en_windows_11_enterprise_x64_21h2.iso"
 }
 
 variable "vm_cpu_cores" {
