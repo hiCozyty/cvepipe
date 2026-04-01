@@ -10,7 +10,7 @@ variable "os" {
 
 variable "iso_url" {
   type    = string
-  default = "/opt/winISO/en_windows_10_enterprise_x64_1507.iso"
+  default = "/opt/winISO/en_windows_10_enterprise_x64_1607.iso"
 }
 
 variable "vm_cpu_cores" {
@@ -30,7 +30,7 @@ variable "vm_memory" {
 
 variable "vm_name" {
   type    = string
-  default = "win10-1507-x64-enterprise-template"
+  default = "win10-1607-x64-enterprise-template"
 }
 
 variable "winrm_password" {
@@ -81,10 +81,10 @@ variable "ludus_nat_interface" {
 ####
 
 locals {
-  template_description = "Windows 10 1507 Enterprise 64-bit template built ${legacy_isotime("2006-01-02 03:04:05")} username:password => localuser:password"
+  template_description = "Windows 10 1607 Enterprise 64-bit template built ${legacy_isotime("2006-01-02 03:04:05")} username:password => localuser:password"
 }
 
-source "proxmox-iso" "win10-1507-x64-enterprise" {
+source "proxmox-iso" "win10-1607-x64-enterprise" {
   additional_iso_files {
     device           = "sata3"
     iso_storage_pool = "${var.iso_storage_pool}"
@@ -143,7 +143,7 @@ source "proxmox-iso" "win10-1507-x64-enterprise" {
 }
 
 build {
-  sources = ["source.proxmox-iso.win10-1507-x64-enterprise"]
+  sources = ["source.proxmox-iso.win10-1607-x64-enterprise"]
   
   provisioner "windows-shell" {
     scripts = ["scripts/disablewinupdate.bat"]

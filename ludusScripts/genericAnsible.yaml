@@ -1,0 +1,13 @@
+---
+- name: Windows test playbook
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+    - name: Run simple command
+      win_command: whoami
+
+    - name: Create a test file
+      win_copy:
+        content: "Ansible works!"
+        dest: C:\ansible_test.txt
