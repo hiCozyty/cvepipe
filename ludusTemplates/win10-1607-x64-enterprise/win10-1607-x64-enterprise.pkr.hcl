@@ -1,6 +1,6 @@
 variable "iso_checksum" {
   type    = string
-  default = "sha256:d3d0f475330dcc376cd9d80f08a0e0270c6f1de0e3ee39cf71925b5cfdcf96f9"
+  default = "sha256:a62a6334290ef240c51115bf0abe06e9afebb76e238f75ab365a0b3c111a84b3"
 }
 
 variable "os" {
