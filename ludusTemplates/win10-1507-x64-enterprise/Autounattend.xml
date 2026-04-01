@@ -160,7 +160,7 @@
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Order>2</Order>
-                    <CommandLine>powershell -NoProfile -ExecutionPolicy Bypass E:\setup-for-ansible.ps1</CommandLine>
+                    <CommandLine>powershell -NoProfile -ExecutionPolicy Bypass E:\setup-for-ansible.ps1 -SkipNetworkProfileCheck</CommandLine>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <Order>3</Order>
