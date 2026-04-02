@@ -1,6 +1,7 @@
 # cvepipe
 
 ## Requirements
+- docker (for local searXNG server)
 - uv (https://docs.astral.sh/uv/getting-started/installation/)
 - debian/ludus installed on a dedicated machine
 - NIST NVD api key
@@ -14,6 +15,7 @@ bun i
 uv init --python 3.12
 uv add ansible pywinrm
 uv sync
+cd ./searXNGDocker/ && docker compose up -d
 ```
 
 ## update `.env`
@@ -125,6 +127,16 @@ Breakdown by provisioning complexity:
 [CACHE] Saved 1224 entries to modules/filteredModules.json
 ```
 
+## Phase 2: Scenario Pre-Screening using LLM
+```bash
+bun run scenario/prescreen.js
+```
+
+
+## Phase 3: Agentic exploit validation loop
+
+
+
 #### RE: Windows 2012 R2 server 
 Install .NET Framework 4.8 (offline installer)
 Then install WMF 5.1 
@@ -138,3 +150,4 @@ net start wuauserv
 net start bits
 net start cryptsvc
 ```
+

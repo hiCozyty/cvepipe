@@ -1,0 +1,27 @@
+use_default_settings: true
+
+general:
+  instance_name: "Local SearXNG"
+  
+server:
+  limiter: false
+  
+search:
+  safe_search: 0
+  autocomplete: ""
+  formats:
+    - html
+    - json
+
+outgoing:
+  request_timeout: 3.0
+  enable_http2: true
+
+redis:
+  url: false
+
+engines:
+  - name: google
+    disabled: false
+  - name: duckduckgo
+    disabled: false
