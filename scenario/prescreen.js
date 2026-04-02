@@ -4,8 +4,11 @@
  * Exploit Prescreen: VM Reproducibility Research Agent
  * Filters exploits and performs agentic deep research via SearXNG + LLM
  * 
- * FOCUS: Find download links for vulnerable software versions only.
- * Control/patched version research removed due to edge-case complexity.
+ * FEATURES:
+ * - Summarizing layer for iterative context preservation
+ * - URL deduplication & normalization
+ * - Structured metadata extraction from Metasploit descriptions
+ * - Robust JSON parsing with fallbacks
  */
 
 import { $ } from 'bun';
@@ -50,27 +53,56 @@ async function rateLimitedDelay() {
 }
 
 // ============================================================================
-// Simple LLM Client
+// Helpers
 // ============================================================================
+
 function parseLLMJson(response) {
     try {
-        // Remove markdown code fences if present
         const cleaned = response.replace(/```json?\n?/g, '').replace(/```\s*$/g, '').trim();
         return JSON.parse(cleaned);
     } catch (e) {
-        console.warn(`[JSON_PARSE] First attempt failed: ${e.message}`);
-        
-        // Try 2: Remove trailing commas (common LLM mistake)
         try {
-            const noTrailingComma = response.replace(/,\s*([\]}])/g, '$1');
-            const cleaned = noTrailingComma.replace(/```json?\n?/g, '').replace(/```\s*$/g, '').trim();
-            return JSON.parse(cleaned);
-        } catch (e2) {
-            console.warn(`[JSON_PARSE] Second attempt failed: ${e2.message}`);
+            // Fix trailing commas
+            const fixed = response.replace(/,\s*([\]}])/g, '$1').replace(/```json?\n?/g, '').replace(/```\s*$/g, '').trim();
+            return JSON.parse(fixed);
+        } catch {
             return null;
         }
     }
 }
+
+function normalizeUrl(url) {
+    if (!url) return '';
+    return url.replace(/\/$/, '').split('?')[0].replace(/#.*$/, '').toLowerCase();
+}
+
+function extractProductMetadata(exploit) {
+    const desc = exploit.description || "";
+    const vendorMatch = desc.match(/by ([A-Z][a-zA-Z0-9\- ]+)/);
+    const versionMatch = desc.match(/Tested against ([\d.]+)/);
+    const productMatch = desc.match(/utilizes the ([^,]+)'s/);
+    
+    return {
+        vendor: vendorMatch ? vendorMatch[1].trim() : null,
+        product: productMatch ? productMatch[1].trim() : null,
+        testedVersion: versionMatch ? versionMatch[1] : null,
+        platform: exploit.platform?.[0] || "unknown",
+        arch: exploit.arch || []
+    };
+}
+
+// Summarizing layer: condenses findings for next iteration
+function summarizeFindings(query, findings) {
+    if (!findings?.downloadUrls?.length) return `Query: "${query}" → 0 links found`;
+    
+    const ver = findings.inferredVersion || "unknown";
+    const urls = findings.downloadUrls.slice(0, 2).join(", ");
+    const notes = findings.notes ? findings.notes.slice(0, 120) : "";
+    const warnings = findings.urlWarnings?.join("; ") || "";
+    
+    return `Query: "${query}" → v${ver} (${findings.downloadUrls.length} links) | URLs: ${urls} | ${notes}${warnings ? ` ⚠️ ${warnings}` : ""}`;
+}
+
 function createLLMClient() {
     if (!LLM_API_KEY) throw new Error('LLM_API_KEY or NVIDIA_NIM_API_KEY environment variable is not set');
     return new OpenAI({
@@ -95,16 +127,9 @@ async function callLLM(messages, { temperature = LLM_TEMPERATURE, max_tokens = L
     });
 }
 
-// ============================================================================
-// SearXNG Helper
-// ============================================================================
-
 function sanitizeSnippet(text) {
     if (!text) return "";
-    return text
-        .replace(/<[^>]*>/gm, '')
-        .replace(/\s+/g, ' ')
-        .trim();
+    return text.replace(/<[^>]*>/gm, '').replace(/\s+/g, ' ').trim();
 }
 
 async function searchSearXNG(query, config = {}) {
@@ -117,7 +142,7 @@ async function searchSearXNG(query, config = {}) {
         const data = await response.json();
         
         return (data.results || [])
-            .filter(r => r.content && r.content.length > 20)  // Relaxed for blog/forum recall
+            .filter(r => r.content && r.content.length > 20)
             .slice(0, RESULTS_PER_SEARCH)
             .map(r => ({
                 title: sanitizeSnippet(r.title),
@@ -130,13 +155,8 @@ async function searchSearXNG(query, config = {}) {
     }
 }
 
-// ============================================================================
-// Article Text Extraction
-// ============================================================================
-
 async function extractArticleText(url) {
     if (!url) return "";
-    
     try {
         const response = await fetch(url, {
             headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0' }
@@ -144,27 +164,18 @@ async function extractArticleText(url) {
         const html = await response.text();
         
         const virtualConsole = new VirtualConsole();
-        virtualConsole.on("error", () => { /* Skip parsing noise */ });
+        virtualConsole.on("error", () => {});
         
         const dom = new JSDOM(html, { url, virtualConsole });
         const reader = new Readability(dom.window.document);
         const article = reader.parse();
         
-        if (!article || !article.textContent) return "";
-        
-        return article.textContent
-            .replace(/\n\s*\n/g, '\n')
-            .replace(/[ \t]+/g, ' ')
-            .trim();
+        return article?.textContent?.replace(/\n\s*\n/g, '\n').replace(/[ \t]+/g, ' ').trim() || "";
     } catch (error) {
         console.warn(`[EXTRACT] Could not scrape ${url}: ${error.message}`);
         return "";
     }
 }
-
-// ============================================================================
-// Source Credibility Scoring
-// ============================================================================
 
 function scoreDownloadSource(url) {
     const tiers = {
@@ -180,23 +191,19 @@ function scoreDownloadSource(url) {
     return 'unverified';
 }
 
-// ============================================================================
-// URL Validation Helper
-// ============================================================================
-
 function validateDownloadUrl(url, version) {
     const warnings = [];
-    
-    // Flag dynamic redirectors that may require browser/cookies
     if (/redirect|dyn-|download\.php|click\.php|postdq\.php/i.test(url)) {
         warnings.push("URL is a redirector; may require browser/cookies");
     }
-    
+    if (/\.(apk|ipa|bin|img|tar\.gz)$/i.test(url) || /android|ios|firmware|routeros/i.test(url)) {
+        warnings.push("Non-Windows platform detected; likely wrong binary");
+    }
     return warnings;
 }
 
 // ============================================================================
-// Main Prescreen Entry Point
+// Main Entry
 // ============================================================================
 
 export async function prescreenExploits(exploits, options = {}) {
@@ -206,16 +213,12 @@ export async function prescreenExploits(exploits, options = {}) {
         searxngTimeout: options.searxngTimeout || SEARXNG_TIMEOUT
     };
     
-    // Filter: only replicable initial_foothold exploits
-    const candidates = exploits.filter(e => 
-        e.replicable === true && e.access_type === 'initial_foothold'
-    );
-    
+    const candidates = exploits.filter(e => e.replicable === true && e.access_type === 'initial_foothold');
     console.log(`🎯 Prescreening ${candidates.length}/${exploits.length} exploits for VM reproducibility...`);
     
     for (const exploit of candidates) {
         try {
-            console.log(`🔍 Researching: ${exploit.name}`);
+            console.log(`🔍 Researching: ${exploit.name || 'unknown'}`);
             const research = await analyzeExploitReproducibility(exploit, config);
             results.push(research);
             
@@ -227,41 +230,35 @@ export async function prescreenExploits(exploits, options = {}) {
                 );
             }
         } catch (error) {
-            console.error(`❌ Failed to research ${exploit.name}: ${error.message}`);
+            console.error(`❌ Failed to research ${exploit.name || 'unknown'}: ${error.message}`);
             results.push({
-                exploitName: exploit.name,
-                msfPath: exploit.msf_path,
+                exploitName: exploit.name || 'unknown',
+                msfPath: exploit.msf_path || 'unknown',
                 status: 'error',
                 error: error.message,
                 timestamp: new Date().toISOString()
             });
         }
     }
-    
     return results;
 }
 
 // ============================================================================
-// Agentic Research Loop (Per Exploit) - SINGLE PHASE: Vulnerable Version Only
+// Research Loop
 // ============================================================================
 
 async function analyzeExploitReproducibility(exploit, config, maxDepth = MAX_RESEARCH_DEPTH) {
+    const metadata = extractProductMetadata(exploit);
+    const disclosureDate = exploit.disclosed || "unknown";
+    
     const context = {
-        exploit: {
-            name: exploit.name,
-            description: exploit.description,
-            msf_path: exploit.msf_path,
-            provisioning_complexity: exploit.provisioning_complexity,
-            disclosed: exploit.disclosed
-        },
+        exploit: { ...exploit, metadata, disclosureDate }, 
         knowledgeBase: [],
         searchedQueries: new Set(),
         analyzedUrls: new Set()
     };
     
-    // Research vulnerable version downloads (≤ disclosure date)
-    const disclosureDate = exploit.disclosed || "unknown";
-    console.log(`  🎯 Finding vulnerable version downloads (≤ ${disclosureDate})`);
+    console.log(`  🎯 Finding vulnerable version downloads (≤ ${disclosureDate}) | Target: ${metadata.vendor || 'unknown'} / ${metadata.testedVersion || 'unknown'}`);
     
     let depth = 0;
     let isComplete = false;
@@ -269,99 +266,94 @@ async function analyzeExploitReproducibility(exploit, config, maxDepth = MAX_RES
     while (!isComplete && depth < maxDepth) {
         const queryPlan = await generateVulnerableQueries(context, depth);
         
-        if (queryPlan.isComplete) {
-            isComplete = true;
-            break;
-        }
-        
-        for (const query of queryPlan.queries) {
-            if (context.searchedQueries.has(query)) continue;
-            context.searchedQueries.add(query);
-            
-            try {
-                const rawResults = await searchSearXNG(query, config);
-                if (!rawResults.length) continue;
+        if (queryPlan.isComplete) isComplete = true;
+        else {
+            for (const query of queryPlan.queries) {
+                if (context.searchedQueries.has(query)) continue;
+                context.searchedQueries.add(query);
                 
-                const enrichedResults = await Promise.all(
-                    rawResults.slice(0, EXTRACT_TOP_N).map(async (res) => {
-                        try {
-                            const fullText = await extractArticleText(res.url);
-                            return { ...res, fullText: fullText?.length > MIN_ARTICLE_LENGTH ? fullText : null };
-                        } catch {
-                            return { ...res, fullText: null };
-                        }
-                    })
-                );
-                
-                const validResults = enrichedResults.filter(r => r.fullText);
-                const newResults = validResults.filter(r => {
-                    if (context.analyzedUrls.has(r.url)) return false;
-                    context.analyzedUrls.add(r.url);
-                    return true;
-                });
-                if (!newResults.length) continue;  // Nothing new to analyze
-
-                const distilled = await distillVulnerableLinks(validResults, exploit, query, disclosureDate);
-                if (distilled?.downloadUrls?.length > 0) {
-                    context.knowledgeBase.push({
-                        query,
-                        sources: validResults.map(r => ({ url: r.url, title: r.title })),
-                        findings: distilled
+                try {
+                    const rawResults = await searchSearXNG(query, config);
+                    if (!rawResults.length) continue;
+                    
+                    const enrichedResults = await Promise.all(
+                        rawResults.slice(0, EXTRACT_TOP_N).map(async (res) => {
+                            try {
+                                const fullText = await extractArticleText(res.url);
+                                return { ...res, fullText: fullText?.length > MIN_ARTICLE_LENGTH ? fullText : null };
+                            } catch { return { ...res, fullText: null }; }
+                        })
+                    );
+                    
+                    const validResults = enrichedResults.filter(r => r.fullText);
+                    const newResults = validResults.filter(r => {
+                        if (context.analyzedUrls.has(normalizeUrl(r.url))) return false;
+                        context.analyzedUrls.add(normalizeUrl(r.url));
+                        return true;
                     });
+                    
+                    if (!newResults.length) continue;
+                    
+                    const distilled = await distillVulnerableLinks(newResults, exploit, query, disclosureDate, metadata);
+                    if (distilled?.downloadUrls?.length > 0) {
+                        const summary = summarizeFindings(query, distilled);
+                        context.knowledgeBase.push({ query, findings: distilled, summary });
+                    }
+                } catch (err) {
+                    console.warn(`[QUERY] Failed "${query}": ${err.message}`);
                 }
-            } catch (err) {
-                console.warn(`[QUERY] Failed "${query}": ${err.message}`);
             }
+            depth++;
+            console.log(`🔄 Iteration ${depth}/${maxDepth} complete for ${exploit.name}`);
         }
-        depth++;
-        console.log(`🔄 Iteration ${depth}/${maxDepth} complete for ${exploit.name}`);
     }
     
-    // Aggregate results and synthesize final report
     const vulnerableSoftware = aggregateVulnerableResults(context.knowledgeBase, exploit, disclosureDate);
     return synthesizeFinalReport(exploit, vulnerableSoftware);
 }
 
 // ============================================================================
-// Query Generation: Find Vulnerable Version Downloads
+// Query Generation
 // ============================================================================
 
 async function generateVulnerableQueries(context, iteration) {
-    // FIX: Correct destructuring - knowledgeBase is at context level, not context.exploit
-    const exploit = context.exploit;
-    const knowledgeBase = context.knowledgeBase;
-    const disclosed = exploit.disclosed;
-    
-    const previousFindings = knowledgeBase.map(k => 
-        `• ${k.query}: found ${k.findings?.downloadUrls?.length || 0} links`
+    const { exploit, knowledgeBase } = context;
+    const { metadata, disclosureDate } = exploit;  
+        
+    // Build rich, compact context from previous iterations
+    const historyCap = 4;
+    const recentHistory = knowledgeBase.slice(-historyCap).map((k, i) => 
+        `[${i + knowledgeBase.length - Math.min(knowledgeBase.length, historyCap) + 1}] ${k.summary}`
     ).join('\n');
+    
+    const totalCount = knowledgeBase.reduce((s, k) => s + (k.findings?.downloadUrls?.length || 0), 0);
+    const contextHeader = `📊 PROGRESS: ${totalCount} total links found across ${knowledgeBase.length} iterations.\n\nRECENT FINDINGS:\n${recentHistory || 'None yet.'}`;
     
     const prompt = `You are researching DOWNLOAD LINKS for the VULNERABLE version of this software.
 
-EXPLOIT: ${exploit}
-MODULE: ${exploit.msf_path}
-DISCLOSURE DATE: ${disclosed}
+PRODUCT METADATA (from Metasploit):
+- Vendor: ${metadata.vendor || 'unknown'}
+- Product: ${metadata.product || 'unknown'}
+- Tested Version: ${metadata.testedVersion || 'unknown'}
+- Platform: ${metadata.platform} (${metadata.arch.join(', ')})
+- Disclosure Date: ${disclosureDate}
 
-GOAL: Find at least 3 download links for the vulnerable version (released ON OR BEFORE ${disclosed}).
+${contextHeader}
 
-PREVIOUS RESULTS:
-${previousFindings || 'None yet.'}
+YOUR TASK:
+Generate 1-3 NEW search queries to find download links for the vulnerable version (≤ ${disclosureDate}).
+DO NOT repeat queries or target versions/URLs already found above.
 
 SEARCH STRATEGY:
-- Focus on sources from 6 months BEFORE to disclosure date: ${disclosed}
-- Search vendor archives, archive.org, blogs, forums, mirrors, exploit-db, softpedia, oldversion.com
-- Use date-range queries: "software download 2022", "setup.exe september 2022"
-- Look for versioned filenames: "SoftwareName_3.6.0.4.exe"
-
-QUERY GUIDELINES:
-- Be specific: "SoftwareName 3.6.0.4 download site:archive.org 2022"
-- Max 8 words per query
-- Target: archive.org, vendor archives, mirrors, blogs, forums, software directories
+- Focus on vendor sites, archive.org, mirrors, blogs, software directories
+- Use date ranges: "software download 2020..2022", "setup.exe 2022"
+- Look for exact filenames: "${metadata.product || 'Software'}Setup_${metadata.testedVersion || 'X.Y.Z'}.exe"
+- EXCLUDE: .apk, .ipa, firmware, Linux packages, Android/iOS apps
 
 Respond with VALID JSON ONLY:
 {
   "isComplete": boolean,
-  "reasoning": "1 sentence on progress",
+  "reasoning": "1 sentence on why we have enough info OR need more",
   "queries": ["query1", "query2"]
 }`;
 
@@ -372,16 +364,14 @@ Respond with VALID JSON ONLY:
         ], { temperature: 0.1 });
         
         const parsed = parseLLMJson(response);
-
         if (!parsed || !Array.isArray(parsed.queries)) {
-            console.warn(`[QUERY_GEN] Invalid response structure`);
             return { isComplete: iteration >= 4, reasoning: 'Fallback', queries: [] };
         }
-
+        
         return {
             isComplete: parsed.isComplete === true,
             reasoning: parsed.reasoning || '',
-            queries: Array.isArray(parsed.queries) ? parsed.queries.slice(0, 3) : []
+            queries: parsed.queries.slice(0, 3)
         };
     } catch (e) {
         console.warn(`[QUERY_GEN] Failed: ${e.message}`);
@@ -390,39 +380,38 @@ Respond with VALID JSON ONLY:
 }
 
 // ============================================================================
-// Intel Distillation: Extract Download Links
+// Distillation
 // ============================================================================
 
-async function distillVulnerableLinks(results, exploit, query, disclosureDate) {
+async function distillVulnerableLinks(results, exploit, query, disclosureDate, metadata) {
     const contentBlocks = results.map((r, i) => 
-        `SOURCE ${i+1} [${r.url}]:\n${(r.fullText || '').slice(0, 16000)}\n---`
+        `SOURCE ${i+1} [${r.url}]:\n${(r.fullText || '').slice(0, 20000)}\n---`
     ).join('\n\n');
 
     const prompt = `Extract DOWNLOAD LINKS for the VULNERABLE version of this software.
 
-EXPLOIT: ${exploit}
-DISCLOSURE DATE: ${disclosureDate}
-SEARCH QUERY: "${query}"
+TARGET METADATA:
+- Vendor: ${metadata.vendor || 'unknown'}
+- Target Version: ${metadata.testedVersion || 'unknown'}
+- Platform: ${metadata.platform}
+- Disclosure Date: ${disclosureDate}
 
 CONTENT:
 ${contentBlocks}
 
 EXTRACT:
 ✅ Find AT LEAST 3 download URLs for the vulnerable version (≤ ${disclosureDate})
-✅ For each URL, infer version from filename or page text
+✅ Infer version from filename, page text, or changelog
 ✅ Note if URL is direct download or redirector
-✅ Prioritize links with timestamps near or before ${disclosureDate}
-
-IGNORE:
-- Generic blog posts without download links
-- Patched version discussions (we only want vulnerable version downloads)
+✅ EXCLUDE non-Windows binaries (.apk, .ipa, firmware, Linux)
+✅ Flag vendor/version mismatches
 
 Respond with VALID JSON:
 {
   "downloadUrls": ["https://link1", "https://link2", "https://link3"],
-  "inferredVersion": "3.6.0.4 or 'unknown'",
+  "inferredVersion": "3.1.1.12 or 'unknown'",
   "versionEvidence": "filename match | page text | changelog | unknown",
-  "notes": "optional context about links"
+  "notes": "optional context (keep under 150 chars)"
 }`;
 
     try {
@@ -432,11 +421,7 @@ Respond with VALID JSON:
         ], { temperature: 0 });
         
         const parsed = parseLLMJson(response);
-        if (!parsed || !Array.isArray(parsed.downloadUrls)) {
-            console.warn(`[DISTILL] Invalid response structure`);
-            return null;
-        }
-
+        if (!parsed || !Array.isArray(parsed.downloadUrls)) return null;
         return parsed;
     } catch (e) {
         console.warn(`[DISTILL] Failed: ${e.message}`);
@@ -445,7 +430,7 @@ Respond with VALID JSON:
 }
 
 // ============================================================================
-// Aggregation: Combine All Found Links
+// Aggregation
 // ============================================================================
 
 function aggregateVulnerableResults(knowledgeBase, exploit, disclosureDate) {
@@ -453,27 +438,24 @@ function aggregateVulnerableResults(knowledgeBase, exploit, disclosureDate) {
     let inferredVersion = "unknown";
     let versionEvidence = "unknown";
     let notes = [];
+    let urlWarnings = [];
     
     for (const kb of knowledgeBase) {
         if (kb.findings?.downloadUrls) {
-            for (const url of kb.findings.downloadUrls) {
-                allUrls.add(url);
-            }
+            for (const url of kb.findings.downloadUrls) allUrls.add(url);
         }
         if (kb.findings?.inferredVersion && kb.findings.inferredVersion !== "unknown") {
             inferredVersion = kb.findings.inferredVersion;
             versionEvidence = kb.findings.versionEvidence;
         }
-        if (kb.findings?.notes) {
-            notes.push(kb.findings.notes);
-        }
+        if (kb.findings?.notes) notes.push(kb.findings.notes);
     }
     
     const downloadUrls = Array.from(allUrls).slice(0, 5);
     const downloadUrlPrimary = selectPrimaryUrl(downloadUrls);
     
     return {
-        name: (exploit.name || exploit).toString().trim(),
+        name: exploit.name || 'unknown',
         version: inferredVersion,
         vulnerable: true,
         downloadUrls,
@@ -484,98 +466,74 @@ function aggregateVulnerableResults(knowledgeBase, exploit, disclosureDate) {
             confidence: downloadUrls.length >= 3 ? "high" : downloadUrls.length >= 1 ? "medium" : "low",
             evidence: versionEvidence
         },
-        notes: notes.slice(0, 3).join('; '),  // Limit notes length
+        notes: notes.slice(0, 3).join('; '),
         urlWarnings: downloadUrls.flatMap(url => validateDownloadUrl(url, inferredVersion)),
         sourceCredibility: downloadUrlPrimary ? scoreDownloadSource(downloadUrlPrimary) : "unknown"
     };
 }
 
-// ============================================================================
-// Helper: Select Primary Download URL
-// ============================================================================
-
 function selectPrimaryUrl(urls) {
-    if (!urls || urls.length === 0) return null;
-    
-    // Priority: archive.org direct > github releases > vendor direct > mirrors
-    const hasDirectArchive = urls.find(url => 
-        url.includes('archive.org/download') && !url.includes('web/')
-    );
-    if (hasDirectArchive) return hasDirectArchive;
-    
-    const hasGithubRelease = urls.find(url => 
-        url.includes('github.com') && (url.includes('/releases/download/') || url.endsWith('.exe') || url.endsWith('.zip'))
-    );
-    if (hasGithubRelease) return hasGithubRelease;
-    
-    const hasDirectVendor = urls.find(url => 
-        /vendor\.com|\.com\/downloads\/|\.com\/download\//i.test(url) && !/redirect|dyn-|php/i.test(url)
-    );
-    if (hasDirectVendor) return hasDirectVendor;
-    
+    if (!urls?.length) return null;
+    if (urls.find(u => u.includes('archive.org/download') && !u.includes('web/'))) {
+        return urls.find(u => u.includes('archive.org/download'));
+    }
+    if (urls.find(u => u.includes('github.com') && (u.includes('/releases/') || /\.(exe|msi|zip)$/i.test(u)))) {
+        return urls.find(u => u.includes('github.com'));
+    }
+    if (urls.find(u => /vendor\.com|\.com\/downloads\//i.test(u) && !/redirect|php/i.test(u))) {
+        return urls.find(u => /vendor\.com|\.com\/downloads\//i.test(u));
+    }
     return urls[0];
 }
 
 // ============================================================================
-// Final Synthesis: Ansible-Ready Report
+// Final Synthesis
 // ============================================================================
 
 function synthesizeFinalReport(exploit, vulnerableSoftware) {
     const riskFlags = [];
+    if (vulnerableSoftware.downloadUrls.length === 0) riskFlags.push("No download links found for vulnerable version");
+    if (vulnerableSoftware.urlWarnings?.length > 0) riskFlags.push(...vulnerableSoftware.urlWarnings);
+    if (vulnerableSoftware.version === "unknown") riskFlags.push("Version could not be inferred from available sources");
     
-    // Add risk flags
-    if (vulnerableSoftware.downloadUrls.length === 0) {
-        riskFlags.push("No download links found for vulnerable version");
-    }
-    if (vulnerableSoftware.urlWarnings?.length > 0) {
-        riskFlags.push(...vulnerableSoftware.urlWarnings);
-    }
-    if (vulnerableSoftware.version === "unknown") {
-        riskFlags.push("Version could not be inferred from available sources");
-    }
-    
-    // Determine reproducibility verdict
     const hasLinks = vulnerableSoftware.downloadUrls.length >= 1;
     const hasGoodLinks = vulnerableSoftware.downloadUrls.length >= 3 && vulnerableSoftware.sourceCredibility !== "low";
     
     let verdict, confidence, rationale;
     if (hasGoodLinks) {
-        verdict = "yes";
-        confidence = "high";
+        verdict = "yes"; confidence = "high";
         rationale = "Found 3+ credible download links for vulnerable version";
     } else if (hasLinks) {
         verdict = "partial";
         confidence = vulnerableSoftware.sourceCredibility === "high" ? "medium" : "low";
         rationale = `Found ${vulnerableSoftware.downloadUrls.length} link(s); credibility: ${vulnerableSoftware.sourceCredibility}`;
     } else {
-        verdict = "no";
-        confidence = "medium";
+        verdict = "no"; confidence = "medium";
         rationale = "Could not find reliable download links for vulnerable version";
     }
     
     return {
-        exploitName: exploit.name || exploit,  // Handle both string and object
-        // FIX: Use exploit.msf_path directly (context is not in scope here)
+        exploitName: exploit.name || exploit,
         msfPath: exploit.msf_path,
         reproducibility: { verdict, confidence, rationale },
         minimumSetup: {
-            os: determineRequiredOS(exploit),
+            os: exploit.description?.toLowerCase().includes('xp') || exploit.description?.toLowerCase().includes('2003') 
+                ? ["Windows 7 SP1 32-bit", "Windows Server 2003 R2 32-bit"] 
+                : ["Windows Server 2016", "Windows Server 2019", "Windows Server 2022", "Windows 10", "Windows 11"],
             vulnerableSoftware,
             networkConfig: "NAT or bridged; allow inbound port for target service",
             privileges: "Local Administrator for install; service may run as LocalSystem"
         },
         automationBlueprint: {
-            installSteps: generateInstallSteps(vulnerableSoftware),
+            installSteps: vulnerableSoftware.downloadUrlPrimary ? [
+                `Download ${vulnerableSoftware.downloadUrlPrimary} to %TEMP%\\${vulnerableSoftware.downloadUrlPrimary.split('/').pop() || 'installer.exe'}`,
+                `Start-Process -Wait -FilePath %TEMP%\\${vulnerableSoftware.downloadUrlPrimary.split('/').pop()} -Args '/S'`,
+                `Verify install path in vendor docs or registry`
+            ] : ["ERROR: No primary download URL available"],
             configSteps: ["Verify service is running and listening on expected port"],
-            testSteps: [
-                "Snapshot VM after install",
-                "Run exploit → expect SUCCESS",
-                "Document any deviations from expected behavior"
-            ],
+            testSteps: ["Snapshot VM after install", "Run exploit → expect SUCCESS", "Document deviations"],
             testCommand: `msfconsole -q -x 'use ${exploit.msf_path}; set RHOSTS <target>; exploit'`,
-            expectedResults: {
-                success: "Exploit succeeds; session opened or service crashes"
-            },
+            expectedResults: { success: "Exploit succeeds; session opened or service crashes" },
             rollbackNotes: "Revert to pre-install VM snapshot"
         },
         riskFlags,
@@ -587,30 +545,6 @@ function synthesizeFinalReport(exploit, vulnerableSoftware) {
             versionConfidence: vulnerableSoftware.versionInference.confidence
         }
     };
-}
-
-// ============================================================================
-// Helpers: OS Detection & Install Steps
-// ============================================================================
-
-function determineRequiredOS(exploit) {
-    const desc = (exploit.description || "").toLowerCase();
-    if (desc.includes('xp') || desc.includes('2003') || desc.includes('32-bit') || desc.includes('windows 7')) {
-        return ["Windows 7 SP1 32-bit", "Windows Server 2003 R2 32-bit"];
-    }
-    return ["Windows Server 2016", "Windows Server 2019", "Windows Server 2022", "Windows 10", "Windows 11"];
-}
-
-function generateInstallSteps(software) {
-    if (!software.downloadUrlPrimary) {
-        return ["ERROR: No primary download URL available"];
-    }
-    const filename = software.downloadUrlPrimary.split('/').pop() || "installer.exe";
-    return [
-        `Download ${software.downloadUrlPrimary} to %TEMP%\\${filename}`,
-        `Start-Process -Wait -FilePath %TEMP%\\${filename} -Args '/S'`,
-        `Verify install: Test-Path 'C:\\Program Files\\${software.name}\\${software.name}.exe'`
-    ];
 }
 
 // ============================================================================
@@ -635,7 +569,6 @@ async function main() {
     
     console.log(`📥 Loading exploits from ${INPUT_FILE}...`);
     const inputFile = Bun.file(INPUT_FILE);
-    
     if (!(await inputFile.exists())) {
         console.error(`❌ File not found: ${INPUT_FILE}`);
         process.exit(1);
@@ -653,8 +586,6 @@ async function main() {
     });
     
     const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-    
-    // Summary stats
     const completed = results.filter(r => r.status === 'complete').length;
     const errors = results.filter(r => r.status !== 'complete').length;
     const yesVerdict = results.filter(r => r.reproducibility?.verdict === 'yes').length;
@@ -669,12 +600,10 @@ async function main() {
     console.log(`⚠️  Partially reproducible: ${partialVerdict}`);
     console.log(`⏱️  Elapsed: ${elapsed}s\n`);
     
-    // Save results
     await $`mkdir -p ./output`;
     await Bun.write(OUTPUT_FILE, JSON.stringify(results, null, 2));
     console.log(`💾 Results saved to ${OUTPUT_FILE}`);
     
-    // Print top candidates
     const ansibleReady = results.filter(r => 
         r.status === 'complete' && 
         (r.reproducibility?.verdict === 'yes' || r.reproducibility?.verdict === 'partial')

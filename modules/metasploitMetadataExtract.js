@@ -15,7 +15,7 @@ import { OpenAI } from 'openai';
 const METASPLOIT_DIR = './metasploit-framework';
 const OUTPUT_DIR = './output';
 const BATCH_SIZE = 5; // batch caching
-const CLEAR_CACHE = false;
+const CLEAR_CACHE = true;
 const LLM_ONLY_MODE = true; // (set true to bypass heuristics, send ALL to LLM)
 const CACHE_DIR = './modules'; // New directory for cache
 const CACHE_FILE_PATH = path.join(CACHE_DIR, 'filteredModules.json'); // New cache file
@@ -265,6 +265,7 @@ function createLLMClient() {
 
 function prepareModuleForLLM(metadata) {
     return {
+        id: metadata.msf_path,  
         msf_path: metadata.msf_path,
         name: metadata.name,
         service_category: metadata.service_category, // now correctly populated
@@ -277,6 +278,25 @@ function prepareModuleForLLM(metadata) {
 
 const LLM_SYSTEM_PROMPT = `You are a security lab engineer. For each Metasploit Windows exploit module, determine if it can POTENTIALLY be reproduced in a VM lab environment. You are performing INITIAL filtering only - a downstream scenario builder will research software provisioning details. Respond ONLY with a valid JSON array. Schema: { "id": <same as input>, "replicable": true | false, "confidence": "high" | "medium" | "low", "reason": "<one sentence>", "access_type": "initial_foothold" | "privilege_escalation" | "lateral_movement" | "client_side" | "unsupported", "provisioning_complexity": "standard" | "third_party_software" | "service_configuration" }
 
+### OUTPUT SCHEMA
+Each object must contain:
+{
+  "id": <same as input index>,
+  "replicable": true | false,
+  "confidence": "high" | "medium" | "low",
+  "reason": "<one sentence>",
+  "access_type": "initial_foothold" | "privilege_escalation" | "lateral_movement" | "client_side" | "unsupported",
+  "provisioning_complexity": "standard" | "third_party_software" | "service_configuration",
+  "extracted_metadata": {
+    "vendor": "string or null",
+    "product": "string or null", 
+    "tested_version": "string or null",
+    "protocol_hint": "string or null (e.g., 'UDP/1926', 'TCP/8192')",
+    "platform_notes": "string or null (e.g., 'Windows 7-10', 'Server 2012-2022')"
+  }
+}
+
+### CLASSIFICATION RULES
 Mark replicable: true if ALL apply:
 - Targets Windows OS (not hardware/IoT/firmware/non-Windows)
 - Does NOT require victim interaction (no clicking, opening files, visiting URLs, initiating connections)
@@ -298,6 +318,17 @@ Set provisioning_complexity:
 - "third_party_software": Requires installing additional software (Novell, SAP, SCADA, VPN, etc.)
 - "service_configuration": Requires enabling/configuring Windows features (RRAS, IIS roles, etc.)
 
+
+### METADATA EXTRACTION RULES
+For extracted_metadata fields, extract from description ONLY if explicitly stated:
+- vendor: Look for "by <Vendor>", "from <Vendor>", "developed by <Vendor>"
+- product: Look for "the <Product> server/service", "utilizes <Product>", "targets <Product>"
+- tested_version: Look for "Tested against <X.Y.Z>", "version <X.Y.Z>", "v<X.Y.Z>"
+- protocol_hint: Look for port numbers, "UDP/TCP <port>", "binds to <port>"
+- platform_notes: Look for OS version ranges like "Windows 7-10", "Server 2012-2022"
+
+If a field cannot be confidently extracted, set it to null. Do NOT hallucinate values.
+
 Use confidence: "low" only for genuinely ambiguous cases.
 Ignore modules not targeting Windows.
 No markdown, no explanation outside JSON.`;
@@ -305,8 +336,6 @@ No markdown, no explanation outside JSON.`;
 async function classifySingleWithLLM(module) {
     const client = createLLMClient();
     const input = prepareModuleForLLM(module);
-
-    console.log(`[LLM] Input: ${JSON.stringify(input, null, 2)}`);
 
     await rateLimitedDelay();
     try {
@@ -320,67 +349,115 @@ async function classifySingleWithLLM(module) {
         });
 
         const content = response.choices[0].message.content;
-        console.log(`[LLM] Raw response: ${content}`);
-
         const result = JSON.parse(content);
 
-        if (Array.isArray(result)) return result;
-        if (result.modules && Array.isArray(result.modules)) return result.modules;
-        if (result.results && Array.isArray(result.results)) return result.results;
-        if (result.classifications && Array.isArray(result.classifications)) return result.classifications;
-        if (typeof result.replicable !== 'undefined') return [{ ...result, id: 0 }];
+        // Handle array or single-object responses
+        const results = Array.isArray(result) ? result : 
+                       result.modules || result.results || result.classifications || 
+                       (typeof result.replicable !== 'undefined' ? [{ ...result, id: input.id }] : []);
 
-        throw new Error(`Unexpected LLM response format. Keys: ${Object.keys(result).join(', ')}`);
+        // Merge extracted_metadata into each result
+        return results.map(r => {
+            const base = {
+                msf_path: input.msf_path,
+                name: input.name,
+                service_category: input.service_category,
+                description: input.description,
+                platform: input.platform,
+                arch: input.arch,
+                cves: input.cves,
+                edb_ids: [],  // Preserve from original metadata if needed
+                port: input.port,
+                targets: input.targets,
+                disclosed: null,  // Preserve from original if needed
+                file_path: input.file_path || null,
+                // Classification fields
+                replicable: r.replicable,
+                confidence: r.confidence,
+                reason: r.reason,
+                access_type: r.access_type,
+                provisioning_complexity: r.provisioning_complexity,
+                exclusion_category: r.access_type === 'client_side' ? 'client_side' : 
+                                   r.access_type === 'privilege_escalation' ? 'local_privesc' : null,
+                // ← NEW: Extracted metadata
+                extracted_metadata: r.extracted_metadata || {
+                    vendor: null,
+                    product: null,
+                    tested_version: null,
+                    protocol_hint: null,
+                    platform_notes: null
+                }
+            };
+            return base;
+        });
+
     } catch (error) {
         console.error(`[LLM] Classification failed for ${module.msf_path}: ${error.message}`);
         return [{
-            id: 0,
+            msf_path: module.msf_path,
+            name: module.name,
+            service_category: module.service_category,
+            description: module.description,
+            platform: module.platform,
+            arch: module.arch,
+            cves: module.cves,
+            port: module.port,
+            targets: module.targets,
+            file_path: module.file_path,
             replicable: null,
             confidence: 'error',
             reason: `LLM classification failed: ${error.message}`,
-            exclusion_category: null
+            access_type: null,
+            provisioning_complexity: null,
+            exclusion_category: null,
+            extracted_metadata: {
+                vendor: null,
+                product: null,
+                tested_version: null,
+                protocol_hint: null,
+                platform_notes: null
+            }
         }];
     }
 }
 
 async function classifyUncertainModulesWithLLM(uncertainModules, cache) {
-    // Filter out anything already in LLM cache (safety check)
     const modulesToProcess = uncertainModules.filter(m => !cache.llm[m.msf_path]);
 
     if (modulesToProcess.length === 0) {
         console.log('[LLM] No uncertain modules to classify');
         return [];
     }
+    
     const modeLabel = LLM_ONLY_MODE ? 'ALL modules (LLM-only mode)' : 'uncertain modules';
     console.log(`[LLM] Classifying ${modulesToProcess.length} ${modeLabel}...`);
+    
     const results = []; 
     let processedCount = 0;
+    
     for (let i = 0; i < modulesToProcess.length; i++) {
         const module = modulesToProcess[i];
         console.log(`[LLM] Processing module ${i + 1}/${modulesToProcess.length}: ${module.msf_path}`);
-        const [result] = await classifySingleWithLLM(module);
         
-        // only cache if classification succeeded (NOT error/null)
+        const classified = await classifySingleWithLLM(module);
+        const result = classified[0];  // We process one at a time
+        
+        // Only cache if classification succeeded
         if (result.confidence !== 'error' && result.replicable !== null) {
-            module.replicable = result.replicable;
-            module.confidence = result.confidence;
-            module.reason = result.reason;
-            module.access_type = result.access_type;
-            module.provisioning_complexity = result.provisioning_complexity;
-            module.exclusion_category = result.access_type === 'client_side' ? 'client_side' :  result.access_type === 'privilege_escalation' ? 'local_privesc' : null;
-            
-            cache.llm[module.msf_path] = module;  // ← Only cache successes
-            results.push(module);
+            // ← Store the FULL enriched object in cache
+            cache.llm[module.msf_path] = result;
+            results.push(result);
         } else {
             console.warn(`[LLM] Skipping cache for failed module: ${module.msf_path}`);
-            // Don't cache errors - they'll be retried on next run
         }
+        
         processedCount++;
         if (processedCount % BATCH_SIZE === 0) {
             await saveCache(cache);
             console.log(`[CACHE] Checkpoint saved (${processedCount}/${modulesToProcess.length})`);
         }
     }
+    
     console.log(`[LLM] Classification complete for ${modulesToProcess.length} modules`);
     return results;
 }
@@ -452,6 +529,7 @@ async function parseRubyFiles(rbFiles, cache) {
                 metadata.reason = 'Pending LLM classification';
                 metadata.exclusion_category = null;
                 metadata.provisioning_complexity = null;
+                metadata.extracted_metadata = null; 
                 uncertainModules.push(metadata);
             } else {
                 // Use heuristic classification
