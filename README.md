@@ -124,3 +124,18 @@ Breakdown by provisioning complexity:
 [OUTPUT] Written: output/analysis_summary.json
 [CACHE] Saved 1224 entries to modules/filteredModules.json
 ```
+
+#### RE: Windows 2012 R2 server
+Install .NET Framework 4.8 (offline installer)
+Then install WMF 5.1 
+
+```cmd
+sc config wuauserv start= demand
+sc config bits start= demand
+sc config cryptsvc start= demand
+
+net start wuauserv
+net start bits
+net start cryptsvc
+
+```
