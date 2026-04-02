@@ -82,7 +82,7 @@ async function waitForWinRM(inventoryPath, vmName, timeoutSecs = 120) {
     console.log(`⏳ Waiting for WinRM on ${vmName}...`);
     for (let i = 0; i < timeoutSecs / 5; i++) {
         try {
-            await $`uv run ansible ${vmName} -i ${inventoryPath} -m win_ping -e "ansible_winrm_read_timeout_sec=10 ansible_winrm_operation_timeout_sec=5"`//.quiet();            
+            await $`uv run ansible ${vmName} -i ${inventoryPath} -m win_ping -e "ansible_winrm_read_timeout_sec=10 ansible_winrm_operation_timeout_sec=5"`.quiet();            
             console.log(`✅ WinRM ready on ${vmName}`);
             return;
         } catch {
