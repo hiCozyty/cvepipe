@@ -255,7 +255,8 @@ async function analyzeExploitReproducibility(exploit, config, maxDepth = MAX_RES
             disclosed: exploit.disclosed
         },
         knowledgeBase: [],
-        searchedQueries: new Set()
+        searchedQueries: new Set(),
+        analyzedUrls: new Set()
     };
     
     // Research vulnerable version downloads (≤ disclosure date)
@@ -293,8 +294,13 @@ async function analyzeExploitReproducibility(exploit, config, maxDepth = MAX_RES
                 );
                 
                 const validResults = enrichedResults.filter(r => r.fullText);
-                if (!validResults.length) continue;
-                
+                const newResults = validResults.filter(r => {
+                    if (context.analyzedUrls.has(r.url)) return false;
+                    context.analyzedUrls.add(r.url);
+                    return true;
+                });
+                if (!newResults.length) continue;  // Nothing new to analyze
+
                 const distilled = await distillVulnerableLinks(validResults, exploit, query, disclosureDate);
                 if (distilled?.downloadUrls?.length > 0) {
                     context.knowledgeBase.push({
@@ -389,7 +395,7 @@ Respond with VALID JSON ONLY:
 
 async function distillVulnerableLinks(results, exploit, query, disclosureDate) {
     const contentBlocks = results.map((r, i) => 
-        `SOURCE ${i+1} [${r.url}]:\n${(r.fullText || '').slice(0, 8000)}\n---`
+        `SOURCE ${i+1} [${r.url}]:\n${(r.fullText || '').slice(0, 16000)}\n---`
     ).join('\n\n');
 
     const prompt = `Extract DOWNLOAD LINKS for the VULNERABLE version of this software.
