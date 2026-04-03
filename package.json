@@ -13,6 +13,7 @@
   "dependencies": {
     "@mozilla/readability": "^0.6.0",
     "bottleneck": "^2.19.5",
+    "crypto": "^1.0.1",
     "jsdom": "^29.0.1",
     "openai": "^6.33.0"
   }

@@ -1,1433 +1,581 @@
 [
-   {
-    "name": "POP Peeper v3.4 UIDL Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in POP Peeper v3.4.\n          When a specially crafted UIDL string is sent to a client,\n          an attacker may be able to execute arbitrary code. This\n          module is based off of krakowlabs code.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "POP Peeper v3.4"
-    ],
-    "disclosed": "2009-02-27",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/poppeeper_uidl.rb",
-    "msf_path": "exploits/windows/misc/poppeeper_uidl",
-    "service_category": "misc",
-    "replicable": false,
-    "confidence": "high",
-    "reason": "Requires victim to open malicious email in POP Peeper client (client-side interaction)",
-    "exclusion_category": "client_side",
-    "provisioning_complexity": "third_party_software",
-    "access_type": "client_side"
-  },
   {
-    "name": "Realtek Media Player Playlist Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in Realtek Media Player(RtlRack) A4.06.\n          When a Realtek Media Player client opens a specially crafted playlist, an\n          attacker may be able to execute arbitrary code.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
+    "msf_path": "exploits/windows/iis/iis_webdav_scstoragepathfromurl",
+    "name": "Microsoft IIS WebDav ScStoragePathFromUrl Overflow",
+    "service_category": "iis",
+    "description": "Buffer overflow in the ScStoragePathFromUrl function\n          in the WebDAV service in Internet Information Services (IIS) 6.0\n          in Microsoft Windows Server 2003 R2 allows remote attackers to\n          execute arbitrary code via a long header beginning with\n          \"If: <http://\" in a PROPFIND request, as exploited in the\n          wild in July or August 2016.\n\n          Original exploit by Zhiniang Peng and Chen Wu.",
     "cves": [],
     "edb_ids": [],
     "port": null,
     "targets": [
-      "Realtek Media Player(RtlRack) A4.06 (XP Pro All English)"
+      "Microsoft Windows Server 2003 R2 SP2 x86"
     ],
-    "disclosed": "2008-12-16",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/realtek_playlist.rb",
-    "msf_path": "exploits/windows/misc/realtek_playlist",
-    "service_category": "misc",
-    "replicable": false,
-    "confidence": "high",
-    "reason": "Requires victim to open a malicious playlist file (client-side interaction).",
-    "exclusion_category": "client_side",
-    "provisioning_complexity": "third_party_software",
-    "access_type": "client_side"
-  },
-  {
-    "name": "Remote Control Collection RCE",
-    "description": "This module utilizes the Remote Control Server's, part\n          of the Remote Control Collection by Steppschuh, protocol\n          to deploy a payload and run it from the server.  This module will only deploy\n          a payload if the server is set without a password (default).\n          Tested against 3.1.1.12, current at the time of module writing",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X64",
-      "ARCH_X86"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "default"
-    ],
-    "disclosed": "2022-09-20",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/remote_control_collection_rce.rb",
-    "msf_path": "exploits/windows/misc/remote_control_collection_rce",
-    "service_category": "misc",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Targets a third-party Windows service that can be installed in a VM and exploited remotely without user interaction.",
+    "reason": "Targets built-in Windows IIS 6.0 WebDAV service on Server 2003 R2, requires no victim interaction.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "standard",
     "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
+    "extracted_metadata": {
+      "vendor": "Microsoft",
+      "product": "IIS",
+      "tested_version": "6.0",
+      "protocol_hint": null,
+      "platform_notes": "Windows Server 2003 R2"
+    }
   },
   {
-    "name": "Remote Mouse RCE",
-    "description": "This module utilizes the Remote Mouse Server by Emote Interactive protocol\n          to deploy a payload and run it from the server on versions < 4.200 (500 server response).\n          This module will only deploy\n          a payload if the server is set without a password (default).\n          Tested against 4.110, current at the time of module writing",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X64",
-      "ARCH_X86"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "default"
-    ],
-    "disclosed": "2019-04-15",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/remote_mouse_rce.rb",
-    "msf_path": "exploits/windows/misc/remote_mouse_rce",
-    "service_category": "misc",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Targets Windows third-party software (Remote Mouse Server) for remote code execution without user interaction.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
-  },
-  {
-    "name": "SAP Business One License Manager 2005 Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in the SAP Business One 2005\n          License Manager 'NT Naming Service' A and B releases. By sending an\n          excessively long string the stack is overwritten enabling arbitrary\n          code execution.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Sap Business One 2005 B1 Universal"
-    ],
-    "disclosed": "2009-08-01",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/sap_2005_license.rb",
-    "msf_path": "exploits/windows/misc/sap_2005_license",
-    "service_category": "misc",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Targets Windows-only SAP Business One service and allows remote code execution without user interaction.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
-  },
-  {
-    "name": "SAP NetWeaver Dispatcher DiagTraceR3Info Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in the SAP NetWeaver Dispatcher\n          service. The overflow occurs in the DiagTraceR3Info() function and allows a remote\n          attacker to execute arbitrary code by supplying a special crafted Diag packet. The\n          Dispatcher service is only vulnerable if the Developer Traces have been configured\n          at levels 2 or 3. The module has been successfully tested on SAP Netweaver 7.0 EHP2\n          SP6 over Windows XP SP3 and Windows 2003 SP2 (DEP bypass).",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "SAP Netweaver 7.0 EHP2 SP6 / Windows XP SP3"
-    ],
-    "disclosed": "2012-05-08",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/sap_netweaver_dispatcher.rb",
-    "msf_path": "exploits/windows/misc/sap_netweaver_dispatcher",
-    "service_category": "misc",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Remote network service exploit against Windows with no victim interaction.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
-  },
-  {
-    "name": "ShixxNOTE 6.net Font Field Overflow",
-    "description": "This module exploits a buffer overflow in ShixxNOTE 6.net.\n          The vulnerability is caused due to boundary errors in the\n          handling of font fields.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2004-1595"
-    ],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "ShixxNOTE 6.net Universal"
-    ],
-    "disclosed": "2004-10-04",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/shixxnote_font.rb",
-    "msf_path": "exploits/windows/misc/shixxnote_font",
-    "service_category": "misc",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Targets a third-party Windows application (ShixxNOTE) with network service that can be installed in a VM.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
-  },
-  {
-    "name": "SolarWinds Information Service (SWIS) .NET Deserialization From AMQP RCE",
-    "description": "The SolarWinds Information Service (SWIS) is vulnerable to RCE by way of a crafted message received through the\n        AMQP message queue. A malicious user that can authenticate to the AMQP service can publish such a crafted\n        message whose body is a serialized .NET object which can lead to OS command execution as NT AUTHORITY\\SYSTEM.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
+    "msf_path": "exploits/windows/iis/iis_webdav_upload_asp",
+    "name": "Microsoft IIS WebDAV Write Access Code Execution",
+    "service_category": "iis",
+    "description": "This module can be used to execute a payload on IIS servers that\n        have world-writeable directories. The payload is uploaded as an ASP\n        script via a WebDAV PUT request.\n\n          The target IIS machine must meet these conditions to be considered\n        as exploitable: It allows 'Script resource access', Read and Write\n        permission, and supports ASP.",
     "cves": [],
     "edb_ids": [],
     "port": null,
     "targets": [
       "Automatic"
     ],
-    "disclosed": "2022-10-19",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/solarwinds_amqp_deserialization.rb",
-    "msf_path": "exploits/windows/misc/solarwinds_amqp_deserialization",
-    "service_category": "misc",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Targets Windows and achieves remote code execution over the network without victim interaction.",
+    "reason": "Exploits built-in Windows IIS service via WebDAV PUT to upload ASP payload without victim interaction.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "service_configuration",
     "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
+    "extracted_metadata": {
+      "vendor": "Microsoft",
+      "product": "IIS",
+      "tested_version": null,
+      "protocol_hint": null,
+      "platform_notes": null
+    }
   },
   {
-    "name": "SolidWorks Workgroup PDM 2014 pdmwService.exe Arbitrary File Write",
-    "description": "This module exploits a remote arbitrary file write vulnerability in\n          SolidWorks Workgroup PDM 2014 SP2 and prior.\n\n          For targets running Windows Vista or newer the payload is written to the\n          startup folder for all users and executed upon next user logon.\n\n          For targets before Windows Vista code execution can be achieved by first\n          uploading the payload as an exe file, and then upload another mof file,\n          which schedules WMI to execute the uploaded payload.\n\n          This module has been tested successfully on SolidWorks Workgroup PDM\n          2011 SP0 on Windows XP SP3 (EN) and Windows 7 SP1 (EN).",
-    "platform": [
-      "win"
+    "msf_path": "exploits/windows/iis/ms01_023_printer",
+    "name": "MS01-023 Microsoft IIS 5.0 Printer Host Header Overflow",
+    "service_category": "iis",
+    "description": "This exploits a buffer overflow in the request processor of the\n          Internet Printing Protocol ISAPI module in IIS. This module\n          works against Windows 2000 Server and Professional SP0-SP1.\n\n          If the service stops responding after a successful compromise,\n          run the exploit a couple more times to completely kill the\n          hung process.",
+    "cves": [],
+    "edb_ids": [],
+    "port": null,
+    "targets": [
+      "Windows 2000 SP0-SP1 (Arabic)"
     ],
-    "arch": [],
+    "disclosed": null,
+    "file_path": null,
+    "replicable": true,
+    "confidence": "high",
+    "reason": "Targets built-in Windows IIS service on Windows 2000 with no victim interaction required.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "service_configuration",
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Microsoft",
+      "product": "IIS",
+      "tested_version": "5.0",
+      "protocol_hint": null,
+      "platform_notes": "Windows 2000 SP0-SP1"
+    }
+  },
+  {
+    "msf_path": "exploits/windows/iis/ms01_026_dbldecode",
+    "name": "MS01-026 Microsoft IIS/PWS CGI Filename Double Decode Command Execution",
+    "service_category": "iis",
+    "description": "This module will execute an arbitrary payload on a Microsoft IIS installation\n          that is vulnerable to the CGI double-decode vulnerability of 2001.\n\n          This module has been tested successfully on:\n\n          Windows 2000 Professional (SP0) (EN);\n          Windows 2000 Professional (SP1) (AR);\n          Windows 2000 Professional (SP1) (CZ);\n          Windows 2000 Server (SP0) (FR);\n          Windows 2000 Server (SP1) (EN); and\n          Windows 2000 Server (SP1) (SE).\n\n          Note: This module will leave a Metasploit payload exe in the IIS scripts directory.",
+    "cves": [],
+    "edb_ids": [],
+    "port": null,
+    "targets": [
+      "Windows (Dropper)"
+    ],
+    "disclosed": null,
+    "file_path": null,
+    "replicable": true,
+    "confidence": "high",
+    "reason": "Targets built-in IIS service on Windows 2000 and achieves remote code execution without user interaction.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "service_configuration",
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Microsoft",
+      "product": "IIS",
+      "tested_version": "Windows 2000 SP0-SP1",
+      "protocol_hint": null,
+      "platform_notes": "Windows 2000"
+    }
+  },
+  {
+    "msf_path": "exploits/windows/iis/ms01_033_idq",
+    "name": "MS01-033 Microsoft IIS 5.0 IDQ Path Overflow",
+    "service_category": "iis",
+    "description": "This module exploits a stack buffer overflow in the IDQ ISAPI handler for\n          Microsoft Index Server.",
+    "cves": [],
+    "edb_ids": [],
+    "port": null,
+    "targets": [
+      "Windows 2000 Pro English SP0"
+    ],
+    "disclosed": null,
+    "file_path": null,
+    "replicable": true,
+    "confidence": "high",
+    "reason": "Exploits a network-facing Windows service (IIS) without user interaction.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "service_configuration",
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Microsoft",
+      "product": "IIS",
+      "tested_version": "5.0",
+      "protocol_hint": null,
+      "platform_notes": "Windows 2000 Pro English SP0"
+    }
+  },
+  {
+    "msf_path": "exploits/windows/iis/ms02_018_htr",
+    "name": "MS02-018 Microsoft IIS 4.0 .HTR Path Overflow",
+    "service_category": "iis",
+    "description": "This exploits a buffer overflow in the ISAPI ISM.DLL used to\n          process HTR scripting in IIS 4.0. This module works against\n          Windows NT 4 Service Packs 3, 4, and 5. The server will\n          continue to process requests until the payload being\n          executed has exited. If you've set EXITFUNC to 'seh', the\n          server will continue processing requests, but you will have\n          trouble terminating a bind shell. If you set EXITFUNC to\n          thread, the server will crash upon exit of the bind shell.\n          The payload is alpha-numerically encoded without a NOP sled\n          because otherwise the data gets mangled by the filters.",
+    "cves": [],
+    "edb_ids": [],
+    "port": null,
+    "targets": [
+      "Windows NT 4.0 SP3"
+    ],
+    "disclosed": null,
+    "file_path": null,
+    "replicable": true,
+    "confidence": "high",
+    "reason": "Targets built-in IIS 4.0 on Windows NT 4.0 SP3-5, no victim interaction needed.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "standard",
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Microsoft",
+      "product": "IIS",
+      "tested_version": "4.0",
+      "protocol_hint": null,
+      "platform_notes": "Windows NT 4.0 SP3-5"
+    }
+  },
+  {
+    "msf_path": "exploits/windows/iis/ms02_065_msadc",
+    "name": "MS02-065 Microsoft IIS MDAC msadcs.dll RDS DataStub Content-Type Overflow",
+    "service_category": "iis",
+    "description": "This module can be used to execute arbitrary code on IIS servers\n          that expose the /msadc/msadcs.dll Microsoft Data Access Components\n          (MDAC) Remote Data Service (RDS) DataFactory service. The service is\n          exploitable even when RDS is configured to deny remote connections\n          (handsafe.reg). The service is vulnerable to a heap overflow where\n          the RDS DataStub 'Content-Type' string is overly long. Microsoft Data\n          Access Components (MDAC) 2.1 through 2.6 are known to be vulnerable.",
     "cves": [
-      "2014-100015"
+      "2002-1142"
     ],
-    "edb_ids": [
-      "31831"
+    "edb_ids": [],
+    "port": null,
+    "targets": [
+      "Windows 2000 Pro SP0-SP3 (English)"
     ],
+    "disclosed": null,
+    "file_path": null,
+    "replicable": true,
+    "confidence": "high",
+    "reason": "Targets built-in IIS RDS service on Windows 2000, requires only network access to /msadc/msadcs.dll.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "standard",
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Microsoft",
+      "product": "IIS RDS DataFactory",
+      "tested_version": "MDAC 2.1-2.6",
+      "protocol_hint": "HTTP/msadcs.dll",
+      "platform_notes": "Windows 2000 Pro SP0-SP3"
+    }
+  },
+  {
+    "msf_path": "exploits/windows/iis/ms03_007_ntdll_webdav",
+    "name": "MS03-007 Microsoft IIS 5.0 WebDAV ntdll.dll Path Overflow",
+    "service_category": "iis",
+    "description": "This exploits a buffer overflow in NTDLL.dll on Windows 2000\n          through the SEARCH WebDAV method in IIS. This particular\n          module only works against Windows 2000. It should have a\n          reasonable chance of success against SP0 to SP3.",
+    "cves": [
+      "2003-0109"
+    ],
+    "edb_ids": [],
+    "port": null,
+    "targets": [
+      "Automatic Brute Force"
+    ],
+    "disclosed": null,
+    "file_path": null,
+    "replicable": true,
+    "confidence": "high",
+    "reason": "Targets Windows 2000 IIS 5.0 WebDAV service with remote code execution via network.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "service_configuration",
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Microsoft",
+      "product": "IIS",
+      "tested_version": "5.0",
+      "protocol_hint": null,
+      "platform_notes": "Windows 2000"
+    }
+  },
+  {
+    "msf_path": "exploits/windows/iis/msadc",
+    "name": "MS99-025 Microsoft IIS MDAC msadcs.dll RDS Arbitrary Remote Command Execution",
+    "service_category": "iis",
+    "description": "This module can be used to execute arbitrary commands on IIS servers\n          that expose the /msadc/msadcs.dll Microsoft Data Access Components\n          (MDAC) Remote Data Service (RDS) DataFactory service using VbBusObj\n          or AdvancedDataFactory to inject shell commands into Microsoft Access\n          databases (MDBs), MSSQL databases and ODBC/JET Data Source Name (DSN).\n          Based on the msadcs.pl v2 exploit by Rain.Forest.Puppy, which was actively\n          used in the wild in the late Ninties. MDAC versions affected include MDAC\n          1.5, 2.0, 2.0 SDK, 2.1 and systems with the MDAC Sample Pages for RDS\n          installed, and NT4 Servers with the NT Option Pack installed or upgraded\n          2000 systems often running IIS3/4/5 however some vulnerable installations\n          can still be found on newer Windows operating systems. Note that newer\n          releases of msadcs.dll can still be abused however by default remote\n          connections to the RDS is denied. Consider using VERBOSE if you're unable\n          to successfully execute a command, as the error messages are detailed\n          and useful for debugging. Also set NAME to obtain the remote hostname,\n          and METHOD to use the alternative VbBusObj technique.",
+    "cves": [
+      "1999-1011"
+    ],
+    "edb_ids": [],
     "port": null,
     "targets": [
       "Automatic"
     ],
-    "disclosed": "2014-02-22",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/solidworks_workgroup_pdmwservice_file_write.rb",
-    "msf_path": "exploits/windows/misc/solidworks_workgroup_pdmwservice_file_write",
-    "service_category": "misc",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Targets Windows-only SolidWorks Workgroup PDM service for remote file write leading to code execution without user interaction.",
+    "reason": "Exploits built-in IIS RDS service over HTTP without user interaction.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "service_configuration",
     "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
+    "extracted_metadata": {
+      "vendor": "Microsoft",
+      "product": "IIS RDS DataFactory",
+      "tested_version": null,
+      "protocol_hint": "HTTP",
+      "platform_notes": "NT4, Windows 2000, newer systems with RDS enabled"
+    }
   },
   {
-    "name": null,
-    "description": "This module exploits a vulnerability in SPlayer v3.7 or prior.  When SPlayer\n          requests the URL of a media file (video or audio), it is possible to gain arbitrary\n          remote code execution due to a buffer overflow caused by an exceeding length of data\n          as the 'Content-Type' parameter.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
+    "msf_path": "exploits/windows/ibm/ibm_was_dmgr_java_deserialization_rce",
+    "name": "IBM Websphere Application Server Network Deployment Untrusted Data Deserialization Remote Code Execution",
+    "service_category": "ibm",
+    "description": "This module exploits untrusted serialized data processed by the WAS DMGR Server and Cells.\n          NOTE: There is a required 2 minute timeout between attempts as the neighbor being added must be reset.",
     "cves": [
-      "2011-10022"
+      "2019-4279"
     ],
-    "edb_ids": [
-      "17243"
-    ],
+    "edb_ids": [],
     "port": null,
     "targets": [
-      "Windows XP SP2/XP3"
+      "Windows Binary"
     ],
-    "disclosed": "2011-05-04",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/splayer_content_type.rb",
-    "msf_path": "exploits/windows/misc/splayer_content_type",
-    "service_category": "misc",
-    "replicable": false,
+    "disclosed": null,
+    "file_path": null,
+    "replicable": true,
     "confidence": "high",
-    "reason": "Requires victim to open a malicious media file or URL in SPlayer.",
-    "exclusion_category": "client_side",
+    "reason": "Targets Windows-based IBM WebSphere Application Server without victim interaction.",
+    "access_type": "initial_foothold",
     "provisioning_complexity": "third_party_software",
-    "access_type": "client_side"
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "IBM",
+      "product": "WebSphere Application Server Network Deployment",
+      "tested_version": null,
+      "protocol_hint": null,
+      "platform_notes": "Windows Binary"
+    }
   },
   {
-    "name": "CoCSoft StreamDown 6.8.0 Buffer Overflow",
-    "description": "Stream Down 6.8.0 seh based buffer overflow triggered when processing\n          the server response packet. During the overflow a structured exception\n          handler is overwritten.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2011-5052"
-    ],
-    "edb_ids": [
-      "18283"
-    ],
-    "port": null,
-    "targets": [
-      "StreamDown 6.8.0"
-    ],
-    "disclosed": "2011-12-27",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/stream_down_bof.rb",
-    "msf_path": "exploits/windows/misc/stream_down_bof",
-    "service_category": "misc",
-    "replicable": false,
-    "confidence": "high",
-    "reason": "Requires victim to actively use CoCSoft StreamDown client to connect to attacker server",
-    "exclusion_category": "client_side",
-    "provisioning_complexity": "third_party_software",
-    "access_type": "client_side"
-  },
-  {
-    "name": "Talkative IRC v0.4.4.16 Response Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in Talkative IRC v0.4.4.16.\n          When a specially crafted response string is sent to a client,\n          an attacker may be able to execute arbitrary code.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
+    "msf_path": "exploits/windows/http/adobe_robohelper_authbypass",
+    "name": "Adobe RoboHelp Server 8 Arbitrary File Upload and Execute",
+    "service_category": "http",
+    "description": "This module exploits an authentication bypass vulnerability which\n          allows remote attackers to upload and execute arbitrary code.",
     "cves": [],
     "edb_ids": [],
     "port": null,
     "targets": [
-      "Windows XP SP3 English"
+      "Universal Windows Target"
     ],
-    "disclosed": "2009-03-17",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/talkative_response.rb",
-    "msf_path": "exploits/windows/misc/talkative_response",
-    "service_category": "misc",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Targets Windows IRC client software and can be triggered remotely without user interaction.",
-    "exclusion_category": null,
+    "reason": "Targets Windows HTTP service with no victim interaction required for remote code execution.",
+    "access_type": "initial_foothold",
     "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Adobe",
+      "product": "RoboHelp Server",
+      "tested_version": null,
+      "protocol_hint": "HTTP",
+      "platform_notes": "Universal Windows Target"
+    }
   },
   {
-    "name": "TinyIdentD 2.2 Stack Buffer Overflow",
-    "description": "This module exploits a stack based buffer overflow in TinyIdentD\n          version 2.2.\n          If we send a long string to the ident service we can overwrite the\n          return address and execute arbitrary code. Credit to Maarten Boone.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2007-2711"
-    ],
-    "edb_ids": [
-      "3925"
-    ],
-    "port": null,
-    "targets": [
-      "Windows 2000 Server SP4 - English"
-    ],
-    "disclosed": "2007-05-14",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/tiny_identd_overflow.rb",
-    "msf_path": "exploits/windows/misc/tiny_identd_overflow",
-    "service_category": "misc",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Targets a Windows ident daemon that can be installed and run in a VM for remote exploitation.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
-  },
-  {
-    "name": null,
-    "description": "This module exploits a vulnerability in the CmdProcessor.exe component of Trend\n          Micro Control Manger up to version 5.5.\n\n          The specific flaw exists within CmdProcessor.exe service running on TCP port\n          20101. The vulnerable function is the CGenericScheduler::AddTask function of\n          cmdHandlerRedAlertController.dll. When processing a specially crafted IPC packet,\n          controlled data is copied into a 256-byte stack buffer. This can be exploited\n          to execute remote code under the context of the user.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2011-5001"
-    ],
-    "edb_ids": [],
-    "port": null,
-    "targets": [],
-    "disclosed": "2011-12-07",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/trendmicro_cmdprocessor_addtask.rb",
-    "msf_path": "exploits/windows/misc/trendmicro_cmdprocessor_addtask",
-    "service_category": "misc",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Targets Windows-only third-party service with network listener and no victim interaction.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
-  },
-  {
-    "name": "UFO: Alien Invasion IRC Client Buffer Overflow",
-    "description": "This module exploits a buffer overflow in the IRC client component of\n          UFO: Alien Invasion 2.2.1.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
+    "msf_path": "exploits/windows/http/advantech_iview_networkservlet_cmd_inject",
+    "name": "Advantech iView NetworkServlet Command Injection",
+    "service_category": "http",
+    "description": "Versions of Advantech iView software below `5.7.04.6469` are\n          vulnerable to an unauthenticated command injection vulnerability\n          via the `NetworkServlet` endpoint.\n          The database backup functionality passes a user-controlled parameter,\n          `backup_file` to the `mysqldump` command. The sanitization functionality only\n          tests for SQL injection attempts and directory traversal, so leveraging the\n          `-r` and `-w` `mysqldump` flags permits exploitation.\n          The command injection vulnerability is used to write a payload on the target\n          and achieve remote code execution as NT AUTHORITY\\SYSTEM.",
     "cves": [],
     "edb_ids": [],
     "port": null,
     "targets": [
-      "Windows XP Universal"
+      "Windows Dropper"
     ],
-    "disclosed": "2009-10-28",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/ufo_ai.rb",
-    "msf_path": "exploits/windows/misc/ufo_ai",
-    "service_category": "misc",
-    "replicable": false,
-    "confidence": "high",
-    "reason": "Requires victim to connect to attacker-controlled IRC server (client-side interaction)",
-    "exclusion_category": "client_side",
-    "provisioning_complexity": "third_party_software",
-    "access_type": "client_side"
-  },
-  {
-    "name": "Unified Remote Auth Bypass to RCE",
-    "description": "This module utilizes the Unified Remote remote control protocol to type out and\n          deploy a payload.  The remote control protocol can be configured to have no passwords,\n          a group password, or individual user accounts.  If the web page is accessible, the\n          access control is set to no password for exploitation, then reverted.\n          If the web page is not accessible, exploitation will be tried blindly.\n          This module has been successfully tested against version 3.11.0.2483 (50) on Windows 10.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X64",
-      "ARCH_X86"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "default"
-    ],
-    "disclosed": "2021-02-25",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/unified_remote_rce.rb",
-    "msf_path": "exploits/windows/misc/unified_remote_rce",
-    "service_category": "misc",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Targets a third-party Windows remote-control service that can be installed in a VM and exploited over the network without user interaction.",
-    "exclusion_category": null,
+    "reason": "Third-party Advantech iView software can be installed on Windows VM for unauthenticated HTTP command injection.",
+    "access_type": "initial_foothold",
     "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Advantech",
+      "product": "iView",
+      "tested_version": "below 5.7.04.6469",
+      "protocol_hint": "HTTP",
+      "platform_notes": null
+    }
   },
   {
-    "name": "Veeam ONE Agent .NET Deserialization",
-    "description": "This module exploits a .NET deserialization vulnerability in the Veeam\n          ONE Agent before the hotfix versions 9.5.5.4587 and 10.0.1.750 in the\n          9 and 10 release lines.\n\n          Specifically, the module targets the HandshakeResult() method used by\n          the Agent. By inducing a failure in the handshake, the Agent will\n          deserialize untrusted data.\n\n          Tested against the pre-patched release of 10.0.0.750. Note that Veeam\n          continues to distribute this version but with the patch pre-applied.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X86",
-      "ARCH_X64"
-    ],
+    "msf_path": "exploits/windows/http/advantech_iview_unauth_rce",
+    "name": "Advantech iView Unauthenticated Remote Code Execution",
+    "service_category": "http",
+    "description": "This module exploits an unauthenticated configuration change combined\n          with an unauthenticated file write primitive, leading to an arbitrary\n          file write that allows for remote code execution as the user running\n          iView, which is typically NT AUTHORITY\\SYSTEM.\n\n          This issue was demonstrated in the vulnerable version 5.7.02.5992 and\n          fixed in version 5.7.03.6112.",
     "cves": [
-      "2020-10914",
-      "2020-10915"
+      "2021-22652"
     ],
     "edb_ids": [],
     "port": null,
     "targets": [
       "Windows Command"
     ],
-    "disclosed": "2020-04-15",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/veeam_one_agent_deserialization.rb",
-    "msf_path": "exploits/windows/misc/veeam_one_agent_deserialization",
-    "service_category": "misc",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Targets Windows-only backup software, no user interaction, gives remote shell.",
-    "exclusion_category": null,
+    "reason": "Targets Windows-only Advantech iView software, requires no victim interaction, and yields remote code execution.",
+    "access_type": "initial_foothold",
     "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Advantech",
+      "product": "iView",
+      "tested_version": "5.7.02.5992",
+      "protocol_hint": null,
+      "platform_notes": null
+    }
   },
   {
-    "name": "DLL Side Loading Vulnerability in VMware Host Guest Client Redirector",
-    "description": "A DLL side loading vulnerability was found in the VMware Host Guest Client Redirector,\n          a component of VMware Tools. This issue can be exploited by luring a victim into\n          opening a document from the attacker's share. An attacker can exploit this issue to\n          execute arbitrary code with the privileges of the target user. This can potentially\n          result in the attacker taking complete control of the affected system. If the WebDAV\n          Mini-Redirector is enabled, it is possible to exploit this issue over the internet.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
+    "msf_path": "exploits/windows/http/ajaxpro_deserialization_rce",
+    "name": "AjaxPro Deserialization Remote Code Execution",
+    "service_category": "http",
+    "description": "This module leverages an insecure deserialization of data to get\n          remote code execution on the target OS in the context of the user\n          running the website which utilized AjaxPro.\n\n          To achieve code execution, the module will construct some JSON data\n          which will be sent to the target. This data will be deserialized by\n          the AjaxPro JsonDeserializer and will trigger the execution of the\n          payload.\n\n          All AjaxPro versions prior to 21.10.30.1 are vulnerable to this\n          issue, and a vulnerable method which can be used to trigger the\n          deserialization exists in the default AjaxPro namespace.\n\n          AjaxPro 21.10.30.1 removed the vulnerable method, but if a custom\n          method that accepts a parameter of type that is assignable from\n          `ObjectDataProvider` (e.g. `object`) exists, the vulnerability can\n          still be exploited.\n\n          This module has been tested successfully against official AjaxPro on\n          version 7.7.31.1 without any modification, and on version 21.10.30.1\n          with a custom vulnerable method added.",
     "cves": [
-      "2016-5330"
+      "2021-23758"
     ],
     "edb_ids": [],
     "port": null,
     "targets": [
-      "Windows x64"
+      "Windows Command"
     ],
-    "disclosed": "2016-08-05",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/vmhgfs_webdav_dll_sideload.rb",
-    "msf_path": "exploits/windows/misc/vmhgfs_webdav_dll_sideload",
-    "service_category": "misc",
-    "replicable": false,
+    "disclosed": null,
+    "file_path": null,
+    "replicable": true,
     "confidence": "high",
-    "reason": "Requires victim to open a document from attacker share (client-side interaction)",
-    "exclusion_category": "client_side",
+    "reason": "Targets Windows HTTP service with no victim interaction required for remote code execution.",
+    "access_type": "initial_foothold",
     "provisioning_complexity": "third_party_software",
-    "access_type": "client_side"
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": null,
+      "product": "AjaxPro",
+      "tested_version": "7.7.31.1 and 21.10.30.1",
+      "protocol_hint": "HTTP",
+      "platform_notes": null
+    }
   },
   {
-    "name": "Serve DLL via webdav server",
-    "description": "This module simplifies the rundll32.exe Application Whitelisting Bypass technique.\n          The module creates a webdav server that hosts a dll file. When the user types the provided rundll32\n          command on a system, rundll32 will load the dll remotly and execute the provided export function.\n          The export function needs to be valid, but the default meterpreter function can be anything.\n          The process does write the dll to C:\\Windows\\ServiceProfiles\\LocalService\\AppData\\Local\\Temp\\TfsStore\\Tfs_DAV\n          but does not load the dll from that location. This file should be removed after execution.\n          The extension can be anything you'd like, but you don't have to use one. Two files will be\n          written to disk. One named the requested name and one with a dll extension attached.",
-    "platform": [],
-    "arch": [
-      "ARCH_X86",
-      "ARCH_X64"
+    "msf_path": "exploits/windows/http/altn_securitygateway",
+    "name": "Alt-N SecurityGateway username Buffer Overflow",
+    "service_category": "http",
+    "description": "Alt-N SecurityGateway is prone to a buffer overflow condition. This\n          is due to insufficient bounds checking on the \"username\"\n          parameter. Successful exploitation could result in code\n          execution with SYSTEM level privileges.\n\n          NOTE: This service doesn't restart, you'll only get one shot. However,\n          it often survives a successful exploitation attempt.",
+    "cves": [],
+    "edb_ids": [],
+    "port": null,
+    "targets": [
+      "Automatic Targeting"
     ],
+    "disclosed": null,
+    "file_path": null,
+    "replicable": true,
+    "confidence": "high",
+    "reason": "Targets Windows HTTP service with remote code execution via buffer overflow without victim interaction.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "third_party_software",
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Alt-N",
+      "product": "SecurityGateway",
+      "tested_version": null,
+      "protocol_hint": null,
+      "platform_notes": null
+    }
+  },
+  {
+    "msf_path": "exploits/windows/http/altn_webadmin",
+    "name": "Alt-N WebAdmin USER Buffer Overflow",
+    "service_category": "http",
+    "description": "Alt-N WebAdmin is prone to a buffer overflow condition. This\n          is due to insufficient bounds checking on the USER\n          parameter. Successful exploitation could result in code\n          execution with SYSTEM level privileges.",
     "cves": [],
     "edb_ids": [],
     "port": null,
     "targets": [
       "Automatic"
     ],
-    "disclosed": "1999-01-01",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/webdav_delivery.rb",
-    "msf_path": "exploits/windows/misc/webdav_delivery",
-    "service_category": "misc",
-    "replicable": false,
-    "confidence": "high",
-    "reason": "Requires victim to manually run rundll32 command, making it client-side.",
-    "exclusion_category": "client_side",
-    "provisioning_complexity": "standard",
-    "access_type": "client_side"
-  },
-  {
-    "name": "Wifi Mouse RCE",
-    "description": "The WiFi Mouse (Mouse Server) from Necta LLC contains an auth bypass as the\n          authentication is completely implemented entirely on the client side. By utilizing\n          this vulnerability, is possible to open a program on the server\n          (cmd.exe in our case) and type commands that will be executed as the user running\n          WiFi Mouse (Mouse Server), resulting in remote code execution.\n\n          Tested against versions 1.8.3.4 (current as of module writing) and\n          1.8.2.3.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X64",
-      "ARCH_X86"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "stager",
-      "psh_invokewebrequest"
-    ],
-    "disclosed": "2021-02-25",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/wifi_mouse_rce.rb",
-    "msf_path": "exploits/windows/misc/wifi_mouse_rce",
-    "service_category": "misc",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Targets a third-party Windows application (WiFi Mouse Server) for remote code execution without user interaction.",
+    "reason": "Targets Windows HTTP service with no victim interaction required.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "third_party_software",
     "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
+    "extracted_metadata": {
+      "vendor": "Alt-N",
+      "product": "WebAdmin",
+      "tested_version": null,
+      "protocol_hint": "HTTP",
+      "platform_notes": null
+    }
   },
   {
-    "name": "Windows RSH Daemon Buffer Overflow",
-    "description": "This module exploits a vulnerability in Windows RSH daemon 1.8.\n          The vulnerability is due to a failure to check for the length of input sent\n          to the RSH server. A CPORT of 512 -> 1023 must be configured for the exploit\n          to be successful.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2007-4006"
-    ],
+    "msf_path": "exploits/windows/http/amlibweb_webquerydll_app",
+    "name": "Amlibweb NetOpacs webquery.dll Stack Buffer Overflow",
+    "service_category": "http",
+    "description": "This module exploits a stack buffer overflow in Amlib's Amlibweb\n          Library Management System (NetOpacs). The webquery.dll\n          API is available through IIS requests. By specifying\n          an overly long string to the 'app' parameter, SeH can be\n          reliably overwritten allowing for arbitrary remote code execution.\n          In addition, it is possible to overwrite EIP by specifying\n          an arbitrary parameter name with an '=' terminator.",
+    "cves": [],
     "edb_ids": [],
     "port": null,
     "targets": [
-      "Windows 2003 SP1 English"
+      "Windows 2000 Pro All - English"
     ],
-    "disclosed": "2007-07-24",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/windows_rsh.rb",
-    "msf_path": "exploits/windows/misc/windows_rsh",
-    "service_category": "misc",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Remote buffer overflow in Windows RSH daemon service allows network-based code execution without user interaction.",
+    "reason": "Remote HTTP-based buffer overflow in third-party library software that can be installed on Windows.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "third_party_software",
     "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
+    "extracted_metadata": {
+      "vendor": "Amlib",
+      "product": "Amlibweb Library Management System (NetOpacs)",
+      "tested_version": null,
+      "protocol_hint": "HTTP/IIS",
+      "platform_notes": "Windows 2000 Pro"
+    }
   },
   {
-    "name": null,
-    "description": "This module exploits a vulnerability in Wireshark 1.6 or less. When opening a\n          pcap file, Wireshark will actually check if there's a 'console.lua' file in the same\n          directory, and then parse/execute the script if found.  Versions affected by this\n          vulnerability: 1.6.0 to 1.6.1, 1.4.0 to 1.4.8",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2011-3360"
-    ],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Wireshark 1.6.1 or less"
-    ],
-    "disclosed": "2011-07-18",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/wireshark_lua.rb",
-    "msf_path": "exploits/windows/misc/wireshark_lua",
-    "service_category": "misc",
-    "replicable": false,
-    "confidence": "high",
-    "reason": "Requires victim to open a malicious pcap file (client-side interaction).",
-    "exclusion_category": "client_side",
-    "provisioning_complexity": "third_party_software",
-    "access_type": "client_side"
-  },
-  {
-    "name": "Wireshark packet-dect.c Stack Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in Wireshark <= 1.4.4\n          by sending a malicious packet.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
+    "msf_path": "exploits/windows/http/apache_activemq_traversal_upload",
+    "name": "Apache ActiveMQ 5.x-5.11.1 Directory Traversal Shell Upload",
+    "service_category": "http",
+    "description": "This module exploits a directory traversal vulnerability (CVE-2015-1830) in Apache\n          ActiveMQ 5.x before 5.11.2 for Windows.\n\n          The module tries to upload a JSP payload to the /admin directory via the traversal\n          path /fileserver/..\\admin\\ using an HTTP PUT request with the default ActiveMQ\n          credentials admin:admin (or other credentials provided by the user). It then issues\n          an HTTP GET request to /admin/<payload>.jsp on the target in order to trigger the\n          payload and obtain a shell.",
     "cves": [],
     "edb_ids": [],
-    "port": null,
+    "port": 8161,
     "targets": [
-      "Win32 Universal (Generic DEP & ASLR Bypass)"
+      "Windows Java"
     ],
-    "disclosed": "2011-04-18",
-    "file_path": "metasploit-framework/modules/exploits/windows/misc/wireshark_packet_dect.rb",
-    "msf_path": "exploits/windows/misc/wireshark_packet_dect",
-    "service_category": "misc",
-    "replicable": false,
-    "confidence": "high",
-    "reason": "Requires victim to actively capture malicious packet in Wireshark (client-side interaction)",
-    "exclusion_category": "client_side",
-    "provisioning_complexity": "third_party_software",
-    "access_type": "client_side"
-  },
-  {
-    "name": "Hummingbird Connectivity 10 SP5 LPD Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in Hummingbird Connectivity\n          10 LPD Daemon. This module has only been tested against Hummingbird\n          Exceed v10 with SP5.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2005-1815"
-    ],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows 2000 English SP0-SP4"
-    ],
-    "disclosed": "2005-05-27",
-    "file_path": "metasploit-framework/modules/exploits/windows/lpd/hummingbird_exceed.rb",
-    "msf_path": "exploits/windows/lpd/hummingbird_exceed",
-    "service_category": "lpd",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Targets Windows and provides remote code execution via network without user interaction.",
+    "reason": "Targets Windows Java and achieves remote code execution via HTTP without victim interaction.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "third_party_software",
     "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
+    "extracted_metadata": {
+      "vendor": "Apache",
+      "product": "ActiveMQ",
+      "tested_version": "5.x-5.11.1",
+      "protocol_hint": "TCP/8161",
+      "platform_notes": "Windows Java"
+    }
   },
   {
-    "name": "NIPrint LPD Request Overflow",
-    "description": "This module exploits a stack buffer overflow in the\n          Network Instrument NIPrint LPD service. Inspired by\n          Immunity's VisualSploit :-)",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2003-1141"
-    ],
+    "msf_path": "exploits/windows/http/apache_chunked",
+    "name": "Apache Win32 Chunked Encoding",
+    "service_category": "http",
+    "description": "This module exploits the chunked transfer integer wrap\n          vulnerability in Apache version 1.2.x to 1.3.24. This\n          particular module has been tested with all versions of the\n          official Win32 build between 1.3.9 and 1.3.24. Additionally,\n          it should work against most co-branded and bundled versions\n          of Apache (Oracle 8i, 9i, IBM HTTPD, etc).\n\n          You will need to use the Check() functionality to determine\n          the exact target version prior to launching the exploit. The\n          version of Apache bundled with Oracle 8.1.7 will not\n          automatically restart, so if you use the wrong target value,\n          the server will crash.",
+    "cves": [],
     "edb_ids": [],
     "port": null,
     "targets": [
-      "NIPrint3.EXE (TDS:0x3a045ff2)"
+      "Windows Generic Bruteforce"
     ],
-    "disclosed": "2003-11-05",
-    "file_path": "metasploit-framework/modules/exploits/windows/lpd/niprint.rb",
-    "msf_path": "exploits/windows/lpd/niprint",
-    "service_category": "lpd",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Targets Windows LPD service with remote overflow and no victim interaction.",
+    "reason": "Targets Windows Apache HTTP server with no victim interaction required.",
+    "access_type": "initial_foothold",
+    "provisioning_complexity": "third_party_software",
     "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
+    "extracted_metadata": {
+      "vendor": "Apache",
+      "product": "Apache HTTP Server",
+      "tested_version": "1.3.9-1.3.24",
+      "protocol_hint": "TCP/80",
+      "platform_notes": "Windows Generic"
+    }
   },
   {
-    "name": "SAP SAPLPD 6.28 Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in SAPlpd 6.28 (SAP Release 6.40) .\n          By sending an overly long argument, an attacker may be able to execute arbitrary\n          code.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "SAPlpd 6.28.0.1 (SAP Release 6.40)"
-    ],
-    "disclosed": "2008-02-04",
-    "file_path": "metasploit-framework/modules/exploits/windows/lpd/saplpd.rb",
-    "msf_path": "exploits/windows/lpd/saplpd",
-    "service_category": "lpd",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Targets Windows-only SAPLPD print daemon, no user interaction, gives remote shell.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
-  },
-  {
-    "name": "WinComLPD Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in WinComLPD <= 3.0.2.\n          By sending an overly long authentication packet to the remote\n          administration service, an attacker may be able to execute arbitrary\n          code.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2008-5159"
-    ],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "WinComLPD 3.0.2.623"
-    ],
-    "disclosed": "2008-02-04",
-    "file_path": "metasploit-framework/modules/exploits/windows/lpd/wincomlpd_admin.rb",
-    "msf_path": "exploits/windows/lpd/wincomlpd_admin",
-    "service_category": "lpd",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Third-party LPD service is installable on Windows and the overflow is triggered remotely without user interaction.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
-  },
-  {
-    "name": "IBM Lotus Domino Web Server Accept-Language Stack Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in IBM Lotus Domino Web Server\n          prior to version 7.0.3FP1 and 8.0.1. This flaw is triggered by any HTTP\n          request with an Accept-Language header greater than 114 bytes.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2008-2240"
-    ],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Lotus Domino 7.0 on Windows 2003 SP1 English(NX)"
-    ],
-    "disclosed": "2008-05-20",
-    "file_path": "metasploit-framework/modules/exploits/windows/lotus/domino_http_accept_language.rb",
-    "msf_path": "exploits/windows/lotus/domino_http_accept_language",
-    "service_category": "lotus",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Targets Windows-based Lotus Domino HTTP service with no user interaction required.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
-  },
-  {
-    "name": null,
-    "description": "This module exploits a vulnerability found in IBM Lotus Domino iCalendar.  By\n          sending a long string of data as the \"ORGANIZER;mailto\" header, process \"nRouter.exe\"\n          crashes due to a Cstrcpy() routine in nnotes.dll, which allows remote attackers to\n          gain arbitrary code execution.\n\n          Note: In order to trigger the vulnerable code path, a valid Domino mailbox account\n          is needed.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Lotus Domino 8.5 on Windows 2000 SP4"
-    ],
-    "disclosed": "2010-09-14",
-    "file_path": "metasploit-framework/modules/exploits/windows/lotus/domino_icalendar_organizer.rb",
-    "msf_path": "exploits/windows/lotus/domino_icalendar_organizer",
-    "service_category": "lotus",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Targets Windows Lotus Domino server and achieves remote code execution over network with valid mailbox credentials.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "lateral_movement"
-  },
-  {
-    "name": "IBM Lotus Domino Sametime STMux.exe Stack Buffer Overflow",
-    "description": "This module exploits a stack buffer overflow in Lotus Domino\\'s Sametime\n          Server. By sending an overly long POST request to the Multiplexer\n          STMux.exe service we are able to overwrite SEH. Based on the exploit\n          by Manuel Santamarina Suarez.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X86"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Lotus Sametime 7.5 on Windows Server 2000 SP4"
-    ],
-    "disclosed": "2008-05-21",
-    "file_path": "metasploit-framework/modules/exploits/windows/lotus/domino_sametime_stmux.rb",
-    "msf_path": "exploits/windows/lotus/domino_sametime_stmux",
-    "service_category": "lotus",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Targets Windows and network-exposed Lotus Sametime service without user interaction.",
-    "exclusion_category": null,
-    "provisioning_complexity": "third_party_software",
-    "access_type": "initial_foothold"
-  },
-  {
-    "name": "Lotus Notes 8.0.x - 8.5.2 FP2 - Autonomy Keyview (.lzh Attachment)",
-    "description": "This module exploits a stack buffer overflow in Lotus Notes 8.5.2 when\n          parsing a malformed, specially crafted LZH file. This vulnerability was\n          discovered binaryhouse.net",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2011-1213"
-    ],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Lotus Notes 8.0.x - 8.5.2 FP2 / Windows Universal"
-    ],
-    "disclosed": "2011-05-24",
-    "file_path": "metasploit-framework/modules/exploits/windows/lotus/lotusnotes_lzh.rb",
-    "msf_path": "exploits/windows/lotus/lotusnotes_lzh",
-    "service_category": "lotus",
-    "replicable": false,
-    "confidence": "high",
-    "reason": "Requires victim to open malicious .lzh attachment in Lotus Notes client.",
-    "exclusion_category": "client_side",
-    "provisioning_complexity": "third_party_software",
-    "access_type": "client_side"
-  },
-  {
-    "name": "AdobeCollabSync Buffer Overflow Adobe Reader X Sandbox Bypass",
-    "description": "This module exploits a vulnerability on Adobe Reader X Sandbox. The\n            vulnerability is due to a sandbox rule allowing a Low Integrity AcroRd32.exe\n            process to write register values which can be used to trigger a buffer overflow on\n            the AdobeCollabSync component, allowing to achieve Medium Integrity Level\n            privileges from a Low Integrity AcroRd32.exe process. This module has been tested\n            successfully on Adobe Reader X 10.1.4 over Windows 7 SP1.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Adobe Reader X 10.1.4 / Windows 7 SP1"
-    ],
-    "disclosed": "2013-05-14",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/adobe_sandbox_adobecollabsync.rb",
-    "msf_path": "exploits/windows/local/adobe_sandbox_adobecollabsync",
-    "service_category": "local",
-    "replicable": false,
-    "confidence": "high",
-    "reason": "Requires victim to open malicious PDF in Adobe Reader (client-side interaction)",
-    "exclusion_category": "client_side",
-    "provisioning_complexity": "third_party_software",
-    "access_type": "client_side"
-  },
-  {
-    "name": "Agnitum Outpost Internet Security Local Privilege Escalation",
-    "description": "This module exploits a directory traversal vulnerability on Agnitum Outpost Internet\n            Security 8.1. The vulnerability exists in the acs.exe component, allowing the user to load\n            arbitrary DLLs through the acsipc_server named pipe, and finally execute arbitrary\n            code with SYSTEM privileges. This module has been tested successfully on Windows 7 SP1 with\n            Agnitum Outpost Internet Security 8.1 (32 bits and 64 bits versions).",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X86",
-      "ARCH_X64"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Agnitum Outpost Internet Security 8.1"
-    ],
-    "disclosed": "2013-08-02",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/agnitum_outpost_acs.rb",
-    "msf_path": "exploits/windows/local/agnitum_outpost_acs",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation via named pipe in third-party security software can be reproduced in a VM with the product installed.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "third_party_software",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Microsoft Windows ALPC Task Scheduler Local Privilege Elevation",
-    "description": "On vulnerable versions of Windows the alpc endpoint method SchRpcSetSecurity implemented\n          by the task scheduler service can be used to write arbitrary DACLs to `.job` files located\n          in `c:\\windows\\tasks` because the scheduler does not use impersonation when checking this\n          location. Since users can create files in the `c:\\windows\\tasks` folder, a hardlink can be\n          created to a file the user has read access to. After creating a hardlink, the vulnerability\n          can be triggered to set the DACL on the linked file.\n\n          WARNING:\n          The PrintConfig.dll (%windir%\\system32\\driverstor\\filerepository\\prnms003*) on the target host\n          will be overwritten when the exploit runs.\n\n          This module has been tested against Windows 10 Pro x64.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2018-8440"
-    ],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows 10 x64"
-    ],
-    "disclosed": "2018-08-27",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/alpc_taskscheduler.rb",
-    "msf_path": "exploits/windows/local/alpc_taskscheduler",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation on Windows 10 x64 with no victim interaction.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows AlwaysInstallElevated MSI",
-    "description": "This module checks the AlwaysInstallElevated registry keys which dictates if\n            .MSI files should be installed with elevated privileges (NT AUTHORITY\\SYSTEM).\n            The generated .MSI file has an embedded executable which is extracted and run\n            by the installer. After execution the .MSI file intentionally fails installation\n            (by calling some invalid VBS) to prevent it being registered on the system.\n            By running this with the /quiet argument the error will not be seen by the user.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X86",
-      "ARCH_X64"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows"
-    ],
-    "disclosed": "2010-03-18",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/always_install_elevated.rb",
-    "msf_path": "exploits/windows/local/always_install_elevated",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation exploit that only requires enabling a Windows registry setting and does not need victim interaction.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "service_configuration",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Cisco AnyConnect Privilege Escalations (CVE-2020-3153 and CVE-2020-3433)",
-    "description": "The installer component of Cisco AnyConnect Secure Mobility Client for Windows\n          prior to 4.8.02042 is vulnerable to path traversal and allows local attackers\n          to create/overwrite files in arbitrary locations with system level privileges.\n\n          The installer component of Cisco AnyConnect Secure Mobility Client for Windows\n          prior to 4.9.00086 is vulnerable to a DLL hijacking and allows local attackers\n          to execute code on the affected machine with with system level privileges.\n\n          Both attacks consist in sending a specially crafted IPC request to the TCP\n          port 62522 on the loopback device, which is exposed by the Cisco AnyConnect\n          Secure Mobility Agent service. This service will then launch the vulnerable\n          installer component (`vpndownloader`), which copies itself to an arbitrary\n          location (CVE-2020-3153) or with a supplied DLL (CVE-2020-3433) before being\n          executed with system privileges. Since `vpndownloader` is also vulnerable to DLL\n          hijacking, a specially crafted DLL (`dbghelp.dll`) is created at the same\n          location `vpndownloader` will be copied to get code execution with system\n          privileges.\n\n          The CVE-2020-3153 exploit has been successfully tested against Cisco AnyConnect\n          Secure Mobility Client versions 4.5.04029, 4.5.05030 and 4.7.04056 on Windows 10\n          version 1909 (x64) and Windows 7 SP1 (x86); the CVE-2020-3434 exploit has been\n          successfully tested against Cisco AnyConnect Secure Mobility Client versions\n          4.5.02036, 4.6.03049, 4.7.04056, 4.8.01090 and 4.8.03052 on Windows 10 version\n          1909 (x64) and 4.7.4056 on Windows 7 SP1 (x64).",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [
-      "2020-3153",
-      "2020-3433"
-    ],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows x86/x64 with x86 payload"
-    ],
-    "disclosed": "2020-08-05",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/anyconnect_lpe.rb",
-    "msf_path": "exploits/windows/local/anyconnect_lpe",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Targets Windows, requires no victim interaction, and achieves privilege escalation via local service IPC.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "third_party_software",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "AppLocker Execution Prevention Bypass",
-    "description": "This module will generate a .NET service executable on the target and utilize\n          InstallUtil to run the payload bypassing the AppLocker protection.\n\n          Currently only the InstallUtil method is provided, but future methods can be\n          added easily.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X86",
-      "ARCH_X64"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows"
-    ],
-    "disclosed": "2015-08-03",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/applocker_bypass.rb",
-    "msf_path": "exploits/windows/local/applocker_bypass",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation on Windows using built-in .NET InstallUtil, no victim interaction needed.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "AppXSvc Hard Link Privilege Escalation",
-    "description": "There exists a privilege escalation vulnerability for\n          Windows 10 builds prior to build 17763. Due to the AppXSvc's\n          improper handling of hard links, a user can gain full\n          privileges over a SYSTEM-owned file. The user can then utilize\n          the new file to execute code as SYSTEM.\n\n          This module employs a technique using the Diagnostics Hub Standard\n          Collector Service (DiagHub) which was discovered by James Forshaw to\n          load and execute a DLL as SYSTEM.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows 10"
-    ],
-    "disclosed": "2019-04-09",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/appxsvc_hard_link_privesc.rb",
-    "msf_path": "exploits/windows/local/appxsvc_hard_link_privesc",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation on Windows 10 via built-in AppXSvc service, no victim interaction needed.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows Escalate UAC Execute RunAs",
-    "description": "This module will attempt to elevate execution level using\n          the ShellExecute undocumented RunAs flag to bypass low\n          UAC settings.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows"
-    ],
-    "disclosed": "2012-01-03",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/ask.rb",
-    "msf_path": "exploits/windows/local/ask",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local UAC bypass requires only a Windows VM with UAC enabled and a low-integrity session.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "SYSTEM token impersonation through NTLM bits authentication on missing WinRM Service.",
-    "description": "This module exploit BITS behavior which tries to connect to the\n            local Windows Remote Management server (WinRM) every times it\n            starts. The module launches a fake WinRM server which listen on\n            port 5985 and triggers BITS. When BITS starts, it tries to\n            authenticate to the Rogue WinRM server, which allows to steal a\n            SYSTEM token. This token is then used to launch a new process\n            as SYSTEM user. In the case of this exploit, notepad.exe is launched\n            as SYSTEM. Then, it write shellcode in its previous memory space\n            and trigger its execution. As this exploit uses reflective dll\n            injection, it does not write any file on the disk. See\n            /documentation/modules/exploit/windows/local/bits_ntlm_token_impersonation.md\n            for complementary words of information.\n\n            Vulnerable operating systems are Windows 10 and Windows servers where WinRM is not running.\n            Lab experiments has shown that Windows 7 does not exhibit the vulnerable behavior.\n\n            WARNING:\n\n            - As this exploit runs a service on the target (Fake WinRM on port\n            5985), a firewall popup may appear on target screen. Thus, this exploit\n            may not be completely silent.\n\n            - This exploit has been successfully tested on :\n            Windows 10 (10.0 Build 19041) 32 bits\n            Windows 10 Pro, Version 1903 (10.0 Build 18362) 64 bits\n\n            - This exploit failed because of no BITS authentication attempt on:\n            Windows 7 (6.1 Build 7601, Service Pack 1) 32 bits\n\n            - Windows servers are not vulnerable because a genuine WinRM\n            service is already running, except if the user has disabled it\n            (Or if this exploit succeed to terminate it).\n\n            - SE_IMPERSONATE_NAME or SE_ASSIGNPRIMARYTOKEN_NAME privs are\n            required.\n\n            - BITS must not be running.\n\n            - This exploit automatically perform above quoted checks.\n            run \"check\" command to run checklist.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X86",
-      "ARCH_X64"
-    ],
+    "msf_path": "exploits/windows/http/apache_mod_rewrite_ldap",
+    "name": "Apache Module mod_rewrite LDAP Protocol Buffer Overflow",
+    "service_category": "http",
+    "description": "This module exploits the mod_rewrite LDAP protocol scheme handling\n          flaw discovered by Mark Dowd, which produces an off-by-one overflow.\n          Apache versions 1.3.29-36, 2.0.47-58, and 2.2.1-2 are vulnerable.\n          This module requires REWRITEPATH to be set accurately. In addition,\n          the target must have 'RewriteEngine on' configured, with a specific\n          'RewriteRule' condition enabled to allow for exploitation.\n\n          The flaw affects multiple platforms, however this module currently\n          only supports Windows based installations.",
     "cves": [],
     "edb_ids": [],
     "port": null,
     "targets": [
       "Automatic"
     ],
-    "disclosed": "2019-12-06",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bits_ntlm_token_impersonation.rb",
-    "msf_path": "exploits/windows/local/bits_ntlm_token_impersonation",
-    "service_category": "local",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Local privilege escalation on Windows 10 via built-in BITS service without user interaction.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "MS14-062 Microsoft Bluetooth Personal Area Networking (BthPan.sys) Privilege Escalation",
-    "description": "A vulnerability within Microsoft Bluetooth Personal Area Networking module,\n          BthPan.sys, can allow an attacker to inject memory controlled by the attacker\n          into an arbitrary location. This can be used by an attacker to overwrite\n          HalDispatchTable+0x4 and execute arbitrary code by subsequently calling\n          NtQueryIntervalProfile.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows XP SP3"
-    ],
-    "disclosed": "2014-07-18",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bthpan.rb",
-    "msf_path": "exploits/windows/local/bthpan",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation on Windows XP SP3 with built-in Bluetooth stack, no victim interaction needed.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows Escalate UAC Protection Bypass",
-    "description": "This module will bypass Windows UAC by utilizing the trusted publisher\n          certificate through process injection. It will spawn a second shell that\n          has the UAC flag turned off.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows x86"
-    ],
-    "disclosed": "2010-12-31",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac.rb",
-    "msf_path": "exploits/windows/local/bypassuac",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation exploit that works on standard Windows systems without network interaction.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows Escalate UAC Protection Bypass (Via COM Handler Hijack)",
-    "description": "This module will bypass Windows UAC by creating COM handler registry entries in the\n          HKCU hive. When certain high integrity processes are loaded, these registry entries\n          are referenced resulting in the process loading user-controlled DLLs. These DLLs\n          contain the payloads that result in elevated sessions. Registry key modifications\n          are cleaned up after payload invocation.\n\n          This module requires the architecture of the payload to match the OS, but the\n          current low-privilege Meterpreter session architecture can be different. If\n          specifying EXE::Custom your DLL should call ExitProcess() after starting your\n          payload in a separate process.\n\n          This module invokes the target binary via cmd.exe on the target. Therefore if\n          cmd.exe access is restricted, this module will not run correctly.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X86",
-      "ARCH_X64"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Automatic"
-    ],
-    "disclosed": "1900-01-01",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_comhijack.rb",
-    "msf_path": "exploits/windows/local/bypassuac_comhijack",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation exploit targeting Windows UAC bypass via registry manipulation",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows Escalate UAC Protection Bypass (Via dot net profiler)",
-    "description": "Microsoft Windows allows for the automatic loading of a profiling COM object during\n          the launch of a CLR process based on certain environment variables ostensibly to\n          monitor execution.  In this case, we abuse the profiler by pointing to a payload DLL\n          that will be launched as the profiling thread.  This thread will run at the permission\n          level of the calling process, so an auto-elevating process will launch the DLL with\n          elevated permissions.  In this case, we use gpedit.msc as the auto-elevated CLR\n          process, but others would work, too.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows x64"
-    ],
-    "disclosed": "2017-03-17",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_dotnet_profiler.rb",
-    "msf_path": "exploits/windows/local/bypassuac_dotnet_profiler",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local UAC bypass that runs on stock Windows x64 without user interaction.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows Escalate UAC Protection Bypass (Via Eventvwr Registry Key)",
-    "description": "This module will bypass Windows UAC by hijacking a special key in the Registry under\n          the current user hive, and inserting a custom command that will get invoked when\n          the Windows Event Viewer is launched. It will spawn a second shell that has the UAC\n          flag turned off.\n\n          This module modifies a registry key, but cleans up the key once the payload has\n          been invoked.\n\n          The module does not require the architecture of the payload to match the OS. If\n          specifying EXE::Custom your DLL should call ExitProcess() after starting your\n          payload in a separate process.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows x86"
-    ],
-    "disclosed": "2016-08-15",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_eventvwr.rb",
-    "msf_path": "exploits/windows/local/bypassuac_eventvwr",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local UAC bypass requires existing session but runs purely in Windows userland with no extra software.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows UAC Protection Bypass (Via FodHelper Registry Key)",
-    "description": "This module will bypass Windows 10 UAC by hijacking a special key in the Registry under\n          the current user hive, and inserting a custom command that will get invoked when\n          the Windows fodhelper.exe application is launched. It will spawn a second shell that has the UAC\n          flag turned off.\n\n          This module modifies a registry key, but cleans up the key once the payload has\n          been invoked.\n\n          The module does not require the architecture of the payload to match the OS. If\n          specifying EXE::Custom your DLL should call ExitProcess() after starting your\n          payload in a separate process.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows x86"
-    ],
-    "disclosed": "2017-05-12",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_fodhelper.rb",
-    "msf_path": "exploits/windows/local/bypassuac_fodhelper",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local UAC bypass on Windows 10 requires only an existing low-integrity session, easily obtained in a VM.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows Escalate UAC Protection Bypass (In Memory Injection)",
-    "description": "This module will bypass Windows UAC by utilizing the trusted publisher\n          certificate through process injection. It will spawn a second shell that\n          has the UAC flag turned off. This module uses the Reflective DLL Injection\n          technique to drop only the DLL payload binary instead of three separate\n          binaries in the standard technique. However, it requires the correct\n          architecture to be selected, (use x64 for SYSWOW64 systems also).\n          If specifying EXE::Custom your DLL should call ExitProcess() after starting\n          your payload in a separate process.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows x86"
-    ],
-    "disclosed": "2010-12-31",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_injection.rb",
-    "msf_path": "exploits/windows/local/bypassuac_injection",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation exploit that works on standard Windows systems without external dependencies.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows Escalate UAC Protection Bypass (In Memory Injection) abusing WinSXS",
-    "description": "This module will bypass Windows UAC by utilizing the trusted publisher\n          certificate through process injection. It will spawn a second shell that\n          has the UAC flag turned off by abusing the way \"WinSxS\" works in Windows\n          systems. This module uses the Reflective DLL Injection technique to drop\n          only the DLL payload binary instead of three seperate binaries in the\n          standard technique. However, it requires the correct architecture to be\n          selected, (use x64 for SYSWOW64 systems also).",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows x86"
-    ],
-    "disclosed": "2017-04-06",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_injection_winsxs.rb",
-    "msf_path": "exploits/windows/local/bypassuac_injection_winsxs",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation exploit targeting built-in Windows UAC mechanism.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows Escalate UAC Protection Bypass (Via Shell Open Registry Key)",
-    "description": "This module will bypass Windows UAC by hijacking a special key in the Registry under\n          the current user hive, and inserting a custom command that will get invoked when\n          Window backup and restore is launched. It will spawn a second shell that has the UAC\n          flag turned off.\n\n          This module modifies a registry key, but cleans up the key once the payload has\n          been invoked.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows x64"
-    ],
-    "disclosed": "2017-03-17",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_sdclt.rb",
-    "msf_path": "exploits/windows/local/bypassuac_sdclt",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation on Windows via registry hijacking, no victim interaction needed.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows Escalate UAC Protection Bypass (Via SilentCleanup)",
-    "description": "There's a task in Windows Task Scheduler called \"SilentCleanup\" which, while it's executed as Users, automatically runs with elevated privileges.\n          When it runs, it executes the file %windir%\\system32\\cleanmgr.exe. Since it runs as Users, and we can control user's environment variables,\n          %windir% (normally pointing to C:\\Windows) can be changed to point to whatever we want, and it'll run as admin.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X86",
-      "ARCH_X64"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Microsoft Windows"
-    ],
-    "disclosed": "2019-02-24",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_silentcleanup.rb",
-    "msf_path": "exploits/windows/local/bypassuac_silentcleanup",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation on Windows via UAC bypass using built-in Task Scheduler, no victim interaction needed.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows UAC Protection Bypass (Via Slui File Handler Hijack)",
-    "description": "This module will bypass UAC on Windows 8-10 by hijacking a special key in the Registry under\n          the Current User hive, and inserting a custom command that will get invoked when any binary\n          (.exe) application is launched. But slui.exe is an auto-elevated binary that is vulnerable\n          to file handler hijacking. When we run slui.exe with changed Registry key\n          (HKCU:\\Software\\Classes\\exefile\\shell\\open\\command), it will run our custom command as Admin\n          instead of slui.exe.\n\n          The module modifies the registry in order for this exploit to work. The modification is\n          reverted once the exploitation attempt has finished.\n\n          The module does not require the architecture of the payload to match the OS. If\n          specifying EXE::Custom your DLL should call ExitProcess() after starting the\n          payload in a different process.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows x86"
-    ],
-    "disclosed": "2018-01-15",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_sluihijack.rb",
-    "msf_path": "exploits/windows/local/bypassuac_sluihijack",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation on Windows via registry hijack, no victim interaction needed once initial session exists.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows Escalate UAC Protection Bypass (ScriptHost Vulnerability)",
-    "description": "This module will bypass Windows UAC by utilizing the missing .manifest on the script host\n          cscript/wscript.exe binaries.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X86",
-      "ARCH_X64"
-    ],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Automatic"
-    ],
-    "disclosed": "2015-08-22",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_vbs.rb",
-    "msf_path": "exploits/windows/local/bypassuac_vbs",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation exploit that targets built-in Windows UAC mechanism without requiring victim interaction.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows 10 UAC Protection Bypass Via Windows Store (WSReset.exe)",
-    "description": "This module exploits a flaw in the WSReset.exe Windows Store Reset Tool. The tool\n          is run with the \"autoElevate\" property set to true, however it can be moved to\n          a new Windows directory containing a space (C:\\Windows \\System32\\) where, upon\n          execution, it will load our payload dll (propsys.dll).",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Automatic"
-    ],
-    "disclosed": "2019-08-22",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_windows_store_filesys.rb",
-    "msf_path": "exploits/windows/local/bypassuac_windows_store_filesys",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation on Windows 10 via built-in WSReset.exe, no network or victim interaction required.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Windows 10 UAC Protection Bypass Via Windows Store (WSReset.exe) and Registry",
-    "description": "This module exploits a flaw in the WSReset.exe file associated with the Windows\n          Store.  This binary has autoelevate privs, and it will run a binary file\n          contained in a low-privilege registry location.  By placing a link to\n          the binary in the registry location, WSReset.exe will launch the binary as\n          a privileged user.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
-    "cves": [],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Automatic"
-    ],
-    "disclosed": "2019-02-19",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/bypassuac_windows_store_reg.rb",
-    "msf_path": "exploits/windows/local/bypassuac_windows_store_reg",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation on Windows 10 via built-in WSReset.exe and registry manipulation.",
-    "exclusion_category": "local_privesc",
-    "provisioning_complexity": "standard",
-    "access_type": "privilege_escalation"
-  },
-  {
-    "name": "Canon Driver Privilege Escalation",
-    "description": "Canon TR150 print drivers versions 3.71.2.10 and below allow local users to read/write files\n          within the \"CanonBJ\" directory and its subdirectories. By overwriting the DLL at\n          C:\\ProgramData\\CanonBJ\\IJPrinter\\CNMWINDOWS\\Canon TR150 series\\LanguageModules\\040C\\CNMurGE.dll\n          with a malicious DLL at the right time whilst running the C:\\Windows\\System32\\Printing_Admin_Scripts\\en-US\\prnmngr.vbs\n          script to install a new printer, a timing issue can be exploited to cause the PrintIsolationHost.exe program,\n          which runs as NT AUTHORITY\\SYSTEM, to successfully load the malicious DLL. Successful exploitation\n          will grant attackers code execution as the NT AUTHORITY\\SYSTEM user.\n\n          This module leverages the prnmngr.vbs script\n          to add and delete printers. Multiple runs of this\n          module may be required given successful exploitation\n          is time-sensitive.",
-    "platform": [
-      "win"
-    ],
-    "arch": [
-      "ARCH_X86",
-      "ARCH_X64"
-    ],
-    "cves": [
-      "2021-38085"
-    ],
-    "edb_ids": [],
-    "port": null,
-    "targets": [
-      "Windows"
-    ],
-    "disclosed": "2021-08-07",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/canon_driver_privesc.rb",
-    "msf_path": "exploits/windows/local/canon_driver_privesc",
-    "service_category": "local",
-    "replicable": true,
-    "confidence": "high",
-    "reason": "Local privilege escalation on Windows via Canon printer driver DLL hijack, installable with standard Windows scripts.",
-    "exclusion_category": "local_privesc",
+    "reason": "Targets Windows Apache HTTP server with mod_rewrite enabled, can be reproduced in VM lab with standard Apache installation.",
+    "access_type": "initial_foothold",
     "provisioning_complexity": "third_party_software",
-    "access_type": "privilege_escalation"
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Apache",
+      "product": "mod_rewrite",
+      "tested_version": "1.3.29-36, 2.0.47-58, 2.2.1-2",
+      "protocol_hint": "HTTP/80",
+      "platform_notes": "Windows"
+    }
   },
   {
-    "name": "Windows Capcom.sys Kernel Execution Exploit (x64 only)",
-    "description": "This module abuses the Capcom.sys kernel driver's function that allows for an\n            arbitrary function to be executed in the kernel from user land. This function\n            purposely disables SMEP prior to invoking a function given by the caller.\n            This has been tested on Windows 7, 8.1, 10 (x64) and Windows 11 (x64) upto build 22000.194.\n            Note that builds after 22000.194 contain deny lists that prevent this driver from loading.",
-    "platform": [
-      "win"
-    ],
-    "arch": [],
+    "msf_path": "exploits/windows/http/apache_modjk_overflow",
+    "name": "Apache mod_jk 1.2.20 Buffer Overflow",
+    "service_category": "http",
+    "description": "This is a stack buffer overflow exploit for mod_jk 1.2.20.\n          Should work on any Win32 OS.",
     "cves": [],
     "edb_ids": [],
     "port": null,
     "targets": [
-      "Windows x64"
+      "mod_jk 1.2.20 (Apache 1.3.x/2.0.x/2.2.x) (any win32 OS/language)"
     ],
-    "disclosed": "1999-01-01",
-    "file_path": "metasploit-framework/modules/exploits/windows/local/capcom_sys_exec.rb",
-    "msf_path": "exploits/windows/local/capcom_sys_exec",
-    "service_category": "local",
+    "disclosed": null,
+    "file_path": null,
     "replicable": true,
     "confidence": "high",
-    "reason": "Local privilege escalation via Capcom.sys driver that can be loaded on supported Windows x64 VMs.",
-    "exclusion_category": "local_privesc",
+    "reason": "Targets Windows Apache mod_jk service, no victim interaction required, achieves remote code execution.",
+    "access_type": "initial_foothold",
     "provisioning_complexity": "third_party_software",
-    "access_type": "privilege_escalation"
+    "exclusion_category": null,
+    "extracted_metadata": {
+      "vendor": "Apache",
+      "product": "mod_jk",
+      "tested_version": "1.2.20",
+      "protocol_hint": null,
+      "platform_notes": "any win32 OS"
+    }
   }
 ]

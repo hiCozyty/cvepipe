@@ -15,7 +15,7 @@ import { OpenAI } from 'openai';
 const METASPLOIT_DIR = './metasploit-framework';
 const OUTPUT_DIR = './output';
 const BATCH_SIZE = 5; // batch caching
-const CLEAR_CACHE = false;
+const CLEAR_CACHE = true;
 const LLM_ONLY_MODE = true; // (set true to bypass heuristics, send ALL to LLM)
 const CACHE_DIR = './modules'; // New directory for cache
 const CACHE_FILE_PATH = path.join(CACHE_DIR, 'filteredModules.json'); // New cache file
@@ -40,6 +40,20 @@ async function rateLimitedDelay() {
 // ============================================================================
 // Helper Functions
 // ============================================================================
+
+function parseLLMJson(response) {
+    try {
+        const cleaned = response.replace(/```json?\n?/g, '').replace(/```\s*$/g, '').trim();
+        return JSON.parse(cleaned);
+    } catch (e) {
+        try {
+            const fixed = response.replace(/,\s*([\]}])/g, '$1').replace(/```json?\n?/g, '').replace(/```\s*$/g, '').trim();
+            return JSON.parse(fixed);
+        } catch {
+            return null;
+        }
+    }
+}
 
 function deriveMsfPath(filePath) {
     const match = filePath.match(/modules\/(exploits\/windows\/[^.]+)/);
@@ -264,15 +278,20 @@ function createLLMClient() {
 }
 
 function prepareModuleForLLM(metadata) {
-    return {
-        id: metadata.msf_path,  
+  return {
+        id: metadata.msf_path,
         msf_path: metadata.msf_path,
         name: metadata.name,
-        service_category: metadata.service_category, // now correctly populated
+        service_category: metadata.service_category,
         description: metadata.description || '',
         targets: metadata.targets,
         cves: metadata.cves,
-        port: metadata.port
+        edb_ids: metadata.edb_ids || [],
+        port: metadata.port,
+        platform: metadata.platform || [],
+        arch: metadata.arch || [],
+        disclosed: metadata.disclosed,
+        file_path: metadata.file_path
     };
 }
 
@@ -293,6 +312,7 @@ Each object must contain:
     "tested_version": "string or null",
     "protocol_hint": "string or null (e.g., 'UDP/1926', 'TCP/8192')",
     "platform_notes": "string or null (e.g., 'Windows 7-10', 'Server 2012-2022')"
+    "disclosure_date": "string or null (extract from 'DisclosureDate' field if present)"
   }
 }
 
@@ -326,6 +346,7 @@ For extracted_metadata fields, extract from description ONLY if explicitly state
 - tested_version: Look for "Tested against <X.Y.Z>", "version <X.Y.Z>", "v<X.Y.Z>"
 - protocol_hint: Look for port numbers, "UDP/TCP <port>", "binds to <port>"
 - platform_notes: Look for OS version ranges like "Windows 7-10", "Server 2012-2022"
+- disclosure_date: Extract from module's 'DisclosureDate' field or description phrases like "disclosed on <date>"
 
 If a field cannot be confidently extracted, set it to null. Do NOT hallucinate values.
 
@@ -349,7 +370,8 @@ async function classifySingleWithLLM(module) {
         });
 
         const content = response.choices[0].message.content;
-        const result = JSON.parse(content);
+        const result = parseLLMJson(content);
+        if (!result) throw new Error('Failed to parse LLM JSON response');
 
         // Handle array or single-object responses
         const results = Array.isArray(result) ? result : 
@@ -369,7 +391,7 @@ async function classifySingleWithLLM(module) {
                 edb_ids: [],  // Preserve from original metadata if needed
                 port: input.port,
                 targets: input.targets,
-                disclosed: null,  // Preserve from original if needed
+                disclosed: input.disclosed,
                 file_path: input.file_path || null,
                 // Classification fields
                 replicable: r.replicable,
@@ -379,7 +401,6 @@ async function classifySingleWithLLM(module) {
                 provisioning_complexity: r.provisioning_complexity,
                 exclusion_category: r.access_type === 'client_side' ? 'client_side' : 
                                    r.access_type === 'privilege_escalation' ? 'local_privesc' : null,
-                // ← NEW: Extracted metadata
                 extracted_metadata: r.extracted_metadata || {
                     vendor: null,
                     product: null,
