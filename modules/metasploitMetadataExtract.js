@@ -15,7 +15,7 @@ import { OpenAI } from 'openai';
 const METASPLOIT_DIR = './metasploit-framework';
 const OUTPUT_DIR = './output';
 const BATCH_SIZE = 5; // batch caching
-const CLEAR_CACHE = true;
+const CLEAR_CACHE = false;
 const LLM_ONLY_MODE = true; // (set true to bypass heuristics, send ALL to LLM)
 const CACHE_DIR = './modules'; // New directory for cache
 const CACHE_FILE_PATH = path.join(CACHE_DIR, 'filteredModules.json'); // New cache file
@@ -647,6 +647,13 @@ async function main() {
     if (uncertainModules.length > 0 && LLM_API_KEY) {
         // 3. PASS CACHE TO LLM CLASSIFIER
         await classifyUncertainModulesWithLLM(uncertainModules, cache);
+
+        for (let i = 0; i < results.length; i++) {
+            const msfPath = results[i].msf_path;
+            if (cache.llm[msfPath]) {
+                results[i] = cache.llm[msfPath];  // Replace stale object with enriched one
+            }
+        }
     } else if (uncertainModules.length > 0 && !LLM_API_KEY) {
         console.log('[LLM] API key not set, keeping heuristic classifications for uncertain modules');
     }

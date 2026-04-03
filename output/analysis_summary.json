@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-04-03T02:02:52.992Z",
+  "statistics": {
+    "total": 1224,
+    "replicable": 718,
+    "notReplicable": 506,
+    "windowsCount": 0,
+    "linuxCount": 0,
+    "byCategory": {
+      "client_side": 497,
+      "unknown": 6,
+      "local_privesc": 3
+    },
+    "byComplexity": {
+      "standard": 191,
+      "service_configuration": 27,
+      "third_party_software": 1006
+    }
+  },
+  "provisioning_complexity": {
+    "standard": 191,
+    "service_configuration": 27,
+    "third_party_software": 1006
+  },
+  "llm_classification": {
+    "uncertain_modules_classified": 1224,
+    "api_key_set": true
+  }
+}
