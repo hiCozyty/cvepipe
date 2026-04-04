@@ -10,4 +10,5 @@ services:
       - ./searxng:/etc/searxng:rw
     environment:
       - SEARXNG_BASE_URL=http://localhost:8088/
+      - SEARXNG_SECRET_KEY=${SEARXNG_SECRET_KEY}
     restart: always

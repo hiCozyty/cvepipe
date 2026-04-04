@@ -34,18 +34,18 @@ const LLM_MODEL = process.env.LLM_MODEL;
 const LLM_TEMPERATURE = 0;
 const LLM_MAX_TOKENS = 16384;
 
-const EXTRACT_TOP_N = 5;              // Results from SearXNG to consider
-const EXTRACT_CONTENT_TOP_N = 3;      // URLs to actually fetch full content from
-const CONTENT_PREVIEW_CHARS = 400;    // Chars of extracted content per page in LLM prompt
-const MIN_ARTICLE_LENGTH = 300;       // Skip pages shorter than this
-const MAX_CONTENT_PER_STAGE = 2000;   // Hard cap on total extracted chars sent to LLM
+const EXTRACT_TOP_N = 10;              // Results from SearXNG to consider
+const EXTRACT_CONTENT_TOP_N = 7;      // URLs to actually fetch full content from
+const CONTENT_PREVIEW_CHARS = 15000;    // Chars of extracted content per page in LLM prompt
+const MIN_ARTICLE_LENGTH = 200;       // Skip pages shorter than this
+const MAX_CONTENT_PER_STAGE = 80000;   // Hard cap on total extracted chars sent to LLM
 
 const INPUT_FILE = './output/test.json';
 const OUTPUT_FILE = './output/prescreen_results.json';
 
 const TEST_MODE = {
     enabled: true,           // Set to true to test one stage at a time
-    stopAfterStage: 'stage1', // 'stage1' | 'stage2' | 'stage3' | 'stage4' | null
+    stopAfterStage: 'stage4', // 'stage1' | 'stage2' | 'stage3' | 'stage4' | null
     verboseLogging: true,    // Extra logs for input/output inspection
     prettyPrint: true,       // JSON.stringify with indentation for logs
 };
@@ -53,7 +53,97 @@ const TEST_MODE = {
 function log(...args) {
     console.log(...args);
 }
-
+function parseLLMJson(response) {
+    if (!response) throw new Error('Empty response');
+    
+    // Step 1: Remove markdown code fences (```json, ```, etc.)
+    let cleaned = response.replace(/^```(?:json)?\s*|\s*```$/g, '').trim();
+    
+    // Step 2: Find the first { or [ and last } or ] to extract JSON bounds
+    const startBrace = cleaned.indexOf('{');
+    const endBrace = cleaned.lastIndexOf('}');
+    const startBracket = cleaned.indexOf('[');
+    const endBracket = cleaned.lastIndexOf(']');
+    
+    // Prefer object over array if both present
+    let startIdx = Math.max(startBrace, startBracket);
+    let endIdx = Math.max(endBrace, endBracket);
+    
+    // If we found object braces, use those
+    if (startBrace !== -1 && endBrace !== -1 && endBrace > startBrace) {
+        startIdx = startBrace;
+        endIdx = endBrace;
+    }
+    // Else if we found array brackets
+    else if (startBracket !== -1 && endBracket !== -1 && endBracket > startBracket) {
+        startIdx = startBracket;
+        endIdx = endBracket;
+    }
+    // Else fail
+    else {
+        throw new Error(`No valid JSON bounds found in response: ${response.substring(0, 100)}...`);
+    }
+    
+    // Extract and parse
+    const jsonStr = cleaned.substring(startIdx, endIdx + 1).trim();
+    return JSON.parse(jsonStr);
+}
+async function appendToAggregatedResults(entryId, result, outputFile = OUTPUT_FILE) {
+    const fileRef = Bun.file(outputFile);
+    
+    // Read existing results or initialize
+    let aggregated = { 
+        processed: 0, 
+        timestamp: new Date().toISOString(), 
+        results: {}  // ← OBJECT, not array
+    };
+    
+    if (await fileRef.exists()) {
+        try {
+            aggregated = await fileRef.json();
+            // Migrate old array-based results to object if needed
+            if (Array.isArray(aggregated.results)) {
+                console.log(`  ↻ Migrating ${aggregated.results.length} array results to object keys`);
+                const migrated = {};
+                for (const r of aggregated.results) {
+                    const key = r.entry?.msf_path || r.entryId || crypto.randomUUID();
+                    migrated[key] = r;
+                }
+                aggregated.results = migrated;
+            }
+            // Ensure results is an object
+            if (typeof aggregated.results !== 'object' || aggregated.results === null || Array.isArray(aggregated.results)) {
+                aggregated.results = {};
+            }
+        } catch (e) {
+            console.warn(`  ⚠ Failed to read existing results: ${e.message}. Starting fresh.`);
+            aggregated.results = {};
+        }
+    }
+    
+    // Use entryId (msf_path) as the KEY
+    const key = entryId;  // e.g., "exploits/windows/vnc/winvnc_http_get"
+    
+    // Update or add result
+    if (aggregated.results[key]) {
+        console.log(`  ↻ Updating entry: ${key}`);
+        aggregated.results[key] = { ...aggregated.results[key], ...result, updated_at: new Date().toISOString() };
+    } else {
+        console.log(`  ➕ Adding entry: ${key}`);
+        aggregated.results[key] = { ...result, added_at: new Date().toISOString() };
+    }
+    
+    // Update metadata
+    aggregated.processed = Object.keys(aggregated.results).length;
+    aggregated.last_updated = new Date().toISOString();
+    
+    // Atomic write: write to temp file, then rename
+    const tempFile = `${outputFile}.tmp.${Date.now()}`;
+    await Bun.write(tempFile, JSON.stringify(aggregated, null, 2));
+    await $`mv ${tempFile} ${outputFile}`;  // Atomic rename
+    
+    return aggregated;
+}
 function logJSON(label, data, level = 'info') {
     if (!TEST_MODE.verboseLogging) return;
     const prefix = level === 'error' ? '✗' : level === 'warn' ? '⚠' : '✓';
@@ -81,8 +171,12 @@ function logTaskExecution(task, result, context) {
     console.log(`  └─ Visited URLs this stage: ${context.visitedUrls.size}`);
 }
 
-// Rate limiting: 1 request per 10s to avoid throttling
-const llmLimiter = new Bottleneck({ minTime: 10_000, maxConcurrent: 1 });
+// Rate limiting: 1 request per 10s 
+const searxngLimiter = new Bottleneck({ 
+  minTime: 10_000,    
+  maxConcurrent: 1 
+});
+const llmLimiter = new Bottleneck({ minTime: 5_000, maxConcurrent: 1 });
 let lastRequestTime = 0;
 
 async function rateLimitedDelay() {
@@ -172,8 +266,7 @@ class EntryContext {
         this.currentStage = 'stage1';
         this.finalResult = null;
         // Per-entry checkpoint for crash recovery
-        this.checkpointFile = `${OUTPUT_DIR}/${this.entryId.replace(/\//g, '_')}.checkpoint.json`;
-
+        this.checkpointFile = `${OUTPUT_DIR}/checkpoints/${this.entryId.replace(/\//g, '_')}.checkpoint.json`;
     }
     
     async saveCheckpoint () {
@@ -265,9 +358,9 @@ async function callLLM(prompt, systemPrompt = "You are a security research assis
 async function executeWebSearch(query, context) {
     try {
         const url = `${SEARXNG_ENDPOINT}/search?format=json&q=${encodeURIComponent(query)}&results=${RESULTS_PER_SEARCH}`;
-        const response = await fetch(url, { 
-            signal: AbortSignal.timeout(SEARXNG_TIMEOUT) 
-        });
+        const response = await searxngLimiter.schedule(() => 
+            fetch(url, { signal: AbortSignal.timeout(SEARXNG_TIMEOUT) })
+        );
         
         if (!response.ok) throw new Error(`Search failed: ${response.status}`);
         
@@ -477,14 +570,27 @@ Output a structured mental model as JSON:
     const synthesis = await callLLM(prompt, STAGE1_PROMPT);
     
     try {
-        const parsed = JSON.parse(synthesis);
+        const parsed = parseLLMJson(synthesis);
         context.synthesizedOutput = parsed;
-        context.confidence = parsed.confidence || 0.3;
+        context.confidence = typeof parsed.confidence === 'number' ? parsed.confidence : 0.3;
         return parsed;
-    } catch {
-        context.synthesizedOutput = { raw: synthesis, confidence: 0.3, unknowns: ["Parse failed"] };
+    } catch (parseError) {
+        console.warn(`  ⚠ JSON parse failed: ${parseError.message}`);
+        console.warn(`  Raw response preview: ${synthesis?.substring(0, 200)}...`);
+        
+        // Fallback: try to extract key fields with regex as last resort
+        const fallback = {
+            raw: synthesis,
+            confidence: 0.3,
+            unknowns: [`Parse failed: ${parseError.message}`],
+            // Attempt regex extraction for critical fields (optional)
+            vulnerability_type: synthesis?.match(/"vulnerability_type"\s*:\s*"([^"]+)"/)?.[1],
+            affected_component: synthesis?.match(/"affected_component"\s*:\s*"([^"]+)"/)?.[1],
+        };
+        
+        context.synthesizedOutput = fallback;
         context.confidence = 0.3;
-        return context.synthesizedOutput;
+        return fallback;
     }
 }
 
@@ -580,16 +686,29 @@ Output JSON software profile:
 `;
     
     const synthesis = await callLLM(prompt, STAGE2_PROMPT);
-    
+        
     try {
-        const parsed = JSON.parse(synthesis);
+        const parsed = parseLLMJson(synthesis);
         context.synthesizedOutput = parsed;
-        context.confidence = parsed.confidence || 0.3;
+        context.confidence = typeof parsed.confidence === 'number' ? parsed.confidence : 0.3;
         return parsed;
-    } catch {
-        context.synthesizedOutput = { raw: synthesis, confidence: 0.3 };
+    } catch (parseError) {
+        console.warn(`  ⚠ JSON parse failed: ${parseError.message}`);
+        console.warn(`  Raw response preview: ${synthesis?.substring(0, 200)}...`);
+        
+        // Fallback: try to extract key fields with regex as last resort
+        const fallback = {
+            raw: synthesis,
+            confidence: 0.3,
+            unknowns: [`Parse failed: ${parseError.message}`],
+            // Attempt regex extraction for critical fields (optional)
+            vulnerability_type: synthesis?.match(/"vulnerability_type"\s*:\s*"([^"]+)"/)?.[1],
+            affected_component: synthesis?.match(/"affected_component"\s*:\s*"([^"]+)"/)?.[1],
+        };
+        
+        context.synthesizedOutput = fallback;
         context.confidence = 0.3;
-        return context.synthesizedOutput;
+        return fallback;
     }
 }
 
@@ -722,14 +841,27 @@ Output JSON acquisition strategy:
     const synthesis = await callLLM(prompt, STAGE3_PROMPT);
     
     try {
-        const parsed = JSON.parse(synthesis);
+        const parsed = parseLLMJson(synthesis);
         context.synthesizedOutput = parsed;
-        context.confidence = parsed.confidence || 0.3;
+        context.confidence = typeof parsed.confidence === 'number' ? parsed.confidence : 0.3;
         return parsed;
-    } catch {
-        context.synthesizedOutput = { raw: synthesis, confidence: 0.3 };
+    } catch (parseError) {
+        console.warn(`  ⚠ JSON parse failed: ${parseError.message}`);
+        console.warn(`  Raw response preview: ${synthesis?.substring(0, 200)}...`);
+        
+        // Fallback: try to extract key fields with regex as last resort
+        const fallback = {
+            raw: synthesis,
+            confidence: 0.3,
+            unknowns: [`Parse failed: ${parseError.message}`],
+            // Attempt regex extraction for critical fields (optional)
+            vulnerability_type: synthesis?.match(/"vulnerability_type"\s*:\s*"([^"]+)"/)?.[1],
+            affected_component: synthesis?.match(/"affected_component"\s*:\s*"([^"]+)"/)?.[1],
+        };
+        
+        context.synthesizedOutput = fallback;
         context.confidence = 0.3;
-        return context.synthesizedOutput;
+        return fallback;
     }
 }
 
@@ -895,14 +1027,27 @@ Output JSON final recommendation:
     const synthesis = await callLLM(prompt, STAGE4_PROMPT);
     
     try {
-        const parsed = JSON.parse(synthesis);
+        const parsed = parseLLMJson(synthesis);
         context.synthesizedOutput = parsed;
-        context.confidence = parsed.confidence || 0.3;
+        context.confidence = typeof parsed.confidence === 'number' ? parsed.confidence : 0.3;
         return parsed;
-    } catch {
-        context.synthesizedOutput = { raw: synthesis, confidence: 0.3 };
+    } catch (parseError) {
+        console.warn(`  ⚠ JSON parse failed: ${parseError.message}`);
+        console.warn(`  Raw response preview: ${synthesis?.substring(0, 200)}...`);
+        
+        // Fallback: try to extract key fields with regex as last resort
+        const fallback = {
+            raw: synthesis,
+            confidence: 0.3,
+            unknowns: [`Parse failed: ${parseError.message}`],
+            // Attempt regex extraction for critical fields (optional)
+            vulnerability_type: synthesis?.match(/"vulnerability_type"\s*:\s*"([^"]+)"/)?.[1],
+            affected_component: synthesis?.match(/"affected_component"\s*:\s*"([^"]+)"/)?.[1],
+        };
+        
+        context.synthesizedOutput = fallback;
         context.confidence = 0.3;
-        return context.synthesizedOutput;
+        return fallback;
     }
 }
 
@@ -953,8 +1098,18 @@ async function runStageLoop(entryContext, stageKey, planner, synthesizer, stageL
         
         // === PLANNER EXECUTION ===
         log(`\n📋 Planner generating tasks...`);
-        const newTasks = await planner(...inputs, context);
-        
+        const plannerInputs = [entryContext.rawEntry, ...inputs.slice(1)];
+
+        if (context.loopCount > 1 && context.synthesizedOutput) {
+            plannerInputs.push({
+                prior_synthesis: context.synthesizedOutput,
+                prior_confidence: context.confidence,
+                research_gap: context.synthesizedOutput.unknowns // What we still don't know
+            });
+        }
+
+        const newTasks = await planner(...plannerInputs, context);      
+          
         if (TEST_MODE.verboseLogging) {
             logJSON(`Planner output: ${newTasks.length} tasks generated`, 
                 newTasks.map(t => ({
@@ -1095,9 +1250,8 @@ async function processEntry(entry) {
                     visited_urls_stage1: Array.from(entryContext.stages.stage1.visitedUrls),
                     errors_stage1: entryContext.stages.stage1.errors
                 };
-                const testFile = `${OUTPUT_DIR}/${entryContext.entryId.replace(/\//g, '_')}_stage1_test.json`;
-                await Bun.write(testFile, JSON.stringify(testOutput, null, 2));  // ← await + Bun.write
-                log(`\n💾 Stage 1 test output written to: ${testFile}`);
+                await appendToAggregatedResults(entryContext.entryId, testOutput);
+                log(`\n💾 Appended to aggregated results: ${OUTPUT_FILE}`);
                 
                 return testOutput;
             }
@@ -1129,22 +1283,93 @@ async function processEntry(entry) {
                     errors: [...entryContext.stages.stage1.errors, ...entryContext.stages.stage2.errors]
                 };
                 
-                const testFile = `${OUTPUT_DIR}/${entryContext.entryId.replace(/\//g, '_')}_stage2_test.json`;
-                await Bun.write(testFile, JSON.stringify(testOutput, null, 2));
-                log(`\n💾 Stage 2 test output written to: ${testFile}`);
+                // ✅ Append to aggregated results file (not individual file)
+                await appendToAggregatedResults(entryContext.entryId, testOutput);
+                log(`\n💾 Appended to aggregated results: ${OUTPUT_FILE}`);
                 
                 return testOutput;
             }
         }
-        
+                
         // === STAGE 3: Classify software ===
         if (!entryContext.stages.stage3.synthesizedOutput) {
+            await runStageLoop(entryContext, 'stage3', stage3Planner, stage3Synthesizer, 'CLASSIFY SOFTWARE');
+            await entryContext.saveCheckpoint();
             
+            if (TEST_MODE.enabled && TEST_MODE.stopAfterStage === 'stage3') {
+                log(`\n🛑 TEST MODE: Stopping after Stage 3`);
+                entryContext.finalResult = {
+                    entry: entryContext.rawEntry,
+                    stage1_result: entryContext.stages.stage1.synthesizedOutput,
+                    stage2_result: entryContext.stages.stage2.synthesizedOutput,
+                    stage3_result: entryContext.stages.stage3.synthesizedOutput,
+                    stage3_confidence: entryContext.stages.stage3.confidence,
+                    stage3_loops: entryContext.stages.stage3.loopCount,
+                    test_mode_note: "Pipeline stopped after Stage 3 for validation",
+                    completed_at: new Date().toISOString()
+                };
+                
+                const testOutput = {
+                    ...entryContext.finalResult,
+                    visited_urls: Array.from(new Set([
+                        ...entryContext.stages.stage1.visitedUrls,
+                        ...entryContext.stages.stage2.visitedUrls,
+                        ...entryContext.stages.stage3.visitedUrls
+                    ])),
+                    errors: [
+                        ...entryContext.stages.stage1.errors,
+                        ...entryContext.stages.stage2.errors,
+                        ...entryContext.stages.stage3.errors
+                    ]
+                };
+                
+                await appendToAggregatedResults(entryContext.entryId, testOutput);
+                log(`\n💾 Appended to aggregated results: ${OUTPUT_FILE}`);
+                
+                return testOutput;
+            }
         }
-        
+
         // === STAGE 4: Find downloads ===
         if (!entryContext.stages.stage4.synthesizedOutput) {
-       
+            await runStageLoop(entryContext, 'stage4', stage4Planner, stage4Synthesizer, 'FIND DOWNLOADS');
+            await entryContext.saveCheckpoint();
+            
+            if (TEST_MODE.enabled && TEST_MODE.stopAfterStage === 'stage4') {
+                log(`\n🛑 TEST MODE: Stopping after Stage 4`);
+                entryContext.finalResult = {
+                    entry: entryContext.rawEntry,
+                    stage1_result: entryContext.stages.stage1.synthesizedOutput,
+                    stage2_result: entryContext.stages.stage2.synthesizedOutput,
+                    stage3_result: entryContext.stages.stage3.synthesizedOutput,
+                    stage4_result: entryContext.stages.stage4.synthesizedOutput,
+                    stage4_confidence: entryContext.stages.stage4.confidence,
+                    stage4_loops: entryContext.stages.stage4.loopCount,
+                    test_mode_note: "Pipeline stopped after Stage 4 for validation",
+                    completed_at: new Date().toISOString()
+                };
+                
+                const testOutput = {
+                    ...entryContext.finalResult,
+                    visited_urls: Array.from(new Set([
+                        ...entryContext.stages.stage1.visitedUrls,
+                        ...entryContext.stages.stage2.visitedUrls,
+                        ...entryContext.stages.stage3.visitedUrls,
+                        ...entryContext.stages.stage4.visitedUrls
+                    ])),
+                    errors: [
+                        ...entryContext.stages.stage1.errors,
+                        ...entryContext.stages.stage2.errors,
+                        ...entryContext.stages.stage3.errors,
+                        ...entryContext.stages.stage4.errors
+                    ]
+                };
+                
+                await appendToAggregatedResults(entryContext.entryId, testOutput);
+                log(`\n💾 Appended to aggregated results: ${OUTPUT_FILE}`);
+                
+                return testOutput;
+            }
         }
         
         // === FULL PIPELINE COMPLETE ===
@@ -1172,10 +1397,11 @@ async function processEntry(entry) {
             )),
             errors: Object.values(entryContext.stages).flatMap(s => s.errors)
         };
-        const outputFile = `${OUTPUT_DIR}/${entryContext.entryId.replace(/\//g, '_')}_final.json`;        
-        fs.writeFileSync(outputFile, JSON.stringify(finalOutput, null, 2));
-        
-        log(`\n✅ Pipeline complete → ${outputFile}`);
+
+        // ✅ Append to aggregated results file (not individual file)
+        await appendToAggregatedResults(entryContext.entryId, finalOutput);
+        log(`\n✅ Pipeline complete → appended to ${OUTPUT_FILE}`);
+
         return finalOutput;
         
     } catch (error) {
@@ -1188,7 +1414,9 @@ async function processEntry(entry) {
 // ===== BATCH PROCESSOR =====
 
 async function main() {
-    await $`mkdir -p ${OUTPUT_DIR}`;
+    await $`mkdir -p ${OUTPUT_DIR}/checkpoints`; 
+    await $`mkdir -p ./output`; 
+
     const inputData = await Bun.file(INPUT_FILE).json();
     const entries = Array.isArray(inputData) ? inputData : Object.values(inputData);
     
@@ -1215,18 +1443,7 @@ async function main() {
             console.error(`Skipping ${entry.msf_path}: ${error.message}`);
             // Continue with next entry
         }
-    }
-    
-    // Write aggregate results
-    await fs.promises.writeFile(
-        OUTPUT_FILE,
-        JSON.stringify({
-            processed: results.length,
-            timestamp: new Date().toISOString(),
-            results: results
-        }, null, 2)
-    );
-    
+    }  
     console.log(`\n✓ Batch complete: ${OUTPUT_FILE}`);
 }
 

@@ -4,17 +4,19 @@ general:
   instance_name: "Local SearXNG"
   
 server:
+  secret_key: "${SEARXNG_SECRET_KEY}"
   limiter: false
+  secret_key: "$(openssl rand -hex 32)"
   
 search:
   safe_search: 0
   autocomplete: ""
   formats:
-    - html
     - json
 
 outgoing:
-  request_timeout: 3.0
+  request_timeout: 10.0
+  max_request_timeout: 30.0
   enable_http2: true
 
 redis:
@@ -24,4 +26,8 @@ engines:
   - name: google
     disabled: false
   - name: duckduckgo
+    disabled: false
+  - name: brave
+    disabled: false
+  - name: bing
     disabled: false
