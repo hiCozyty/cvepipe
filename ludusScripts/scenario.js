@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-//usage bun run scenario.js <windows-type> <ansible-playbook>
+//usage bun run scenario.js <windows-type> <ansible-playbook> --no-revert (optional flag)
 import { $ } from "bun";
 
 const API_URL = process.env.LUDUS_API_URL;
@@ -93,12 +93,17 @@ async function waitForWinRM(inventoryPath, vmName, timeoutSecs = 120) {
     throw new Error(`Timeout waiting for WinRM on ${vmName}`);
 }
 async function main() {
+    const args = Bun.argv.slice(2);
+    const noRevert = args.includes("--no-revert");
+    const positional = args.filter(a => !a.startsWith("--"));
+
     const windowsType = Bun.argv[2];
     const ansibleScript = Bun.argv[3];
 
     if (!windowsType || !ansibleScript) {
-        console.log(`Usage: bun scenario.js <windows-type> <ansible-playbook>`);
+        console.log(`Usage: bun scenario.js <windows-type> <ansible-playbook> [--no-revert]`);
         console.log(`Example: bun scenario.js win10 playbooks/cve-2021-34527.yml`);
+        console.log(`         bun scenario.js win10 playbooks/cve-2021-34527.yml --no-revert`);
         process.exit(1);
     }
 
@@ -130,10 +135,13 @@ async function main() {
     }
     console.log(`✅ Snapshot "${BASE_SNAPSHOT_NAME}" found`);
 
-    // Rollback Windows VM to clean state (VM must be off for rollback)
-    console.log("\n⏪ Reverting to clean snapshot...");
-    await rollbackSnapshot(winVM.proxmoxID, BASE_SNAPSHOT_NAME);
-
+    if (noRevert) {
+        console.log("\n⏭️  Skipping snapshot revert (--no-revert)");
+    } else {
+        // Rollback Windows VM to clean state (VM must be off for rollback)
+        console.log("\n⏪ Reverting to clean snapshot...");
+        await rollbackSnapshot(winVM.proxmoxID, BASE_SNAPSHOT_NAME);
+    }
     // Power on Kali if needed
     const kaliPower = kaliVM?.poweredOn ? "on" : "off";
     if (kaliPower !== "on") {

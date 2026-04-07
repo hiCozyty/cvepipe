@@ -10,7 +10,7 @@ variable "os" {
 
 variable "iso_url" {
   type    = string
-  default = "https://archive.org/download/windows_10_version_1903/Windows%2010%20ISOs/Windows%2010%2C%20version%201903%20%5B18362.0030%5D%20%28Updated%20March%202019%29/en_windows_10_business_editions_version_1903_x64_dvd_37200948.iso"
+  default = "/opt/winISO/en_windows_10_enterprise_1903_x64_37200948.iso"
 }
 
 variable "vm_cpu_cores" {
