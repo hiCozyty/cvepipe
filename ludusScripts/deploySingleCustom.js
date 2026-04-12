@@ -2,6 +2,7 @@
 // usage: bun run deploySingleCustom.js <windows-type>
 
 import { runOneTimeSetup } from "./oneTimeSetup.js";
+import { waitForPower } from "./scenario.js";
 import { WINDOWS_TEMPLATES } from "./const.js";
 import { $ } from "bun";
 
@@ -164,6 +165,7 @@ async function main() {
   // Power off anything that's on but not in our target set
   const vmsToOff = allVMs.filter(vm => {
     if (vm.isRouter) return false;
+    if (vm.name?.toLowerCase().includes("router")) return false; // ← add this
     if (!vm.poweredOn) return false;
     if (targetVMNames.includes(vm.name)) return false;
     return true;
@@ -203,6 +205,7 @@ async function main() {
     await apiCall("/range/deploy", "POST", { rangeID: RANGE_ID }, {});
 
     await waitForDeploy();
+    await waitForPower(winVMName, "on");
     await runOneTimeSetup(windowsType);
   }
 

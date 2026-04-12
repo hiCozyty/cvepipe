@@ -66,7 +66,7 @@ async function getAnsibleInventory() {
     return parsed.result;
 }
 
-async function waitForPower(vmName, desiredState = "on", timeoutSecs = 120) {
+export async function waitForPower(vmName, desiredState = "on", timeoutSecs = 120) {
     console.log(`⏳ Waiting for ${vmName} to be ${desiredState}...`);
     for (let i = 0; i < timeoutSecs / 5; i++) {
         await new Promise(r => setTimeout(r, 5000));

@@ -11,9 +11,9 @@ coverage
 *.lcov
 
 # logs
-logs
 _.log
 report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
+logs/*
 
 # dotenv environment variable files
 .env
@@ -34,8 +34,13 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 .DS_Store
 
 .clinerules
-moetasploit-framework
 
 winISO/*
 data/*
 ansibleScripts/*
+
+.vscode/*
+
+settings*
+QWEN.md
+.qwen*
