@@ -78,7 +78,21 @@ export async function waitForPower(vmName, desiredState = "on", timeoutSecs = 12
     }
     throw new Error(`Timeout waiting for ${vmName} to be ${desiredState}`);
 }
-async function waitForWinRM(inventoryPath, vmName, timeoutSecs = 120) {
+async function waitForIP(vmName, timeoutSecs = 120) {
+    console.log(`⏳ Waiting for ${vmName} to get an IP...`);
+    for (let i = 0; i < timeoutSecs / 5; i++) {
+        const vms = await getVMs();
+        const vm = vms.find(v => v.name === vmName);
+        if (vm?.ip && vm.ip !== "null") {
+            console.log(`✅ Got IP: ${vm.ip}`);
+            return vm.ip;
+        }
+        console.log(`   ⏳ No IP yet... (${i * 5}s)`);
+        await new Promise(r => setTimeout(r, 5000));
+    }
+    throw new Error(`Timeout waiting for IP on ${vmName}`);
+}
+async function waitForWinRM(inventoryPath, vmName, timeoutSecs = 300) {
     console.log(`⏳ Waiting for WinRM on ${vmName}...`);
     for (let i = 0; i < timeoutSecs / 5; i++) {
         try {
@@ -155,6 +169,16 @@ async function main() {
     console.log(`\n🪟 Powering on ${winVMName}...`);
     await powerOn([winVMName]);
     await waitForPower(winVMName, "on");
+    await waitForIP(winVMName);  
+
+    // Fetch Ludus inventory (contains all VM hostnames/IPs/groups)
+    console.log("\n📋 Fetching Ludus inventory...");
+    const inventoryText = await getAnsibleInventory();
+
+    // Write inventory to temp file
+    const inventoryPath = `/tmp/ludus-inventory-${RANGE_ID}`;
+    await Bun.write(inventoryPath, inventoryText);
+    console.log(`📄 Inventory written to ${inventoryPath}`);
 
     // wait for winRM to be ready
     await waitForWinRM(`/tmp/ludus-inventory-${RANGE_ID}`, winVMName);
@@ -167,15 +191,6 @@ async function main() {
         console.error("💡 Run: uv add ansible pywinrm && uv sync");
         process.exit(1);
     }
-
-    // Fetch Ludus inventory (contains all VM hostnames/IPs/groups)
-    console.log("\n📋 Fetching Ludus inventory...");
-    const inventoryText = await getAnsibleInventory();
-
-    // Write inventory to temp file
-    const inventoryPath = `/tmp/ludus-inventory-${RANGE_ID}`;
-    await Bun.write(inventoryPath, inventoryText);
-    console.log(`📄 Inventory written to ${inventoryPath}`);
 
     // Run Ansible with Ludus inventory, limited to the target Windows VM only
     console.log(`\n🔧 Running Ansible: ${ansibleScript} (target: ${winVMName})`);
