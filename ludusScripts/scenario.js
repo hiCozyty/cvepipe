@@ -55,7 +55,7 @@ async function powerOn(vmNames) {
     await apiCall("/range/poweron", "PUT", { rangeID: RANGE_ID }, { machines: vmNames });
 }
 
-async function getAnsibleInventory() {
+export async function getAnsibleInventory() {
     const qs = new URLSearchParams({ rangeID: RANGE_ID }).toString();
     const url = `${API_URL}/range/ansibleinventory?${qs}`;
     console.log(` → GET ${url}`);
@@ -78,7 +78,7 @@ export async function waitForPower(vmName, desiredState = "on", timeoutSecs = 12
     }
     throw new Error(`Timeout waiting for ${vmName} to be ${desiredState}`);
 }
-async function waitForIP(vmName, timeoutSecs = 120) {
+export async function waitForIP(vmName, timeoutSecs = 120) {
     console.log(`⏳ Waiting for ${vmName} to get an IP...`);
     for (let i = 0; i < timeoutSecs / 5; i++) {
         const vms = await getVMs();
@@ -92,19 +92,38 @@ async function waitForIP(vmName, timeoutSecs = 120) {
     }
     throw new Error(`Timeout waiting for IP on ${vmName}`);
 }
-async function waitForWinRM(inventoryPath, vmName, timeoutSecs = 300) {
-    console.log(`⏳ Waiting for WinRM on ${vmName}...`);
-    for (let i = 0; i < timeoutSecs / 5; i++) {
-        try {
-            await $`uv run ansible ${vmName} -i ${inventoryPath} -m win_ping -e "ansible_winrm_read_timeout_sec=10 ansible_winrm_operation_timeout_sec=5"`.quiet();            
-            console.log(`✅ WinRM ready on ${vmName}`);
-            return;
-        } catch {
-            console.log(`   ⏳ WinRM not ready... (${i * 5}s)`);
-            await new Promise(r => setTimeout(r, 5000));
+export async function waitForWinRM(inventoryPath, vmName, targetIP, timeoutSecs = 120) {
+    console.log(`⏳ Waiting for WinRM on ${vmName} (${targetIP})...`);
+    
+    // No need to parse inventory - we already have the IP!
+    
+    // Phase 1: Raw TCP port check
+    const ports = [5985, 5986];
+    let readyPort = null;
+    console.log(`   🔍 Polling TCP ports...`);
+    for (let i = 0; i < timeoutSecs / 2; i++) {
+        for (const port of ports) {
+            try {
+                await $`bash -c "timeout 1 bash -c '</dev/tcp/${targetIP}/${port}' 2>/dev/null"`.quiet();
+                readyPort = port;
+                console.log(`   ✅ Port ${port} listening`);
+                break;
+            } catch {}
         }
+        if (readyPort) break;
+        await new Promise(r => setTimeout(r, 2000));
     }
-    throw new Error(`Timeout waiting for WinRM on ${vmName}`);
+    if (!readyPort) throw new Error(`Timeout: WinRM ports not open on ${targetIP}`);
+
+    // Phase 2: ONE Ansible win_ping call
+    console.log(`   🔄 Verifying WinRM session...`);
+    try {
+        await $`uv run ansible ${vmName} -i ${inventoryPath} -m win_ping -e "ansible_winrm_read_timeout_sec=10 ansible_winrm_operation_timeout_sec=5"`.quiet();
+        console.log(`✅ WinRM ready on ${vmName} (port ${readyPort})`);
+        return;
+    } catch {
+        throw new Error(`Port ${readyPort} open but WinRM not responding`);
+    }
 }
 async function main() {
     const args = Bun.argv.slice(2);
@@ -166,10 +185,16 @@ async function main() {
     }
 
     // Power on Windows VM
-    console.log(`\n🪟 Powering on ${winVMName}...`);
-    await powerOn([winVMName]);
-    await waitForPower(winVMName, "on");
-    await waitForIP(winVMName);  
+    let targetIP;
+    if (winVM.poweredOn && winVM.ip && winVM.ip !== "null") {
+        console.log(`\n✅ ${winVMName} already on (${winVM.ip})`);
+        targetIP = winVM.ip;
+    } else {
+        console.log(`\n🪟 Powering on ${winVMName}...`);
+        await powerOn([winVMName]);
+        await waitForPower(winVMName, "on");
+        targetIP = await waitForIP(winVMName);
+    }
 
     // Fetch Ludus inventory (contains all VM hostnames/IPs/groups)
     console.log("\n📋 Fetching Ludus inventory...");
@@ -181,7 +206,7 @@ async function main() {
     console.log(`📄 Inventory written to ${inventoryPath}`);
 
     // wait for winRM to be ready
-    await waitForWinRM(`/tmp/ludus-inventory-${RANGE_ID}`, winVMName);
+    await waitForWinRM(`/tmp/ludus-inventory-${RANGE_ID}`, winVMName,targetIP);
 
     // Check if ansible-playbook is available
     try {

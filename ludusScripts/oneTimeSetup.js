@@ -3,6 +3,7 @@
 
 import { $ } from "bun";
 import { WINDOWS_TEMPLATES } from "./const";
+import {getAnsibleInventory, waitForIP,waitForWinRM} from "./scenario.js";
 
 const API_URL = process.env.LUDUS_API_URL
 const API_KEY = process.env.LUDUS_API_KEY?.trim();
@@ -65,7 +66,7 @@ async function createSnapshot(proxmoxID, snapshotName) {
     vmids: [proxmoxID],
     name: snapshotName,
     description: `Base clean state for ${RANGE_ID}-${snapshotName}`,
-    includeRAM: false,
+    includeRAM: true,
   };
   const result = await apiCall("/snapshots/create", "POST", { rangeID: RANGE_ID }, body, "application/json");
   if (result?.errors?.length) {
@@ -96,6 +97,11 @@ export async function runOneTimeSetup(windowsType) {
   const winVM = currentVMs.find(vm => vm.name === `${RANGE_ID}-${windowsType}`);
 
   if (winVM) {
+    await waitForIP(winVM.name);  // add
+    const inventoryPath = `/tmp/ludus-inventory-${RANGE_ID}`;
+    const inventoryText = await getAnsibleInventory();
+    await Bun.write(inventoryPath, inventoryText);
+    await waitForWinRM(inventoryPath, winVM.name, winVM.ip);  // add
     await ensureSnapshot(winVM.proxmoxID, winVM.name, BASE_SNAPSHOT_NAME);
     console.log("\n🎉 Setup complete! VM and snapshot ready.");
     return;
@@ -121,8 +127,13 @@ export async function runOneTimeSetup(windowsType) {
   const newWinVM = vms.find(vm => vm.name === `${RANGE_ID}-${windowsType}`);
   if (!newWinVM) throw new Error("Windows VM not found after deploy");
 
-  await ensureSnapshot(newWinVM.proxmoxID, newWinVM.name, BASE_SNAPSHOT_NAME);
+  await waitForIP(newWinVM.name);  // add
+  const inventoryPath = `/tmp/ludus-inventory-${RANGE_ID}`;
+  const inventoryText = await getAnsibleInventory();
+  await Bun.write(inventoryPath, inventoryText);
+  await waitForWinRM(inventoryPath, newWinVM.name, newWinVM.ip);  // add
 
+  await ensureSnapshot(newWinVM.proxmoxID, newWinVM.name, BASE_SNAPSHOT_NAME);
   console.log("\n🎉 One-time setup complete!");
   console.log(`   • ${windowsType}: snapshotted ✅`);
 }
