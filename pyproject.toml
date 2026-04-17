@@ -6,5 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "ansible>=13.5.0",
+    "asyncio>=4.0.0",
+    "claude-agent-sdk>=0.1.59",
     "pywinrm>=0.5.0",
 ]

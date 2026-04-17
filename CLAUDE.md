@@ -64,6 +64,10 @@ The agent has **full access to both machines** — the Windows target via WinRM/
 
 ## Goal — Validation by Any Means
 
+The objective is to confirm that <msf_path> specifically produces a Meterpreter session against a correctly configured Windows target.
+A shell obtained via any other module is not a success. It is a noise result that contaminates the dataset. The entire value of this pipeline is knowing whether <msf_path> works — not whether the host is exploitable by some means.
+"This exploit does not support this build" or some variation of it, is a valid and complete result. Log it, mark the VM as ❌, move on. Do not search for alternatives.
+
 The **sole objective** is establishing a Meterpreter reverse shell to confirm that the exploit works against a correctly configured Windows target.
 
 **Security posture is irrelevant.** Configurations that would never exist in production are not just acceptable — they are expected. Use the Ansible playbook aggressively to bend the Windows target into whatever shape the exploit needs:
@@ -79,25 +83,24 @@ The **sole objective** is establishing a Meterpreter reverse shell to confirm th
 
 ---
 
+## SearXNG Search Rules — STRICT
+
+These are hard rules. Violating them returns 0 results.
+
+❌ NEVER do this:
+- site: operator → "download site:github.com"
+- Multiple quoted phrases → "word" "AnotherWord"
+- Queries longer than 6 words
+- OR operator between site: terms
+
+✅ ALWAYS do this:
+- One topic per search, plain keywords only
+- Max 5 words per query
+- If you need github results, add "github" as a plain word
+
 ## Input Format
 
-| Field | Description |
-|---|---|
-| `msf_path` | Module path; parse CVE ID from here if `cves[]` is empty |
-| `name` | Human-readable exploit name |
-| `service_category` | Folder name under `ansibleScripts/` |
-| `targets` | Hints only — validate independently via search |
-| `cves` | CVE IDs; may be empty — fall back to `msf_path` |
-| `activation_commands` | Hints for what to enable on Windows; treat as suggestions |
-| `extracted_metadata` | `protocol_hint` (e.g. TCP/445) |
-| `assessment_summary` | `acquisition_path`: how the vulnerable feature is configured |
-| `exclusion_category` | If not null, skip immediately and report reason |
-
-**CVE ID extraction:** If `cves[]` is empty, parse from `msf_path`.
-
-```
-exploits/windows/smb/cve_2020_0796_smbghost  →  CVE-2020-0796
-```
+exploits/windows/<service_category>/<name>
 
 ---
 
@@ -108,8 +111,8 @@ Playbooks:   ansibleScripts/<service_category>/<msf_path_basename>/<vm-key>/<msf
 Logs:        logs/<msf_path_basename>/<vm-key>/ansible.log
              logs/<msf_path_basename>/<vm-key>/msf.log
 No-target:   ansibleScripts/<service_category>/<msf_path_basename>/NO_VALID_TARGETS.txt
+Final Log:   logs/<msf_path_basename>/final.log
 ```
-
 ---
 
 ## Off-Limits
@@ -119,12 +122,6 @@ No-target:   ansibleScripts/<service_category>/<msf_path_basename>/NO_VALID_TARG
 ---
 
 ## Full Execution Pipeline
-
-### Step 0 — Exclusion Check
-
-If `exclusion_category` is not null: log the reason, stop, report to human. Do not proceed.
-
----
 
 ### Step 1 — Per-VM Validation (Internet Search Phase)
 
@@ -153,7 +150,30 @@ Sources can be GitHub, NVD, Microsoft advisories, blog posts, forum posts, PoC r
 
 **After all VMs are assessed:**
 
-- If **no VMs** are ✅ or ⚠️ → write `NO_VALID_TARGETS.txt` with research findings, report to human, stop.
+- If no VMs are ✅ or ⚠️:
+```
+mkdir -p logs/<msf_path_basename>
+cat > logs/<msf_path_basename>/final.log << 'EOF'
+Exploit: <name> (<CVE-ID>)
+Module:  <msf_path>
+
+Result: NO VALID TARGETS
+
+Research findings:
+  <what the searches found — affected versions, why lab VMs don't qualify>
+
+Lab VMs checked:
+  win10-1607  │ ❌ <reason>
+  win10-1903  │ ❌ <reason>
+  win11-21h2  │ ❌ <reason>
+  win2012     │ ❌ <reason>
+  win2016     │ ❌ <reason>
+  win2019     │ ❌ <reason>
+  win2022     │ ❌ <reason>
+EOF
+```
+Then write NO_VALID_TARGETS.txt, report to human, stop.
+
 - If **some VMs** qualify → proceed only with ✅ and ⚠️ VMs. Note skipped VMs in the log.
 
 ---
@@ -218,6 +238,24 @@ Enable only the specific prerequisite for this exploit (SMBv1, SMBv3 compression
 
 > **Nothing else.** No payloads, no msfconsole, no reverse shells, no Kali-side logic.
 
+#### If third-party software is involved, stop the pipeline
+Add a `win_get_url` task with a placeholder URL and a comment indicating the installer must be supplied manually.
+
+Do an early termination and fill out final.log. 
+```
+mkdir -p logs/<msf_path_basename>
+cat > logs/<msf_path_basename>/final.log << 'EOF'
+Exploit: <name> (<CVE-ID>)
+Module:  <msf_path>
+ 
+Result: MANUAL INTERVENTION REQUIRED — THIRD-PARTY SOFTWARE
+ 
+Software:  <software name> <vulnerable version range>
+ 
+Qualifying VMs:
+  <vm-key>  │ ✅/⚠️  │ <reason>
+  ...
+```
 ---
 
 ### Step 4 — Run Playbook
@@ -336,6 +374,9 @@ Apply only fixes that search results support. After the fix, re-run from **Step 
 ---
 
 #### Sub-loop B — MSF failures
+
+HARD RULE — NO MODULE SWITCHING, NO EXCEPTIONS.
+You are running <msf_path> and only <msf_path>. If that module fails, you fix its configuration. You do not try any other exploit module. Trying out scanner modules are fine for debugging. Using a different module to "verify" or "work around" a check is also prohibited. If the correct module cannot be made to work in 5 retries, you log the failure and move on. The pipeline validates a specific module against a specific configuration — not whichever module happens to land a shell.
  
 MSF failures include: no session opened, module error, timeout, "not vulnerable" response, or missing/wrong options.
  
@@ -378,24 +419,39 @@ Repeat Steps 3–7 for each remaining qualifying VM sequentially.
 ---
 
 ### Step 9 — Final Report
-
-After all VMs are processed, output a summary in this format:
-
-```
+ 
+After all VMs are processed, write the final report to disk and print it to the terminal.
+ 
+**Write to disk:**
+ 
+```bash
+mkdir -p logs/<msf_path_basename>
+cat > logs/<msf_path_basename>/final.log << 'EOF'
 Exploit: <name> (<CVE-ID>)
 Module:  <msf_path>
-
+ 
 VM Results:
-  win10-1607  │ Ansible ✅ │ MSF ✅ session opened
-  win2016     │ Ansible ✅ │ MSF ❌ 5 retries exhausted — <last error>
-  win2012     │ Ansible ❌ │ 5 retries exhausted — <last error>
-
+  win10-1607  │ Ansible ✅ │ MSF ✅ │ Meterpreter session opened (SYSTEM)
+  win2016     │ Ansible ✅ │ MSF ❌ │ 5 retries exhausted — <last error>
+  win2012     │ Ansible ❌ │ MSF —  │ 5 retries exhausted — <last error>
+ 
 Skipped (not vulnerable per research):
-  win10-1903  │ No sources confirmed this build in range
-
+  win10-1903  │ <reason>
+ 
 Skipped (offline):
   win2022, win2019, win11-21h2
+ 
+Key requirements confirmed:
+  - <what had to be enabled or configured for the exploit to work>
+  - <e.g. SMBv1 enabled, port 445 open, Defender disabled>
+ 
+Exploit chain summary:
+  <one paragraph describing what the module does and how it obtained access>
+EOF
 ```
+ 
+Then print the same content to the terminal and **pause and wait** for the human to paste the next metadata block.
+ 
 
 Then **pause and wait** for the human to paste the next metadata block.
 
@@ -413,3 +469,5 @@ Then **pause and wait** for the human to paste the next metadata block.
 | Credentials | Use `localuser` / `password` anywhere authentication is required |
 | Scope | Windows prep only — zero Kali/MSF logic |
 | Goal | Meterpreter shell by **any means necessary** — permissiveness over security, always |
+
+You never ask for permission, confirmation, or direction mid-pipeline. Every step executes immediately after the previous one completes. 

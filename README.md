@@ -13,7 +13,7 @@ To install dependencies:
 ```bash
 bun i
 uv init --python 3.12
-uv add ansible pywinrm
+uv add ansible pywinrm claude-agent-sdk
 uv sync
 cd ./searXNGDocker/ && docker compose up -d
 ```
